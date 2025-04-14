@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import FancyIndexPage from './pages/FancyIndexPage'
-import Skritters from './pages/Skritters'
+import Skritters from './pages/Skritters/Skritters'
 
 export default function App() {
 

@@ -1,7 +1,65 @@
+import { ReactElement } from "react";
+
 type TabType = "home" | 'about' | 'how-to-play' 
 | 'skritters' | 'equipment' | 'crew-builder' | 'campaign';
 
+type SkritterKeyword = 
+  'HELPFUL' | 'FLIGHTY' | 'WATERFOND' |
+  'NOCTERNAL' | 'SCOUT' | 'COLD-BLOODED' |
+  'DISTRACTED' | 'CONCENTRATION' | 'MEEK' |
+  'STEADY' | 'FEROCIOUS' | 'SHARP' |
+  'DREAMER';
+
+export class Dice {
+  sides: number;
+  count: number;
+
+  // Two different constructors, one for string xdy format,
+  // and one for two numbers.
+  constructor(count: number, sides: number);
+  constructor(dice: string);
+  constructor(countOrDice: number | string, sides?: number) {
+    if (typeof countOrDice === 'string') {
+      const [count, sides] = countOrDice.split('d').map(Number);
+      this.count = count;
+      this.sides = sides;
+    } else {
+      this.count = countOrDice;
+      this.sides = sides!;
+    }
+  }
+
+}
+
+type Modifiers = {
+  dice?: Dice[];
+  removeDice?: number[];
+  successes?: number[];
+  size?: number[];
+}
+
+type Skritter = {
+  name: string;
+  description: string;
+  stats: {
+    movement: number;
+    // Each stat is any combo of modifiers;
+    ranged: Modifiers;
+    brawl: Modifiers;
+    weave: Modifiers;
+    defense: Modifiers;
+    health: number;
+    size: 'Small' | 'Medium' | 'Large';
+  }
+  abilities: {
+    name: string;
+    effect: ReactElement;
+  }[];
+  retirement: ReactElement[];
+  tags: SkritterKeyword[];
+}
 
   export type {
+    Skritter,
     TabType
   };

@@ -6,7 +6,7 @@ export default function NavCluster() {
     <nav className="navbar navcluster">
       <div><Link to="/about">About</Link></div>
       <div><Link to="/how-to-play">How to Play</Link></div>
-      <div><Link to="/skritters-creation">Skritters</Link></div>
+      <div><Link to="/skritters">Skritters</Link></div>
       <div><Link to="/equipment">Equipment</Link></div>
       <div><Link to="/campaign">Campaign</Link></div>
       <div><Link to="/crew-builder">Crew Builder</Link></div>

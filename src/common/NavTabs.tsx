@@ -29,6 +29,9 @@ const NavTabs = ({selectedTab}: Props) => {
       <Link to="/equipment" className={getClassForTab('equipment')}>
         <div>Equipment</div>
       </Link>
+      <Link to="/campaign" className={getClassForTab('campaign')}>
+        <div>Campaign</div>
+      </Link>
       <Link to="/crew-builder" className={getClassForTab('crew-builder')}>
         <div>Crew Builder</div>
       </Link>

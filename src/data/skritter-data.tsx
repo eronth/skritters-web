@@ -1,3 +1,9 @@
+import Hardy from "../common/Keywords/rules/resources/Hardy";
+import Vigor from "../common/Keywords/rules/resources/Vigor";
+import Scuffle from "../common/Keywords/rules/Scuffle";
+import Weapon from "../common/Keywords/rules/Weapon";
+import ItemTag from "../common/Tags/ItemTag";
+import Tag from "../common/Tags/Tag";
 import { Dice, Skritter } from "../types/types"
 
 
@@ -16,13 +22,14 @@ const porcupine: Skritter = {
   abilities: [
     {
       name: "Quills",
-      effect: <>When attacked in a Scuffle, you automatically hit your attacker
+      effect: <>When attacked in a <Scuffle />, you automatically hit your attacker
         for the same number of hits, up to 3.</>
     }
   ],
   retirement: [<>
-    When Porcupine first retires, it can grant a member of your crew 1 Needle Blade.
-    While retired, Porcupine grants 1 Vigorous resource at the start of each match.
+    When Porcupine first retires, it can grant a member of your crew 
+    1 <Weapon weapon="Needle Blade" />.
+    While retired, Porcupine grants 1 <Vigor /> resource at the start of each match.
   </>],
   tags: [],
 };
@@ -43,26 +50,29 @@ const armordilloKnight: Skritter = {
     {
       name: "Rollup",
       effect: <>
-        As an action, you can roll into a defensive ball. When you do, your defense checks get +Size and your movement gets -2".
+        As an action, you can roll into a defensive ball. When you do, your 
+        defense checks get 
+        +Size and your movement gets -2".
         <br/>
-        As an action, you can unroll. When you do, you gain a Vigorous or Hardy resource.
+        As an action, you can unroll. When you do, you gain 
+        a <Vigor /> or <Hardy /> resource.
       </>
     },
     {
       name: "Durable",
       effect: <>
-        Armordillo Knight starts the match with one Hardy resource.
+        Armordillo Knight starts the match with one <Hardy /> resource.
       </>
     },
     {
       name: "Shocking Shell",
       effect: <>
-        Shocking Shell - The Armordillo Knight can bring a Shocking Shell 
+        The Armordillo Knight can bring a Shocking Shell 
         in place of one other piece of equipment. When attacked by a Skritter 
-        using a Brawl attack with a METAL weapon, you may immediately make a 2d4 
+        using a Brawl attack with a <ItemTag tag='METAL' /> weapon, you may immediately make a 2d4 
         Brawl attack against that Skritter.
         Additionally, if you make a Brawl attack a Skritter that has a 
-        non-weapon METAL item equipped, gain +1SIZE to the attack.
+        non-weapon <ItemTag tag='METAL' /> item equipped, gain +1SIZE to the attack.
       </>
     }
   ],

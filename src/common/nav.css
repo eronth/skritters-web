@@ -41,15 +41,21 @@ nav {
   
       &.unselected-tab div {
         --color: var(--unselectedColor);
-        --backing-color: var(--unselectedBackgroudnColor);
+        --backing-color: var(--unselectedBackgroundColor);
         border-bottom: 1px solid var(--selectedColor);
+      }
+
+      &.selected-tab div {
+        --color: var(--selectedColor);
+        --backing-color: var(--bg-color);
+        font-weight: bold;
       }
     }
   
     div {
-      --selectedColor: white;
-      --unselectedColor: #b1b1b1;
-      --unselectedBackgroudnColor: #333;
+      --selectedColor: var(--primary-color);
+      --unselectedColor: var(--text-color);
+      --unselectedBackgroundColor: color-mix(in srgb, var(--bg-color) 50%, var(--color-mixin) 10%);
       --top-bottom-padding: 1em;
       
       /* Leave values alone so they are passed in */

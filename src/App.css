@@ -55,3 +55,11 @@ p {
     padding: 0 1rem;
   }
 }
+
+.bolded, .bold {
+  font-weight: bold;
+}
+
+.italic, .italics, .italixed {
+  font-style: italic;
+}

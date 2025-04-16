@@ -1,0 +1,19 @@
+.stats-container {
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    overflow: hidden; 
+    
+    th, td {
+      text-align: center;
+      border: 1px solid var(--border-color);
+    }
+    
+    th {
+      background-color: var(--primary-light);
+      color: var(--text-color);
+      font-weight: bold; 
+    }
+  }
+}

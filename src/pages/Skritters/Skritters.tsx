@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "../../common/Header";
-import SkritterComponent from "../../common/SkritterComponent";
+import SkritterComponent from "../../common/SkritterDisplay/SkritterComponent";
 import { armordilloKnight, porcupine } from "../../data/skritter-data";
 import { Skritter } from "../../types/types";
 import './Skritters.css';

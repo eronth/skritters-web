@@ -1,14 +1,10 @@
 import { ReactElement } from "react";
+import { SkritterKeyword } from "./keywords";
 
 type TabType = "home" | 'about' | 'how-to-play' 
 | 'skritters' | 'equipment' | 'crew-builder' | 'campaign';
 
-type SkritterKeyword = 
-  'HELPFUL' | 'FLIGHTY' | 'WATERFOND' |
-  'NOCTERNAL' | 'SCOUT' | 'COLD-BLOODED' |
-  'DISTRACTED' | 'CONCENTRATION' | 'MEEK' |
-  'STEADY' | 'FEROCIOUS' | 'SHARP' |
-  'DREAMER';
+
 
 export class Dice {
   sides: number;
@@ -60,6 +56,7 @@ type Skritter = {
 }
 
   export type {
+    Modifiers,
     Skritter,
     TabType
   };

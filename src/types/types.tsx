@@ -34,19 +34,22 @@ type Modifiers = {
   size?: number[];
 }
 
+type SkritterStatline = {
+  movement: number;
+  // Each stat is any combo of modifiers;
+  ranged: Modifiers;
+  brawl: Modifiers;
+  weave: Modifiers;
+  defense: Modifiers;
+  health: number;
+  size: 'Small' | 'Medium' | 'Large';
+}
+
+
 type Skritter = {
   name: string;
   description: string;
-  stats: {
-    movement: number;
-    // Each stat is any combo of modifiers;
-    ranged: Modifiers;
-    brawl: Modifiers;
-    weave: Modifiers;
-    defense: Modifiers;
-    health: number;
-    size: 'Small' | 'Medium' | 'Large';
-  }
+  stats: SkritterStatline;
   abilities: {
     name: string;
     effect: ReactElement;
@@ -58,5 +61,6 @@ type Skritter = {
   export type {
     Modifiers,
     Skritter,
+    SkritterStatline,
     TabType
   };

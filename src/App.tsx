@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
+import 'rpg-awesome/css/rpg-awesome.min.css'
 import FancyIndexPage from './pages/FancyIndexPage'
 import Skritters from './pages/Skritters/Skritters'
 

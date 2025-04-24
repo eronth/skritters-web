@@ -11,9 +11,10 @@ export default function Resource({ resource, className, style }: Props) {
   resource = resource.charAt(0).toUpperCase() + resource.slice(1);
   return (
     <Keyword
-      keyword={resource}
       className={`resource italics ${className || ''}`}
       style={style}
-    />
+    >
+      {resource}
+    </Keyword>
   );
 }

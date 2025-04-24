@@ -8,3 +8,4 @@ export default function Threat({ type }: { type?: string }) {
       {`${type ? ' ' + type : ''}Threat`}
     </Keyword>
   );
+}

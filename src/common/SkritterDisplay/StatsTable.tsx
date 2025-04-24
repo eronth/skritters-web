@@ -1,6 +1,8 @@
+import { faBullseye, faHandBackFist, faHeartPulse, faShield, faShoePrints, faWandSparkles } from "@fortawesome/free-solid-svg-icons";
 import { SkritterStatline } from "../../types/types";
 import { formatModifiers } from "../utilities";
 import './StatsTable.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Props = {
   stats: SkritterStatline;
@@ -13,12 +15,14 @@ export default function StatsTable({ stats }: Props) {
     <table className="stats-table">
       <thead>
         <tr>
-          <th>Movement</th>
-          <th>Ranged</th>
-          <th>Brawl</th>
-          <th>Weave</th>
-          <th>Defense</th>
-          <th>Health</th>
+          <th><FontAwesomeIcon icon={faShoePrints} /> Movement</th>
+          <th>
+            {/* <i className="ra ra-circular-shield"/> */}
+            <FontAwesomeIcon icon={faBullseye} /> Ranged</th>
+          <th><FontAwesomeIcon icon={faHandBackFist} /> Brawl</th>
+          <th><FontAwesomeIcon icon={faWandSparkles} /> Weave</th>
+          <th><FontAwesomeIcon icon={faShield} /> Defense</th>
+          <th><FontAwesomeIcon icon={faHeartPulse} /> Heart</th>
           <th>Size</th>
         </tr>
       </thead>

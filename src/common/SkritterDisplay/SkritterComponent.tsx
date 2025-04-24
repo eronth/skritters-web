@@ -8,7 +8,6 @@ type Props = {
 };
 
 export default function SkritterComponent({ skritter }: Props) {
-  
 
   return (
     <div className="skritter-card">

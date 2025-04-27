@@ -1,12 +1,12 @@
 import Keyword from "../Keyword";
 
-export default function Weapon({ weapon }: { weapon: string }) {
+export default function Weapon({ children }: { children: string }) {
   return (
   <Keyword
     className="weapon"
     style={{ fontStyle: 'italic', color: '#555' }}
   >
-    {weapon}
+    {children}
   </Keyword>
   );
 }

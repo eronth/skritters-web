@@ -16,14 +16,12 @@ export default function StatsTable({ stats }: Props) {
       <thead>
         <tr>
           <th><FontAwesomeIcon icon={faShoePrints} /> Movement</th>
-          <th>
-            {/* <i className="ra ra-circular-shield"/> */}
-            <FontAwesomeIcon icon={faBullseye} /> Ranged</th>
+          <th><FontAwesomeIcon icon={faBullseye} /> Ranged</th>
           <th><FontAwesomeIcon icon={faHandBackFist} /> Brawl</th>
           <th><FontAwesomeIcon icon={faWandSparkles} /> Weave</th>
           <th><FontAwesomeIcon icon={faShield} /> Defense</th>
           <th><FontAwesomeIcon icon={faHeartPulse} /> Heart</th>
-          <th>Size</th>
+          <th className="size-column">Size</th>
         </tr>
       </thead>
       <tbody>

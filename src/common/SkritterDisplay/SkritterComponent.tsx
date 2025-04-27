@@ -42,6 +42,14 @@ export default function SkritterComponent({ skritter }: Props) {
               <div key={id} className="retirement-effect">{effect}</div>
             ))}
           </div>
+          { skritter.sageWisdom
+          ? <div className="sage-wisdom-container">
+              <h4 className="section-title">{skritter.sageWisdom.type} Sage Wisdom</h4>
+              <div className="sage-wisdom-text">
+                {skritter.sageWisdom.effect || "No Sage Wisdom available."}
+              </div>
+            </div>
+          : null}
         </div>
       )}
     </div>

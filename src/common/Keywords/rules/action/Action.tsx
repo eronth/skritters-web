@@ -1,9 +1,13 @@
 import Keyword from "../../Keyword";
 
-export default function Action({ type }: { type?: string }) {
+type Props = {
+  type?: string;
+  plural?: boolean;
+}
+export default function Action({ type, plural }: Props) {
   return (
     <Keyword className={`action bold ${type ? type.toLowerCase() : ''}`}>
-      {`${type ? type+'' : ''}Action`}
+      {type ? type+' ' : ''}Action{plural ? 's' : ''}
     </Keyword>
   );
 }

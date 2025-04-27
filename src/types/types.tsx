@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 import { SkritterKeyword } from "./keywords";
 
 type TabType = "home" | 'about' | 'how-to-play' 
@@ -28,6 +28,7 @@ export class Dice {
 }
 
 type Modifiers = {
+  nilout?: boolean;
   dice?: Dice[];
   removeDice?: number[];
   successes?: number[];
@@ -52,9 +53,13 @@ type Skritter = {
   stats: SkritterStatline;
   abilities: {
     name: string;
-    effect: ReactElement;
+    effect: ReactNode;
   }[];
   retirement: ReactElement[];
+  sageWisdom?: {
+    type: string;
+    effect: ReactElement;
+  }
   tags: SkritterKeyword[];
 }
 

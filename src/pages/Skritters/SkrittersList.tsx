@@ -1,17 +1,16 @@
 import { useState } from "react";
 import Header from "../../common/Header";
 import SkritterComponent from "../../common/SkritterDisplay/SkritterComponent";
-import { armordilloKnight, porcupine } from "../../data/skritter-data";
+import skritters from "../../data/skritter-data";
 import { Skritter } from "../../types/types";
-import './Skritters.css';
+import './SkrittersList.css';
 
-export default function Skritters() {
+export default function SkrittersList() {
   const [searchTerm, setSearchTerm] = useState('');
 
   const skrits: Skritter[] = [
-    {...porcupine},
-    {...armordilloKnight}
-  ];
+    ...Object.values(skritters)
+  ].sort((a, b) => a.name.localeCompare(b.name));
   
   // Filter skritters based on search term
   const filteredSkritters = skrits.filter(skritter => 

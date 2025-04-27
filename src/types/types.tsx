@@ -17,10 +17,10 @@ export class Dice {
   constructor(countOrDice: number | string, sides?: number) {
     if (typeof countOrDice === 'string') {
       const [count, sides] = countOrDice.split('d').map(Number);
-      this.count = count;
+      this.count = count ? count : 1;
       this.sides = sides;
     } else {
-      this.count = countOrDice;
+      this.count = countOrDice ? countOrDice : 1;
       this.sides = sides!;
     }
   }

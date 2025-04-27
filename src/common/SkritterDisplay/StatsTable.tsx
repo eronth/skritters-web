@@ -15,12 +15,12 @@ export default function StatsTable({ stats }: Props) {
     <table className="stats-table">
       <thead>
         <tr>
-          <th><FontAwesomeIcon icon={faShoePrints} /> Movement</th>
-          <th><FontAwesomeIcon icon={faBullseye} /> Ranged</th>
-          <th><FontAwesomeIcon icon={faHandBackFist} /> Brawl</th>
-          <th><FontAwesomeIcon icon={faWandSparkles} /> Weave</th>
-          <th><FontAwesomeIcon icon={faShield} /> Defense</th>
-          <th><FontAwesomeIcon icon={faHeartPulse} /> Heart</th>
+          <th><FontAwesomeIcon icon={faShoePrints} /><br />Movement</th>
+          <th><FontAwesomeIcon icon={faBullseye} /><br />Ranged</th>
+          <th><FontAwesomeIcon icon={faHandBackFist} /><br />Brawl</th>
+          <th><FontAwesomeIcon icon={faWandSparkles} /><br />Weave</th>
+          <th><FontAwesomeIcon icon={faShield} /><br />Defense</th>
+          <th><FontAwesomeIcon icon={faHeartPulse} /><br />Heart</th>
           <th className="size-column">Size</th>
         </tr>
       </thead>

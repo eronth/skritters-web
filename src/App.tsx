@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import 'rpg-awesome/css/rpg-awesome.min.css'
 import FancyIndexPage from './pages/FancyIndexPage'
-import SkrittersList from './pages/Skritters/SkrittersList'
+import SkrittersListPage from './pages/Skritters/SkrittersListPage'
 
 export default function App() {
 
@@ -11,9 +11,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<FancyIndexPage />} />
         <Route path="/about" element={<div>About</div>} />
-        <Route path="/skritters" element={<SkrittersList />} />
         {/* <Route path="/story" element={<StoryPage />} />
         <Route path="/setting" element={<SettingPage />} />
+        <Route path="/skritters" element={<SkrittersListPage />} />
         <Route path="/how-to-play" element={<HowToPlayPage />} />
         <Route path="/character-creation" element={<CharacterCreationPage />} />
         <Route path="/additional-equipment" element={<AdditionalEquipmentPage />} />

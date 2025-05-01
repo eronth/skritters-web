@@ -1,0 +1,87 @@
+/* Keyword.css */
+.keyword {
+  /* You can customize this based on your needs */
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  &.has-tooltip {
+    text-decoration: underline dotted;
+    cursor: help;
+  }
+
+  /* Base tooltip styles */
+  .keyword-tooltip {
+    position: absolute;
+    z-index: 1000;
+    background-color: var(--bg-color);
+    border: 1px solid var(--color-mixin);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 8px 12px;
+    max-width: 300px;
+    width: max-content;
+    font-size: 14px;
+    line-height: 1.5;
+
+    &:before {
+      content: '';
+      position: absolute;
+      border: 5px solid transparent;
+    }
+
+    &.keyword-tooltip-bottom {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 8px;
+      &::before {
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom-color: var(--color-mixin);
+      }
+    }
+    
+    &.keyword-tooltip-top {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 8px;
+      &::before {
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top-color: var(--color-mixin);
+      }
+    }
+    
+    &.keyword-tooltip-left {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      margin-right: 8px;
+      &::before {
+        right: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-left-color: var(--color-mixin);
+      }
+    }
+    
+    &.keyword-tooltip-right {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      margin-left: 8px;
+      &::before {
+        left: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-right-color: var(--color-mixin);
+      }
+    }
+  }
+
+
+}
+

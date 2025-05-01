@@ -3,7 +3,7 @@ import Header from "../../common/Header";
 import SkritterComponent from "../../common/SkritterDisplay/SkritterComponent";
 import skritters from "../../data/skritter-data";
 import { Skritter } from "../../types/types";
-import './SkrittersList.css';
+import './SkrittersListPage.css';
 
 export default function SkrittersList() {
   const [searchTerm, setSearchTerm] = useState('');

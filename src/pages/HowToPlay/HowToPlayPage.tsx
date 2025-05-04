@@ -1,39 +1,45 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../common/Header";
 import Action from "../../common/Keywords/rules/action/Action";
+import MinusSize from "../../common/Keywords/rules/roll-modifiers/MinusSize";
+import PlusDice from "../../common/Keywords/rules/roll-modifiers/PlusDice";
+import PlusSize from "../../common/Keywords/rules/roll-modifiers/PlusSize";
+import Success from "../../common/Keywords/rules/roll-modifiers/Success";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Dice } from "../../types/types";
 
 export default function HowToPlayPage() {
+  
   return (<>
     <Header selectedTab={"how-to-play"} />
+    <div className="page-content">
+      <h1>Overview</h1>
+      <p>Welcome to the skirmish game of Skritters! A cute little game where players face off with their squad of Skritters.</p>
+      <h2>What's a Skritter?</h2>
+      <p>
+        Skritters are cute little anthropomorphized critters. Each Skritter has its own unique abilities and characteristics that make them special.
+        They are cute-yet-fierce and looking to do what's necessary to protect their little clan.
+      </p>
+      <h2>What's a Skirmish Game</h2>
+      A skirmish game is a type of tabletop game that 
+      focuses on small-scale battles between a few units or characters. Players will each
+      assemble a squad of Skritters, each with their own unique abilities and stats, and face off against
+      each other in a battle to see who can outmaneuver and outsmart their opponent to claim
+      the most Victory Points in a match.
 
-    <h1>Overview</h1>
-    <p>Welcome to the skirmish game of Skritters! A cute little game where players face off with their squad of Skritters.</p>
-    <h2>What's a Skritter?</h2>
-    <p>
-      Skritters are cute little anthropomorphized critters. Each Skritter has its own unique abilities and characteristics that make them special.
-      They are cute-yet-fierce and looking to do what's necessary to protect their little clan.
-    </p>
-    <h2>What's a Skirmish</h2>
-    <h1>How to Play</h1>
-    <h2>Dice</h2>
-    <p>
-      Skritters uses dice to determine the outcome of many things. These dice can have different 
-      numbers of sides, and can be rolled in different combinations. Any time you see a notation like "2d6", it means to roll 
-      two six-sided dice. The number before the "d" indicates how many dice to roll, and the number 
-      after the "d" indicates how many sides each die has. Skritters can make use of d4, d6, d8, d10, and d12 dice, though 
-      you'll only need d4s and d6s most of the time.
-    </p>
-    <h2>Tests and Checks</h2>
-    <p>
-      The game uses a simple dice system to resolve <Action plural />. When
-      required to roll a test (sometimes referred to as a check), you assemble all Dice
-      and modifiers that apply to the test, and roll them all at once. Once you've rolled
-      the dice, sum the results of the dice and deply the total by 3 to determine the number of
-      succeess.
-    </p>
-    <h3>Modifiers</h3>
-    <ul>
+      The game of Skritters favors a campaign-style play, where players will play several matches
+      over the course of a campaign, building their squad more and more as they go.
+      <h1>How to Play</h1>
+      <h2>Dice</h2>
+      <p>
+        Skritters uses dice to determine the outcome of many things. These dice can have different 
+        numbers of sides, and can be rolled in different combinations. Any time you see a notation like "2d6", it means to roll 
+        two six-sided dice. The number before the "d" indicates how many dice to roll, and the number 
+        after the "d" indicates how many sides each die has. Skritters can make use of d4, d6, d8, d10, and d12 dice, though 
+        you'll only need d4s and d6s most of the time. The <PlusDice /> icon indicates dice of any size.
+      </p>
+      
 
-    </ul>
-  
+    </div>
   </>);
 }

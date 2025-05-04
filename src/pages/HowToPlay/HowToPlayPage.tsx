@@ -29,15 +29,9 @@ export default function HowToPlayPage() {
 
       The game of Skritters favors a campaign-style play, where players will play several matches
       over the course of a campaign, building their squad more and more as they go.
+      
       <h1>How to Play</h1>
-      <h2>Dice</h2>
-      <p>
-        Skritters uses dice to determine the outcome of many things. These dice can have different 
-        numbers of sides, and can be rolled in different combinations. Any time you see a notation like "2d6", it means to roll 
-        two six-sided dice. The number before the "d" indicates how many dice to roll, and the number 
-        after the "d" indicates how many sides each die has. Skritters can make use of d4, d6, d8, d10, and d12 dice, though 
-        you'll only need d4s and d6s most of the time. The <PlusDice /> icon indicates dice of any size.
-      </p>
+      <DiceAndTestsComponent />
       
 
     </div>

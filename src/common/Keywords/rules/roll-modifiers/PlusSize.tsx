@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Keyword from "../../Keyword";
 
 
-export default function PlusSize({ x }: { x?: number }) {
+export default function PlusSize({ x, noVal }: { x?: number, noVal?: boolean }) {
 
   return (
-    <Keyword className="minus-size">
-      {'+'}{Math.abs(x || 1)} <FontAwesomeIcon icon={faAnglesUp} />
+    <Keyword className="plus-size">
+      {noVal ? '' : '+'+Math.abs(x || 1)}<FontAwesomeIcon icon={faAnglesUp} />
     </Keyword>
   );
 }

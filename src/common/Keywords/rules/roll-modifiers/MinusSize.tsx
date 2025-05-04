@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Keyword from "../../Keyword";
 
 
-export default function MinusSize({ x }: { x?: number }) {
+export default function MinusSize({ x, noVal }: { x?: number, noVal?: boolean }) {
 
   return (
     <Keyword className="minus-size">
-      {'-'}{Math.abs(x || 1)} <FontAwesomeIcon icon={faAnglesDown} />
+      {noVal ? '' : '-'+Math.abs(x || 1)}<FontAwesomeIcon icon={faAnglesDown} />
     </Keyword>
   );
 }

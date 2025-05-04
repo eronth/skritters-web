@@ -4,6 +4,10 @@ import 'rpg-awesome/css/rpg-awesome.min.css'
 import FancyIndexPage from './pages/FancyIndexPage'
 import SkrittersListPage from './pages/Skritters/SkrittersListPage'
 import HowToPlayPage from './pages/HowToPlay/HowToPlayPage'
+import CampaignPage from './pages/Campaign/CampaignPage'
+import AboutPage from './pages/About/AboutPage'
+import EquipmentPage from './pages/Equipment/EquipmentPage'
+import CrewBuilderPage from './pages/CrewBuilder/CrewBuilderPage'
 
 export default function App() {
 
@@ -11,17 +15,12 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<FancyIndexPage />} />
-        <Route path="/about" element={<div>About</div>} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/skritters" element={<SkrittersListPage />} />
         <Route path="/how-to-play" element={<HowToPlayPage />} />
-        {/* 
-        <Route path="/story" element={<StoryPage />} />
-        <Route path="/setting" element={<SettingPage />} />
-        <Route path="/character-creation" element={<CharacterCreationPage />} />
-        <Route path="/additional-equipment" element={<AdditionalEquipmentPage />} />
-        <Route path="/advanced-perks" element={<AdvancedPerksPage />} />
-        <Route path="/magic" element={<MagicPage />} />
-        <Route path="/creatures" element={<CreaturesPage />} /> */}
+        <Route path="/equipment" element={<EquipmentPage />} />
+        <Route path="/campaign" element={<CampaignPage />} />
+        <Route path="/crew-builder" element={<CrewBuilderPage />} />
       </Routes>
     </BrowserRouter>
   )

@@ -63,3 +63,10 @@ p {
 .italic, .italics, .italixed {
   font-style: italic;
 }
+
+.page-content {
+  margin-inline: .25em auto;
+  max-width: 1200px;
+  padding: 1rem;
+  min-height: 100vh;
+}

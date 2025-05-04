@@ -23,7 +23,7 @@ export default function SkrittersList() {
     <div className="skritters-page">
       <Header selectedTab={"skritters"} />
       
-      <div className="main-container">
+      <div className="page-content">
         
         {/* Search bar */}
         <div className="search-container">

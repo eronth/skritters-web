@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Header from "../../common/Header";
 import SkritterComponent from "../../common/SkritterDisplay/SkritterComponent";
 import skritters from "../../data/skritter-data";
 import { Skritter } from "../../types/types";
 import './SkrittersListPage.css';
+import Page from "../Page";
 
 export default function SkrittersList() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -20,9 +20,7 @@ export default function SkrittersList() {
   );
 
   return (
-    <div className="skritters-page">
-      <Header selectedTab={"skritters"} />
-      
+    <Page tab={'skritters'} className="skritters-page">
       <div className="page-content">
         
         {/* Search bar */}
@@ -49,6 +47,6 @@ export default function SkrittersList() {
           )}
         </div>
       </div>
-    </div>
+    </Page>
   );
 }

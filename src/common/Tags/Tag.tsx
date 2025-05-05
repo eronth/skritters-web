@@ -9,7 +9,7 @@ type Props = {
 
 export default function Tag({ tag, className, style }: Props) {
   return (
-    <span className={`tag ${className || ''}`} style={style}>
+    <span className={`tag ${tag.toLowerCase()} ${className || ''}`} style={style}>
       {tag}
     </span>
   );

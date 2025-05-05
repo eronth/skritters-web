@@ -4,13 +4,24 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   
-  .creature-tag {
+  .tag {
     padding: 0.2rem 0.6rem;
     border-radius: 1rem;
     background-color: var(--primary-light);
     color: var(--primary-color);
     font-size: 0.75rem;
     font-weight: 500;
+  }
+
+  .creature-tag {
     white-space: nowrap;
+  }
+
+  .item-tag {
+    font-size: 12px;
+    &.wood {
+      background-color: #c6f6d5; /* green-100 */
+      color: #22543d; /* green-800 */
+    }
   }
 }

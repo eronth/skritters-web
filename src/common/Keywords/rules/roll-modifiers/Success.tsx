@@ -1,16 +1,16 @@
 import Keyword from "../../Keyword";
 
-export default function Success({ x, noVal }: { x?: number, noVal?: boolean }) {
+export default function Success({ x, bonus, noVal }: { x?: number, bonus?: boolean, noVal?: boolean }) {
   x = x || 0; // Default to 0 if x is undefined or null
   const precursorText = (
     noVal
     ? ''
-    : ((x < 0) ? '-' : '+') + Math.abs(x || 1) + ' ' 
+    : (bonus ? ((x < 0) ? '-' : '+') : '') + Math.abs(x || 0) + ' ' 
   )
 
 return (
   <Keyword className="success">
-    {precursorText}Success{Math.abs(x || 1) !== 1 ? 'es' : ''}
+    {precursorText}Success{Math.abs(x || 0) !== 1 ? 'es' : ''}
   </Keyword>
   );
 }

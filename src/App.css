@@ -23,6 +23,11 @@
   }
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -57,11 +62,11 @@ p {
 }
 
 .bolded, .bold {
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
-.italic, .italics, .italixed {
-  font-style: italic;
+.italic, .italics, .italix, .italixed {
+  font-style: italic !important;
 }
 
 /* .page {

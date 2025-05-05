@@ -1,5 +1,9 @@
 import Attack from "./Attack";
 
-export default function WeaveAttack() {
-  return (<Attack type="Weave" />);
+type Props = {
+  plural?: boolean;
+};
+
+export default function WeaveAttack({ plural }: Props) {
+  return (<Attack type="Weave" plural={plural}/>);
 }

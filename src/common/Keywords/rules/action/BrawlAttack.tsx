@@ -1,5 +1,9 @@
 import Attack from "./Attack";
 
-export default function BrawlAttack() {
-  return (<Attack type="Brawl" />);
+type Props = {
+  plural?: boolean;
+};
+
+export default function BrawlAttack({ plural }: Props) {
+  return (<Attack type="Brawl" plural={plural} />);
 }

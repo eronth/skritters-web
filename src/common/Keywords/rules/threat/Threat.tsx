@@ -3,7 +3,8 @@ import Keyword from "../../Keyword";
 export default function Threat({ type }: { type?: string }) {
   return (
     <Keyword
-      className={`threat bold ${type ? type.toLowerCase() : ''}`}
+      className={`threat ${type ? type.toLowerCase() : ''}`}
+      bold
     >
       {`${type ? ' ' + type : ''}Threat`}
     </Keyword>

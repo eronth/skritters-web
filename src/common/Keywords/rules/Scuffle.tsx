@@ -3,7 +3,7 @@ import Keyword from "../Keyword";
 
 export default function Scuffle() {
   return (
-    <Keyword className='scuffle bolded'>
+    <Keyword className='scuffle' bold>
       Scuffle
     </Keyword>
   )

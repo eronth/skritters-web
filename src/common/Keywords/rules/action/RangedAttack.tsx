@@ -1,5 +1,9 @@
 import Attack from "./Attack";
 
-export default function RangedAttack() {
-  return (<Attack type="Ranged" />);
+type Props = {
+  plural?: boolean;
+};
+
+export default function RangedAttack({ plural }: Props) {
+  return (<Attack type="Ranged" plural={plural} />);
 }

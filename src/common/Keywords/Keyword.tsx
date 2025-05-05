@@ -8,14 +8,18 @@ type Props = {
   children?: React.ReactNode;
   hoverContent?: React.ReactNode; // Can be any React node, including fragments with components
   tooltipPosition?: 'top' | 'bottom' | 'left' | 'right'; // Optional positioning
-}
+  bold?: boolean; // Optional prop to make text bold
+  italic?: boolean; // Optional prop to make text italic
+};
 
 export default function Keyword({ 
   className, 
   style, 
   children, 
   hoverContent,
-  tooltipPosition = 'top' // Default to showing below the keyword
+  tooltipPosition = 'top', // Default to showing below the keyword
+  bold = false,
+  italic = false,
 }: Props) {
   const [isHovering, setIsHovering] = useState(false);
   const keywordRef = useRef<HTMLSpanElement>(null);
@@ -23,11 +27,14 @@ export default function Keyword({
   // Only show tooltip if hoverContent is provided
   const showTooltip = isHovering && hoverContent;
   const hasTooltip = !!hoverContent;
+
+  const addedCssClasses = 
+  `${hasTooltip ? ' tooltip' : ''}${italic ? ' italic' : ''}${bold ? ' bold' : ''}`;
   
   return (
     <span
       ref={keywordRef}
-      className={`keyword ${hasTooltip ? 'tooltip' : ''} ${className || ''}`}
+      className={`keyword ${className || ''}${addedCssClasses}`}
       style={style}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}

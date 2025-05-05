@@ -1,4 +1,4 @@
-import Keyword from "../../Keyword";
+import Keyword from "../Keyword";
 
 export default function Summer() {
   const season = 'Summer';
@@ -6,7 +6,7 @@ export default function Summer() {
   return (
     <Keyword className={`season ${season.toLowerCase()}`}>
       <i className='ra ra-honeycomb' /> {season}
-      <i className='ra ra-sun-symbol' /> {season}
+      {/* <i className='ra ra-sun-symbol' /> {season} */}
     </Keyword>
   );
 }

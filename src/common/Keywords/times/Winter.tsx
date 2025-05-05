@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSnowflake } from "@fortawesome/free-solid-svg-icons";
-import Keyword from "../../Keyword";
+import Keyword from "../Keyword";
 
 export default function Winter() {
   const season = 'Winter';

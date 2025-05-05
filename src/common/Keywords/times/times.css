@@ -1,0 +1,29 @@
+.time-of-day {
+  &.daytime {
+    /* sky-blue for daytime */
+    color: hsl(51, 100%, 75%);
+  }
+  &.nighttime {
+    /* evening purple for nighttime */
+    color: hsl(248, 100%, 75%);
+  }
+}
+.season {
+  &.spring {
+    /* spring green for spring season */
+    color: hsl(120, 100%, 75%);
+  }
+  &.summer {
+    /* golden honey for summer season */
+    color: hsl(45, 100%, 55%);
+    /* hsl(45, 100%, 75%); */
+  }
+  &.autumn {
+    /* autumn orange for autumn season */
+    color: hsl(30, 100%, 55%);
+  }
+  &.winter {
+    /* winter blue for winter season */
+    color: hsl(210, 100%, 70%);
+  }
+}

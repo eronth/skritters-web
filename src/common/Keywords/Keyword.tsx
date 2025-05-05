@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './Keyword.css'; // We'll define this CSS file separately
+import './times/times.css'; // Importing times specific styles if needed
 
 type Props = {
   className?: string;

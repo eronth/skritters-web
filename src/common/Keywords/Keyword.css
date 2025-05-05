@@ -1,7 +1,6 @@
 /* Keyword.css */
 .keyword {
-  /* You can customize this based on your needs */
-  font-weight: 500;
+  
   position: relative;
   display: inline-block;
   &.has-tooltip {

@@ -1,4 +1,4 @@
-import Keyword from "../../Keyword";
+import Keyword from "../Keyword";
 
 export default function Spring() {
   const season = 'Spring';

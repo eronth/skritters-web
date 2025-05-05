@@ -1,6 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
-import 'rpg-awesome/css/rpg-awesome.min.css'
 import FancyIndexPage from './pages/FancyIndexPage'
 import SkrittersListPage from './pages/Skritters/SkrittersListPage'
 import HowToPlayPage from './pages/HowToPlay/HowToPlayPage'
@@ -8,6 +6,8 @@ import CampaignPage from './pages/Campaign/CampaignPage'
 import AboutPage from './pages/About/AboutPage'
 import EquipmentPage from './pages/Equipment/EquipmentPage'
 import CrewBuilderPage from './pages/CrewBuilder/CrewBuilderPage'
+import './App.css'
+import 'rpg-awesome/css/rpg-awesome.min.css'
 
 export default function App() {
 

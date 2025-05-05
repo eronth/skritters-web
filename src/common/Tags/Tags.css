@@ -4,10 +4,18 @@
   padding-top: 0.05em;
   padding-bottom: 0.2em;
   padding-inline: 0.2em;
-  
-  background-color: var(--primary-light);
-  color: var(--primary-color);
   font-weight: 500;
+
+  --light-tag-color: white;
+  --dark-tag-color: black;
+  background-color: var(--light-tag-color);
+  color: var(--dark-tag-color);
+}
+@media (prefers-color-scheme: dark) {
+  .tag {
+    background-color: var(--dark-tag-color);
+    color: var(--light-tag-color);
+  }
 }
 
 .tags-container {
@@ -19,8 +27,6 @@
   .tag {
     padding: 0.2em 0.6em;
     border-radius: 1em;
-    background-color: var(--primary-light);
-    color: var(--primary-color);
     font-size: 0.75rem;
     font-weight: 500;
   }
@@ -35,41 +41,42 @@
 }
 
 
+
 .item-tag {
   &.wood {
-    background-color: hsl(139, 73%, 87%);
-    color: hsl(152, 42%, 23%);
+    --light-tag-color: hsl(139, 73%, 87%);
+    --dark-tag-color: hsl(152, 42%, 23%);
   }
   &.metal {
-    background-color: hsl(202, 81%, 86%);
-    color: hsl(213, 49%, 34%);
+    --light-tag-color: hsl(202, 81%, 86%);
+    --dark-tag-color: hsl(213, 49%, 34%);
   }
   &.gem {
-    background-color: hsl(38, 93%, 77%);
-    color: hsl(30, 76%, 26%);
+    --light-tag-color: hsl(38, 93%, 77%);
+    --dark-tag-color: hsl(30, 76%, 26%);
   }
   &.flame {
-    background-color: hsl(343, 95%, 92%);
-    color: hsl(0, 56%, 39%);
+    --light-tag-color: hsl(343, 95%, 92%);
+    --dark-tag-color: hsl(0, 56%, 39%);
   }
   &.poison {
-    background-color: hsl(58, 97%, 87%);
-    color: hsl(150, 48%, 35%);
+    --light-tag-color: hsl(58, 97%, 87%);
+    --dark-tag-color: hsl(150, 48%, 35%);
   }
-  &.water {
-    background-color: hsl(201, 100%, 76%);
-    color: hsl(213, 49%, 34%);
+  &.water { /* Water intentionally remains inverted for dark mode */
+    --light-tag-color: hsl(213, 49%, 34%);
+    --dark-tag-color: hsl(201, 100%, 76%);
   }
   &.zap {
-    background-color: hsl(59, 100%, 83%);
-    color: hsl(209, 88%, 54%);
+    --light-tag-color: hsl(59, 73%, 75%);
+    --dark-tag-color: hsl(209, 88%, 54%);
   }
   &.gloomy {
-    background-color: hsl(240, 100%, 80%);
-    color: hsl(218, 17%, 25%);
+    --light-tag-color: hsl(240, 100%, 80%);
+    --dark-tag-color: hsl(218, 17%, 25%);
   }
-  &.frost {
-    background-color: hsl(201, 100%, 96%);
-    color: hsl(211, 61%, 43%);
+  &.frost { /* Frost intentionally remains inverted for dark mode */
+    --light-tag-color: hsl(211, 61%, 43%);
+    --dark-tag-color:hsl(201, 100%, 96%);
   }
 }

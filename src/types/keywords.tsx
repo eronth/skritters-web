@@ -6,7 +6,8 @@ type SkritterKeyword =
   'DREAMER' | 'POINTED';
 
 type ItemKeyword = 'WOOD' | 'METAL' | 'GEM' 
-  | 'FLAME' | 'FROST' | 'WATER' | 'ZAP';
+  | 'FLAME' | 'FROST' | 'WATER' | 'ZAP'
+  | 'GLOOMY';
 
 type Keyword = SkritterKeyword | ItemKeyword;
 

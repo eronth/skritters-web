@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from "react";
-import { SkritterKeyword } from "./keywords";
+import { ItemKeyword, SkritterKeyword } from "./keywords";
 
 type TabType = "home" | 'about' | 'how-to-play' 
 | 'skritters' | 'equipment' | 'crew-builder' | 'campaign'
@@ -77,6 +77,7 @@ type Equipment = {
   range?: number | [number, number];
   bonus?: Modifiers;
   effect: ReactNode;
+  tags?: ItemKeyword[];
 };
 
 type Filter = {

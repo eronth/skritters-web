@@ -1,8 +1,9 @@
 import { useState } from "react";
 import SkritterComponent from "../../common/SkritterDisplay/SkritterComponent";
-import skritters from "../../data/skritter-data";
-import { Skritter } from "../../types/types";
 import Page from "../Page";
+import SearchAndFilter from "../../common/SearchAndFilter/SearchAndFilter";
+import { Skritter } from "../../types/types";
+import skritters from "../../data/skritter-data";
 import './SkrittersListPage.css';
 
 export default function SkrittersList() {
@@ -22,15 +23,9 @@ export default function SkrittersList() {
   return (
     <Page tab={'skritters'} className="skritters-page">
       {/* Search bar */}
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search skritters..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
-      </div>
+      <SearchAndFilter
+        searchTermState={[searchTerm, setSearchTerm]}
+      />
       
       {/* Skritters list */}
       <div className="skritters-grid">

@@ -79,10 +79,19 @@ type Equipment = {
   effect: ReactNode;
 };
 
+type Filter = {
+  name: string;
+  allOptions: string[];
+  selectedOptions: string[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setSelectedOptions: React.Dispatch<React.SetStateAction<any[]>>;
+}
+
 export type {
   Modifiers,
   Skritter,
   SkritterStatline,
   Equipment,
-  TabType
+  TabType,
+  Filter
 };

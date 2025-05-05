@@ -24,11 +24,11 @@ import Scuffle from "../common/Keywords/rules/Scuffle";
 import Burrow from "../common/Keywords/rules/terrain/Burrow";
 import Cover from "../common/Keywords/rules/terrain/Cover";
 import BrawlThreat from "../common/Keywords/rules/threat/BrawlThreat";
-import Autumn from "../common/Keywords/rules/times/Autumn";
-import Night from "../common/Keywords/rules/times/Night";
-import Spring from "../common/Keywords/rules/times/Spring";
-import Summer from "../common/Keywords/rules/times/Summer";
-import Winter from "../common/Keywords/rules/times/Winter";
+import Autumn from "../common/Keywords/times/Autumn";
+import Night from "../common/Keywords/times/Night";
+import Spring from "../common/Keywords/times/Spring";
+import Summer from "../common/Keywords/times/Summer";
+import Winter from "../common/Keywords/times/Winter";
 import Weapon from "../common/Keywords/rules/Weapon";
 import ItemTag from "../common/Tags/ItemTag";
 import { Dice, Skritter } from "../types/types"
@@ -110,7 +110,7 @@ const porcupine: Skritter = {
   retirement: [<>
     When Porcupine first retires, it can grant a member of your crew 
     1 <Weapon>Needle Blade</Weapon>.
-    While retired, Porcupine grants 1 <Vigor /> resource at the start of each match.
+    While retired, Porcupine grants 1 <Vigor /> resource at the start of each mission.
   </>],
   tags: [],
 };
@@ -141,7 +141,7 @@ const armordilloKnight: Skritter = {
     {
       name: "Durable",
       effect: <>
-        Armordillo Knight starts the match with one <Hardy /> resource.
+        Armordillo Knight starts the mission with one <Hardy /> resource.
       </>
     },
     {
@@ -158,7 +158,7 @@ const armordilloKnight: Skritter = {
   ],
   retirement: [<>
     While retired, Armordillo Knight grants a <Hardy /> resource at
-    the start of each match.
+    the start of each mission.
   </>],
   tags: ['CONCENTRATION'],
 };
@@ -584,7 +584,7 @@ const busyBeaver: Skritter = {
     {
       name: "Dammed Up",
       effect: <>
-        Place <Cover x={2} /> that are 2" in length at the start of the match.
+        Place <Cover x={2} /> that are 2" in length at the start of the mission.
       </>
     },
     {
@@ -615,7 +615,7 @@ const veneratedCardinal: Skritter = {
     {
       name: "Divine Chance",
       effect: <>
-        Get a <Lucky /> resource at the start of the match.
+        Get a <Lucky /> resource at the start of the mission.
       </>
     },
     {
@@ -671,7 +671,7 @@ const luckyDuck: Skritter = {
     {
       name: "Lucky, Lucky",
       effect: <>
-        Start the match with a <Lucky /> and <Adaptive /> resource.
+        Start the mission with a <Lucky /> and <Adaptive /> resource.
       </>
     }
   ],
@@ -704,7 +704,7 @@ const guardianTurtle: Skritter = {
     {
       name: "Defender",
       effect: <>
-        At the start of the match, Guardian Turtle gives a <Hardy /> resource to one other Skritter on your team.
+        At the start of the mission, Guardian Turtle gives a <Hardy /> resource to one other Skritter on your team.
       </>
     }
   ],

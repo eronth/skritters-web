@@ -25,9 +25,9 @@ export default function HowToPlayPage() {
     focuses on small-scale battles between a few units or characters. Players will each
     assemble a squad of Skritters, each with their own unique abilities and stats, and face off against
     each other in a battle to see who can outmaneuver and outsmart their opponent to claim
-    the most Victory Points in a match.
+    the most Victory Points in a mission.
 
-    The game of Skritters favors a campaign-style play, where players will play several matches
+    The game of Skritters favors a campaign-style play, where players will play several missions
     over the course of a campaign, building their squad more and more as they go.
     
     <h1>How to Play</h1>

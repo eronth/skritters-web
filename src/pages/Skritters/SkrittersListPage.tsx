@@ -2,8 +2,8 @@ import { useState } from "react";
 import SkritterComponent from "../../common/SkritterDisplay/SkritterComponent";
 import skritters from "../../data/skritter-data";
 import { Skritter } from "../../types/types";
-import './SkrittersListPage.css';
 import Page from "../Page";
+import './SkrittersListPage.css';
 
 export default function SkrittersList() {
   const [searchTerm, setSearchTerm] = useState('');

@@ -75,7 +75,7 @@ type Equipment = {
   type: EquipmentType;
   slot: EquipmentSlotType;
   range?: number | [number, number];
-  bonus: Modifiers;
+  bonus?: Modifiers;
   effect: ReactNode;
 };
 
@@ -92,6 +92,8 @@ export type {
   Skritter,
   SkritterStatline,
   Equipment,
+  EquipmentType,
+  EquipmentSlotType,
   TabType,
   Filter
 };

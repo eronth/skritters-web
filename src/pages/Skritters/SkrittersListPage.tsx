@@ -21,31 +21,28 @@ export default function SkrittersList() {
 
   return (
     <Page tab={'skritters'} className="skritters-page">
-      <div className="page-content">
-        
-        {/* Search bar */}
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Search skritters..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
-          />
-        </div>
-        
-        {/* Skritters list */}
-        <div className="skritters-grid">
-          {filteredSkritters.length > 0 ? (
-            filteredSkritters.map((skritter, index) => (
-              <SkritterComponent key={index} skritter={skritter} />
-            ))
-          ) : (
-            <div className="no-results">
-              No skritters found matching your search.
-            </div>
-          )}
-        </div>
+      {/* Search bar */}
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search skritters..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+      </div>
+      
+      {/* Skritters list */}
+      <div className="skritters-grid">
+        {filteredSkritters.length > 0 ? (
+          filteredSkritters.map((skritter, index) => (
+            <SkritterComponent key={index} skritter={skritter} />
+          ))
+        ) : (
+          <div className="no-results">
+            No skritters found matching your search.
+          </div>
+        )}
       </div>
     </Page>
   );

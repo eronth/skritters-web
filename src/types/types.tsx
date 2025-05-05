@@ -62,11 +62,27 @@ type Skritter = {
     effect: ReactElement;
   }
   tags: SkritterKeyword[];
-}
+};
 
-  export type {
-    Modifiers,
-    Skritter,
-    SkritterStatline,
-    TabType
-  };
+type EquipmentType = 'ranged' | 'brawl' | 'weave' 
+  | 'garb';
+type EquipmentSlotType = 'one-handed' | 'two-handed'
+  | 'face' | 'head' | 'body'
+  | 'back' | 'special' | 'grenade' | 'deployable';
+
+type Equipment = {
+  name: string;
+  type: EquipmentType;
+  slot: EquipmentSlotType;
+  range?: number | [number, number];
+  bonus: Modifiers;
+  effect: ReactNode;
+};
+
+export type {
+  Modifiers,
+  Skritter,
+  SkritterStatline,
+  Equipment,
+  TabType
+};

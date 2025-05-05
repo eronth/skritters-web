@@ -2,7 +2,8 @@ import { ReactElement, ReactNode } from "react";
 import { SkritterKeyword } from "./keywords";
 
 type TabType = "home" | 'about' | 'how-to-play' 
-| 'skritters' | 'equipment' | 'crew-builder' | 'campaign';
+| 'skritters' | 'equipment' | 'crew-builder' | 'campaign'
+| 'scenarios';
 
 
 

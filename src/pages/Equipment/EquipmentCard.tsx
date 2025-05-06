@@ -9,11 +9,18 @@ type Props = {
 };
 
 export default function EquipmentCard({ item }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [showAverage, setShowAverage] = useState(true);
+
+  const rangeDisplay = Array.isArray(item.range)
+    ? `${item.range[0]} / ${item.range[1]}"`
+    : `${item.range}"`;
 
   return (<div className="equipment-card">
     <div className="card-header">
-      <h3 className="equipment-name">{item.name}</h3>
+      <div>
+        <h3 className="equipment-name">{item.name}</h3>
+      </div>
       {((item.tags?.length ?? 0) > 0)
         && <ItemTagsComponent tags={item.tags!} />
       }
@@ -21,18 +28,23 @@ export default function EquipmentCard({ item }: Props) {
     
     <div className="stats-grid">
       <div>
-        <span className="stat-label">Range:</span> {item.range}"
+        <span className="stat-label">Equip Slot: </span>
+        <span className="equip-slot-stat">{item.slot}</span>
+      </div>
+      <div>
+        <span className="stat-label">Range: </span>{rangeDisplay}
       </div>
       <div>
         {item.bonus && (
           <div>
-            <span className="stat-label">Bonus:</span>
+            <span className="stat-label">Bonus: </span>
             {formatModifiers(item.bonus)}
-            {showAverage && (
+            {showAverage && (<>
+              <br />
               <span className="average-bonus">
                 ({calculateModifiersAverage(item.bonus)})
               </span>
-            )}
+            </>)}
           </div>
         )}
       </div>

@@ -1,0 +1,136 @@
+
+.no-results {
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  
+  .no-results-message {
+    font-size: 1.5em;
+  }
+  
+  .clear-all-button {
+    margin-top: 16px;
+    padding: 8px 16px;
+    background-color: #4299e1;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: #3182ce;
+    }
+  }
+}
+
+
+/*
+.display-options {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.sort-controls {
+  display: flex;
+  gap: 16px;
+}
+
+.sort-button {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4a5568;
+}
+
+.sort-button:hover {
+  color: #2d3748;
+}
+
+.arrow-icon {
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+.results-stats {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #718096;
+}
+
+/* Equipment Display */
+.equipment-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+  /* 
+
+*/
+.equipment-group { 
+  /* background-color: #fff; */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.group-header {
+  --item-group-bg: hsl(218, 23%, 23%);
+  background-color: var(--item-group-bg);
+  padding: 8px 16px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    margin-bottom: 0;
+  }
+  .group-title {
+    text-transform: capitalize;
+  }
+  .group-count {
+    font-size: 14px;
+    background-color: color-mix(in srgb, var(--item-group-bg) 90%, var(--color-mixin) 20%);
+    padding: 2px 8px;
+    border-radius: 9999px;
+  }
+}
+
+.equipment-grid {
+  background-color: hsl(218, 23%, 23%);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+
+@media (min-width: 930px) {
+  .equipment-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .equipment-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

@@ -77,25 +77,30 @@ export default function EquipmentPage() {
     // Apply sorting
     results = [...results].sort((a, b) => {
       let compareValue: number;
+
+      // Put 1h before 2h, then sort by name
+      if (a.slot === 'one-handed' && b.slot === 'two-handed') return -1;
+      if (a.slot === 'two-handed' && b.slot === 'one-handed') return 1;
+      return a.name.localeCompare(b.name);
       
-      if (sortBy === 'name') {
-        compareValue = a.name.localeCompare(b.name);
-      } else if (sortBy === 'type') {
-        compareValue = a.type.localeCompare(b.type);
-      } else if (sortBy === 'range') {
-        // Handle range sorting with consideration for dual ranges
-        const rangeA =  (typeof a.range === 'number')
-          ? a.range
-          : (Array.isArray(a.range) ? a.range[0] : 0);
-        const rangeB =  (typeof b.range === 'number')
-          ? b.range
-          : (Array.isArray(b.range) ? b.range[0] : 0);
-        compareValue = rangeA - rangeB;
-      } else {
-        compareValue = 0;
-      }
+      // if (sortBy === 'name') {
+      //   compareValue = a.name.localeCompare(b.name);
+      // } else if (sortBy === 'type') {
+      //   compareValue = a.type.localeCompare(b.type);
+      // } else if (sortBy === 'range') {
+      //   // Handle range sorting with consideration for dual ranges
+      //   const rangeA =  (typeof a.range === 'number')
+      //     ? a.range
+      //     : (Array.isArray(a.range) ? a.range[0] : 0);
+      //   const rangeB =  (typeof b.range === 'number')
+      //     ? b.range
+      //     : (Array.isArray(b.range) ? b.range[0] : 0);
+      //   compareValue = rangeA - rangeB;
+      // } else {
+      //   compareValue = 0;
+      // }
       
-      return sortDirection === 'asc' ? compareValue : -compareValue;
+      // return sortDirection === 'asc' ? compareValue : -compareValue;
     });
     
     return results;

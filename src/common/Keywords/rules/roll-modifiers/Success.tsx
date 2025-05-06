@@ -1,6 +1,11 @@
 import Keyword from "../../Keyword";
 
-export default function Success({ x, bonus, noVal }: { x?: number, bonus?: boolean, noVal?: boolean }) {
+export default function Success({ x, bonus, noVal, plural }: { 
+  x?: number,
+  bonus?: boolean,
+  noVal?: boolean,
+  plural?: boolean
+}) {
   x = x || 0; // Default to 0 if x is undefined or null
   const precursorText = (
     noVal
@@ -10,7 +15,7 @@ export default function Success({ x, bonus, noVal }: { x?: number, bonus?: boole
 
 return (
   <Keyword className="success">
-    {precursorText}Success{Math.abs(x || 0) !== 1 ? 'es' : ''}
+    {precursorText}Success{(plural || (Math.abs(x || 0) !== 1)) ? 'es' : ''}
   </Keyword>
   );
 }

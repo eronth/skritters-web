@@ -8,7 +8,18 @@ type Props = {
 };
 
 export default function ItemTag({ tag }: Props) {
-  return (
-    <Tag tag={tag} className={`item-tag`} />
-  );
+
+  const rest = (<>
+    {
+      tag == 'METALORWOOD'
+      ? <>
+        <Tag tag={'METAL'} className={`item-tag`} />
+        or
+        <Tag tag={'WOOD'} className={`item-tag`} />
+        </>
+      : <Tag tag={tag} className={`item-tag`} />
+    }
+  </>);
+
+  return (<>{rest}</>);
 }

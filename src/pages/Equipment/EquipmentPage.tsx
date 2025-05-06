@@ -75,12 +75,23 @@ export default function EquipmentPage() {
     }
     
     // Apply sorting
+    const slotSortOrder = {
+      'one-handed': 1,
+      'two-handed': 2,
+      'face': 3,
+      'head': 4,
+      'body': 5,
+      'back': 6,
+      'special': 7,
+      'grenade': 8,
+      'deployable': 9
+    }
     results = [...results].sort((a, b) => {
-      let compareValue: number;
+      // let compareValue: number;
 
       // Put 1h before 2h, then sort by name
-      if (a.slot === 'one-handed' && b.slot === 'two-handed') return -1;
-      if (a.slot === 'two-handed' && b.slot === 'one-handed') return 1;
+      if (slotSortOrder[a.slot] < slotSortOrder[b.slot]) return -1;
+      if (slotSortOrder[a.slot] > slotSortOrder[b.slot]) return 1;
       return a.name.localeCompare(b.name);
       
       // if (sortBy === 'name') {

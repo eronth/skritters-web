@@ -203,7 +203,7 @@ const blueJay: Skritter = {
   abilities: [
     {...flitterAbout},
     {
-      name: "Flight",
+      name: "Soar",
       effect: <>
         <Action />: Bluejay can move 12". This counts as a Movement <Action />
         for any purposes. I'll rephrases this later to be "Bluejay's move statistic

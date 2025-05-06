@@ -42,7 +42,9 @@ export default function EquipmentCard({ item }: Props) {
             {showAverage && (<>
               <br />
               <span className="average-bonus">
-                ({calculateModifiersAverage(item.bonus)})
+                (
+                  {calculateModifiersAverage(item.bonus)}, {calculateModifiersAverage(item.bonus, (item.slot == 'one-handed' ? 1 : 0))}, {calculateModifiersAverage(item.bonus, (item.slot == 'one-handed' ? 2 : 0))}
+                )
               </span>
             </>)}
           </div>

@@ -13,7 +13,7 @@ const formatModifiers = (modifiers: Modifiers): string => {
   return retVal.trim() || '0'; 
 };
 
-const calculateModifiersAverage = (modifiers: Modifiers): number => {
+const calculateModifiersAverage = (modifiers: Modifiers, bonusSize: number = 0): number => {
   if (modifiers.nilout) return 0;
 
   let total = 0;
@@ -29,6 +29,8 @@ const calculateModifiersAverage = (modifiers: Modifiers): number => {
   if (modifiers.size) {
     total += modifiers.size.reduce((sum, val) => sum + val, 0);
   }
+  total += bonusSize;
+
 
   // Calc average successes so far
   // DO THIS BEFORE ADDING SUCCESSES IN.

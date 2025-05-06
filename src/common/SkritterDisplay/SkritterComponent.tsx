@@ -1,5 +1,5 @@
 import { Skritter } from "../../types/types";
-import CreatureTags from "../Tags/SkritterTags";
+import CreatureTags from "../Tags/SkritterTagsComponent";
 import './SkritterComponent.css';
 import StatsTable from "./StatsTable";
 

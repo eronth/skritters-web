@@ -13,8 +13,8 @@
       align-items: center;
       color: hsl(218, 17%, 35%);
 
-      .filter-icon {
-        margin-right: 4px;
+      .description-text {
+        margin-left: 4px;
       }
     }
 

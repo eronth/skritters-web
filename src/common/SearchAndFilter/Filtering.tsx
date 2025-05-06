@@ -1,5 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Filter } from "../../types/types";
 import './Filtering.css';
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   filters?: Filter[];
@@ -20,7 +22,8 @@ export default function Filtering({ filters }: Props) {
     {filters ? filters.map((filter, index) => (
       <div key={index} className="filter-section">
         <h3>
-          <span className="filter-icon">⚙️</span> Filter by {filter.name}:
+          <FontAwesomeIcon icon={faGear} />
+          <span className="description-text">Filter by {filter.name}:</span>
         </h3>
         <div className="filter-options">
           {filter.allOptions.map(type => (

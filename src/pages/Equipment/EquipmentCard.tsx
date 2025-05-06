@@ -12,9 +12,39 @@ export default function EquipmentCard({ item }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [showAverage, setShowAverage] = useState(true);
 
-  const rangeDisplay = Array.isArray(item.range)
-    ? `${item.range[0]} / ${item.range[1]}"`
-    : `${item.range}"`;
+  const rangeDisplay = () => {
+    if (item.range) {
+      const rangeText = Array.isArray(item.range)
+      ? `${item.range[0]} / ${item.range[1]}"`
+      : `${item.range}"`;
+      return <><span className="stat-label">Range: </span>{rangeText}</>
+    } else {
+      return null;
+    }
+  };
+
+  const bonusDisplay = () => {
+    if (item.bonus) {
+      return <>
+        {item.bonus && (
+          <div>
+            <span className="stat-label">Bonus: </span>
+            {formatModifiers(item.bonus)}
+            {showAverage && (<>
+              <br />
+              <span className="average-bonus">
+                (
+                  {calculateModifiersAverage(item.bonus)}, {calculateModifiersAverage(item.bonus, (item.slot == 'one-handed' ? 1 : 0))}, {calculateModifiersAverage(item.bonus, (item.slot == 'one-handed' ? 2 : 0))}
+                )
+              </span>
+            </>)}
+          </div>
+        )}
+      </>
+    } else {
+      return null;
+    }
+  }
 
   return (<div className="equipment-card">
     <div className="card-header">
@@ -31,25 +61,8 @@ export default function EquipmentCard({ item }: Props) {
         <span className="stat-label">Equip Slot: </span>
         <span className="equip-slot-stat">{item.slot}</span>
       </div>
-      <div>
-        <span className="stat-label">Range: </span>{rangeDisplay}
-      </div>
-      <div>
-        {item.bonus && (
-          <div>
-            <span className="stat-label">Bonus: </span>
-            {formatModifiers(item.bonus)}
-            {showAverage && (<>
-              <br />
-              <span className="average-bonus">
-                (
-                  {calculateModifiersAverage(item.bonus)}, {calculateModifiersAverage(item.bonus, (item.slot == 'one-handed' ? 1 : 0))}, {calculateModifiersAverage(item.bonus, (item.slot == 'one-handed' ? 2 : 0))}
-                )
-              </span>
-            </>)}
-          </div>
-        )}
-      </div>
+      <div>{rangeDisplay()}</div>
+      <div>{bonusDisplay()}</div>
     </div>
     
     <div className="effect-section">

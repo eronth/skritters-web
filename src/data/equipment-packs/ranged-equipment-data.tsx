@@ -13,21 +13,12 @@ import Success from "../../common/Keywords/rules/roll-modifiers/Success";
 import RangedThreat from "../../common/Keywords/rules/threat/RangedThreat";
 import Summer from "../../common/Keywords/times/Summer";
 import Winter from "../../common/Keywords/times/Winter";
-import ItemTag from "../../common/Tags/ItemTag";
 import { Dice, Equipment } from "../../types/types";
 
 const d1d4: Dice = { count: 1, sides: 4 };
 const d1d6: Dice = { count: 1, sides: 6 };
 const d2d6: Dice = { count: 2, sides: 6 };
 const d1d8: Dice = { count: 1, sides: 8 };
-const wood = <ItemTag tag={'WOOD'} />;
-const metal = <ItemTag tag={'METAL'} />;
-const gem = <ItemTag tag={'GEM'} />;
-const flame = <ItemTag tag={'FLAME'} />;
-const frost = <ItemTag tag={'FROST'} />;
-const water = <ItemTag tag={'WATER'} />;
-const zap = <ItemTag tag={'ZAP'} />;
-const gloomy = <ItemTag tag={'GLOOMY'} />;
 
 const scattergun = <>
   This weapon gets <MinusSize x={1} /> for each range increment 
@@ -342,6 +333,20 @@ const fishersLine: Equipment = {
   tags: []
 };
 
+const boomerang: Equipment = {
+  name: "Boomerang",
+  type: "ranged",
+  slot: "one-handed",
+  range: 9,
+  bonus: { size: [1] },
+  effect: (<>
+    If you make an <Attack /> <Action /> with this weapon immediately 
+    after making an <Attack /> <Action /> with it, you may make
+    the <Attack /> measuring from the target of the previous <Attack />.
+  </>),
+  tags: ['WOOD']
+};
+
 const equipment = {
   // One-Handed
   pistol,
@@ -352,6 +357,7 @@ const equipment = {
   infernalHandgun,
   handcannon,
   sixShoota,
+  boomerang,
   // Two-Handed
   birdseedShot,
   peppershot,

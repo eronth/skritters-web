@@ -7,10 +7,8 @@ import Rush from "../../common/Keywords/rules/resources/Rush";
 import PlusSize from "../../common/Keywords/rules/roll-modifiers/PlusSize";
 import Night from "../../common/Keywords/times/Night";
 import { Equipment } from "../../types/types";
+import { extraWeapons, grenadeContainer } from "./common-effect-data";
 
-const extraWeapons = <>
-  Gain an extra set of weapons you can swap between. This item is not limited to 1 per team.
-</>
 
 const explorersGear: Equipment = {
   name: "Explorer's Gear",
@@ -69,9 +67,7 @@ const capeOfHeroism: Equipment = {
 const weaponsPack: Equipment = {
   name: "Weapons Pack",
   type: "garb", slot: "back",
-  effect: (<>
-    {extraWeapons}
-  </>)
+  effect: extraWeapons,
 };
 
 const gliderLeaf: Equipment = {
@@ -105,13 +101,8 @@ const iconOfDetermination: Equipment = {
 const grenadeSatchel: Equipment = {
   name: "Grenade Satchel",
   type: "garb", slot: "back",
-  effect: (<>
-    When you give a Skritter a Grenade Satchel, select 3 grenades to go with the satchel.
-    The chosen grenades do not need to be unique. At the start of each mission,
-    the Skritter equipped with this item has the chosen grenades in their inventory.
-  </>)
+  effect: grenadeContainer,
 };
-
 
 const equipment = {
   explorersGear,

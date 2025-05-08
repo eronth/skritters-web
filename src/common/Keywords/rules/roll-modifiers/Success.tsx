@@ -1,21 +1,26 @@
 import Keyword from "../../Keyword";
 
-export default function Success({ x, bonus, noVal, plural }: { 
+export default function Success({ x, bonus, plural }: { 
   x?: number,
   bonus?: boolean,
-  noVal?: boolean,
   plural?: boolean
 }) {
   x = x || 0; // Default to 0 if x is undefined or null
   const precursorText = (
-    noVal
-    ? ''
-    : (bonus ? ((x < 0) ? '-' : '+') : '') + Math.abs(x || 0) + ' ' 
+    x
+    ? (bonus ? ((x < 0) ? '-' : '+') : '') + Math.abs(x || 0) + ' ' 
+    : ''
+  )
+
+  const pluralText = (
+    plural || (Math.abs(x) > 1)
+    ? 'es'
+    : ''
   )
 
 return (
   <Keyword className="success">
-    {precursorText}Success{(plural || (Math.abs(x || 0) !== 1)) ? 'es' : ''}
+    {precursorText}Success{pluralText}
   </Keyword>
   );
 }

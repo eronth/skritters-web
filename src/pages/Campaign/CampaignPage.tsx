@@ -172,17 +172,17 @@ export default function CampaignPage() {
         Consult the following chart to determine what happens:
         <ul>
           <li>
-            <Success x={0} />: The Skritter's injuries are too great, and they must retire. Using the
+            0 <Success plural />: The Skritter's injuries are too great, and they must retire. Using the
             standard rules for adding a Skritter to your squad, select a new Skritter to replace 
             the retired Skritter. The retired Skritter will provide it's <Keyword>Retirement</Keyword> bonuses
             to your team starting with the next mission.
           </li>
           <li>
-            <Success x={1} />: The Skritter requires a longer recovery, and starts
+            1 <Success />: The Skritter requires a longer recovery, and starts
             the next mission with -2 
           </li>
           <li>
-            <Success x={2} />: The skritter makes a full recovery, and no further penalties apply.
+            2 <Success plural />: The skritter makes a full recovery, and no further penalties apply.
           </li>
         </ul>
       </li>

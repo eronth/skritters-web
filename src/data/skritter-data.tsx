@@ -238,9 +238,8 @@ const gecko: Skritter = {
     {
       name: "Sticky Feet",
       effect: <>
-        When you climb, you do not fall on difficult surfaces. Additionally, you add 
-        <Success x={2} /> to
-        climb checks.
+        When you climb, you do not fall on difficult surfaces. Additionally, you
+        add <Success x={2} /> to <Check type="Climb" />.
       </>
     },
     {...tongueLash},
@@ -513,8 +512,9 @@ const badger: Skritter = {
     {
       name: "Big Guy",
       effect: <>
-        Small Skritters get <MinusSize x={1} /> and <Success x={-1} /> 
-        on <BrawlAttack /> against Badger.
+        Small Skritters 
+        get <MinusSize x={1} /> and <Success x={-1} /> on <BrawlAttack /> against
+        Badger.
       </>
     }
   ],

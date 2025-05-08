@@ -40,6 +40,8 @@ export default function EquipmentPage() {
 
   const [selectedTags, setSelectedTags] = useState<ItemKeyword[]>([]);
   const allTags: ItemKeyword[] = Object.values(ITEM_KEYWORDS);
+  // Remove METALORPLANT from the allTags array
+  const allTagsWithoutMetalOrPlant = allTags.filter(tag => tag !== 'METALORPLANT');
 
   const filters: Filter[] = [
     {
@@ -56,7 +58,7 @@ export default function EquipmentPage() {
     },
     {
       name: "Tags",
-      allOptions: [...allTags],
+      allOptions: [...allTagsWithoutMetalOrPlant],
       selectedOptions: selectedTags,
       setSelectedOptions: setSelectedTags,
     },
@@ -87,7 +89,14 @@ export default function EquipmentPage() {
     if (selectedTags.length > 0) {
       results = results.filter(item => {
         const itemTags = item.tags || [];
-        return selectedTags.every(tag => itemTags.includes(tag));
+        return selectedTags.every(tag => {
+          if (tag == 'METAL') {
+            return (itemTags.includes('METAL') || itemTags.includes('METALORPLANT'));
+          } else if (tag == 'PLANT') {
+            return (itemTags.includes('PLANT') || itemTags.includes('METALORPLANT'));
+          }
+          return itemTags.includes(tag)
+        });
       });
     }
     

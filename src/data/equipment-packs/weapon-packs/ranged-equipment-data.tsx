@@ -40,7 +40,7 @@ const pistol: Equipment = {
     this weapon, you can reroll a single dice that's not already
     a 1, and choose which result to keep.
   </>),
-  tags: ['METALORPLANT'],
+  tags: ['METALORPLANT']
 };
 
 const crystalPistol: Equipment = {
@@ -147,7 +147,7 @@ const sixShoota: Equipment = {
   effect: (<>
     You can only make 6 <Attack plural /> with this weapon during a mission.
   </>),
-  tags: ['METALORPLANT'],
+  tags: ['METALORPLANT']
 };
 
 
@@ -329,8 +329,7 @@ const fishersLine: Equipment = {
     If you roll at least one success when attacking with this weapon, the target becomes SNAGGED. You may only have one snagged target at a time.
     Targets who are SNAGGED by you cannot move further from you by any means. You may make a Brawling attack to reel your target in, with each unblocked success allowing you to reel the target 1"".
     If you switch weapons ore use any movement action, your target stops being SNAGGED.
-  </>),
-  tags: []
+  </>)
 };
 
 const boomerang: Equipment = {

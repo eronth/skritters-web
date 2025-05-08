@@ -10,7 +10,7 @@ const goggles: Equipment = {
   type: "garb", slot: "face",
   effect: (<>
     You may equip one extra Face item (this item does nothing).
-  </>),
+  </>)
 };
 
 const slickShades: Equipment = {
@@ -19,7 +19,7 @@ const slickShades: Equipment = {
   effect: (<>
     (reduce the effects of <Summer /> and somehow make you better 
     because you're slick.)
-  </>),
+  </>)
 };
 
 const angryEyes: Equipment = {
@@ -27,7 +27,7 @@ const angryEyes: Equipment = {
   type: "garb", slot: "face",
   effect: (<>
     <BrawlAction plural />
-  </>),
+  </>)
 };
 
 const studentsSpectacles: Equipment = {
@@ -36,7 +36,7 @@ const studentsSpectacles: Equipment = {
   effect: (<>
     A Skritter wearing these spectacles can be under the effects
     of two <Keyword>Sage Wisdoms</Keyword>.
-  </>),
+  </>)
 };
 
 const radiantEyepiece: Equipment = {
@@ -44,7 +44,7 @@ const radiantEyepiece: Equipment = {
   type: "garb", slot: "face",
   effect: (<>
     Ignore penalties to <Attack plural /> during <Night /> missions.
-  </>),
+  </>)
 };
 
 const equipment = {

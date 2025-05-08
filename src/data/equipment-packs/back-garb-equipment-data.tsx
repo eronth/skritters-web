@@ -19,7 +19,7 @@ const explorersGear: Equipment = {
       <li>Gain 2 <Ready /> resources.</li>
       <li>Gain 1 <Ready /> and 1 <Rush /> resource.</li>
     </ul>
-  </>),
+  </>)
 };
 
 const comRadio: Equipment = {
@@ -36,7 +36,7 @@ const comRadio: Equipment = {
     member gains <PlusSize x={1} /> to <Action plural /> targetting
     that same Skritter until the end of the activation. This does not stack.
   </>),
-  tags: ['METAL','ZAP'],
+  tags: ['METAL','ZAP']
 };
 
 const nightprowlCape: Equipment = {
@@ -45,7 +45,7 @@ const nightprowlCape: Equipment = {
   effect: (<>
     <PlusSize x={2} /> to <Defense /> at <Night />.
   </>),
-  tags: ['GLOOMY'],
+  tags: ['GLOOMY']
 };
 
 const survivalPack: Equipment = {
@@ -67,7 +67,7 @@ const capeOfHeroism: Equipment = {
 const weaponsPack: Equipment = {
   name: "Weapons Pack",
   type: "garb", slot: "back",
-  effect: extraWeapons,
+  effect: extraWeapons
 };
 
 const gliderLeaf: Equipment = {
@@ -77,7 +77,7 @@ const gliderLeaf: Equipment = {
     Small Skritter only. Can be deployed to gently 
     fall from height, gaining 2" movement. Once per combat.
   </>),
-  tags: ['PLANT'],
+  tags: ['PLANT']
 };
 
 const alchemersKit: Equipment = {
@@ -101,7 +101,7 @@ const iconOfDetermination: Equipment = {
 const grenadeSatchel: Equipment = {
   name: "Grenade Satchel",
   type: "garb", slot: "back",
-  effect: grenadeContainer,
+  effect: grenadeContainer
 };
 
 const equipment = {

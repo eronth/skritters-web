@@ -21,6 +21,7 @@ const treasuredCrown: Equipment = {
     Your wealth and royalty is noticed by all. All <Attack plural /> against 
     a Skritter wearing this item this unit suffer <MinusSize x={1} />.
   </>),
+  tags: ['METAL', 'GEM'],
 };
 
 const floweredCrown: Equipment = {
@@ -29,6 +30,7 @@ const floweredCrown: Equipment = {
   effect: (<>
     Gain <Size x={2} /> <Defense /> against <WeaveAttack plural />.
   </>),
+  tags: ['PLANT'],
 };
 
 const gunslingersHat: Equipment = {
@@ -83,7 +85,7 @@ const acornHelmet: Equipment = {
   effect: (<>
     <Size x={1} /> to <Defense />.
   </>),
-  tags: ['PLANT'],
+  tags: ['PLANT']
 };
 
 const thimbleHelm: Equipment = {
@@ -92,7 +94,7 @@ const thimbleHelm: Equipment = {
   effect: (<>
     <PlusDice dice={d1d4} /> to <Defense />.
   </>),
-  tags: ['METAL'],
+  tags: ['METAL']
 };
 
 const floweringMageCap: Equipment = {
@@ -101,6 +103,7 @@ const floweringMageCap: Equipment = {
   effect: (<>
     <PlusDice dice={d1d6} /> and <PlusSize x={1} /> to <WeaveAttack plural />.
   </>),
+  tags: ['PLANT']
 };
 
 const equipment = {

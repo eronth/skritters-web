@@ -71,6 +71,7 @@ const warhorn: Equipment = {
     <Action />: Blow the warhorn! All allied Skritters within 3" can immediately move up to 3".
     You may only use this <Action /> once per turn.
   </>),
+  tags: ['METALORPLANT']
 };
 
 const ponderinOrb: Equipment = {

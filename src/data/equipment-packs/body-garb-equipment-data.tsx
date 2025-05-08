@@ -35,7 +35,7 @@ const oakenbarkAarmor: Equipment = {
   effect: (<>
     <PlusDice dice={d1d6} /> and <PlusSize x={1} /> to <Defense />.
   </>),
-  tags: ['PLANT'],
+  tags: ['PLANT']
 };
 
 const paperbarkArmor: Equipment = {
@@ -44,7 +44,7 @@ const paperbarkArmor: Equipment = {
   effect: (<>
     <PlusSize x={1} /> to <Defense />.
   </>),
-  tags: ['PLANT'],
+  tags: ['PLANT']
 };
 
 const shimmergleamRobe: Equipment = {
@@ -71,13 +71,14 @@ const petalweaveRobes: Equipment = {
   type: 'garb', slot: 'body',
   effect: (<>
     <WeaveAction plural /> that target you get <MinusSize x={1} />.
-  </>)
+  </>),
+  tags: ['PLANT']
 };
 
 const weaponsHolster: Equipment = {
   name: 'Weapons Holster',
   type: 'garb', slot: 'body',
-  effect: extraWeapons,
+  effect: extraWeapons
 };
 
 const travelersPocketGuide: Equipment = {

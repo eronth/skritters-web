@@ -3,9 +3,10 @@ import { useMemo, useState } from 'react';
 import Page from '../Page';
 import SearchAndFilter from '../../common/SearchAndFilter/SearchAndFilter';
 import EquipmentCard from './EquipmentCard';
-import { Equipment, EquipmentSlotType, EquipmentType, Filter } from '../../types/types';
+import { Equipment, EQUIPMENT_SLOTS, EQUIPMENT_TYPES, EquipmentSlotType, EquipmentType, Filter } from '../../types/types';
 import equipment from '../../data/equipment-data';
 import './EquipmentPage.css';
+import { ITEM_KEYWORDS, ItemKeyword } from '../../types/keywords';
 
 
 
@@ -32,12 +33,14 @@ export default function EquipmentPage() {
   };
 
   const [selectedTypes, setSelectedTypes] = useState<EquipmentType[]>([]);
-  const allTypes: EquipmentType[] =
-    ['ranged', 'brawl', 'weave', 'garb'];
+  const allTypes: EquipmentType[] = Object.values(EQUIPMENT_TYPES);
   
   const [selectedSlots, setSelectedSlots] = useState<EquipmentSlotType[]>([]);
-  const allSlots: EquipmentSlotType[] =
-    ['one-handed', 'two-handed', 'head', 'face', 'body', 'back', 'special', 'grenade', 'deployable'];
+  const allSlots: EquipmentSlotType[] = Object.values(EQUIPMENT_SLOTS);
+
+  const [selectedTags, setSelectedTags] = useState<ItemKeyword[]>([]);
+  const allTags: ItemKeyword[] = Object.values(ITEM_KEYWORDS);
+
   const filters: Filter[] = [
     {
       name: "Equipment Type",
@@ -50,7 +53,13 @@ export default function EquipmentPage() {
       allOptions: [...allSlots],
       selectedOptions: selectedSlots,
       setSelectedOptions: setSelectedSlots,
-    }
+    },
+    {
+      name: "Tags",
+      allOptions: [...allTags],
+      selectedOptions: selectedTags,
+      setSelectedOptions: setSelectedTags,
+    },
   ];
 
   const filteredEquipment = useMemo(() => {
@@ -72,6 +81,14 @@ export default function EquipmentPage() {
     // Apply slot filter
     if (selectedSlots.length > 0) {
       results = results.filter(item => selectedSlots.includes(item.slot));
+    }
+
+    // Apply tag filter
+    if (selectedTags.length > 0) {
+      results = results.filter(item => {
+        const itemTags = item.tags || [];
+        return selectedTags.every(tag => itemTags.includes(tag));
+      });
     }
     
     // Apply sorting

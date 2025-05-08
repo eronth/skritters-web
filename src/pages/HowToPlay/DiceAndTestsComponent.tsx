@@ -69,11 +69,11 @@ export default function DiceAndTestsComponent() {
           </ul>
         </li>
         <li>
-          +X <Success noVal /> indicates that you should add X successes to the final
+          +X <Success /> indicates that you should add X successes to the final
           result after calculating the successes from your roll.
         </li>
         <li>
-          -X <Success noVal /> indicates that you should subtract X successes from the final
+          -X <Success /> indicates that you should subtract X successes from the final
           result after calculating the successes from your roll.
         </li>
       </ol> 

@@ -5,6 +5,27 @@ type TabType = "home" | 'about' | 'how-to-play'
 | 'skritters' | 'equipment' | 'crew-builder' | 'campaign'
 | 'scenarios';
 
+export const EQUIPMENT_TYPES = {
+  ranged: 'ranged',
+  brawl: 'brawl',
+  weave: 'weave',
+  garb: 'garb',
+} as const;
+type EquipmentType = typeof EQUIPMENT_TYPES[keyof typeof EQUIPMENT_TYPES];
+
+export const EQUIPMENT_SLOTS = {
+  'one-handed': 'one-handed',
+  'two-handed': 'two-handed',
+  face: 'face',
+  head: 'head',
+  body: 'body',
+  back: 'back',
+  special: 'special',
+  grenade: 'grenade',
+  deployable: 'deployable'
+} as const;
+type EquipmentSlotType = typeof EQUIPMENT_SLOTS[keyof typeof EQUIPMENT_SLOTS];
+
 
 
 export class Dice {
@@ -64,11 +85,7 @@ type Skritter = {
   tags: SkritterKeyword[];
 };
 
-type EquipmentType = 'ranged' | 'brawl' | 'weave' 
-  | 'garb';
-type EquipmentSlotType = 'one-handed' | 'two-handed'
-  | 'face' | 'head' | 'body'
-  | 'back' | 'special' | 'grenade' | 'deployable';
+
 
 type Equipment = {
   name: string;

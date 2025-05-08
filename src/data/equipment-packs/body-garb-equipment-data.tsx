@@ -35,7 +35,7 @@ const oakenbarkAarmor: Equipment = {
   effect: (<>
     <PlusDice dice={d1d6} /> and <PlusSize x={1} /> to <Defense />.
   </>),
-  tags: ['WOOD'],
+  tags: ['PLANT'],
 };
 
 const paperbarkArmor: Equipment = {
@@ -44,7 +44,7 @@ const paperbarkArmor: Equipment = {
   effect: (<>
     <PlusSize x={1} /> to <Defense />.
   </>),
-  tags: ['WOOD'],
+  tags: ['PLANT'],
 };
 
 const shimmergleamRobe: Equipment = {
@@ -62,7 +62,8 @@ const shadowsilkCloak: Equipment = {
     Once per game, if it's <Night />, <Cloak x={3} /> as
     an <Action />. If you reveal with a Thornwood Dagger or Throwing Blades <Attack />,
     you gain <PlusDice dice={d1d6} /> on that check.
-  </>)
+  </>),
+  tags: ['GLOOMY']
 };
 
 const petalweaveRobes: Equipment = {

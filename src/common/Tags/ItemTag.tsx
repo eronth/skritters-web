@@ -11,11 +11,11 @@ export default function ItemTag({ tag }: Props) {
 
   const rest = (<>
     {
-      tag == 'METALORWOOD'
+      tag == 'METALORPLANT'
       ? <>
         <Tag tag={'METAL'} className={`item-tag`} />
         or
-        <Tag tag={'WOOD'} className={`item-tag`} />
+        <Tag tag={'PLANT'} className={`item-tag`} />
         </>
       : <Tag tag={tag} className={`item-tag`} />
     }

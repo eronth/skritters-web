@@ -42,7 +42,7 @@ const lashvineWhip: Equipment = {
     of <Success plural /> to pull a creature closer to you by that many inches.
     This can pull creatures into Scuffles.
   </>),
-  tags: ['WOOD'],
+  tags: ['PLANT'],
 };
 
 const songstaffWhistle: Equipment = {
@@ -56,7 +56,7 @@ const songstaffWhistle: Equipment = {
     heals an ally by one health. You may spend 2 <Success plural/> to
     instead gain a <Whimsy /> resource.
   </>),
-  tags: ['METALORWOOD'],
+  tags: ['METALORPLANT'],
 };
 
 const coilWireRod: Equipment = {
@@ -114,7 +114,7 @@ const wildflowerWand: Equipment = {
       <li>Gain +1 Success.</li>
     </ol>
   </>),
-  tags: ['WOOD'],
+  tags: ['PLANT'],
 };
 
 const equipment = {

@@ -43,7 +43,7 @@
 
 
 .item-tag {
-  &.wood {
+  &.plant {
     --light-tag-color: hsl(139, 73%, 87%);
     --dark-tag-color: hsl(152, 42%, 23%);
   }

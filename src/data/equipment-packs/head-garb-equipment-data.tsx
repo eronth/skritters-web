@@ -83,7 +83,7 @@ const acornHelmet: Equipment = {
   effect: (<>
     <Size x={1} /> to <Defense />.
   </>),
-  tags: ['WOOD'],
+  tags: ['PLANT'],
 };
 
 const thimbleHelm: Equipment = {

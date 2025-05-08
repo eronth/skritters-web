@@ -23,7 +23,7 @@ const acorncapShield: Equipment = {
   effect: (<>
     Gain <Success x={1} /> to <Defense />.
   </>),
-  tags: ['WOOD'],
+  tags: ['PLANT'],
 };
 
 const floweringPetalShield: Equipment = {
@@ -32,7 +32,7 @@ const floweringPetalShield: Equipment = {
   effect: (<>
     <PlusSize x={1} /> to <Defense /> and <WeaveAction plural />.
   </>),
-  tags: ['WOOD'],
+  tags: ['PLANT'],
 };
 
 const stitchButtonShield: Equipment = {

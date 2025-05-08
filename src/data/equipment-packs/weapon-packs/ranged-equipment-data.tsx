@@ -40,7 +40,7 @@ const pistol: Equipment = {
     this weapon, you can reroll a single dice that's not already
     a 1, and choose which result to keep.
   </>),
-  tags: ['METALORWOOD'],
+  tags: ['METALORPLANT'],
 };
 
 const crystalPistol: Equipment = {
@@ -147,7 +147,7 @@ const sixShoota: Equipment = {
   effect: (<>
     You can only make 6 <Attack plural /> with this weapon during a mission.
   </>),
-  tags: ['METALORWOOD'],
+  tags: ['METALORPLANT'],
 };
 
 
@@ -166,7 +166,7 @@ const birdseedShot: Equipment = {
     lose <Keyword>Flitter About</Keyword> and <Keyword>Soar</Keyword> until 
     the end of their next activation.
   </>),
-  tags: ['METALORWOOD']
+  tags: ['METALORPLANT']
 };
 
 const peppershot: Equipment = {
@@ -183,7 +183,7 @@ const peppershot: Equipment = {
     your <RangedThreat /> distance from your target, you may also target them with a 
     second <RangedAttack /> using this weapon without spending an <Action />.
   </>),
-  tags: ['WOOD']
+  tags: ['PLANT']
 };
 
 const boomShot: Equipment = {
@@ -197,7 +197,7 @@ const boomShot: Equipment = {
   effect: (<>
     BLAST 2" - BOOMIE BOOMIE
   </>),
-  tags: ['METALORWOOD']
+  tags: ['METALORPLANT']
 };
 
 const bow: Equipment = {
@@ -214,7 +214,7 @@ const bow: Equipment = {
     direction of your choice (so long as it is still at the same height), 
     allowing you to possibly ignore cover.
   </>),
-  tags: ['WOOD']
+  tags: ['PLANT']
 };
 
 const bigBlasta: Equipment = {
@@ -246,7 +246,7 @@ const crossbow: Equipment = {
   effect: (<>
     Can be braced for an additional 6" range.
   </>),
-  tags: ['WOOD']
+  tags: ['PLANT']
 };
 
 const stickbodyRifle: Equipment = {
@@ -263,7 +263,7 @@ const stickbodyRifle: Equipment = {
     first <Attack /> you make with this weapon each turn, 
     you may reroll a single dice that had a result of a 1.
   </>),
-  tags: ['WOOD']
+  tags: ['PLANT']
 };
 
 const riffleRifle: Equipment = {
@@ -277,7 +277,7 @@ const riffleRifle: Equipment = {
   effect: (<>
     the first attack each turn, you can find a squirrel resource
   </>),
-  tags: ['METALORWOOD']
+  tags: ['METALORPLANT']
 };
 
 const supremeRaybem: Equipment = {
@@ -316,7 +316,7 @@ const grenadeLobber: Equipment = {
   effect: (<>
     Can fire grenades at a new and improved range. Requires grenades to be used. You get a single grenade of choice when you get this weapon, but you may use other grenades brought via Grenade Pouch or Grenade Satchel.
   </>),
-  tags: ['METALORWOOD']
+  tags: ['METALORPLANT']
 };
 
 const fishersLine: Equipment = {
@@ -344,7 +344,7 @@ const boomerang: Equipment = {
     after making an <Attack /> <Action /> with it, you may make
     the <Attack /> measuring from the target of the previous <Attack />.
   </>),
-  tags: ['WOOD']
+  tags: ['PLANT']
 };
 
 const equipment = {

@@ -77,7 +77,7 @@ const gliderLeaf: Equipment = {
     Small Skritter only. Can be deployed to gently 
     fall from height, gaining 2" movement. Once per combat.
   </>),
-  tags: ['WOOD'],
+  tags: ['PLANT'],
 };
 
 const alchemersKit: Equipment = {

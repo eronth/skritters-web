@@ -346,6 +346,18 @@ const boomerang: Equipment = {
   tags: ['PLANT']
 };
 
+const deadeyeLongarm: Equipment = {
+  name: "Deadeye Longarm",
+  type: "ranged",
+  slot: "two-handed",
+  range: 15,
+  bonus: { size: [1] },
+  effect: (<>
+    Each 6 or higher rolled on <RangedAttack plural /> with this weapon 
+    counts as an additional <Success />.
+  </>)
+};
+
 const equipment = {
   // One-Handed
   pistol,
@@ -369,6 +381,7 @@ const equipment = {
   supremeRaybem,
   grenadeLobber,
   fishersLine,
+  deadeyeLongarm,
 };
 
 export default equipment;

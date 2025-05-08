@@ -1,19 +1,19 @@
-import Keyword from "../../common/Keywords/Keyword";
-import Action from "../../common/Keywords/rules/action/Action";
-import Attack from "../../common/Keywords/rules/action/Attack";
-import RangedAttack from "../../common/Keywords/rules/action/RangedAttack";
-import WeaveAttack from "../../common/Keywords/rules/action/WeaveAttack";
-import Defense from "../../common/Keywords/rules/Defense";
-import Dazzle from "../../common/Keywords/rules/resources/Dazzle";
-import Focus from "../../common/Keywords/rules/resources/Focus";
-import MinusSize from "../../common/Keywords/rules/roll-modifiers/MinusSize";
-import PlusDice from "../../common/Keywords/rules/roll-modifiers/PlusDice";
-import PlusSize from "../../common/Keywords/rules/roll-modifiers/PlusSize";
-import Success from "../../common/Keywords/rules/roll-modifiers/Success";
-import RangedThreat from "../../common/Keywords/rules/threat/RangedThreat";
-import Summer from "../../common/Keywords/times/Summer";
-import Winter from "../../common/Keywords/times/Winter";
-import { Dice, Equipment } from "../../types/types";
+import Keyword from "../../../common/Keywords/Keyword";
+import Action from "../../../common/Keywords/rules/action/Action";
+import Attack from "../../../common/Keywords/rules/action/Attack";
+import RangedAttack from "../../../common/Keywords/rules/action/RangedAttack";
+import WeaveAttack from "../../../common/Keywords/rules/action/WeaveAttack";
+import Defense from "../../../common/Keywords/rules/Defense";
+import Dazzle from "../../../common/Keywords/rules/resources/Dazzle";
+import Focus from "../../../common/Keywords/rules/resources/Focus";
+import MinusSize from "../../../common/Keywords/rules/roll-modifiers/MinusSize";
+import PlusDice from "../../../common/Keywords/rules/roll-modifiers/PlusDice";
+import PlusSize from "../../../common/Keywords/rules/roll-modifiers/PlusSize";
+import Success from "../../../common/Keywords/rules/roll-modifiers/Success";
+import RangedThreat from "../../../common/Keywords/rules/threat/RangedThreat";
+import Summer from "../../../common/Keywords/times/Summer";
+import Winter from "../../../common/Keywords/times/Winter";
+import { Dice, Equipment } from "../../../types/types";
 
 const d1d4: Dice = { count: 1, sides: 4 };
 const d1d6: Dice = { count: 1, sides: 6 };
@@ -228,7 +228,7 @@ const bigBlasta: Equipment = {
   effect: (<>
     When you <Attack /> with this weapon, 
     you are knocked back 3" directly away from your target. You 
-    are also hit with half of the <Success noVal plural />
+    are also hit with half of the <Success plural />
     (rounded up) for this attack (you may roll your <Defense /> to
     reduce the damage as normal).
   </>),

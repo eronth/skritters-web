@@ -89,7 +89,7 @@ export default function EquipmentPage() {
     if (selectedTags.length > 0) {
       results = results.filter(item => {
         const itemTags = item.tags || [];
-        return selectedTags.every(tag => {
+        return selectedTags.some(tag => {
           if (tag == 'METAL') {
             return (itemTags.includes('METAL') || itemTags.includes('METALORPLANT'));
           } else if (tag == 'PLANT') {

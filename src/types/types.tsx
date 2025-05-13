@@ -105,7 +105,13 @@ type Filter = {
 };
 
 type Scenario = {
-
+  name: string;
+  type: 'neutral' | 'assault&guard';
+  setup: ReactNode;
+  deployment: ReactNode;
+  endConditions: ReactNode;
+  scoring: ReactNode;
+  extraRules: ReactNode;
 };
 
 export type {

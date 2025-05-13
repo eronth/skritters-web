@@ -1,16 +1,52 @@
-import { Modifiers } from "../types/types";
+import { ReactNode } from "react";
+import { Dice, Modifiers } from "../types/types";
+import Success from "./Keywords/rules/roll-modifiers/Success";
+import MinusSize from "./Keywords/rules/roll-modifiers/MinusSize";
+import MinusDice from "./Keywords/rules/roll-modifiers/MinusDice";
+import PlusDice from "./Keywords/rules/roll-modifiers/PlusDice";
+import PlusSize from "./Keywords/rules/roll-modifiers/PlusSize";
 
-const formatModifiers = (modifiers: Modifiers): string => {
-  const nilout = modifiers.nilout;
-  const diceStr = modifiers.dice?.map(d => `${d.count}d${d.sides}`).join(' + ');
-  const successStr = modifiers.successes?.length ? `+${modifiers.successes.join('+')} Successes` : null;
-  const sizeStr = modifiers.size?.length ? `+${modifiers.size.join('+')} size` : null;
+const formatModifiers = (modifiers: Modifiers): ReactNode => {
+  if (!modifiers) return null;
+
+  if (modifiers?.nilout) return '-';
+
+  const diceMap = new Map<number, number>();
+  let diceList = null;
+  if (modifiers.dice) {
+    // Foreach loop through the dice to summ dice of the same size.
+    for (const die of modifiers.dice) {
+      if (diceMap.has(die.sides)) {
+        diceMap.set(die.sides, diceMap.get(die.sides)! + die.count);
+      } else {
+        diceMap.set(die.sides, die.count);
+      }
+    }
+
+    // Turn the diceMap into a list of elements.
+    diceList = Array.from(diceMap.entries()).map(([sides, count]) => {
+      return (<>
+        <PlusDice dice={new Dice(`${count}d${sides}`)} />
+      </>);
+    });
+  }
   
-  const retVal = (nilout)
-    ? '-'
-    : [diceStr, successStr, sizeStr].filter(s => s).join(' ');
+  const v = modifiers.removeDice?.reduce((sum, value) => sum + value, 0) ?? 0;
+  const removeDiceList = v ? <> <MinusDice x={v} /></> : null;
+  const sizeList = modifiers.size?.map((size, index) => {
+    return size > 0
+      ? <> <PlusSize x={size} key={index} /></>
+      : <> <MinusSize x={size} key={index} /></>;
+  });
+  const sc = modifiers.successes?.reduce((sum, value) => sum + value, 0) ?? 0;
+  const successElements = sc ? <span className="test"> +<Success x={sc} /></span> : null;
 
-  return retVal.trim() || '0'; 
+  return (<>
+    {diceList}
+    {removeDiceList}
+    {sizeList}
+    {successElements}
+  </>);
 };
 
 const calculateModifiersAverage = (modifiers: Modifiers, bonusSize: number = 0): number => {

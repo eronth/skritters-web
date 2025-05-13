@@ -10,14 +10,16 @@ type Props = {
 
 export default function EquipmentCard({ item }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [showAverage, setShowAverage] = useState(true);
+  const [showAverage, setShowAverage] = useState(false);
 
   const rangeDisplay = () => {
     if (item.range) {
       const rangeText = Array.isArray(item.range)
       ? `${item.range[0]} / ${item.range[1]}"`
       : `${item.range}"`;
-      return <><span className="stat-label">Range: </span>{rangeText}</>
+      return <><label className="stat-label">Range: </label>
+        <div>{rangeText}</div>
+      </>
     } else {
       return null;
     }
@@ -28,16 +30,18 @@ export default function EquipmentCard({ item }: Props) {
       return <>
         {item.bonus && (
           <div>
-            <span className="stat-label">Bonus: </span>
-            {formatModifiers(item.bonus)}
-            {showAverage && (<>
-              <br />
-              <span className="average-bonus">
-                (
-                  {calculateModifiersAverage(item.bonus)}, {calculateModifiersAverage(item.bonus, (item.slot == 'one-handed' ? 1 : 0))}, {calculateModifiersAverage(item.bonus, (item.slot == 'one-handed' ? 2 : 0))}
-                )
-              </span>
-            </>)}
+            <label className="stat-label">Bonus: </label>
+            <div>
+              {formatModifiers(item.bonus)}
+              {showAverage && (<>
+                <br />
+                <span className="average-bonus">
+                  (
+                    {calculateModifiersAverage(item.bonus)}, {calculateModifiersAverage(item.bonus, (item.slot == 'one-handed' ? 1 : 0))}, {calculateModifiersAverage(item.bonus, (item.slot == 'one-handed' ? 2 : 0))}
+                  )
+                </span>
+              </>)}
+            </div>
           </div>
         )}
       </>
@@ -58,8 +62,14 @@ export default function EquipmentCard({ item }: Props) {
     
     <div className="stats-grid">
       <div>
-        <span className="stat-label">Equip Slot: </span>
-        <span className="equip-slot-stat">{item.slot}</span>
+        <label className="stat-label">Equip Slot: </label>
+        <div className="equip-slot-stat">
+          {
+            item.slot == 'onetwo-handed' 
+            ? 'One / Two-Handed'
+            : item.slot
+          }
+        </div>
       </div>
       <div>{rangeDisplay()}</div>
       <div>{bonusDisplay()}</div>

@@ -35,6 +35,43 @@
         font-size: 14px;
         cursor: pointer;
         transition: background-color 0.2s, color 0.2s;
+
+        &.plant {
+          background-color: var(--light-plant-clr);
+          color: var(--dark-plant-clr);
+        }
+        &.metal {
+          background-color: var(--light-metal-clr);
+          color: var(--dark-metal-clr);
+        }
+        &.gem {
+          background-color: var(--light-gem-clr);
+          color: var(--dark-gem-clr);
+        }
+        &.flame {
+          background-color: var(--light-flame-clr);
+          color: var(--dark-flame-clr);
+        }
+        &.poison {
+          background-color: var(--light-poison-clr);
+          color: var(--dark-poison-clr);
+        }
+        &.water {
+          background-color: var(--light-water-color);
+          color: var(--dark-water-color);
+        }
+        &.zap {
+          background-color: var(--light-zap-color);
+          color: var(--dark-zap-color);
+        }
+        &.frost {
+          background-color: var(--light-frost-color);
+          color: var(--dark-frost-color);
+        }
+        &.gloomy {
+          background-color: var(--light-gloomy-color);
+          color: var(--dark-gloomy-color);
+        }
       
         &:hover {
           background-color: hsl(210, 68%, 81%);
@@ -43,6 +80,45 @@
         &.active {
           background-color: hsl(207, 73%, 57%);
           color: white;
+          /* Create a glow effect */
+          box-shadow: 0 0 5px hsl(207, 73%, 57%), 0 0 10px hsl(207, 73%, 57%);
+
+          &.plant {
+            background-color: var(--dark-plant-clr);
+            color: var(--light-plant-clr);
+          }
+          &.metal {
+            background-color: var(--dark-metal-clr);
+            color: var(--light-metal-clr);
+          }
+          &.gem {
+            background-color: var(--dark-gem-clr);
+            color: var(--light-gem-clr);
+          }
+          &.flame {
+            background-color: var(--dark-flame-clr);
+            color: var(--light-flame-clr);
+          }
+          &.poison {
+            background-color: var(--dark-poison-clr);
+            color: var(--light-poison-clr);
+          }
+          &.water {
+            background-color: var(--dark-water-color);
+            color: var(--light-water-color);
+          }
+          &.zap {
+            background-color: var(--dark-zap-color);
+            color: var(--light-zap-color);
+          }
+          &.frost {
+            background-color: var(--dark-frost-color);
+            color: var(--light-frost-color);
+          }
+          &.gloomy {
+            background-color: var(--dark-gloomy-color);
+            color: var(--light-gloomy-color);
+          }
         }
         
         &.clear {

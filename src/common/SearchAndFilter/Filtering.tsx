@@ -30,7 +30,7 @@ export default function Filtering({ filters }: Props) {
             <button
               key={type}
               onClick={() => toggleFilterOption(filter, type)}
-              className={`filter-button ${filter.selectedOptions.includes(type) ? 'active' : ''}`}
+              className={`filter-button ${type.toLowerCase()} ${filter.selectedOptions.includes(type) ? 'active' : ''}`}
             >
               {type}
             </button>

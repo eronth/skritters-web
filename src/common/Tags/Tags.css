@@ -44,40 +44,40 @@
 
 .item-tag {
   &.plant {
-    --light-tag-color: hsl(139, 73%, 87%);
-    --dark-tag-color: hsl(152, 42%, 23%);
+    --light-tag-color: var(--light-plant-clr);
+    --dark-tag-color: var(--dark-plant-clr);
   }
-  &.metal {
-    --light-tag-color: hsl(202, 81%, 86%);
-    --dark-tag-color: hsl(213, 49%, 34%);
+  &.metal{
+  --light-tag-color: var(--light-metal-clr);
+  --dark-tag-color: var(--dark-metal-clr);
   }
-  &.gem {
-    --light-tag-color: hsl(38, 93%, 77%);
-    --dark-tag-color: hsl(30, 76%, 26%);
+  &.gem{
+  --light-tag-color: var(--light-gem-clr);
+  --dark-tag-color: var(--dark-gem-clr);
   }
-  &.flame {
-    --light-tag-color: hsl(343, 95%, 92%);
-    --dark-tag-color: hsl(0, 56%, 39%);
+  &.flame{
+  --light-tag-color: var(--light-flame-clr);
+  --dark-tag-color: var(--dark-flame-clr);
   }
-  &.poison {
-    --light-tag-color: hsl(58, 97%, 87%);
-    --dark-tag-color: hsl(150, 48%, 35%);
+  &.poison{
+  --light-tag-color: var(--light-poison-clr);
+  --dark-tag-color: var(--dark-poison-clr);
   }
-  &.water {
-    --light-tag-color: hsl(195, 85%, 86%);
-    --dark-tag-color: hsl(200, 75%, 25%);
+  &.water{
+  --light-tag-color: var(--light-water-color);
+  --dark-tag-color: var(--dark-water-color);
   }
-  &.zap {
-    --light-tag-color: hsl(50, 100%, 80%);
-    --dark-tag-color: hsl(230, 80%, 40%);
+  &.zap{
+  --light-tag-color: var(--light-zap-color);
+  --dark-tag-color: var(--dark-zap-color);
   }
-  &.frost {
-    --light-tag-color: hsl(200, 90%, 90%);
-    --dark-tag-color: hsl(215, 70%, 20%);
+  &.frost{
+  --light-tag-color: var(--light-frost-color);
+  --dark-tag-color: var(--dark-frost-color);
   }
-  &.gloomy {
-    --light-tag-color: hsl(240, 100%, 80%);
-    --dark-tag-color: hsl(218, 17%, 25%);
+  &.gloomy{
+  --light-tag-color: var(--light-gloomy-color);
+  --dark-tag-color: var(--dark-gloomy-color);
   }
 
   

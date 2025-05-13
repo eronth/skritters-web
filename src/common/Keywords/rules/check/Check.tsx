@@ -1,4 +1,4 @@
-import Keyword from "../Keyword";
+import Keyword from "../../Keyword";
 
 type Props = {
   type?: string;

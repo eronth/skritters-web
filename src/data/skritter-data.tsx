@@ -32,6 +32,7 @@ import Winter from "../common/Keywords/times/Winter";
 import Weapon from "../common/Keywords/rules/Weapon";
 import ItemTag from "../common/Tags/ItemTag";
 import { Dice, Skritter } from "../types/types"
+import Match from "../common/Match";
 const d1d4: Dice = new Dice('1d4');
 const d1d6: Dice = new Dice('1d6');
 const d2d6: Dice = new Dice('2d6');
@@ -110,7 +111,7 @@ const porcupine: Skritter = {
   retirement: [<>
     When Porcupine first retires, it can grant a member of your crew 
     1 <Weapon>Needle Blade</Weapon>.
-    While retired, Porcupine grants 1 <Vigor /> resource at the start of each mission.
+    While retired, Porcupine grants 1 <Vigor /> resource at the start of each <Match />.
   </>],
   tags: [],
 };
@@ -141,7 +142,7 @@ const armordilloKnight: Skritter = {
     {
       name: "Durable",
       effect: <>
-        Armordillo Knight starts the mission with one <Hardy /> resource.
+        Armordillo Knight starts the <Match /> with one <Hardy /> resource.
       </>
     },
     {
@@ -158,7 +159,7 @@ const armordilloKnight: Skritter = {
   ],
   retirement: [<>
     While retired, Armordillo Knight grants a <Hardy /> resource at
-    the start of each mission.
+    the start of each <Match />.
   </>],
   tags: ['CONCENTRATION'],
 };
@@ -356,7 +357,7 @@ const trenchRat: Skritter = {
     {
       name: "Night Sneak",
       effect: <>
-        Rat can use an <Action /> to <Cloak x={2} /> during <Night /> missions.
+        Rat can use an <Action /> to <Cloak x={2} /> during <Night /> <Match plural />.
       </>
     }
   ],
@@ -584,7 +585,7 @@ const busyBeaver: Skritter = {
     {
       name: "Dammed Up",
       effect: <>
-        Place <Cover x={2} /> that are 2" in length at the start of the mission.
+        Place <Cover x={2} /> that are 2" in length at the start of the <Match />.
       </>
     },
     {
@@ -615,7 +616,7 @@ const veneratedCardinal: Skritter = {
     {
       name: "Divine Chance",
       effect: <>
-        Get a <Lucky /> resource at the start of the mission.
+        Get a <Lucky /> resource at the start of the <Match />.
       </>
     },
     {
@@ -671,7 +672,7 @@ const luckyDuck: Skritter = {
     {
       name: "Lucky, Lucky",
       effect: <>
-        Start the mission with a <Lucky /> and <Adaptive /> resource.
+        Start the <Match /> with a <Lucky /> and <Adaptive /> resource.
       </>
     }
   ],
@@ -704,7 +705,7 @@ const guardianTurtle: Skritter = {
     {
       name: "Defender",
       effect: <>
-        At the start of the mission, Guardian Turtle gives a <Hardy /> resource to one other Skritter on your team.
+        At the start of the <Match />, Guardian Turtle gives a <Hardy /> resource to one other Skritter on your team.
       </>
     }
   ],

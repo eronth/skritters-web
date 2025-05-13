@@ -20,6 +20,7 @@ import PlusDice from "../../../common/Keywords/rules/roll-modifiers/PlusDice";
 import PlusSize from "../../../common/Keywords/rules/roll-modifiers/PlusSize";
 import Success from "../../../common/Keywords/rules/roll-modifiers/Success";
 import Night from "../../../common/Keywords/times/Night";
+import Match from "../../../common/Match";
 import ItemTag from "../../../common/Tags/ItemTag";
 import { Dice, Equipment } from "../../../types/types";
 
@@ -109,7 +110,7 @@ const brightrockStick: Equipment = {
   range: 6,
   bonus: { dice: [d1d6] },
   effect: (<>
-    At the start of the mission, gain a <Dazzle /> resource.
+    At the start of the <Match />, gain a <Dazzle /> resource.
   </>),
   tags: ['GEM'],
 };
@@ -249,7 +250,7 @@ const hardshardBlock: Equipment = {
   range: 8,
   bonus: { size: [1] },
   effect: (<>
-    At the start of the mission, gain an 2 <Hardy /> resources.
+    At the start of the <Match />, gain an 2 <Hardy /> resources.
     <br />
     Add <PlusSize x={1} /> to <Defense />.
   </>),
@@ -267,7 +268,7 @@ const confettiPop: Equipment = {
     within 2" of your target.
     <br />
     You may only make one <WeaveAttack /> with this item
-    per mission.
+    per <Match />.
   </>)
 };
 

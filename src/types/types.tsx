@@ -86,8 +86,6 @@ type Skritter = {
   tags: SkritterKeyword[];
 };
 
-
-
 type Equipment = {
   name: string;
   type: EquipmentType;
@@ -104,7 +102,11 @@ type Filter = {
   selectedOptions: string[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setSelectedOptions: React.Dispatch<React.SetStateAction<any[]>>;
-}
+};
+
+type Scenario = {
+
+};
 
 export type {
   Modifiers,
@@ -114,5 +116,6 @@ export type {
   EquipmentType,
   EquipmentSlotType,
   TabType,
-  Filter
+  Filter,
+  Scenario,
 };

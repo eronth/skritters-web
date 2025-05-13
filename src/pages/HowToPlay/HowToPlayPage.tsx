@@ -9,6 +9,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Dice } from "../../types/types";
 import DiceAndTestsComponent from "./DiceAndTestsComponent";
 import Page from "../Page";
+import Match from "../../common/Match";
 
 export default function HowToPlayPage() {
   
@@ -25,10 +26,11 @@ export default function HowToPlayPage() {
     focuses on small-scale battles between a few units or characters. Players will each
     assemble a squad of Skritters, each with their own unique abilities and stats, and face off against
     each other in a battle to see who can outmaneuver and outsmart their opponent to claim
-    the most Victory Points in a mission.
+    the most Victory Points in a <Match />.
 
-    The game of Skritters favors a campaign-style play, where players will play several missions
-    over the course of a campaign, building their squad more and more as they go.
+    The game of Skritters favors a campaign-style play, where players will play
+    several <Match plural /> over the course of a campaign, building their squad
+    more and more as they go.
     
     <h1>How to Play</h1>
     <DiceAndTestsComponent />

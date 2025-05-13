@@ -3,6 +3,7 @@ import Attack from "../../common/Keywords/rules/action/Attack";
 import BrawlAction from "../../common/Keywords/rules/action/BrawlAction";
 import Night from "../../common/Keywords/times/Night";
 import Summer from "../../common/Keywords/times/Summer";
+import Match from "../../common/Match";
 import { Equipment } from "../../types/types";
 
 const goggles: Equipment = {
@@ -43,7 +44,7 @@ const radiantEyepiece: Equipment = {
   name: "Radiant Eyepiece",
   type: "garb", slot: "face",
   effect: (<>
-    Ignore penalties to <Attack plural /> during <Night /> missions.
+    Ignore penalties to <Attack plural /> during <Night /> <Match />.
   </>)
 };
 

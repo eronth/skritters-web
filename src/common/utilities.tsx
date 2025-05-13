@@ -40,8 +40,6 @@ const formatModifiers = (modifiers: Modifiers): ReactNode => {
   const successElements = sc ? <span className="test"> +<Success x={sc} /></span> : null;
 
   return (<>
-    {/* 
-    */}
     {diceList}
     {removeDiceCount}
     {sizeList}

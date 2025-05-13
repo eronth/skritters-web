@@ -6,6 +6,7 @@ import Ready from "../../common/Keywords/rules/resources/Ready";
 import Rush from "../../common/Keywords/rules/resources/Rush";
 import PlusSize from "../../common/Keywords/rules/roll-modifiers/PlusSize";
 import Night from "../../common/Keywords/times/Night";
+import Match from "../../common/Match";
 import { Equipment } from "../../types/types";
 import { extraWeapons, grenadeContainer } from "./common-effect-data";
 
@@ -14,7 +15,7 @@ const explorersGear: Equipment = {
   name: "Explorer's Gear",
   type: "garb", slot: "back",
   effect: (<>
-    At the start of the mission, choose one of the following:
+    At the start of the <Match />, choose one of the following:
     <ul>
       <li>Gain 2 <Ready /> resources.</li>
       <li>Gain 1 <Ready /> and 1 <Rush /> resource.</li>
@@ -52,7 +53,7 @@ const survivalPack: Equipment = {
   name: "Survival Pack",
   type: "garb", slot: "back",
   effect: (<>
-    At the start of the mission, gain an <Adaptive /> resource.
+    At the start of the <Match />, gain an <Adaptive /> resource.
   </>)
 };
 
@@ -93,7 +94,7 @@ const iconOfDetermination: Equipment = {
   type: "garb", slot: "back",
   effect: (<>
     If this Skritter would be forced to retreat, they do not retreat until after 
-    their next turn. If the mission ends before the end of their next turn, they
+    their next turn. If the <Match /> ends before the end of their next turn, they
     are not treated as having retreated.
   </>)
 };

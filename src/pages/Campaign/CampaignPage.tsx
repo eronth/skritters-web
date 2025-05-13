@@ -20,6 +20,7 @@ import Night from "../../common/Keywords/times/Night";
 import Spring from "../../common/Keywords/times/Spring";
 import Summer from "../../common/Keywords/times/Summer";
 import Winter from "../../common/Keywords/times/Winter";
+import Match from "../../common/Match";
 import Tag from "../../common/Tags/Tag";
 import { Dice } from "../../types/types";
 import Page from "../Page";
@@ -32,8 +33,8 @@ export default function CampaignPage() {
     <p>
       In Skritters, the reccommended way to play is in a campaign. 
       A campaign is best run with a group of players all playing through a campaign together.
-      Each player will assemble their own squad of Skritters, and play through a series of missions 
-      against each other. The suggested campaign length is 8 missions in the following order:
+      Each player will assemble their own squad of Skritters, and play through a series of <Match plural /> 
+      against each other. The suggested campaign length is 8 <Match plural /> in the following order:
     </p>
     <ol>
       <li><Spring />; <Day /></li>
@@ -53,7 +54,7 @@ export default function CampaignPage() {
     <h2>Day and Night</h2>
     <h3><Day /></h3>
     <p>
-      Daytime is the default time of a mission. As such, it has no special rules or
+      Daytime is the default time of a <Match />. As such, it has no special rules or
       adjustments. There are some Skritters or abilities that may interact with or 
       change during the day, but those will be noted on the Skritter, weapon, or ability
       itself.
@@ -102,20 +103,20 @@ export default function CampaignPage() {
     </p>
     <ul>
       <li>
-        <label className="bolded">Extra Hours:</label> <Day /> mission get an extra round
+        <label className="bolded">Extra Hours:</label> <Day /> <Match plural /> get an extra round
         before they end.
       </li>
       <li>
         <label className="bolded">Shortened Nights:</label> For the first round of 
-        a <Night /> mission, each Skritter get one less <Action />.
+        a <Night /> <Match />, each Skritter get one less <Action />.
       </li>
       <li>
         <label className="bolded">Busywork:</label> The extra daylight brings with it
-        opportunities for Skritters to gather and forage. Before a mission, each player
+        opportunities for Skritters to gather and forage. Before a <Match />, each player
         begins with one <Focus />, <Vigor />, or <Whimsy /> resource.
       </li>
       <li>
-        <label className="bolded">Swelter:</label> During <Day /> missions, Skritters 
+        <label className="bolded">Swelter:</label> During <Day /> <Match plural />, Skritters 
         spend one action on each of their activations or they <Keyword bold>Overheat</Keyword>.
         When a Skritter <Keyword bold>Overheats</Keyword>, their opponent rolles a 1d6 <Check type="Overheat" /> against them.
         The target takes 1 damage for each success, and does not get to roll a <Defense /> to mitigate
@@ -137,7 +138,7 @@ export default function CampaignPage() {
         get <PlusDice dice={d1d4} /> to their roll.
       </li>
       <li>
-          <label className="bold">Dreadful Aura:</label> During <Night /> missions, <Action plural /> using items with 
+          <label className="bold">Dreadful Aura:</label> During <Night /> <Match plural />, <Action plural /> using items with 
           the <Keyword>GLOOMY</Keyword> tag get <PlusDice dice={d1d8} /> to their roll.
       </li>
     </ul>
@@ -154,17 +155,17 @@ export default function CampaignPage() {
         The target takes 1 damage for each success, and does not get to roll a <Defense /> to mitigate
         this damage. The <Check type="Freeze" /> is 2d6 against <Keyword>COLD-BLOODED</Keyword> Skritters.
         <br />
-        During <Night /> missions, the dice for the <Check type="Freeze" plural/> are d8s instead of d6s.
+        During <Night /> <Match />, the dice for the <Check type="Freeze" plural/> are d8s instead of d6s.
       </li>
     </ul>
-    <h2>Post-Mission Wrap-up</h2>
+    <h2>Post-<Match /> Wrap-up</h2>
     <p>
-      After each mission, take go through teh following steps to handle what happens after the mission.
+      After each <Match />, take go through teh following steps to handle what happens after the <Match />.
     </p>
     <ol>
       <li>
         Convert each unused resource into a <Preserved /> resource. Store these 
-        resources until <Winter /> missions, when they can be used to help Skritters
+        resources until <Winter /> <Match plural />, when they can be used to help Skritters
         survive the Harsh Chill.
       </li>
       <li>
@@ -175,11 +176,11 @@ export default function CampaignPage() {
             0 <Success plural />: The Skritter's injuries are too great, and they must retire. Using the
             standard rules for adding a Skritter to your squad, select a new Skritter to replace 
             the retired Skritter. The retired Skritter will provide it's <Keyword>Retirement</Keyword> bonuses
-            to your team starting with the next mission.
+            to your team starting with the next <Match />.
           </li>
           <li>
             1 <Success />: The Skritter requires a longer recovery, and starts
-            the next mission with -2 
+            the next <Match /> with -2 
           </li>
           <li>
             2 <Success plural />: The skritter makes a full recovery, and no further penalties apply.
@@ -187,7 +188,7 @@ export default function CampaignPage() {
         </ul>
       </li>
       <li>
-        If this was the last mission of a season, you can increase the size of your
+        If this was the last <Match /> of a season, you can increase the size of your
         Skritter's squad by one. This can be done by adding a new Skritter to your squad
         following the standard rules for adding a Skritter to your squad. This happens
         even if you had to retire a Skritter in the previous step.

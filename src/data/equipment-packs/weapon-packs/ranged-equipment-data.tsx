@@ -13,6 +13,7 @@ import Success from "../../../common/Keywords/rules/roll-modifiers/Success";
 import RangedThreat from "../../../common/Keywords/rules/threat/RangedThreat";
 import Summer from "../../../common/Keywords/times/Summer";
 import Winter from "../../../common/Keywords/times/Winter";
+import Match from "../../../common/Match";
 import { Dice, Equipment } from "../../../types/types";
 
 const d1d4: Dice = { count: 1, sides: 4 };
@@ -145,7 +146,7 @@ const sixShoota: Equipment = {
     dice: [{...d1d6}]
   },
   effect: (<>
-    You can only make 6 <Attack plural /> with this weapon during a mission.
+    You can only make 6 <Attack plural /> with this weapon during a <Match />.
   </>),
   tags: ['METALORPLANT']
 };

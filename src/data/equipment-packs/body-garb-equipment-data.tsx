@@ -8,6 +8,7 @@ import MinusSize from "../../common/Keywords/rules/roll-modifiers/MinusSize";
 import PlusDice from "../../common/Keywords/rules/roll-modifiers/PlusDice";
 import PlusSize from "../../common/Keywords/rules/roll-modifiers/PlusSize";
 import Night from "../../common/Keywords/times/Night";
+import Match from "../../common/Match";
 import { Dice, Equipment } from "../../types/types";
 import { extraWeapons, grenadeContainer } from "./common-effect-data";
 
@@ -51,7 +52,7 @@ const shimmergleamRobe: Equipment = {
   name: 'Shimmergleam Robe',
   type: 'garb', slot: 'body',
   effect: (<>
-    Start the match with a <Dazzle /> resource.
+    Start the <Match /> with a <Dazzle /> resource.
   </>)
 };
 

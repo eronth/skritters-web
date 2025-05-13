@@ -1,3 +1,5 @@
+import Match from "../../common/Match";
+
 export const extraWeapons = <>
   Gain an extra set of weapons you can swap between. 
   This item is not limited to 1 per team.
@@ -5,6 +7,6 @@ export const extraWeapons = <>
 
 export const grenadeContainer = <>
   When you give a Skritter a this item, select 3 grenades to go with the it.
-  The chosen grenades do not need to be unique. At the start of each mission,
+  The chosen grenades do not need to be unique. At the start of each <Match />,
   the Skritter equipped with this item has the chosen grenades in their inventory.
 </>;

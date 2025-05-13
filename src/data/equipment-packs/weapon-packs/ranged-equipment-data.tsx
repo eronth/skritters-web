@@ -301,7 +301,7 @@ const supremeRaybem: Equipment = {
     At the end of your turn, you can remove an Overheated token
      from this weapon.
     <br />
-    <Action />: Remove an Overheated from this weapon. 
+    Cooling Vent <Action />: Remove an Overheated from this weapon. 
     
   </>),
   tags: ['FLAME']

@@ -1,20 +1,32 @@
 import Keyword from "../../../common/Keywords/Keyword";
 import Action from "../../../common/Keywords/rules/action/Action";
 import Attack from "../../../common/Keywords/rules/action/Attack";
+import BrawlAttack from "../../../common/Keywords/rules/action/BrawlAttack";
+import RangedAttack from "../../../common/Keywords/rules/action/RangedAttack";
 import WeaveAttack from "../../../common/Keywords/rules/action/WeaveAttack";
-import Check from "../../../common/Keywords/rules/Check";
+import Check from "../../../common/Keywords/rules/check/Check";
+import WeaveCheck from "../../../common/Keywords/rules/check/WeaveCheck";
+import Cloak from "../../../common/Keywords/rules/cloak/Cloak";
+import Defense from "../../../common/Keywords/rules/Defense";
 import Dazzle from "../../../common/Keywords/rules/resources/Dazzle";
+import Focus from "../../../common/Keywords/rules/resources/Focus";
+import Hardy from "../../../common/Keywords/rules/resources/Hardy";
+import Lucky from "../../../common/Keywords/rules/resources/Lucky";
 import Rush from "../../../common/Keywords/rules/resources/Rush";
+import Vigor from "../../../common/Keywords/rules/resources/Vigor";
 import Whimsy from "../../../common/Keywords/rules/resources/Whimsy";
 import MinusSize from "../../../common/Keywords/rules/roll-modifiers/MinusSize";
+import PlusDice from "../../../common/Keywords/rules/roll-modifiers/PlusDice";
 import PlusSize from "../../../common/Keywords/rules/roll-modifiers/PlusSize";
 import Success from "../../../common/Keywords/rules/roll-modifiers/Success";
+import Night from "../../../common/Keywords/times/Night";
 import ItemTag from "../../../common/Tags/ItemTag";
 import { Dice, Equipment } from "../../../types/types";
 
 const d1d4: Dice = new Dice('1d4');
 const d2d4: Dice = new Dice('2d4');
 const d1d6: Dice = new Dice('1d6');
+const d2d6: Dice = new Dice('2d6');
 const d3d6: Dice = new Dice('3d6');
 const metal = <><ItemTag tag={'METAL'} /></>
 
@@ -26,7 +38,7 @@ const razzleDazzle: Equipment = {
   bonus: { },
   effect: (
     <>
-      <Action />: Razzle Dazzle - Make a <Check type="Weave" />. For each <Success /> you 
+      Razzle Dazzle <Action />: Make a <WeaveCheck />. For each <Success /> you 
       roll, choose a Skritter within range and grant them a <Dazzle /> resource. 
       (This action can target the Skritter carrying this item.)
       You cannot grant a Skritter more than one <Dazzle /> this way and 
@@ -56,7 +68,7 @@ const songstaffWhistle: Equipment = {
   range: 6,
   bonus: { size: [1] },
   effect: (<>
-    <Action />: Healsong - Make a <Check type="Weave" />. Each success 
+    Healsong <Action />: Make a <WeaveCheck />. Each success 
     heals an ally by one health. You may spend 2 <Success plural/> to
     instead gain a <Whimsy /> resource.
   </>),
@@ -169,7 +181,8 @@ const pacifyingCenser: Equipment = {
   effect: (<>
     If you deal damage to a Skritter that is in a Scuffle, that Skritter 
     and all Skritters in the Scuffle with them gain 1 <Keyword>Pacifism</Keyword> Token.
-    <Action />: Target a Skritter with a Weave check. 
+    <br />
+    Peace <Action />: Target a Skritter with a Weave check. 
     All Skritters in a Scuffle gets pacifism tokens based on number of <Success plural />.
     <ul>
       <li>1 - 2 <Success plural />: 1 <Keyword>Pacifism</Keyword> token.</li>
@@ -185,6 +198,140 @@ const pacifyingCenser: Equipment = {
   tags: ['METAL'],
 };
 
+const shadeShardShtaff: Equipment = {
+  name: "Shade Shard Shtaff",
+  type: "weave",
+  slot: "two-handed",
+  range: 4,
+  bonus: { dice: [d1d4] },
+  effect: (<>
+    You cannot make <Attack plural /> with this equipment.
+    <br />
+    Drape in Shadow <Action />: Make a <WeaveCheck />. A Skritter in range is draped
+    in shadow  and can <Cloak /> X, where X 
+    is the number of <Success plural />.
+  </>),
+  tags: ['GLOOMY'],
+};
+
+const bubbleStaff: Equipment = {
+  name: "Bubble Staff",
+  type: "weave",
+  slot: "two-handed",
+  range: 8,
+  bonus: { dice: [d1d4] },
+  effect: (<>
+    Bubble Dome <Action />: Make a <WeaveCheck /> check. Create a Bubble Dome around a Skritter. 
+    The Bubble Dome has a durability equal to the number of <Success plural />. The next <Attack /> that targets 
+    the creature gets -X<MinusSize /> to their <Attack />. A Skritter cannot have more than 1 Bubble Dome
+    on them at a time.
+  </>),
+  tags: ['WATER']
+};
+
+const zipzorpStaff: Equipment = {
+  name: "Zipzorp Staff",
+  type: "weave",
+  slot: "two-handed",
+  range: 6,
+  bonus: { size: [1] },
+  effect: (<>
+    Zipzorp <Action />: To zipzorp, pick a location in range, ignoring all obstacles. 
+    Make a <WeaveCheck />You teleport a number of inches equal 
+    to the number of <Success plural /> in a straight line towards the chosen location.
+  </>)
+};
+
+const hardshardBlock: Equipment = {
+  name: "Hardshard Block",
+  type: "weave",
+  slot: "two-handed",
+  range: 8,
+  bonus: { size: [1] },
+  effect: (<>
+    At the start of the mission, gain an 2 <Hardy /> resources.
+    <br />
+    Add <PlusSize x={1} /> to <Defense />.
+  </>),
+  tags: ['GEM'],
+};
+
+const confettiPop: Equipment = {
+  name: "Confetti Pop",
+  type: "weave",
+  slot: "two-handed",
+  range: 8,
+  bonus: { dice: [d2d6] },
+  effect: (<>
+    Your <WeaveAttack /> also targets all Skritters
+    within 2" of your target.
+    <br />
+    You may only make one <WeaveAttack /> with this item
+    per mission.
+  </>)
+};
+
+const spikegemSpear: Equipment = {
+  name: "--Spikegem Spear--",
+  type: "weave",
+  slot: "two-handed",
+  range: 2,
+  bonus: { },
+  effect: (<>
+    When you make an <Attack /> with this weapon, you
+    can choose whether your <Attack /> with this weapon 
+    is a <WeaveAttack /> or <BrawlAttack />. Regardless of choice, you add 
+    your Weave and Brawl bonuses together for this attack. 
+  </>)
+};
+
+const springbloomStaff: Equipment = {
+  name: "Springbloom Staff",
+  type: "weave",
+  slot: "two-handed",
+  range: 5,
+  bonus: { dice: [d2d4] },
+  effect: (<>
+    Verdant Growth <Action />: Make a <WeaveCheck /> to
+    grow and gain resources.
+    At least 1 <Success />: Gain 1 <Focus />, <Vigor />, or <Whimsy />.
+    At least 4 <Success plural />: May instead gain 1 <Hardy /> or <Rush />.
+    At least 7 <Success plural />: May instead gain 1 <Lucky />.
+  </>),
+  tags: ['PLANT']
+};
+
+const illuminationRod: Equipment = {
+  name: "Illumination Rod",
+  type: "weave",
+  slot: "two-handed",
+  range: 6,
+  bonus: { size: [2] },
+  effect: (<>
+    Anybody targeting Skritters within 3" of staff Wilder are 
+    not affected by <Night /> penalties. The Skritter holding 
+    this staff 
+    gains <PlusDice dice={d1d6} /> against <RangedAttack plural/> and <WeaveAttack plural />.
+  </>)
+};
+
+const lifebenderStaff: Equipment = {
+  name: "Lifebender Staff",
+  type: "weave",
+  slot: "two-handed",
+  range: 8,
+  bonus: { dice: [d1d6, d1d4] },
+  effect: (<>
+    Whenever you damage a Skritter with this staff, 
+    the Skritter weilding it gains unit gains an equal
+    number of <Keyword>Lifeforce</Keyword> tokens.
+    <br />
+    Lifesurge <Action />: Make a <WeaveCheck /> and remove a number 
+    of <Keyword>Lifeforce</Keyword> tokens to heal a target 
+    by the same amount. (The max number of tokens you may remove for 
+    this action is equal to the number of <Success plural /> you rolled.)
+  </>)
+};
 
 const equipment = {
   // One-Handed
@@ -200,6 +347,15 @@ const equipment = {
   starWand,
   // Two-Handed
   pacifyingCenser,
+  shadeShardShtaff,
+  bubbleStaff,
+  zipzorpStaff,
+  hardshardBlock,
+  confettiPop,
+  spikegemSpear,
+  springbloomStaff,
+  illuminationRod,
+  lifebenderStaff,
 };
 
 export default equipment;

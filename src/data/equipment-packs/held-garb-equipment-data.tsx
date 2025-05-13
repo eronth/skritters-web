@@ -11,7 +11,7 @@ import Success from "../../common/Keywords/rules/roll-modifiers/Success";
 import { Dice } from "../../types/types";
 import { Equipment } from "../../types/types";
 import Action from "../../common/Keywords/rules/action/Action";
-import Check from "../../common/Keywords/rules/Check";
+import Check from "../../common/Keywords/rules/check/Check";
 
 const d1d4: Dice = { count: 1, sides: 4 };
 const d1d6: Dice = { count: 1, sides: 4 };
@@ -68,7 +68,8 @@ const warhorn: Equipment = {
   name: "Warhorn",
   type: "garb", slot: "one-handed",
   effect: (<>
-    <Action />: Blow the warhorn! All allied Skritters within 3" can immediately move up to 3".
+    Blow the Warhorn! <Action />: All allied Skritters within 3" can 
+    immediately move up to 3".
     You may only use this <Action /> once per turn.
   </>),
   tags: ['METALORPLANT']

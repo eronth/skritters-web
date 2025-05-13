@@ -5,7 +5,7 @@ import BrawlAttack from "../common/Keywords/rules/action/BrawlAttack";
 import FreeAction from "../common/Keywords/rules/action/FreeAction";
 import WeaveAction from "../common/Keywords/rules/action/WeaveAction";
 import WeaveAttack from "../common/Keywords/rules/action/WeaveAttack";
-import Check from "../common/Keywords/rules/Check";
+import Check from "../common/Keywords/rules/check/Check";
 import Cloak from "../common/Keywords/rules/cloak/Cloak";
 import Defense from "../common/Keywords/rules/Defense";
 import DiscoveredMarker from "../common/Keywords/rules/markers/DiscoveredMarker";
@@ -45,14 +45,14 @@ const burrows: {name: string; effect: React.ReactNode} = {
     A vole must end their turn outside a burrow, and will return next to the 
     burrow they entered if they end their turn without exiting (even if there are nearby enemies).
     <br />
-    <Action />: The vole can enter a burrow if they are in contact with it. Remove them from the battlefield 
+    Enter Ground <Action />: The vole can enter a burrow if they are in contact with it. Remove them from the battlefield 
     while they are in a burrow. 
     <br />
-    <FreeAction />: Scouter Vole can exit from any burrow they choose, so long as there are no 
+    Exit <FreeAction />: Scouter Vole can exit from any burrow they choose, so long as there are no 
     enemies within 15 inches of the chosen burrow. To exit a burrow, place the Scouter Vole in contact
     with the chosen burrow. 
     <br />
-    <Action />: Scouter Vole can exit from any burrow they choose, so long as there are no 
+    Careful Exit <Action />: Scouter Vole can exit from any burrow they choose, so long as there are no 
     enemies within 6 inches of the chosen burrow. To exit a burrow, place the Scouter Vole in contact
     with the chosen burrow.
   </>,
@@ -131,10 +131,10 @@ const armordilloKnight: Skritter = {
     {
       name: "Rollup",
       effect: <>
-        <Action/> - Rollup: Armordillo Knight rolls into a defensive ball. When they do, your 
+        Rollup <Action/>: Armordillo Knight rolls into a defensive ball. When they do, your 
         defense checks get +Size and your movement gets -2".
         <br/>
-        <Action /> - Unfurl: Armordillo Knight is no longer in a defensive ball, and gains
+        Unfurl <Action />: Armordillo Knight is no longer in a defensive ball, and gains
         a <Vigor /> or <Hardy /> resource.
       </>
     },

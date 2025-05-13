@@ -4,7 +4,7 @@ import Attack from "../../common/Keywords/rules/action/Attack";
 import BrawlAttack from "../../common/Keywords/rules/action/BrawlAttack";
 import RangedAttack from "../../common/Keywords/rules/action/RangedAttack";
 import WeaveAttack from "../../common/Keywords/rules/action/WeaveAttack";
-import Check from "../../common/Keywords/rules/Check";
+import Check from "../../common/Keywords/rules/check/Check";
 import Defense from "../../common/Keywords/rules/Defense";
 import Focus from "../../common/Keywords/rules/resources/Focus";
 import Preserved from "../../common/Keywords/rules/resources/Preserved";

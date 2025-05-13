@@ -37,6 +37,8 @@ export default function EquipmentPage() {
   
   const [selectedSlots, setSelectedSlots] = useState<EquipmentSlotType[]>([]);
   const allSlots: EquipmentSlotType[] = Object.values(EQUIPMENT_SLOTS);
+  // Remove 'onetwo-handed' from the allSlots array
+  const allSlotsWithoutOneTwoHanded = allSlots.filter(slot => slot !== 'onetwo-handed');
 
   const [selectedTags, setSelectedTags] = useState<ItemKeyword[]>([]);
   const allTags: ItemKeyword[] = Object.values(ITEM_KEYWORDS);
@@ -52,7 +54,7 @@ export default function EquipmentPage() {
     },
     {
       name: "Equipment Slot",
-      allOptions: [...allSlots],
+      allOptions: [...allSlotsWithoutOneTwoHanded],
       selectedOptions: selectedSlots,
       setSelectedOptions: setSelectedSlots,
     },
@@ -82,7 +84,14 @@ export default function EquipmentPage() {
     
     // Apply slot filter
     if (selectedSlots.length > 0) {
-      results = results.filter(item => selectedSlots.includes(item.slot));
+      
+      results = results.filter(item => {
+        if (item.slot == 'onetwo-handed') {
+          return selectedSlots.includes('one-handed') || selectedSlots.includes('two-handed');
+        }
+        return selectedSlots.includes(item.slot)
+      }
+      );
     }
 
     // Apply tag filter
@@ -103,14 +112,15 @@ export default function EquipmentPage() {
     // Apply sorting
     const slotSortOrder = {
       'one-handed': 1,
-      'two-handed': 2,
-      'face': 3,
-      'head': 4,
-      'body': 5,
-      'back': 6,
-      'special': 7,
-      'grenade': 8,
-      'deployable': 9
+      'onetwo-handed': 2,
+      'two-handed': 3,
+      'face': 4,
+      'head': 5,
+      'body': 6,
+      'back': 7,
+      'special': 8,
+      'grenade': 9,
+      'deployable': 10
     }
     results = [...results].sort((a, b) => {
       // let compareValue: number;

@@ -16,6 +16,7 @@ type EquipmentType = typeof EQUIPMENT_TYPES[keyof typeof EQUIPMENT_TYPES];
 export const EQUIPMENT_SLOTS = {
   'one-handed': 'one-handed',
   'two-handed': 'two-handed',
+  'onetwo-handed': 'onetwo-handed',
   face: 'face',
   head: 'head',
   body: 'body',

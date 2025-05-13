@@ -7,6 +7,34 @@
   --bg-color: #f7fafc;
   --card-bg: #aad6ff;
   --color-mixin: black;
+
+  --light-plant-clr: hsl(139, 73%, 87%);
+  --dark-plant-clr: hsl(152, 42%, 23%);
+
+  --light-metal-clr: hsl(202, 81%, 86%);
+  --dark-metal-clr: hsl(213, 49%, 34%);
+  
+  --light-gem-clr: hsl(38, 93%, 77%);
+  --dark-gem-clr: hsl(30, 76%, 26%);
+  
+  --light-flame-clr: hsl(343, 95%, 92%);
+  --dark-flame-clr: hsl(0, 56%, 39%);
+  
+  --light-poison-clr: hsl(58, 97%, 87%);
+  --dark-poison-clr: hsl(58, 97%, 27%);
+  
+  --light-water-color: hsl(195, 85%, 86%);
+  --dark-water-color: hsl(200, 75%, 25%);
+  
+  --light-zap-color: hsl(50, 100%, 80%);
+  --dark-zap-color: hsl(230, 80%, 40%);
+  
+  --light-frost-color: hsl(200, 90%, 90%);
+  --dark-frost-color: hsl(215, 70%, 20%);
+  
+  --light-gloomy-color: hsl(240, 100%, 80%);
+  --dark-gloomy-color: hsl(218, 17%, 25%);
+  
 }
 
 /* Dark theme variables */

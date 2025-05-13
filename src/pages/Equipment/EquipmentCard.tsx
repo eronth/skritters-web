@@ -9,8 +9,7 @@ type Props = {
 };
 
 export default function EquipmentCard({ item }: Props) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [showAverage, setShowAverage] = useState(false);
+  const [showAverage] = useState(false);
 
   const rangeDisplay = () => {
     if (item.range) {
@@ -68,7 +67,7 @@ export default function EquipmentCard({ item }: Props) {
             item.slot == 'onetwo-handed' 
             ? 'One / Two-Handed'
             : item.slot
-          }
+            }
         </div>
       </div>
       <div>{rangeDisplay()}</div>
@@ -77,7 +76,7 @@ export default function EquipmentCard({ item }: Props) {
     
     <div className="effect-section">
       <span className="effect-label">Effect:</span> 
-      <p className="effect-text">{item.effect}</p>
-    </div>
+      <div className="effect-text">{item.effect}</div>
+    </div> 
   </div>);
 };

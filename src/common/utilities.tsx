@@ -24,26 +24,26 @@ const formatModifiers = (modifiers: Modifiers): ReactNode => {
     }
 
     // Turn the diceMap into a list of elements.
-    diceList = Array.from(diceMap.entries()).map(([sides, count]) => {
-      return (<>
-        <PlusDice dice={new Dice(`${count}d${sides}`)} />
-      </>);
+    diceList = Array.from(diceMap.entries()).map(([sides, count], index) => {
+      return <PlusDice key={index} dice={new Dice(`${count}d${sides}`)} />;
     });
   }
   
-  const v = modifiers.removeDice?.reduce((sum, value) => sum + value, 0) ?? 0;
-  const removeDiceList = v ? <> <MinusDice x={v} /></> : null;
+  const rd = modifiers.removeDice?.reduce((sum, value) => sum + value, 0) ?? 0;
+  const removeDiceCount = rd ? <> <MinusDice x={rd} /></> : null;
   const sizeList = modifiers.size?.map((size, index) => {
     return size > 0
-      ? <> <PlusSize x={size} key={index} /></>
-      : <> <MinusSize x={size} key={index} /></>;
+    ? <span key={'size-'+index}> <PlusSize x={size} /></span>
+    : <span key={'size-'+index}> <MinusSize x={size} /></span>
   });
   const sc = modifiers.successes?.reduce((sum, value) => sum + value, 0) ?? 0;
   const successElements = sc ? <span className="test"> +<Success x={sc} /></span> : null;
 
   return (<>
+    {/* 
+    */}
     {diceList}
-    {removeDiceList}
+    {removeDiceCount}
     {sizeList}
     {successElements}
   </>);

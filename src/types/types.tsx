@@ -47,7 +47,6 @@ export class Dice {
       this.sides = sides!;
     }
   }
-
 }
 
 type Modifiers = {
@@ -106,7 +105,7 @@ type Filter = {
 
 type Scenario = {
   name: string;
-  type: 'neutral' | 'assault&guard';
+  type: 'neutral' | 'assault&guard' | 'faceoff';
   setup: ReactNode;
   deployment: ReactNode;
   endConditions: ReactNode;

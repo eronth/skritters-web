@@ -16,8 +16,8 @@ export default function EquipmentCard({ item }: Props) {
       const rangeText = Array.isArray(item.range)
       ? `${item.range[0]} / ${item.range[1]}"`
       : `${item.range}"`;
-      return <><label className="stat-label">Range: </label>
-        <div>{rangeText}</div>
+      return <><label className="stat-label">Range:</label>
+        <div className="stat-value">{rangeText}</div>
       </>
     } else {
       return null;
@@ -29,7 +29,7 @@ export default function EquipmentCard({ item }: Props) {
       return <>
         {item.bonus && (
           <div>
-            <label className="stat-label">Bonus: </label>
+            <label className="stat-label">Bonus:</label>
             <div>
               {formatModifiers(item.bonus)}
               {showAverage && (<>
@@ -70,7 +70,7 @@ export default function EquipmentCard({ item }: Props) {
             }
         </div>
       </div>
-      <div>{rangeDisplay()}</div>
+      <div className="range">{rangeDisplay()}</div>
       <div>{bonusDisplay()}</div>
     </div>
     

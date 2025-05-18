@@ -27,7 +27,7 @@
 .stats-grid {
   margin-top: 8px;
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: 2fr 2fr 2fr;
   gap: 8px;
   font-size: 14px;
 
@@ -39,6 +39,19 @@
   .equip-slot-stat {
     text-transform: capitalize;
   }
+
+  .range {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .stat-label,
+    .stat-value  {
+      text-align: center;
+    }
+  }
+
   .average-bonus {
     font-size: 12px;
     color: hsl(215, 26%, 65%);

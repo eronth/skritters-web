@@ -1,0 +1,4 @@
+.scenario {
+  background-color: color-mix(in srgb, var(--bg-color) 50%, var(--color-mixin) 10%);
+  padding: 0.5em 1em;
+}

@@ -49,6 +49,7 @@ nav {
         --color: var(--selectedColor);
         --backing-color: var(--bg-color);
         font-weight: bold;
+        z-index: 200;
       }
     }
   

@@ -1,0 +1,11 @@
+h4 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: hsl(189, 100%, 86%);
+  text-decoration: underline;
+  font-size: .9em;
+
+  &::before {
+    content: "- ";
+  }
+}

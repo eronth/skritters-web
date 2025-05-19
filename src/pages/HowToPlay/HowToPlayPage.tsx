@@ -10,6 +10,7 @@ import { Dice } from "../../types/types";
 import DiceAndTestsComponent from "./DiceAndTestsComponent";
 import Page from "../Page";
 import Match from "../../common/Match";
+import ActionsRulesComponent from "./ActionsRulesComponent";
 
 export default function HowToPlayPage() {
   
@@ -34,5 +35,6 @@ export default function HowToPlayPage() {
     
     <h1>How to Play</h1>
     <DiceAndTestsComponent />
+    <ActionsRulesComponent />
   </Page>);
 }

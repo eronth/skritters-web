@@ -36,5 +36,11 @@ export default function HowToPlayPage() {
     <h1>How to Play</h1>
     <DiceAndTestsComponent />
     <ActionsRulesComponent />
+    // Defeated and Retreat
+    // Pleasant and Harsh terrain
+    // resources
+    // Keywords
+    // Skritter tags (new page?)
+    // Item Tags
   </Page>);
 }

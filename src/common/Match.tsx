@@ -1,8 +1,8 @@
 
 export default function Match({ plural }: { plural?: boolean }) {
   return (
-    <div className="match">
+    <span className="match">
       Mission{plural ? 's' : ''}
-    </div>
+    </span>
   );
 }

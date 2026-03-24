@@ -78,7 +78,5 @@
   &.gloomy{
   --light-tag-color: var(--light-gloomy-color);
   --dark-tag-color: var(--dark-gloomy-color);
-  }
-
-  
+  } 
 }

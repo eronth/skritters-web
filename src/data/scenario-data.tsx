@@ -169,8 +169,8 @@ const treeUponAHill: Scenario = {
 const bewareOfDogs: Scenario = {
   name: 'Beware of Dogs', type: 'neutral',
   setup: <>
-    This is a <Day /> mission. 
-    If you select this mission during a <Night />, play 
+    This is a <Day /> <Match />.
+    If you select this <Match /> during a <Night />, play
     Midnight Prowl instead.
     <br />
     Place a Dog House in the center of the battlefield. Each player gets one Hound they control, and places it within 1” of the Dog House. Make sure to clearly designate each Hound so you remember which is controlled by which player. 
@@ -202,8 +202,8 @@ const bewareOfDogs: Scenario = {
 const midnightProwl: Scenario = {
   name: 'Midnight Prowl', type: 'neutral',
   setup: <>
-    This is a <Night /> mission.
-    If you select this mission during a <Day />, play
+    This is a <Night /> <Match />.
+    If you select this <Match /> during a <Day />, play
     Beware of Dogs instead.
     <br />
     Each player places two Prowl tokens in the middle of the field. One is a Hunter token and the other is a Shadow token.

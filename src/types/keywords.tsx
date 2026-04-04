@@ -28,6 +28,7 @@ export const ITEM_KEYWORDS = {
   ZAP: 'ZAP',
   GLOOMY: 'GLOOMY',
   METALORPLANT: 'METALORPLANT',
+  DEPLOYABLE: 'DEPLOYABLE',
 } as const;
 type ItemKeyword = typeof ITEM_KEYWORDS[keyof typeof ITEM_KEYWORDS];
 

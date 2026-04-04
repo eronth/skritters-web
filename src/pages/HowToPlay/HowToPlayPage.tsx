@@ -1,16 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Header from "../../common/Header";
-import Action from "../../common/Keywords/rules/action/Action";
-import MinusSize from "../../common/Keywords/rules/roll-modifiers/MinusSize";
-import PlusDice from "../../common/Keywords/rules/roll-modifiers/PlusDice";
-import PlusSize from "../../common/Keywords/rules/roll-modifiers/PlusSize";
-import Success from "../../common/Keywords/rules/roll-modifiers/Success";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Dice } from "../../types/types";
-import DiceAndTestsComponent from "./DiceAndTestsComponent";
 import Page from "../Page";
 import Match from "../../common/Match";
 import ActionsRulesComponent from "./ActionsRulesComponent";
+import DiceAndTestsComponent from "./DiceAndTestsComponent";
+import ResourcesRules from "./ResourcesRules";
+import ItemTagRules from "./ItemTagRules";
 
 export default function HowToPlayPage() {
   
@@ -36,11 +29,10 @@ export default function HowToPlayPage() {
     <h1>How to Play</h1>
     <DiceAndTestsComponent />
     <ActionsRulesComponent />
-    // Defeated and Retreat
     // Pleasant and Harsh terrain
-    // resources
+    <ResourcesRules />
     // Keywords
     // Skritter tags (new page?)
-    // Item Tags
+    <ItemTagRules />
   </Page>);
 }

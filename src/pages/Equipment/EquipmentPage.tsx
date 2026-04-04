@@ -6,6 +6,8 @@ import EquipmentCard from './EquipmentCard';
 import { Equipment, EQUIPMENT_SLOTS, EQUIPMENT_TYPES, EquipmentSlotType, EquipmentType, Filter } from '../../types/types';
 import equipment from '../../data/equipment-data';
 import { ITEM_KEYWORDS, ItemKeyword } from '../../types/keywords';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBullseye, faHandBackFist, faWandSparkles } from '@fortawesome/free-solid-svg-icons';
 import './EquipmentPage.css';
 
 
@@ -151,7 +153,15 @@ export default function EquipmentPage() {
     });
     
     return results;
-  }, [equips, searchTerm, selectedTypes, selectedSlots, sortBy, sortDirection]);
+  }, [
+    equips,
+    searchTerm,
+    selectedTypes,
+    selectedSlots,
+    selectedTags,
+    // sortBy,
+    // sortDirection
+  ]);
 
    // Group equipment by type
    const groupedEquipment = useMemo(() => {

@@ -130,9 +130,10 @@ const handcannon: Equipment = {
   range: 6,
   bonus: {},
   effect: (<>
-    Ignore your target's <Defense /> when making an <Attack /> with
+    Ignore your target's&#32;<Defense /> when making an <Attack /> with
     this weapon. Must use an <Action /> to reload before it can 
-    be used again, and you cannot use this weapon twice in the same activation.
+    be used again, and you cannot use this weapon twice
+    in the same activation.
   </>),
   tags: ['METAL']
 };

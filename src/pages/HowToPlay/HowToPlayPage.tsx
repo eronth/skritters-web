@@ -3,6 +3,7 @@ import Match from "../../common/Match";
 import ActionsRulesComponent from "./ActionsRulesComponent";
 import DiceAndTestsComponent from "./DiceAndTestsComponent";
 import ResourcesRules from "./ResourcesRules";
+import Terrain from "./Terrain";
 import ItemTagRules from "./ItemTagRules";
 
 export default function HowToPlayPage() {
@@ -29,10 +30,11 @@ export default function HowToPlayPage() {
     <h1>How to Play</h1>
     <DiceAndTestsComponent />
     <ActionsRulesComponent />
-    // Pleasant and Harsh terrain
+    <Terrain />
     <ResourcesRules />
-    // Keywords
-    // Skritter tags (new page?)
+    <h2>Taggies and Keywordies!</h2>
+    // TODO: Keywords
+    // TODO: Skritter tags (new page?)
     <ItemTagRules />
   </Page>);
 }

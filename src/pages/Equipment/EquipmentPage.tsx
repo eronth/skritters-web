@@ -5,8 +5,8 @@ import SearchAndFilter from '../../common/SearchAndFilter/SearchAndFilter';
 import EquipmentCard from './EquipmentCard';
 import { Equipment, EQUIPMENT_SLOTS, EQUIPMENT_TYPES, EquipmentSlotType, EquipmentType, Filter } from '../../types/types';
 import equipment from '../../data/equipment-data';
-import './EquipmentPage.css';
 import { ITEM_KEYWORDS, ItemKeyword } from '../../types/keywords';
+import './EquipmentPage.css';
 
 
 

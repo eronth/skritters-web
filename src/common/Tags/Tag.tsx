@@ -1,4 +1,5 @@
 import { Keyword } from "../../types/keywords";
+import './Tags.css';
 
 type Props = {
   tag: Keyword;

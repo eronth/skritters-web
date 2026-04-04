@@ -1,6 +1,15 @@
-.rules .page nav.navtabs { /* specificity needed to override previous rules */
-  /* margin: 3rem; */
-  margin-inline: 0; /* we want to cancel the indent from rules page. */
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0 0 0 / 0.4);
+  z-index: 999;
 }
 
 nav {
@@ -29,56 +38,66 @@ nav {
     }
   }
 
-  &.navtabs {
+  &.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background-color: var(--bg-color);
+    border-right: 1px solid var(--border-color);
     display: flex;
-    grid-template-columns: repeat(8, 1fr);
-    justify-content: center;
-    
+    flex-direction: column;
+    padding-top: 0.5rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+
+    &.sidebar-open {
+      transform: translateX(0);
+      box-shadow: 4px 0 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar-close {
+      align-self: flex-end;
+      margin: 0.5rem 1rem;
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: var(--text-color);
+      padding: 0.25rem 0.5rem;
+      line-height: 1;
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+
     a {
-      flex: 1;
-      display: inline-block;
-      color: var(--color);
-  
+      text-decoration: none;
+      color: var(--text-color);
+
       &.unselected-tab div {
-        --color: var(--unselectedColor);
-        --backing-color: var(--unselectedBackgroundColor);
-        border-bottom: 1px solid var(--selectedColor);
+        border-left: 3px solid transparent;
+        transition: background-color 0.15s, border-color 0.15s;
+
+        &:hover {
+          background-color: color-mix(in srgb, var(--bg-color) 70%, var(--color-mixin) 15%);
+          border-left-color: var(--border-color);
+        }
       }
 
       &.selected-tab div {
-        --color: var(--selectedColor);
-        --backing-color: var(--bg-color);
+        color: var(--primary-color);
         font-weight: bold;
-        z-index: 200;
+        border-left: 3px solid var(--primary-color);
+        background-color: color-mix(in srgb, var(--bg-color) 85%, var(--primary-color) 15%);
       }
     }
-  
+
     div {
-      --selectedColor: var(--primary-color);
-      --unselectedColor: var(--text-color);
-      --unselectedBackgroundColor: color-mix(in srgb, var(--bg-color) 50%, var(--color-mixin) 10%);
-      --top-bottom-padding: 1em;
-      
-      /* Leave values alone so they are passed in */
-      --color: var(--selectedColor);
-      --backing-color: inherit;
-      background-color: var(--backing-color);
-      
-      /* Make tab size uniform if one has a newline */
-      padding: var(--top-bottom-padding) .25em;
-      height: calc(100% - 2 * var(--top-bottom-padding));
-      
-      /* Center text */
-      display: grid;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    
-      /* Set up tab looking borders */
-      border: 1px solid var(--color);
-      border-bottom: 0;
-      --border-rad: 10px;
-      border-radius: var(--border-rad) var(--border-rad) 0 0;
+      padding: 0.875em 1.5em;
     }
   }
 }

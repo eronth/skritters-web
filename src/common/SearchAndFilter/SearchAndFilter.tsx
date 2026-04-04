@@ -1,7 +1,7 @@
 import { Filter } from '../../types/types';
 import Filtering from './Filtering/Filtering';
 import Search from './Search/Search';
-import './Search.css';
+import './SearchAndFilter.css';
 
 type Props = {
   searchTermState: [string, React.Dispatch<React.SetStateAction<string>>];

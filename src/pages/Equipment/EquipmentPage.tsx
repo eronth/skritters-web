@@ -170,6 +170,17 @@ export default function EquipmentPage() {
   }, [filteredEquipment]);
 
 
+  const categorySectionIcon = (category: string) => {
+    switch (category.toLowerCase()) {
+      case 'ranged': return <FontAwesomeIcon icon={faBullseye} />;
+      case 'brawl': return <FontAwesomeIcon icon={faHandBackFist} />;
+      case 'weave': return <FontAwesomeIcon icon={faWandSparkles} />;
+      case 'garb': return null; //<FontAwesomeIcon icon={faShield} />;
+      default: return null;
+    }
+  };
+
+
   return (<Page tab={'equipment'}>
     {/* Search and Filters */}
     <SearchAndFilter
@@ -192,7 +203,9 @@ export default function EquipmentPage() {
       return (
         <div key={type} className="equipment-group">
           <div className="group-header">
-            <h2 className="group-title">{type}</h2>
+            <h2 className="group-title">
+              {categorySectionIcon(type)} {type}
+            </h2>
             <span className="group-count">{items.length}</span>
           </div>
           

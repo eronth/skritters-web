@@ -1,6 +1,6 @@
 import { Filter } from '../../types/types';
-import Filtering from './Filtering';
-import Search from './Search';
+import Filtering from './Filtering/Filtering';
+import Search from './Search/Search';
 import './Search.css';
 
 type Props = {

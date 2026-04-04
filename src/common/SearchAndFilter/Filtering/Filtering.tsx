@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Filter } from "../../types/types";
+import { Filter } from "../../../types/types";
 import './Filtering.css';
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 

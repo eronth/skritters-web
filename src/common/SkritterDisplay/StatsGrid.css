@@ -1,0 +1,83 @@
+.stats-container {
+  container-type: inline-size;
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 0;
+
+    .stat-cell {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border-color);
+  
+      &:last-child {
+        border-right: none;
+      }
+
+      .stat-header {
+        background-color: var(--primary-light);
+        color: var(--text-color);
+        font-weight: bold;
+        text-align: center;
+        padding: 4px 2px;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.8rem;
+      }
+    
+      .stat-value {
+        text-align: center;
+        padding: 4px 2px;
+        font-size: 0.85rem;
+      }
+    }
+  }
+
+
+
+  /* ── Narrow layout (e.g. inside the source panel sidebar) ── */
+  @container (max-width: 420px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+
+      .stat-cell {
+        border-right: 1px solid var(--border-color);
+        border-top: 1px solid var(--border-color);
+
+        /* Row 1: combat dice stats */
+        &.stat-cell--ranged  { order: 1; }
+        &.stat-cell--brawl   { order: 2; }
+        &.stat-cell--weave   { order: 3; }
+        &.stat-cell--defense { order: 4; }
+    
+        /* Row 2: simple numeric stats */
+        &.stat-cell--movement { order: 5; }
+        &.stat-cell--heart    { order: 6; }
+        &.stat-cell--size     { order: 7; }
+        &.stat-cell--idk      { order: 8; }
+  
+        
+        /* First row has no top border */
+        &.stat-cell--ranged,
+        &.stat-cell--brawl,
+        &.stat-cell--weave,
+        &.stat-cell--defense {
+          border-top: none;
+        }
+
+        /* Last cell of each row has no right border */
+        &.stat-cell--defense,
+        /* &.stat-cell--size, */
+        &.stat-cell--idk {
+          border-right: none;
+        }
+      }
+    }
+
+
+  }
+}

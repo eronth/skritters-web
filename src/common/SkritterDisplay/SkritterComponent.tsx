@@ -1,7 +1,7 @@
 import { Skritter } from "../../types/types";
 import CreatureTags from "../Tags/SkritterTagsComponent";
+import StatsGrid from "./StatsGrid";
 import './SkritterComponent.css';
-import StatsTable from "./StatsTable";
 
 type Props = {
   skritter: Skritter;
@@ -18,7 +18,7 @@ export default function SkritterComponent({ skritter }: Props) {
       
       <p className="skritter-description">{skritter.description}</p>
       
-      <StatsTable stats={skritter.stats} />
+      <StatsGrid stats={skritter.stats} />
       
       {/* Abilities section */}
       <div>

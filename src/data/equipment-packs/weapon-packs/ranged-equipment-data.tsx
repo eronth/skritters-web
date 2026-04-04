@@ -146,7 +146,8 @@ const sixShoota: Equipment = {
     dice: [{...d1d6}]
   },
   effect: (<>
-    You can only make 6 <Attack plural /> with this weapon during a <Match />.
+    You can only make 6 <Attack plural /> with
+    this weapon during a <Match />.
   </>),
   tags: ['METALORPLANT']
 };

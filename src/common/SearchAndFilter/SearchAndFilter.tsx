@@ -6,13 +6,14 @@ import './SearchAndFilter.css';
 type Props = {
   searchTermState: [string, React.Dispatch<React.SetStateAction<string>>];
   filters?: Filter[];
+  stacked?: boolean;
 };
 
-export default function SearchAndFilter({ searchTermState, filters }: Props) {
+export default function SearchAndFilter({ searchTermState, filters, stacked }: Props) {
   return (<>
     <div className="search-filter-container">
       <Search searchTermState={searchTermState} />
-      <Filtering filters={filters} />
+      <Filtering filters={filters} stacked={stacked} />
     </div>
   </>);
 }

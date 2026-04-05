@@ -107,7 +107,11 @@ export default function EquipmentSourceList({ usedKeys, allowDuplicates }: Props
 
   return (
     <div ref={setNodeRef} className="source-list">
-      <SearchAndFilter searchTermState={[searchTerm, setSearchTerm]} filters={filters} />
+      <SearchAndFilter
+        searchTermState={[searchTerm, setSearchTerm]}
+        filters={filters}
+        stacked
+      />
       <div className="source-grid">
         {filtered.map(({ key, item }) => (
           <DraggableEquipment

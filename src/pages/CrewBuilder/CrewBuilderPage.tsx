@@ -36,7 +36,7 @@ function makeEquipmentSlots(count: number): EquipmentSlotData[] {
 }
 
 const DEFAULT_MAX_SLOTS = 4;
-const DEFAULT_MAX_EQUIPMENT = 2;
+const DEFAULT_MAX_EQUIPMENT = 4;
 
 function makeInitialCrewSlots(): CrewSlotData[] {
   return Array.from({ length: DEFAULT_MAX_SLOTS }, () => ({

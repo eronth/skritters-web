@@ -22,16 +22,17 @@ function DraggableSkritter({ skritterKey, skritter, disabled }: DraggableProps) 
 
   return (
     <div
-      ref={setNodeRef}
-      {...attributes}
-      {...listeners}
       className={[
         'source-item',
         disabled ? 'source-item--disabled' : '',
         isDragging ? 'source-item--dragging' : '',
       ].filter(Boolean).join(' ')}
     >
-      <SkritterComponent skritter={skritter} />
+      <SkritterComponent
+        skritter={skritter}
+        draggable={true}
+        dragData={{ setDragRef: setNodeRef, attributes, listeners }}
+      />
     </div>
   );
 }

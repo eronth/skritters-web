@@ -30,16 +30,17 @@ function DraggableEquipment({ equipmentKey, item, disabled }: DraggableProps) {
 
   return (
     <div
-      ref={setNodeRef}
-      {...attributes}
-      {...listeners}
       className={[
         'source-item',
         disabled ? 'source-item--disabled' : '',
         isDragging ? 'source-item--dragging' : '',
       ].filter(Boolean).join(' ')}
     >
-      <EquipmentCard item={item} />
+      <EquipmentCard
+        item={item}
+        draggable={true}
+        dragData={{ setDragRef: setNodeRef, attributes, listeners }}
+      />
     </div>
   );
 }

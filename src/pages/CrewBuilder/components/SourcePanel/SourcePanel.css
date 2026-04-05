@@ -6,6 +6,7 @@
 
 .source-panel {
   --source-panel-width: 420px;
+  --source-panel-toggle-width: 38px;
   position: fixed;
   right: 0;
   top: 0;
@@ -15,22 +16,30 @@
   flex-direction: row;
   align-items: flex-start;
 
+  /* Always full-width; slide off-screen when closed */
+  width: var(--source-panel-width);
+  background: var(--bg-color);
+  border-left: 1px solid transparent;
+  box-shadow: none;
+  pointer-events: none;
+  transform: translateX(calc(100% - var(--source-panel-toggle-width)));
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+
   &.source-panel--open {
-    width: var(--source-panel-width);
-    background: var(--bg-color);
-    border-left: 1px solid color-mix(in srgb, var(--text-color) 30%, transparent 70%);
+    transform: translateX(0);
+    border-left-color: color-mix(in srgb, var(--text-color) 30%, transparent 70%);
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.12);
-  }
-  
-  &.source-panel--closed {
-    width: auto;
-    pointer-events: none;
+    pointer-events: auto;
   }
 
+  --source-panel-toggle-border:
+  1px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
   .source-panel-toggle {
+
     pointer-events: all;
+    flex-shrink: 0;
     background: var(--bg-color);
-    border: 1px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
+    border: var(--source-panel-toggle-border);
     border-right: none;
     border-radius: 4px 0 0 4px;
     cursor: pointer;
@@ -39,10 +48,23 @@
     padding: 8px 10px;
     margin-top: 48px;
     box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.1);
-    transition: background 0.15s;
+    transition: background 0.15s, transform 0.3s ease-out;
   
     &:hover {
       background: color-mix(in srgb, var(--text-color) 8%, transparent 92%);
+    }
+
+    .icon {
+      transition: transform .5s ease-out;
+    }
+  }
+
+  &.source-panel--open .source-panel-toggle {
+    border-left: 0;
+    border-right: var(--source-panel-toggle-border);
+    
+    .icon {
+      transform: rotate(180deg);
     }
   }
   

@@ -32,39 +32,37 @@ export default function SourcePanel({
         onClick={onToggleOpen}
         title={isOpen ? 'Collapse source panel' : 'Expand source panel'}
       >
-        {isOpen ? '▶' : '◀'}
+        <div className='icon'>▶</div>
       </button>
-      {isOpen && (
-        <div className="source-panel-content">
-          <div className="source-tabs">
-            <button
-              className={`source-tab ${activeTab === 'skritters' ? 'source-tab--active' : ''}`}
-              onClick={() => onChangeTab('skritters')}
-            >
-              Skritters
-            </button>
-            <button
-              className={`source-tab ${activeTab === 'equipment' ? 'source-tab--active' : ''}`}
-              onClick={() => onChangeTab('equipment')}
-            >
-              Equipment
-            </button>
-          </div>
-          <div className="source-panel-body">
-            {activeTab === 'skritters' ? (
-              <SkritterSourceList
-                usedKeys={usedSkritterKeys}
-                allowDuplicates={allowDuplicateSkritters}
-              />
-            ) : (
-              <EquipmentSourceList
-                usedKeys={usedEquipmentKeys}
-                allowDuplicates={allowDuplicateEquipment}
-              />
-            )}
-          </div>
+      <div className="source-panel-content">
+        <div className="source-tabs">
+          <button
+            className={`source-tab ${activeTab === 'skritters' ? 'source-tab--active' : ''}`}
+            onClick={() => onChangeTab('skritters')}
+          >
+            Skritters
+          </button>
+          <button
+            className={`source-tab ${activeTab === 'equipment' ? 'source-tab--active' : ''}`}
+            onClick={() => onChangeTab('equipment')}
+          >
+            Equipment
+          </button>
         </div>
-      )}
+        <div className="source-panel-body">
+          {activeTab === 'skritters' ? (
+            <SkritterSourceList
+              usedKeys={usedSkritterKeys}
+              allowDuplicates={allowDuplicateSkritters}
+            />
+          ) : (
+            <EquipmentSourceList
+              usedKeys={usedEquipmentKeys}
+              allowDuplicates={allowDuplicateEquipment}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

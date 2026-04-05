@@ -1,7 +1,68 @@
 /* ── Crew Panel ─────────────────────────────────────────────────────────── */
 
-.crew-panel-title {
-  margin-bottom: 8px;
+.crew-management {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent 80%);
+}
+
+.crew-switcher {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.crew-select {
+  flex: 1;
+  padding: 4px 8px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.new-crew-btn {
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  background: none;
+  color: var(--text-color);
+  border: 1px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: color-mix(in srgb, var(--text-color) 8%, transparent 92%);
+  }
+}
+
+.crew-name-input {
+  width: 100%;
+  padding: 5px 10px;
+  font-size: 1.15rem;
+  font-weight: bold;
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.15s, background 0.15s;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--text-color) 30%, transparent 70%);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: color-mix(in srgb, var(--text-color) 60%, transparent 40%);
+    background: color-mix(in srgb, var(--card-bg) 60%, transparent 40%);
+  }
 }
 
 .crew-slots-list {

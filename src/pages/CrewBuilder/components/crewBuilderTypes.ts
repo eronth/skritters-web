@@ -1,5 +1,15 @@
 import { Equipment, Skritter } from '../../../types/types';
 
+export type CrewData = {
+  id: string;
+  name: string;
+  crewSlots: CrewSlotData[];
+  maxSlots: number;
+  globalMaxEquipment: number;
+  allowDuplicateSkritters: boolean;
+  allowDuplicateEquipment: boolean;
+};
+
 export type EquipmentSlotData = {
   id: string;
   equipment: Equipment | null;

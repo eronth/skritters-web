@@ -9,6 +9,9 @@ type Props = {
   allowDuplicateSkritters: boolean;
   allowDuplicateEquipment: boolean;
   maxSlots: number;
+  crews: { id: string; name: string }[];
+  activeCrewId: string;
+  crewName: string;
   onToggleDupSkritters: () => void;
   onToggleDupEquipment: () => void;
   onChangeMaxSlots: (value: number) => void;
@@ -17,6 +20,9 @@ type Props = {
   onRemoveEquipment: (crewSlotId: string, equipSlotId: string) => void;
   onChangeSlotMaxEquipment: (slotId: string, value: number | null) => void;
   onRemoveUnusedEquipmentSlots: (slotId: string) => void;
+  onAddCrew: () => void;
+  onSwitchCrew: (crewId: string) => void;
+  onRenameCrew: (name: string) => void;
 };
 
 export default function CrewPanel({
@@ -25,6 +31,9 @@ export default function CrewPanel({
   allowDuplicateSkritters,
   allowDuplicateEquipment,
   maxSlots,
+  crews,
+  activeCrewId,
+  crewName,
   onToggleDupSkritters,
   onToggleDupEquipment,
   onChangeMaxSlots,
@@ -33,10 +42,35 @@ export default function CrewPanel({
   onRemoveEquipment,
   onChangeSlotMaxEquipment,
   onRemoveUnusedEquipmentSlots,
+  onAddCrew,
+  onSwitchCrew,
+  onRenameCrew,
 }: Props) {
   return (
     <div className="crew-panel">
-      <h2 className="crew-panel-title">Crew</h2>
+      <div className="crew-management">
+        <div className="crew-switcher">
+          {crews.length > 1 && (
+            <select
+              className="crew-select"
+              value={activeCrewId}
+              onChange={e => onSwitchCrew(e.target.value)}
+            >
+              {crews.map(c => (
+                <option key={c.id} value={c.id}>{c.name}</option>
+              ))}
+            </select>
+          )}
+          <button className="new-crew-btn" onClick={onAddCrew}>+ New Crew</button>
+        </div>
+        <input
+          className="crew-name-input"
+          value={crewName}
+          onChange={e => onRenameCrew(e.target.value)}
+          placeholder="Crew name…"
+          aria-label="Crew name"
+        />
+      </div>
       <CrewSettings
         allowDuplicateSkritters={allowDuplicateSkritters}
         allowDuplicateEquipment={allowDuplicateEquipment}
@@ -63,3 +97,4 @@ export default function CrewPanel({
     </div>
   );
 }
+

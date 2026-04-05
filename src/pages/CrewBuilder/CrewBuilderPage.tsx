@@ -12,6 +12,7 @@ import Page from '../Page';
 import CrewPanel from './components/CrewPanel/CrewPanel';
 import SourcePanel from './components/SourcePanel/SourcePanel';
 import {
+  CrewData,
   CrewSlotData,
   DragData,
   DropCrewSlotData,
@@ -47,12 +48,28 @@ function makeInitialCrewSlots(): CrewSlotData[] {
   }));
 }
 
+function makeNewCrew(existingCount: number): CrewData {
+  return {
+    id: newId('crew'),
+    name: `Crew ${existingCount + 1}`,
+    crewSlots: makeInitialCrewSlots(),
+    maxSlots: DEFAULT_MAX_SLOTS,
+    globalMaxEquipment: DEFAULT_MAX_EQUIPMENT,
+    allowDuplicateSkritters: false,
+    allowDuplicateEquipment: false,
+  };
+}
+
+type CrewsState = {
+  list: CrewData[];
+  activeId: string;
+};
+
 export default function CrewBuilderPage() {
-  const [crewSlots, setCrewSlots] = useState<CrewSlotData[]>(makeInitialCrewSlots);
-  const [allowDuplicateSkritters, setAllowDuplicateSkritters] = useState(false);
-  const [allowDuplicateEquipment, setAllowDuplicateEquipment] = useState(false);
-  const [maxSlots, setMaxSlots] = useState(DEFAULT_MAX_SLOTS);
-  const [globalMaxEquipment, setGlobalMaxEquipment] = useState(DEFAULT_MAX_EQUIPMENT);
+  const [crewsState, setCrewsState] = useState<CrewsState>(() => {
+    const first = makeNewCrew(0);
+    return { list: [first], activeId: first.id };
+  });
   const [sourcePanelOpen, setSourcePanelOpen] = useState(true);
   const [activeTab, setActiveTab] = useState<'skritters' | 'equipment'>('skritters');
   const [activeDrag, setActiveDrag] = useState<DragData | null>(null);
@@ -60,6 +77,23 @@ export default function CrewBuilderPage() {
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } })
   );
+
+  const activeCrew = crewsState.list.find(c => c.id === crewsState.activeId)!;
+  const { crewSlots, globalMaxEquipment, allowDuplicateSkritters, allowDuplicateEquipment } = activeCrew;
+
+  function updateActiveCrew(updater: (crew: CrewData) => CrewData) {
+    setCrewsState(prev => ({
+      ...prev,
+      list: prev.list.map(c => c.id === prev.activeId ? updater(c) : c),
+    }));
+  }
+
+  function setCrewSlots(updater: CrewSlotData[] | ((prev: CrewSlotData[]) => CrewSlotData[])) {
+    updateActiveCrew(c => ({
+      ...c,
+      crewSlots: typeof updater === 'function' ? updater(c.crewSlots) : updater,
+    }));
+  }
 
   const usedSkritterKeys = useMemo(
     () => new Set(crewSlots.map(s => s.skritterKey).filter((k): k is string => k !== null)),
@@ -92,30 +126,33 @@ export default function CrewBuilderPage() {
   }
 
   function handleChangeMaxSlots(newMax: number) {
-    setMaxSlots(newMax);
-    setCrewSlots(prev => {
-      if (newMax > prev.length) {
-        const additional = Array.from({ length: newMax - prev.length }, () => ({
+    updateActiveCrew(crew => {
+      let newCrewSlots = crew.crewSlots;
+      if (newMax > newCrewSlots.length) {
+        const additional = Array.from({ length: newMax - newCrewSlots.length }, () => ({
           id: newId('crew-slot'),
           skritter: null,
           skritterKey: null,
-          equipmentSlots: makeEquipmentSlots(globalMaxEquipment),
+          equipmentSlots: makeEquipmentSlots(crew.globalMaxEquipment),
           maxEquipmentOverride: null,
         }));
-        return [...prev, ...additional];
+        newCrewSlots = [...newCrewSlots, ...additional];
+      } else {
+        newCrewSlots = newCrewSlots.slice(0, newMax);
       }
-      return prev.slice(0, newMax);
+      return { ...crew, maxSlots: newMax, crewSlots: newCrewSlots };
     });
   }
 
   function handleChangeGlobalMaxEquipment(newMax: number) {
-    setGlobalMaxEquipment(newMax);
-    setCrewSlots(prev =>
-      prev.map(slot => {
+    updateActiveCrew(crew => ({
+      ...crew,
+      globalMaxEquipment: newMax,
+      crewSlots: crew.crewSlots.map(slot => {
         if (slot.maxEquipmentOverride !== null) return slot;
         return resizeEquipmentSlots(slot, newMax);
-      })
-    );
+      }),
+    }));
   }
 
   function handleChangeSlotMaxEquipment(slotId: string, value: number | null) {
@@ -161,6 +198,23 @@ export default function CrewBuilderPage() {
         };
       })
     );
+  }
+
+  // ── Crew management ──────────────────────────────────────────────────────
+
+  function handleAddCrew() {
+    setCrewsState(prev => {
+      const crew = makeNewCrew(prev.list.length);
+      return { list: [...prev.list, crew], activeId: crew.id };
+    });
+  }
+
+  function handleSwitchCrew(crewId: string) {
+    setCrewsState(prev => ({ ...prev, activeId: crewId }));
+  }
+
+  function handleRenameCrew(name: string) {
+    updateActiveCrew(c => ({ ...c, name }));
   }
 
   // ── Drag handlers ────────────────────────────────────────────────────────
@@ -299,18 +353,24 @@ export default function CrewBuilderPage() {
           <div className="crew-builder-left">
             <CrewPanel
               crewSlots={crewSlots}
-              globalMaxEquipment={globalMaxEquipment}
+              globalMaxEquipment={activeCrew.globalMaxEquipment}
               allowDuplicateSkritters={allowDuplicateSkritters}
               allowDuplicateEquipment={allowDuplicateEquipment}
-              maxSlots={maxSlots}
-              onToggleDupSkritters={() => setAllowDuplicateSkritters(p => !p)}
-              onToggleDupEquipment={() => setAllowDuplicateEquipment(p => !p)}
+              maxSlots={activeCrew.maxSlots}
+              crews={crewsState.list.map(c => ({ id: c.id, name: c.name }))}
+              activeCrewId={crewsState.activeId}
+              crewName={activeCrew.name}
+              onToggleDupSkritters={() => updateActiveCrew(c => ({ ...c, allowDuplicateSkritters: !c.allowDuplicateSkritters }))}
+              onToggleDupEquipment={() => updateActiveCrew(c => ({ ...c, allowDuplicateEquipment: !c.allowDuplicateEquipment }))}
               onChangeMaxSlots={handleChangeMaxSlots}
               onChangeGlobalMaxEquipment={handleChangeGlobalMaxEquipment}
               onRemoveSkritter={handleRemoveSkritter}
               onRemoveEquipment={handleRemoveEquipment}
               onChangeSlotMaxEquipment={handleChangeSlotMaxEquipment}
               onRemoveUnusedEquipmentSlots={handleRemoveUnusedEquipmentSlots}
+              onAddCrew={handleAddCrew}
+              onSwitchCrew={handleSwitchCrew}
+              onRenameCrew={handleRenameCrew}
             />
           </div>
           <SourcePanel

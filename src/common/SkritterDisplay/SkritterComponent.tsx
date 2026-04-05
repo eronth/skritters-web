@@ -31,7 +31,19 @@ export default function SkritterComponent({
 }: Props) {
 
   return (
-    <div className="skritter-card">
+    <div className={[
+      "skritter-card",
+      onRemoveSkritter ? "skritter-card--removable" : "",
+    ].filter(Boolean).join(' ')}>
+      {onRemoveSkritter && (
+        <button
+          className="remove-btn skritter-card-remove"
+          onClick={onRemoveSkritter}
+          title="Remove Skritter"
+        >
+          ✕
+        </button>
+      )}
       <div className="skritter-header">
         <h2 className="skritter-title">
           {draggable && (<div
@@ -45,13 +57,6 @@ export default function SkritterComponent({
           {skritter.name}
         </h2>
         <CreatureTags tags={skritter.tags} />
-        {onRemoveSkritter && <button
-          className="remove-btn"
-          onClick={onRemoveSkritter}
-          title="Remove Skritter"
-        >
-          ✕
-        </button>}
       </div>
       
       <p className="skritter-description">{skritter.description}</p>

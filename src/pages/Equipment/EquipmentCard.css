@@ -4,6 +4,10 @@
   background-color: color-mix(in srgb, var(--card-bg) 90%, var(--color-mixin) 10%);
   padding: 12px;
   transition: box-shadow 0.2s;
+  &.equipment-card--removable {
+    padding-top: 1.5em;
+  }
+
   h3 {
     margin-bottom: 0;
   }
@@ -20,6 +24,8 @@
     .equipment-name {
       font-weight: bold;
       font-size: 18px;
+      display: flex;
+      flex-direction: row;
     } 
   }
 }

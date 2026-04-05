@@ -44,23 +44,16 @@ export default function EquipmentSlot({ crewSlotId, slot, onRemove }: Props) {
       ].filter(Boolean).join(' ')}
     >
       {slot.equipment ? (
-        <>
-          <div className="equip-slot-controls">
-            <div
-              ref={setDragRef}
-              {...attributes}
-              {...listeners}
-              className="drag-handle"
-              title="Drag to remove"
-            >
-              ⠿
-            </div>
-            <button className="remove-btn" onClick={onRemove} title="Remove equipment">
-              ✕
-            </button>
-          </div>
-          <EquipmentCard item={slot.equipment} />
-        </>
+        <EquipmentCard
+          item={slot.equipment}
+          onRemove={onRemove}
+          draggable={true}
+          dragData={{
+            setDragRef,
+            attributes,
+            listeners,
+          }}
+        />
       ) : (
         <div className="equip-slot-empty-label">Drop equipment here</div>
       )}

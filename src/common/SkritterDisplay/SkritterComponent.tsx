@@ -9,7 +9,7 @@ type SimpleProps = {
   skritter: Skritter;
   draggable?: false;
   dragData?: never;
-  onRemoveSkritter?: () => void;
+  onRemove?: () => void;
 };
 type DraggableProps = {
   skritter: Skritter;
@@ -19,7 +19,7 @@ type DraggableProps = {
     attributes: React.HTMLAttributes<HTMLElement>;
     listeners: SyntheticListenerMap | undefined;
   };
-  onRemoveSkritter?: () => void;
+  onRemove?: () => void;
 };
 
 export default function SkritterComponent({
@@ -27,18 +27,18 @@ export default function SkritterComponent({
   draggable,
   // safe: only used when draggable=true
   dragData = {} as DraggableProps['dragData'],
-  onRemoveSkritter,
+  onRemove,
 }: Props) {
 
   return (
     <div className={[
       "skritter-card",
-      onRemoveSkritter ? "skritter-card--removable" : "",
+      onRemove ? "skritter-card--removable" : "",
     ].filter(Boolean).join(' ')}>
-      {onRemoveSkritter && (
+      {onRemove && (
         <button
           className="remove-btn skritter-card-remove"
-          onClick={onRemoveSkritter}
+          onClick={onRemove}
           title="Remove Skritter"
         >
           ✕

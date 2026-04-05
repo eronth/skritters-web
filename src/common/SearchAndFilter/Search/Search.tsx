@@ -1,3 +1,5 @@
+import './Search.css';
+
 type Props = {
   searchTermState: [string, React.Dispatch<React.SetStateAction<string>>];
 };

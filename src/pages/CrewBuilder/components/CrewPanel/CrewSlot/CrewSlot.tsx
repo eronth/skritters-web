@@ -2,6 +2,8 @@ import { useDraggable, useDroppable } from '@dnd-kit/core';
 import SkritterCard from '../../../../../common/SkritterDisplay/SkritterCard';
 import EquipmentSlot from '../EquipmentSlot/EquipmentSlot';
 import { CrewSlotData, DropCrewSlotData } from '../../crewBuilderTypes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import './CrewSlot.css';
 
 type Props = {
@@ -10,6 +12,7 @@ type Props = {
   onRemoveSkritter: () => void;
   onRemoveEquipment: (equipSlotId: string) => void;
   onChangeMaxEquipment: (value: number | null) => void;
+  onRemoveUnusedEquipmentSlots: () => void;
 };
 
 export default function CrewSlot({
@@ -18,6 +21,7 @@ export default function CrewSlot({
   onRemoveSkritter,
   onRemoveEquipment,
   onChangeMaxEquipment,
+  onRemoveUnusedEquipmentSlots,
 }: Props) {
   const dropData: DropCrewSlotData = { type: 'crew-slot', slotId: slot.id };
 
@@ -36,8 +40,6 @@ export default function CrewSlot({
     },
     disabled: !slot.skritter,
   });
-
-  const effectiveMax = slot.maxEquipmentOverride ?? globalMaxEquipment;
 
   return (
     <div
@@ -65,29 +67,30 @@ export default function CrewSlot({
           <div className="equip-slots-section">
             <div className="equip-slots-header">
               <span className="equip-slots-label">Equipment</span>
-              <label
-                className="equip-max-label"
-                title={
-                  slot.maxEquipmentOverride !== null
-                    ? 'Per-slot override active'
-                    : 'Using global default'
-                }
-              >
-                Max:{' '}
-                <input
-                  type="number"
-                  className="equip-max-input"
-                  min={0}
-                  max={10}
-                  value={effectiveMax}
-                  onChange={e => {
-                    const v = parseInt(e.target.value, 10);
-                    if (!isNaN(v) && v >= 0) {
-                      onChangeMaxEquipment(v === globalMaxEquipment ? null : v);
-                    }
+              <div className="equip-slots-actions">
+
+                <button
+                  type="button"
+                  className="equip-slot-btn"
+                  onClick={() => {
+                    const newCount = slot.equipmentSlots.length + 1;
+                    onChangeMaxEquipment(newCount === globalMaxEquipment ? null : newCount);
                   }}
-                />
-              </label>
+                >
+                  <FontAwesomeIcon icon={faPlus} />
+                  Add One Equipment Slot
+                </button>
+
+                <button
+                  type="button"
+                  className="equip-slot-btn equip-slot-btn--remove"
+                  onClick={onRemoveUnusedEquipmentSlots}
+                  disabled={slot.equipmentSlots.every(es => es.equipment !== null)}
+                >
+                  <FontAwesomeIcon icon={faMinus} />
+                  Remove Unused Equipment Slots
+                </button>
+              </div>
             </div>
             <div className="equip-slots-list">
               {slot.equipmentSlots.map(es => (

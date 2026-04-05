@@ -134,6 +134,21 @@ export default function CrewBuilderPage() {
     );
   }
 
+  function handleRemoveUnusedEquipmentSlots(slotId: string) {
+    setCrewSlots(prev =>
+      prev.map(slot => {
+        if (slot.id !== slotId) return slot;
+        const filledSlots = slot.equipmentSlots.filter(es => es.equipment !== null);
+        const newCount = filledSlots.length;
+        return {
+          ...slot,
+          equipmentSlots: filledSlots,
+          maxEquipmentOverride: newCount === globalMaxEquipment ? null : newCount,
+        };
+      })
+    );
+  }
+
   function handleRemoveEquipment(crewSlotId: string, equipSlotId: string) {
     setCrewSlots(prev =>
       prev.map(s => {
@@ -295,6 +310,7 @@ export default function CrewBuilderPage() {
               onRemoveSkritter={handleRemoveSkritter}
               onRemoveEquipment={handleRemoveEquipment}
               onChangeSlotMaxEquipment={handleChangeSlotMaxEquipment}
+              onRemoveUnusedEquipmentSlots={handleRemoveUnusedEquipmentSlots}
             />
           </div>
           <SourcePanel

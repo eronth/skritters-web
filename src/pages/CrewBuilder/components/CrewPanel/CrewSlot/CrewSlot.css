@@ -40,3 +40,70 @@
   }
 }
 
+/* ── Equipment Slots Section ────────────────────────────────────────────── */
+.equip-slots-section {
+  margin-top: 8px;
+  padding: 6px 4px 4px;
+  border-top: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent 80%);
+
+  .equip-slots-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 6px;
+
+    .equip-slots-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0.75;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .equip-slots-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      /* align to the right */
+      justify-content: flex-end;
+    
+      .equip-slot-btn {
+        background: none;
+        border: 1px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
+        border-radius: 4px;
+        padding: 3px 8px;
+        font-size: 0.78rem;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: background 0.15s, border-color 0.15s;
+      
+        &:hover:not(:disabled) {
+          background: color-mix(in srgb, var(--text-color) 8%, transparent 92%);
+        }
+      
+        &:disabled {
+          opacity: 0.35;
+          cursor: default;
+        }
+      
+        &.equip-slot-btn--remove {
+          border-color: color-mix(in srgb, var(--error-color, #c0392b) 50%, transparent 50%);
+          color: var(--error-color, #c0392b);
+      
+          &:hover:not(:disabled) {
+            background: color-mix(in srgb, var(--error-color, #c0392b) 8%, transparent 92%);
+          }
+        }
+
+        svg {
+          margin-right: .5em;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+

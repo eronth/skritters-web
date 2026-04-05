@@ -16,6 +16,7 @@ type Props = {
   onRemoveSkritter: (slotId: string) => void;
   onRemoveEquipment: (crewSlotId: string, equipSlotId: string) => void;
   onChangeSlotMaxEquipment: (slotId: string, value: number | null) => void;
+  onRemoveUnusedEquipmentSlots: (slotId: string) => void;
 };
 
 export default function CrewPanel({
@@ -31,6 +32,7 @@ export default function CrewPanel({
   onRemoveSkritter,
   onRemoveEquipment,
   onChangeSlotMaxEquipment,
+  onRemoveUnusedEquipmentSlots,
 }: Props) {
   return (
     <div className="crew-panel">
@@ -54,6 +56,7 @@ export default function CrewPanel({
             onRemoveSkritter={() => onRemoveSkritter(slot.id)}
             onRemoveEquipment={equipSlotId => onRemoveEquipment(slot.id, equipSlotId)}
             onChangeMaxEquipment={value => onChangeSlotMaxEquipment(slot.id, value)}
+            onRemoveUnusedEquipmentSlots={() => onRemoveUnusedEquipmentSlots(slot.id)}
           />
         ))}
       </div>

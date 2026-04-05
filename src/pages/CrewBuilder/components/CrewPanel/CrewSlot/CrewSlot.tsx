@@ -78,7 +78,7 @@ export default function CrewSlot({
                   }}
                 >
                   <FontAwesomeIcon icon={faPlus} />
-                  Add One Equipment Slot
+                  Add Equipment Slot
                 </button>
 
                 <button

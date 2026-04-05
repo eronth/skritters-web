@@ -1,9 +1,5 @@
 /* ── Source Panel ───────────────────────────────────────────────────────── */
 
-.crew-builder-layout--source-open .crew-builder-left {
-  margin-right: calc(var(--source-panel-width) + 8px);
-}
-
 .source-panel {
   --source-panel-width: 420px;
   --source-panel-toggle-width: 38px;
@@ -15,28 +11,24 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  overflow: hidden;
 
-  /* Always full-width; slide off-screen when closed */
-  width: var(--source-panel-width);
+  width: var(--source-panel-toggle-width);
   background: var(--bg-color);
   border-left: 1px solid transparent;
   box-shadow: none;
-  pointer-events: none;
-  transform: translateX(calc(100% - var(--source-panel-toggle-width)));
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+  transition: width 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
 
   &.source-panel--open {
-    transform: translateX(0);
+    width: var(--source-panel-width);
     border-left-color: color-mix(in srgb, var(--text-color) 30%, transparent 70%);
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.12);
-    pointer-events: auto;
   }
 
   --source-panel-toggle-border:
   1px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
   .source-panel-toggle {
 
-    pointer-events: all;
     flex-shrink: 0;
     background: var(--bg-color);
     border: var(--source-panel-toggle-border);

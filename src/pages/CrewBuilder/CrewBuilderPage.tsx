@@ -293,9 +293,9 @@ export default function CrewBuilderPage() {
   }
 
   return (
-    <Page tab="crew-builder" className="crew-builder-page">
+    <Page tab="crew-builder" className={`crew-builder-page${sourcePanelOpen ? ' crew-builder-page--source-open' : ''}`}>
       <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        <div className={`crew-builder-layout${sourcePanelOpen ? ' crew-builder-layout--source-open' : ''}`}>
+        <div className="crew-builder-layout">
           <div className="crew-builder-left">
             <CrewPanel
               crewSlots={crewSlots}

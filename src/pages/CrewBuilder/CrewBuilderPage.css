@@ -1,15 +1,19 @@
 /* ── Layout ─────────────────────────────────────────────────────────────── */
 
+.crew-builder-page {
+  transition: padding-right 0.3s ease-out;
+  padding-right: var(--source-panel-toggle-width, 38px);
+}
+
+.crew-builder-page--source-open {
+  padding-right: var(--source-panel-width, 420px);
+}
+
 .crew-builder-layout {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 16px;
   padding-bottom: 40px;
 }
 
 .crew-builder-left {
-  flex: 1;
   min-width: 0;
 }
 

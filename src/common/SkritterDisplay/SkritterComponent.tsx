@@ -2,18 +2,56 @@ import { Skritter } from "../../types/types";
 import CreatureTags from "../Tags/SkritterTagsComponent";
 import StatsGrid from "./StatsGrid";
 import './SkritterComponent.css';
+import { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities/useSyntheticListeners";
 
-type Props = {
+type Props = SimpleProps | DraggableProps;
+type SimpleProps = {
   skritter: Skritter;
+  draggable?: false;
+  dragData?: never;
+  onRemoveSkritter?: () => void;
+};
+type DraggableProps = {
+  skritter: Skritter;
+  draggable: true;
+  dragData: {
+    setDragRef: (node: HTMLElement | null) => void;
+    attributes: React.HTMLAttributes<HTMLElement>;
+    listeners: SyntheticListenerMap | undefined;
+  };
+  onRemoveSkritter?: () => void;
 };
 
-export default function SkritterComponent({ skritter }: Props) {
+export default function SkritterComponent({
+  skritter,
+  draggable,
+  // safe: only used when draggable=true
+  dragData = {} as DraggableProps['dragData'],
+  onRemoveSkritter,
+}: Props) {
 
   return (
     <div className="skritter-card">
       <div className="skritter-header">
-        <h2 className="skritter-title">{skritter.name}</h2>
+        <h2 className="skritter-title">
+          {draggable && (<div
+              ref={dragData.setDragRef}
+              {...dragData.attributes}
+              {...dragData.listeners}
+              className="drag-handle"
+              title="Drag to remove"
+            >⠿</div>)
+          }
+          {skritter.name}
+        </h2>
         <CreatureTags tags={skritter.tags} />
+        {onRemoveSkritter && <button
+          className="remove-btn"
+          onClick={onRemoveSkritter}
+          title="Remove Skritter"
+        >
+          ✕
+        </button>}
       </div>
       
       <p className="skritter-description">{skritter.description}</p>

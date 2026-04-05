@@ -51,22 +51,16 @@ export default function CrewSlot({
     >
       {slot.skritter ? (
         <div className="crew-slot-filled-content">
-          <div className="crew-slot-controls">
-            <div
-              ref={setDragRef}
-              {...attributes}
-              {...listeners}
-              className="drag-handle"
-              title="Drag to remove"
-            >
-              ⠿
-            </div>
-            <button className="remove-btn" onClick={onRemoveSkritter} title="Remove Skritter">
-              ✕
-            </button>
-          </div>
 
-          <SkritterComponent skritter={slot.skritter} />
+          <SkritterComponent skritter={slot.skritter}
+            draggable={true}
+            onRemoveSkritter={onRemoveSkritter}
+            dragData={{
+              setDragRef,
+              attributes,
+              listeners,
+            }}
+          />
 
           <div className="equip-slots-section">
             <div className="equip-slots-header">

@@ -70,14 +70,21 @@ export default function EquipmentCard({
     }
   }
 
-  return (<div className={[
-    "equipment-card",
-    onRemove ? "equipment-card--removable" : "",
-  ].filter(Boolean).join(' ')}>
+  return (<div
+    className={[
+      "equipment-card",
+      onRemove ? "equipment-card--removable" : "",
+      draggable ? "equipment-card--draggable" : "",
+    ].filter(Boolean).join(' ')}
+    ref={draggable ? dragData.setDragRef : undefined}
+    {...(draggable ? dragData.attributes : {})}
+    {...(draggable ? dragData.listeners : {})}
+  >
     {onRemove && (
       <button
         className="remove-btn equipment-card-remove"
         onClick={onRemove}
+        onPointerDown={e => e.stopPropagation()}
         title="Remove Equipment"
       >
         ✕
@@ -86,14 +93,7 @@ export default function EquipmentCard({
     <div className="card-header">
       <div>
         <h3 className="equipment-name">
-            {draggable && (<div
-                ref={dragData.setDragRef}
-                {...dragData.attributes}
-                {...dragData.listeners}
-                className="drag-handle"
-                title="Drag to remove"
-              >⠿</div>)
-            }
+            {draggable && (<div className="drag-handle" title="Drag">⠿</div>)}
           {item.name}
         </h3>
       </div>

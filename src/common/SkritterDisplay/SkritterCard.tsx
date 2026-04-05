@@ -31,14 +31,21 @@ export default function SkritterCard({
 }: Props) {
 
   return (
-    <div className={[
-      "skritter-card",
-      onRemove ? "skritter-card--removable" : "",
-    ].filter(Boolean).join(' ')}>
+    <div
+      className={[
+        "skritter-card",
+        onRemove ? "skritter-card--removable" : "",
+        draggable ? "skritter-card--draggable" : "",
+      ].filter(Boolean).join(' ')}
+      ref={draggable ? dragData.setDragRef : undefined}
+      {...(draggable ? dragData.attributes : {})}
+      {...(draggable ? dragData.listeners : {})}
+    >
       {onRemove && (
         <button
           className="remove-btn skritter-card-remove"
           onClick={onRemove}
+          onPointerDown={e => e.stopPropagation()}
           title="Remove Skritter"
         >
           ✕
@@ -46,14 +53,7 @@ export default function SkritterCard({
       )}
       <div className="skritter-header">
         <h2 className="skritter-title">
-          {draggable && (<div
-              ref={dragData.setDragRef}
-              {...dragData.attributes}
-              {...dragData.listeners}
-              className="drag-handle"
-              title="Drag to remove"
-            >⠿</div>)
-          }
+          {draggable && (<div className="drag-handle" title="Drag">⠿</div>)}
           {skritter.name}
         </h2>
         <CreatureTags tags={skritter.tags} />

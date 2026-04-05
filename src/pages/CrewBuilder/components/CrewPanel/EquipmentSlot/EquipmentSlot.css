@@ -1,0 +1,44 @@
+/* ── Equipment Slots ────────────────────────────────────────────────────── */
+.equip-slots-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  .equip-slot {
+    border-radius: 6px;
+    transition: background 0.15s, border-color 0.15s;
+  
+    &.equip-slot--empty {
+      border: 2px dashed color-mix(in srgb, var(--text-color) 35%, transparent 65%);
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+    
+      &.equip-slot--over {
+        border-color: var(--primary-color);
+        background: color-mix(in srgb, var(--primary-color) 8%, transparent 92%);
+      }
+      
+      .equip-slot-empty-label {
+        font-style: italic;
+        font-size: 0.82rem;
+        opacity: 0.5;
+      }
+    }
+    
+    &.equip-slot--filled {
+      border: 1px solid color-mix(in srgb, var(--text-color) 30%, transparent 70%);
+    
+      &.equip-slot--over {
+        border-color: var(--primary-color);
+      }
+    }
+  }
+}
+
+
+.equip-slot--dragging {
+  opacity: 0.35;
+}

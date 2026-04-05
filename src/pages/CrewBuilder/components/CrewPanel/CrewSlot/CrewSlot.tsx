@@ -1,6 +1,6 @@
 import { useDraggable, useDroppable } from '@dnd-kit/core';
 import SkritterComponent from '../../../../../common/SkritterDisplay/SkritterComponent';
-import EquipmentSlot from '../../EquipmentSlot';
+import EquipmentSlot from '../EquipmentSlot/EquipmentSlot';
 import { CrewSlotData, DropCrewSlotData } from '../../crewBuilderTypes';
 import './CrewSlot.css';
 

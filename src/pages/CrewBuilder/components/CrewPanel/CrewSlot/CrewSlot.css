@@ -1,0 +1,42 @@
+/* ── Crew Slot ──────────────────────────────────────────────────────────── */
+
+.crew-slot {
+  border-radius: 8px;
+  transition: background 0.15s, border-color 0.15s;
+
+  &.crew-slot--empty {
+    border: 2px dashed color-mix(in srgb, var(--text-color) 50%, transparent 50%);
+    padding: 32px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+
+    &.crew-slot--over {
+      border-color: var(--primary-color);
+      background: color-mix(in srgb, var(--primary-color) 8%, transparent 92%);
+    }
+
+    .crew-slot-empty-label {
+      font-style: italic;
+      opacity: 0.5;
+    }
+  }
+  
+  &.crew-slot--filled {
+    border: 2px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
+
+    &.crew-slot--over {
+      border-color: var(--primary-color);
+    }
+  }
+  
+  &.crew-slot--dragging {
+    opacity: 0.35;
+  }
+  
+  .crew-slot-filled-content {
+    padding: 4px;
+  }
+}
+

@@ -1,0 +1,11 @@
+/* ── Crew Panel ─────────────────────────────────────────────────────────── */
+
+.crew-panel-title {
+  margin-bottom: 8px;
+}
+
+.crew-slots-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

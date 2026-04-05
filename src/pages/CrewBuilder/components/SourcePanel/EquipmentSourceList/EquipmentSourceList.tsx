@@ -20,7 +20,7 @@ type DraggableProps = {
   disabled: boolean;
 };
 
-function DraggableEquipment({ equipmentKey, item, disabled }: DraggableProps) {
+function DraggableEquipmentCard({ equipmentKey, item, disabled }: DraggableProps) {
   const dragData: DragEquipmentData = { type: 'equipment', key: equipmentKey, equipment: item };
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: `source-equip-${equipmentKey}`,
@@ -115,7 +115,7 @@ export default function EquipmentSourceList({ usedKeys, allowDuplicates }: Props
       />
       <div className="source-grid">
         {filtered.map(({ key, item }) => (
-          <DraggableEquipment
+          <DraggableEquipmentCard
             key={key}
             equipmentKey={key}
             item={item}

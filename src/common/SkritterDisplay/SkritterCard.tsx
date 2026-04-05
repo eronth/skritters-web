@@ -1,8 +1,8 @@
 import { Skritter } from "../../types/types";
 import CreatureTags from "../Tags/SkritterTagsComponent";
 import StatsGrid from "./StatsGrid";
-import './SkritterComponent.css';
 import { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities/useSyntheticListeners";
+import './SkritterCard.css';
 
 type Props = SimpleProps | DraggableProps;
 type SimpleProps = {
@@ -22,7 +22,7 @@ type DraggableProps = {
   onRemove?: () => void;
 };
 
-export default function SkritterComponent({
+export default function SkritterCard({
   skritter,
   draggable,
   // safe: only used when draggable=true

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDraggable, useDroppable } from '@dnd-kit/core';
-import SkritterComponent from '../../../../../common/SkritterDisplay/SkritterComponent';
+import SkritterCard from '../../../../../common/SkritterDisplay/SkritterCard';
 import SearchAndFilter from '../../../../../common/SearchAndFilter/SearchAndFilter';
 import { Skritter } from '../../../../../types/types';
 import skritters from '../../../../../data/skritter-data';
@@ -12,7 +12,7 @@ type DraggableProps = {
   disabled: boolean;
 };
 
-function DraggableSkritter({ skritterKey, skritter, disabled }: DraggableProps) {
+function DraggableSkritterCard({ skritterKey, skritter, disabled }: DraggableProps) {
   const dragData: DragSkritterData = { type: 'skritter', key: skritterKey, skritter };
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: `source-skritter-${skritterKey}`,
@@ -28,7 +28,7 @@ function DraggableSkritter({ skritterKey, skritter, disabled }: DraggableProps) 
         isDragging ? 'source-item--dragging' : '',
       ].filter(Boolean).join(' ')}
     >
-      <SkritterComponent
+      <SkritterCard
         skritter={skritter}
         draggable={true}
         dragData={{ setDragRef: setNodeRef, attributes, listeners }}
@@ -64,7 +64,7 @@ export default function SkritterSourceList({ usedKeys, allowDuplicates }: Props)
       <SearchAndFilter searchTermState={[searchTerm, setSearchTerm]} />
       <div className="source-grid">
         {filtered.map(([key, skritter]) => (
-          <DraggableSkritter
+          <DraggableSkritterCard
             key={key}
             skritterKey={key}
             skritter={skritter}

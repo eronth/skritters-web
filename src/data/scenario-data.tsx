@@ -1,7 +1,7 @@
 import Day from "../common/Keywords/times/Day";
 import Night from "../common/Keywords/times/Night";
 import Match from "../common/Match";
-import SkritterComponent from "../common/SkritterDisplay/SkritterComponent";
+import SkritterCard from "../common/SkritterDisplay/SkritterCard";
 import { Dice, Scenario, Skritter } from "../types/types";
 
 const d2d6 = new Dice('2d6');
@@ -195,7 +195,7 @@ const bewareOfDogs: Scenario = {
   The Hounds will never attack each other.
 
   A Hound has the following stats.
-  <SkritterComponent skritter={hound} />
+  <SkritterCard skritter={hound} />
 </>,
 };
 

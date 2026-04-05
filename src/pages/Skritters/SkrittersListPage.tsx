@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SkritterComponent from "../../common/SkritterDisplay/SkritterComponent";
+import SkritterCard from "../../common/SkritterDisplay/SkritterCard";
 import Page from "../Page";
 import SearchAndFilter from "../../common/SearchAndFilter/SearchAndFilter";
 import { Skritter } from "../../types/types";
@@ -31,7 +31,7 @@ export default function SkrittersList() {
       <div className="skritters-grid">
         {filteredSkritters.length > 0 ? (
           filteredSkritters.map((skritter, index) => (
-            <SkritterComponent key={index} skritter={skritter} />
+            <SkritterCard key={index} skritter={skritter} />
           ))
         ) : (
           <div className="no-results">

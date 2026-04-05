@@ -1,5 +1,5 @@
 import { useDraggable, useDroppable } from '@dnd-kit/core';
-import SkritterComponent from '../../../../../common/SkritterDisplay/SkritterComponent';
+import SkritterCard from '../../../../../common/SkritterDisplay/SkritterCard';
 import EquipmentSlot from '../EquipmentSlot/EquipmentSlot';
 import { CrewSlotData, DropCrewSlotData } from '../../crewBuilderTypes';
 import './CrewSlot.css';
@@ -52,9 +52,9 @@ export default function CrewSlot({
       {slot.skritter ? (
         <div className="crew-slot-filled-content">
 
-          <SkritterComponent skritter={slot.skritter}
+          <SkritterCard skritter={slot.skritter}
             draggable={true}
-            onRemoveSkritter={onRemoveSkritter}
+            onRemove={onRemoveSkritter}
             dragData={{
               setDragRef,
               attributes,

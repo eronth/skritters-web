@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import {
   DndContext,
   DragEndEvent,
@@ -22,12 +22,14 @@ import {
   DropSourceData,
   EquipmentSlotData,
 } from './components/crewBuilderTypes';
+import {
+  exportCrewsAsJson,
+  importCrewsFromJson,
+  loadCrewsFromLocalStorage,
+  newId,
+  saveCrewsToLocalStorage,
+} from './components/crewStorageUtils';
 import './CrewBuilderPage.css';
-
-let _idCounter = 0;
-function newId(prefix: string) {
-  return `${prefix}-${++_idCounter}`;
-}
 
 function makeEquipmentSlots(count: number): EquipmentSlotData[] {
   return Array.from({ length: count }, () => ({
@@ -70,12 +72,19 @@ type CrewsState = {
 
 export default function CrewBuilderPage() {
   const [crewsState, setCrewsState] = useState<CrewsState>(() => {
+    const saved = loadCrewsFromLocalStorage();
+    if (saved) return saved;
     const first = makeNewCrew(0);
     return { list: [first], activeId: first.id };
   });
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [sourcePanelOpen, setSourcePanelOpen] = useState(true);
   const [activeTab, setActiveTab] = useState<'skritters' | 'equipment'>('skritters');
   const [activeDrag, setActiveDrag] = useState<DragData | null>(null);
+
+  useEffect(() => {
+    saveCrewsToLocalStorage(crewsState.list, crewsState.activeId);
+  }, [crewsState]);
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } })
@@ -231,6 +240,33 @@ export default function CrewBuilderPage() {
 
   function handleRenameCrew(name: string) {
     updateActiveCrew(c => ({ ...c, name }));
+  }
+
+  // ── Import / Export ──────────────────────────────────────────────────────
+
+  function handleExport() {
+    exportCrewsAsJson(crewsState.list, crewsState.activeId);
+  }
+
+  function handleImportClick() {
+    fileInputRef.current?.click();
+  }
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const json = ev.target?.result as string;
+      const result = importCrewsFromJson(json);
+      if (result) {
+        setCrewsState(result);
+      } else {
+        alert('Could not import: invalid or incompatible file.');
+      }
+      e.target.value = '';
+    };
+    reader.readAsText(file);
   }
 
   // ── Drag handlers ────────────────────────────────────────────────────────
@@ -454,6 +490,13 @@ export default function CrewBuilderPage() {
 
   return (
     <Page tab="crew-builder" className={`crew-builder-page${sourcePanelOpen ? ' crew-builder-page--source-open' : ''}`}>
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept=".json,application/json"
+        style={{ display: 'none' }}
+        onChange={handleFileChange}
+      />
       <p>
         To build your crew, select 4 Skritters to be members. Each member must
         be a different Skritter from others in your crew — no duplicates!
@@ -501,6 +544,8 @@ export default function CrewBuilderPage() {
               onAddCrew={handleAddCrew}
               onSwitchCrew={handleSwitchCrew}
               onRenameCrew={handleRenameCrew}
+              onExport={handleExport}
+              onImport={handleImportClick}
             />
           </div>
           <SourcePanel

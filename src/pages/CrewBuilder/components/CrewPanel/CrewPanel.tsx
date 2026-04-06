@@ -24,6 +24,8 @@ type Props = {
   onAddCrew: () => void;
   onSwitchCrew: (crewId: string) => void;
   onRenameCrew: (name: string) => void;
+  onExport: () => void;
+  onImport: () => void;
 };
 
 export default function CrewPanel({
@@ -47,6 +49,8 @@ export default function CrewPanel({
   onAddCrew,
   onSwitchCrew,
   onRenameCrew,
+  onExport,
+  onImport,
 }: Props) {
   return (
     <div className="crew-panel">
@@ -72,6 +76,14 @@ export default function CrewPanel({
           placeholder="Crew name…"
           aria-label="Crew name"
         />
+        <div className="crew-io-bar">
+          <button className="crew-io-btn" onClick={onExport} title="Export all crews to JSON">
+            Export
+          </button>
+          <button className="crew-io-btn" onClick={onImport} title="Import crews from JSON">
+            Import
+          </button>
+        </div>
       </div>
       <CrewSettings
         allowDuplicateSkritters={allowDuplicateSkritters}

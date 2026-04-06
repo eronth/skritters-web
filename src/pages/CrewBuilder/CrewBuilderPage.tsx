@@ -403,6 +403,29 @@ export default function CrewBuilderPage() {
 
   return (
     <Page tab="crew-builder" className={`crew-builder-page${sourcePanelOpen ? ' crew-builder-page--source-open' : ''}`}>
+      <p>
+        To build your crew, select 4 Skritters to be members. Each member must
+        be a different Skritter from others in your crew — no duplicates!
+        Then, equip your Skritters with items of your choice; again no duplicates.
+        Use the following rules to equip your Skritters:
+      </p>
+      <ul>
+        <li>
+          Your first equipped items can either be 2 one-handed items or 1 two-handed item.
+          This acts as the items the Skritter is "holding".
+        </li>
+        <li>
+          Beyond the held items, you can equip additional items in up to 2 extra slots.
+          These can be any type of item, including more one-handed or two-handed items,
+          but any additional -handed items are considered carried by the Skritter, but
+          not held in their hands, and thus no benefits are conferred.
+        </li>
+        <li>
+          You can't have more than one of the same garb type (face, head, body, back, special)
+          accross these slots per Skritter.
+        </li>
+      </ul>
+      <br /><hr /><br />
       <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <div className="crew-builder-layout">
           <div className="crew-builder-left">

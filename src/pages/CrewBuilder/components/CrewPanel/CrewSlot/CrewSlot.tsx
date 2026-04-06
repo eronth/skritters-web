@@ -6,6 +6,7 @@ import type { PersonalEquipmentEntry } from '../../../../../types/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import './CrewSlot.css';
+import React from 'react';
 
 const TWO_HANDED_SLOT_TYPES = new Set(['two-handed', 'onetwo-handed']);
 
@@ -153,12 +154,16 @@ export default function CrewSlot({
                 >
                   {slot.skritter.personalEquipment!
                     .filter(e => e.required && e.free)
-                    .map(entry => (
-                      <div key={entry.key} className="free-equip-item free-equip-item--required">
+                    .map(entry => (<React.Fragment key={entry.key}>
+                      <div className="free-equip-item free-equip-item--required">
                         <span className="free-equip-item-name">{entry.equipment.name}</span>
                         <span className="free-equip-item-badge">Always · Free</span>
                       </div>
-                    ))}
+                      <div className='free-equip-item-effect'>
+                        {entry.equipment.effect}
+                      </div>
+                    </React.Fragment>
+                  ))}
 
                   {slot.freeEquipmentSlots.map(es => (
                     <div key={es.id} className="free-equip-item free-equip-item--optional">

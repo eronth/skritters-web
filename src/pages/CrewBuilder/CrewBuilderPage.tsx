@@ -279,6 +279,47 @@ export default function CrewBuilderPage() {
           if (alreadyUsed) return;
         }
 
+        const targetCrewSlot = crewSlots.find(s => s.id === targetCrewSlotId);
+        const targetEquipSlotIndex = targetCrewSlot?.equipmentSlots.findIndex(
+          es => es.id === targetEquipSlotId
+        ) ?? -1;
+
+        const WEAPON_SLOT_TYPES = new Set(['one-handed', 'two-handed', 'onetwo-handed']);
+        const TWO_HANDED_SLOT_TYPES = new Set(['two-handed', 'onetwo-handed']);
+        const UNIQUE_GARB_SLOTS = new Set(['face', 'head', 'body', 'back', 'special']);
+
+        const totalEquipSlots = targetCrewSlot?.equipmentSlots.length ?? 0;
+        const isWeaponPair = Math.floor(targetEquipSlotIndex / 2) === 0;
+        const pairMateIndex = targetEquipSlotIndex % 2 === 0
+          ? targetEquipSlotIndex + 1
+          : targetEquipSlotIndex - 1;
+        const hasPairMate = pairMateIndex >= 0 && pairMateIndex < totalEquipSlots;
+        const pairMate = hasPairMate ? targetCrewSlot?.equipmentSlots[pairMateIndex] : undefined;
+        const isTwoHandedDrag = TWO_HANDED_SLOT_TYPES.has(drag.equipment.slot);
+
+        // Weapon pair (slots 0 & 1) only accepts weapons
+        if (isWeaponPair && !WEAPON_SLOT_TYPES.has(drag.equipment.slot)) return;
+
+        // Two-handed items require a pair mate (unpaired last slot can't hold them)
+        if (isTwoHandedDrag && !hasPairMate) return;
+
+        // Can't drop on a slot whose pair mate is already occupied by a two-handed item
+        if (TWO_HANDED_SLOT_TYPES.has(pairMate?.equipment?.slot ?? '')) return;
+
+        // No duplicate garb types across non-weapon slots
+        if (!isWeaponPair && UNIQUE_GARB_SLOTS.has(drag.equipment.slot)) {
+          const excludedSlotId =
+            drag.fromCrewSlotId === targetCrewSlotId ? drag.fromEquipSlotId : undefined;
+          const alreadyHasType = targetCrewSlot?.equipmentSlots.some(
+            (es, idx) =>
+              Math.floor(idx / 2) !== 0 &&
+              es.id !== targetEquipSlotId &&
+              es.id !== excludedSlotId &&
+              es.equipment?.slot === drag.equipment.slot
+          );
+          if (alreadyHasType) return;
+        }
+
         setCrewSlots(prev => {
           const targetCrewSlot = prev.find(s => s.id === targetCrewSlotId);
           const targetEquipSlot = targetCrewSlot?.equipmentSlots.find(
@@ -291,9 +332,13 @@ export default function CrewBuilderPage() {
             if (crewSlot.id === targetCrewSlotId) {
               updated = {
                 ...updated,
-                equipmentSlots: updated.equipmentSlots.map(es => {
+                equipmentSlots: updated.equipmentSlots.map((es, idx) => {
                   if (es.id === targetEquipSlotId) {
                     return { ...es, equipment: drag.equipment, equipmentKey: drag.key };
+                  }
+                  // Clear pair mate of target when placing a two-handed item
+                  if (isTwoHandedDrag && pairMate && es.id === pairMate.id) {
+                    return { ...es, equipment: null, equipmentKey: null };
                   }
                   // Swap within the same crew slot
                   if (
@@ -301,9 +346,14 @@ export default function CrewBuilderPage() {
                     es.id === drag.fromEquipSlotId &&
                     drag.fromCrewSlotId === targetCrewSlotId
                   ) {
+                    const swappedItem = targetEquipSlot?.equipment ?? null;
+                    // Don't swap a non-weapon back into the weapon pair
+                    if (Math.floor(idx / 2) === 0 && swappedItem && !WEAPON_SLOT_TYPES.has(swappedItem.slot)) {
+                      return { ...es, equipment: null, equipmentKey: null };
+                    }
                     return {
                       ...es,
-                      equipment: targetEquipSlot?.equipment ?? null,
+                      equipment: swappedItem,
                       equipmentKey: targetEquipSlot?.equipmentKey ?? null,
                     };
                   }
@@ -320,11 +370,16 @@ export default function CrewBuilderPage() {
             ) {
               updated = {
                 ...updated,
-                equipmentSlots: updated.equipmentSlots.map(es => {
+                equipmentSlots: updated.equipmentSlots.map((es, idx) => {
                   if (es.id === drag.fromEquipSlotId) {
+                    const swappedItem = targetEquipSlot?.equipment ?? null;
+                    // Don't swap a non-weapon back into the weapon pair
+                    if (Math.floor(idx / 2) === 0 && swappedItem && !WEAPON_SLOT_TYPES.has(swappedItem.slot)) {
+                      return { ...es, equipment: null, equipmentKey: null };
+                    }
                     return {
                       ...es,
-                      equipment: targetEquipSlot?.equipment ?? null,
+                      equipment: swappedItem,
                       equipmentKey: targetEquipSlot?.equipmentKey ?? null,
                     };
                   }

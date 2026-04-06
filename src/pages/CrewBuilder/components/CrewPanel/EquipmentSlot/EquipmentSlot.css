@@ -3,10 +3,26 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  
+}
+
+.equip-slot-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
   .equip-slot {
     border-radius: 6px;
     transition: background 0.15s, border-color 0.15s;
+
+    &.equip-slot--spanning {
+      grid-column: 1 / -1;
+    }
+
+    &.equip-slot--weapon {
+      &.equip-slot--empty {
+        border-color: color-mix(in srgb, var(--primary-color) 50%, transparent 50%);
+      }
+    }
   
     &.equip-slot--empty {
       border: 2px dashed color-mix(in srgb, var(--text-color) 35%, transparent 65%);

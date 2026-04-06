@@ -8,6 +8,7 @@ import {
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
+import { snapCenterToCursor } from '@dnd-kit/modifiers';
 import Page from '../Page';
 import CrewPanel from './components/CrewPanel/CrewPanel';
 import SourcePanel from './components/SourcePanel/SourcePanel';
@@ -476,7 +477,7 @@ export default function CrewBuilderPage() {
         </li>
       </ul>
       <br /><hr /><br />
-      <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+      <DndContext sensors={sensors} modifiers={[snapCenterToCursor]} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <div className="crew-builder-layout">
           <div className="crew-builder-left">
             <CrewPanel

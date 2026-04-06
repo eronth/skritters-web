@@ -103,7 +103,139 @@
   }
 }
 
+/* ── Personal Equipment Section ─────────────────────────────────────────── */
+.personal-equip-section {
+  margin-top: 8px;
+  padding: 6px 4px 4px;
+  border-top: 1px solid color-mix(in srgb, var(--primary-color) 30%, transparent 70%);
 
+  .personal-equip-section-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0.75;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+    color: var(--primary-color);
+  }
 
+  .personal-equip-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+}
 
+.personal-equip-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px dashed color-mix(in srgb, var(--primary-color) 70%, transparent 30%);
+  background: color-mix(in srgb, var(--primary-color) 6%, transparent 94%);
+  cursor: grab;
+  user-select: none;
+  transition: background 0.15s, opacity 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: color-mix(in srgb, var(--primary-color) 14%, transparent 86%);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .personal-equip-chip-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .personal-equip-chip-hint {
+    font-size: 0.7rem;
+    opacity: 0.6;
+  }
+
+  &.personal-equip-chip--placed {
+    opacity: 0.4;
+    cursor: default;
+    border-style: solid;
+  }
+
+  &.personal-equip-chip--dragging {
+    opacity: 0.3;
+  }
+}
+
+/* ── Free Equipment Zone ────────────────────────────────────────────────── */
+.free-equip-zone {
+  min-height: 36px;
+  border-radius: 6px;
+  border: 1px dashed color-mix(in srgb, var(--primary-color) 40%, transparent 60%);
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background 0.15s, border-color 0.15s;
+
+  &.free-equip-zone--over {
+    border-color: var(--primary-color);
+    background: color-mix(in srgb, var(--primary-color) 8%, transparent 92%);
+  }
+
+  .free-equip-zone-empty {
+    font-size: 0.78rem;
+    font-style: italic;
+    opacity: 0.45;
+    text-align: center;
+    padding: 4px 0;
+  }
+}
+
+.free-equip-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.83rem;
+
+  .free-equip-item-name {
+    font-weight: 500;
+    flex: 1;
+  }
+
+  &.free-equip-item--required {
+    background: color-mix(in srgb, var(--primary-color) 10%, transparent 90%);
+
+    .free-equip-item-badge {
+      font-size: 0.7rem;
+      opacity: 0.6;
+      white-space: nowrap;
+    }
+  }
+
+  &.free-equip-item--optional {
+    background: color-mix(in srgb, var(--text-color) 6%, transparent 94%);
+  }
+
+  .free-equip-item-remove {
+    background: none;
+    border: none;
+    padding: 2px 4px;
+    cursor: pointer;
+    color: var(--error-color, #c0392b);
+    opacity: 0.6;
+    line-height: 1;
+    border-radius: 3px;
+
+    &:hover {
+      opacity: 1;
+      background: color-mix(in srgb, var(--error-color, #c0392b) 10%, transparent 90%);
+    }
+  }
+}
 

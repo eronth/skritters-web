@@ -21,6 +21,7 @@ export type CrewSlotData = {
   skritter: Skritter | null;
   skritterKey: string | null;
   equipmentSlots: EquipmentSlotData[];
+  freeEquipmentSlots: EquipmentSlotData[];
   maxEquipmentOverride: number | null; // null = use global default
 };
 
@@ -37,6 +38,8 @@ export type DragEquipmentData = {
   equipment: Equipment;
   fromEquipSlotId?: string;
   fromCrewSlotId?: string;
+  personalOwnerSkritterKey?: string;
+  isFreeEquip?: boolean;
 };
 
 export type DragData = DragSkritterData | DragEquipmentData;
@@ -44,4 +47,5 @@ export type DragData = DragSkritterData | DragEquipmentData;
 export type DropCrewSlotData = { type: 'crew-slot'; slotId: string };
 export type DropEquipSlotData = { type: 'equip-slot'; crewSlotId: string; equipSlotId: string };
 export type DropSourceData = { type: 'skritter-source' | 'equip-source' };
-export type DropData = DropCrewSlotData | DropEquipSlotData | DropSourceData;
+export type DropFreeEquipData = { type: 'free-equip'; crewSlotId: string };
+export type DropData = DropCrewSlotData | DropEquipSlotData | DropSourceData | DropFreeEquipData;

@@ -20,6 +20,7 @@ type Props = {
   onRemoveEquipment: (crewSlotId: string, equipSlotId: string) => void;
   onChangeSlotMaxEquipment: (slotId: string, value: number | null) => void;
   onRemoveUnusedEquipmentSlots: (slotId: string) => void;
+  onRemoveFreeEquipment: (crewSlotId: string, equipmentKey: string) => void;
   onAddCrew: () => void;
   onSwitchCrew: (crewId: string) => void;
   onRenameCrew: (name: string) => void;
@@ -42,6 +43,7 @@ export default function CrewPanel({
   onRemoveEquipment,
   onChangeSlotMaxEquipment,
   onRemoveUnusedEquipmentSlots,
+  onRemoveFreeEquipment,
   onAddCrew,
   onSwitchCrew,
   onRenameCrew,
@@ -91,6 +93,7 @@ export default function CrewPanel({
             onRemoveEquipment={equipSlotId => onRemoveEquipment(slot.id, equipSlotId)}
             onChangeMaxEquipment={value => onChangeSlotMaxEquipment(slot.id, value)}
             onRemoveUnusedEquipmentSlots={() => onRemoveUnusedEquipmentSlots(slot.id)}
+            onRemoveFreeEquipment={equipmentKey => onRemoveFreeEquipment(slot.id, equipmentKey)}
           />
         ))}
       </div>

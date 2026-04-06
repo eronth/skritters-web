@@ -69,6 +69,13 @@ type SkritterStatline = {
 }
 
 
+type PersonalEquipmentEntry = {
+  key: string;
+  equipment: Equipment;
+  required: boolean;
+  free: boolean;
+};
+
 type Skritter = {
   name: string;
   description: string;
@@ -82,6 +89,7 @@ type Skritter = {
     type: string;
     effect: ReactElement;
   }
+  personalEquipment?: PersonalEquipmentEntry[];
   tags: SkritterKeyword[];
 };
 
@@ -118,6 +126,7 @@ export type {
   Skritter,
   SkritterStatline,
   Equipment,
+  PersonalEquipmentEntry,
   EquipmentType,
   EquipmentSlotType,
   TabType,

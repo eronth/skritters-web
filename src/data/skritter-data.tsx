@@ -31,7 +31,7 @@ import Summer from "../common/Keywords/times/Summer";
 import Winter from "../common/Keywords/times/Winter";
 import Weapon from "../common/Keywords/rules/Weapon";
 import ItemTag from "../common/Tags/ItemTag";
-import { Dice, Skritter } from "../types/types"
+import { Dice, Equipment, PersonalEquipmentEntry, Skritter } from "../types/types"
 import Match from "../common/Match";
 const d1d4: Dice = new Dice('1d4');
 const d1d6: Dice = new Dice('1d6');
@@ -116,6 +116,16 @@ const porcupine: Skritter = {
   tags: [],
 };
 
+const shockingShell: Equipment = {
+  name: "Shocking Shell",
+  type: "garb",
+  slot: "special",
+  effect: <>
+    When attacked via <BrawlAttack /> with a <ItemTag tag='METAL' /> weapon, immediately make a <PlusDice dice={new Dice('2d4')} /> <BrawlAttack /> back.
+    When making a <BrawlAttack /> against a Skritter with a non-weapon <ItemTag tag='METAL' /> item, gain +1 SIZE on the attack.
+  </>,
+};
+
 const armordilloKnight: Skritter = {
   name: "Armordillo Knight",
   description: "An Armordillo knight",
@@ -161,6 +171,9 @@ const armordilloKnight: Skritter = {
     While retired, Armordillo Knight grants a <Hardy /> resource at
     the start of each <Match />.
   </>],
+  personalEquipment: [
+    { key: 'armordillo-shocking-shell', equipment: shockingShell, required: false, free: false },
+  ] satisfies PersonalEquipmentEntry[],
   tags: ['CONCENTRATION'],
 };
 
@@ -680,6 +693,16 @@ const luckyDuck: Skritter = {
   tags: ['FLIGHTY', 'WATERFOND'],
 };
 
+const naturalShell: Equipment = {
+  name: "Natural Shell",
+  type: "garb",
+  slot: "special",
+  effect: <>
+    Provides the benefit of a Bottlecap Shield: <PlusDice dice={d1d6} />+<PlusDice dice={d1d4} /> on <Defense /> against Brawl and Ranged attacks.
+    Does not occupy a hand slot.
+  </>,
+};
+
 const guardianTurtle: Skritter = {
   name: "Guardian Turtle",
   description: "A Guardian Turtle",
@@ -710,6 +733,9 @@ const guardianTurtle: Skritter = {
     }
   ],
   retirement: [],
+  personalEquipment: [
+    { key: 'guardian-turtle-natural-shell', equipment: naturalShell, required: true, free: true },
+  ] satisfies PersonalEquipmentEntry[],
   tags: ['STEADY', 'HELPFUL', 'COLD-BLOODED'],
 };
 

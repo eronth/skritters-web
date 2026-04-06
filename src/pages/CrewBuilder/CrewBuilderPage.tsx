@@ -17,6 +17,7 @@ import {
   DragData,
   DropCrewSlotData,
   DropEquipSlotData,
+  DropFreeEquipData,
   DropSourceData,
   EquipmentSlotData,
 } from './components/crewBuilderTypes';
@@ -44,6 +45,7 @@ function makeInitialCrewSlots(): CrewSlotData[] {
     skritter: null,
     skritterKey: null,
     equipmentSlots: makeEquipmentSlots(DEFAULT_MAX_EQUIPMENT),
+    freeEquipmentSlots: [],
     maxEquipmentOverride: null,
   }));
 }
@@ -134,6 +136,7 @@ export default function CrewBuilderPage() {
           skritter: null,
           skritterKey: null,
           equipmentSlots: makeEquipmentSlots(crew.globalMaxEquipment),
+          freeEquipmentSlots: [],
           maxEquipmentOverride: null,
         }));
         newCrewSlots = [...newCrewSlots, ...additional];
@@ -167,7 +170,7 @@ export default function CrewBuilderPage() {
 
   function handleRemoveSkritter(slotId: string) {
     setCrewSlots(prev =>
-      prev.map(s => (s.id === slotId ? { ...s, skritter: null, skritterKey: null } : s))
+      prev.map(s => (s.id === slotId ? { ...s, skritter: null, skritterKey: null, freeEquipmentSlots: [] } : s))
     );
   }
 
@@ -195,6 +198,18 @@ export default function CrewBuilderPage() {
           equipmentSlots: s.equipmentSlots.map(es =>
             es.id === equipSlotId ? { ...es, equipment: null, equipmentKey: null } : es
           ),
+        };
+      })
+    );
+  }
+
+  function handleRemoveFreeEquipment(crewSlotId: string, equipmentKey: string) {
+    setCrewSlots(prev =>
+      prev.map(s => {
+        if (s.id !== crewSlotId) return s;
+        return {
+          ...s,
+          freeEquipmentSlots: s.freeEquipmentSlots.filter(es => es.equipmentKey !== equipmentKey),
         };
       })
     );
@@ -232,6 +247,7 @@ export default function CrewBuilderPage() {
       | DropCrewSlotData
       | DropEquipSlotData
       | DropSourceData
+      | DropFreeEquipData
       | undefined;
     if (!drag || !drop) return;
 
@@ -252,11 +268,11 @@ export default function CrewBuilderPage() {
           if (!targetSlot) return prev;
           return prev.map(s => {
             if (s.id === targetSlotId) {
-              return { ...s, skritter: drag.skritter, skritterKey: drag.key };
+              return { ...s, skritter: drag.skritter, skritterKey: drag.key, freeEquipmentSlots: [] };
             }
             if (drag.fromCrewSlotId && s.id === drag.fromCrewSlotId) {
               // Swap: displaced skritter moves to source slot
-              return { ...s, skritter: targetSlot.skritter, skritterKey: targetSlot.skritterKey };
+              return { ...s, skritter: targetSlot.skritter, skritterKey: targetSlot.skritterKey, freeEquipmentSlots: [] };
             }
             return s;
           });
@@ -270,7 +286,16 @@ export default function CrewBuilderPage() {
           drop as DropEquipSlotData;
         if (drag.fromEquipSlotId === targetEquipSlotId) return;
 
-        if (!allowDuplicateEquipment) {
+        // Personal equipment may only go into its owner's crew slot
+        if (drag.personalOwnerSkritterKey !== undefined) {
+          const targetCrewSlotForOwnerCheck = crewSlots.find(s => s.id === targetCrewSlotId);
+          if (targetCrewSlotForOwnerCheck?.skritterKey !== drag.personalOwnerSkritterKey) return;
+        }
+
+        // Free equipment belongs in the free-equip zone, not normal slots
+        if (drag.isFreeEquip) return;
+
+        if (!allowDuplicateEquipment && !drag.personalOwnerSkritterKey) {
           const alreadyUsed = crewSlots.some(s =>
             s.equipmentSlots.some(
               es => es.equipmentKey === drag.key && es.id !== drag.fromEquipSlotId
@@ -391,6 +416,31 @@ export default function CrewBuilderPage() {
             return updated;
           });
         });
+      } else if (drop.type === 'free-equip') {
+        const { crewSlotId: targetCrewSlotId } = drop as DropFreeEquipData;
+
+        if (!drag.isFreeEquip) return;
+
+        if (drag.personalOwnerSkritterKey !== undefined) {
+          const targetCrewSlot = crewSlots.find(s => s.id === targetCrewSlotId);
+          if (targetCrewSlot?.skritterKey !== drag.personalOwnerSkritterKey) return;
+        }
+
+        const alreadyPlaced = crewSlots
+          .find(s => s.id === targetCrewSlotId)
+          ?.freeEquipmentSlots.some(es => es.equipmentKey === drag.key);
+        if (alreadyPlaced) return;
+
+        setCrewSlots(prev => prev.map(crewSlot => {
+          if (crewSlot.id !== targetCrewSlotId) return crewSlot;
+          return {
+            ...crewSlot,
+            freeEquipmentSlots: [
+              ...crewSlot.freeEquipmentSlots,
+              { id: newId('free-equip-slot'), equipment: drag.equipment, equipmentKey: drag.key },
+            ],
+          };
+        }));
       } else if (
         drop.type === 'equip-source' &&
         drag.fromCrewSlotId &&
@@ -444,6 +494,7 @@ export default function CrewBuilderPage() {
               onChangeGlobalMaxEquipment={handleChangeGlobalMaxEquipment}
               onRemoveSkritter={handleRemoveSkritter}
               onRemoveEquipment={handleRemoveEquipment}
+              onRemoveFreeEquipment={handleRemoveFreeEquipment}
               onChangeSlotMaxEquipment={handleChangeSlotMaxEquipment}
               onRemoveUnusedEquipmentSlots={handleRemoveUnusedEquipmentSlots}
               onAddCrew={handleAddCrew}

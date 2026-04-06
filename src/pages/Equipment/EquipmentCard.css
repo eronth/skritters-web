@@ -5,8 +5,11 @@
   background-color: color-mix(in srgb, var(--card-bg) 90%, var(--color-mixin) 10%);
   padding: 12px;
   transition: box-shadow 0.2s;
+  
   &.equipment-card--removable {
-    padding-top: 1.5em;
+    .tags-container {
+      margin-right: 1rem;
+    }
   }
 
   .equipment-card-remove {

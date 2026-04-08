@@ -1,29 +1,98 @@
+.time-of-day,
+.season {
+  --l: 85%;
+  --c: .19;
+  --l-offset: 10%;
+  --light-mode-lightness-multiplier: .8;
+}
+
 .time-of-day {
+
+  /* sunny yellow/sky blue for daytime */
   &.daytime {
-    /* sky-blue for daytime */
-    color: hsl(51, 100%, 75%);
+    --time-color-light: oklch(
+      calc(var(--l) * var(--light-mode-lightness-multiplier))
+      var(--c)
+      244
+    );
+
+    --time-color-dark: oklch(
+      calc(var(--l) + var(--l-offset))  
+      0.13
+      100
+    );
+    color: light-dark(
+      var(--time-color-light),
+      var(--time-color-dark)
+    );
   }
+
+  /* evening purple for nighttime */
   &.nighttime {
-    /* evening purple for nighttime */
-    color: hsl(248, 100%, 75%);
+    --time-color: oklch(
+      calc(var(--l) - var(--l-offset) - 10%)
+      var(--c)
+      287
+    );
+    color: light-dark(
+      oklch(from var(--time-color)
+        calc(l * .7) c h
+      ),
+      var(--time-color)
+    );
   }
 }
 .season {
+
+  /* spring green for spring season */
   &.spring {
-    /* spring green for spring season */
-    color: hsl(120, 100%, 75%);
+    --season-color: oklch(var(--l) var(--c) 144);
+    color: light-dark(
+      oklch(from var(--season-color)
+        calc(l * var(--light-mode-lightness-multiplier)) c h
+      ),
+      var(--season-color)
+    );
   }
+
+  /* golden honey for summer season */
   &.summer {
-    /* golden honey for summer season */
-    color: hsl(45, 100%, 55%);
-    /* hsl(45, 100%, 75%); */
+    --season-color: oklch(var(--l) var(--c) 87);
+    color: light-dark(
+      oklch(from var(--season-color)
+        calc(l * var(--light-mode-lightness-multiplier)) c h
+      ),
+      var(--season-color)
+    );
   }
+
+  /* autumn orange for autumn season */
   &.autumn {
-    /* autumn orange for autumn season */
-    color: hsl(30, 100%, 55%);
+    --season-color: oklch(
+      calc(var(--l) - var(--l-offset))
+      var(--c)
+      57
+    );
+    color: light-dark(
+      oklch(from var(--season-color)
+        calc(l * var(--light-mode-lightness-multiplier)) c h
+      ),
+      var(--season-color)
+    );
   }
+
+  /* winter blue for winter season */
   &.winter {
-    /* winter blue for winter season */
-    color: hsl(210, 100%, 70%);
+    --season-color: oklch(
+        calc(var(--l) - var(--l-offset))
+        0.13
+        250
+      );
+    color: light-dark(
+      oklch(from var(--season-color)
+        calc(l * var(--light-mode-lightness-multiplier)) c h
+      ),
+      var(--season-color)
+    )
   }
 }

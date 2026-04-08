@@ -4,6 +4,7 @@
 
 :root {
   color-scheme: light dark;
+  /* color-scheme: light; */
 
   /* Light theme variables */
   --primary-color: light-dark(#2b6cb0, #579ac9);
@@ -16,7 +17,7 @@
     oklch(50% 0.044 261), 
     oklch(80% 0.043 255)
   );
-  --border-color: light-dark(#e2e8f0, #4a5568);
+  --border-color: light-dark(#3a4450, #4a5568);
   --bg-color: light-dark(#f7fafc, #1a202c);
   --card-bg: light-dark(#aad6ff, #2d3748);
   --color-mixin: light-dark(black, white);

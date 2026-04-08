@@ -30,47 +30,42 @@ export default function ResourcesRules() {
       be used by that Skritter to affect their own actions.
     </p>
     <p>
-      The basic resources are listed below:
+      Spend resources to gain a bonus. The basic resources
+      and their effects are listed below:
     </p>
     <ul>
       <li>
-        <Focus /> — A <Focus /> resource may be spent to 
-        gain <PlusSize x={1} /> to a <RangedCheck plural />.
+        <Focus /> — Gain <PlusSize x={1} /> to a <RangedCheck plural />.
       </li>
       <li>
-        <Vigor /> — A <Vigor /> resource may be used to
-        gain <PlusSize x={1} /> to a <BrawlCheck plural />.
+        <Vigor /> — Gain <PlusSize x={1} /> to a <BrawlCheck plural />.
       </li>
       <li>
-        <Whimsy /> — A <Whimsy /> resource may be used to
-        gain <PlusSize x={1} /> to a <WeaveCheck />.
+        <Whimsy /> — Gain <PlusSize x={1} /> to a <WeaveCheck />.
       </li>
       <li>
-        <Hardy /> — A <Hardy /> resource may be used when attacked 
-        to grant <PlusDice dice={new Dice("1d6")} /> to <Defense />.
+        <Hardy /> — Grant <PlusDice dice={new Dice("1d6")} /> to <Defense />.
       </li>
       <li>
-        <Ready /> — A <Ready /> resource may be used to
-        gain <PlusSize x={1} /> to any <Check />.
+        <Ready /> — Gain <PlusSize x={1} /> to any <Check />.
       </li>
       <li>
-        <Rush /> — A <Rush /> resource may be used to 
-        gain +1” to movement for the rest of the activation.
+        <Adaptive /> — Gain <PlusDice dice={new Dice("1d6")} /> to any <Check />.
+      </li>
+      <li>
+        <Rush /> — Gain +1” to movement for the rest of the activation.
       </li>
       <li>
         <Dazzle /> — A <Dazzle /> resource may be used at
-        the start of any Skritter's activation. Until that
-        Skritter's activation ends, the Skritter who used
-        the <Dazzle /> resource cannot be targeted with <Attack plural />.
+        the start of <b>any other</b> Skritter's activation.
+        Until that Skritter's activation ends, the Skritter
+        who used the <Dazzle /> resource cannot be targeted 
+        by <Attack plural />.
       </li>
       <li>
-        <Adaptive /> — An <Adaptive /> resource may be used to
-        gain <PlusDice dice={new Dice("1d6")} /> to any <Check />.
-      </li>
-      <li>
-        <Lucky /> — A <Lucky /> resource can be used after rolling a 
-        <Check /> to reroll the <Check />. Use wisely,
-        because you must keep the new result.
+        <Lucky /> — Spend after rolling a <Check /> to
+        reroll the <Check />. Use wisely, because you
+        must keep the new result.
       </li>
       <li>
         <Preserved /> — Used for campaign purposes, they ???

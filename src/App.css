@@ -1,10 +1,21 @@
+/* h1 candidates: Lora, Abril Fatface, Josefin Slab */
+/* h2 candidates: Fredoka One, Nunito, Pacifico, Quicksand */
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Abril+Fatface&family=Josefin+Slab&family=Fredoka+One&family=Nunito&family=Pacifico&family=Quicksand&display=swap');
+
 :root {
   color-scheme: light dark;
 
   /* Light theme variables */
   --primary-color: light-dark(#2b6cb0, #579ac9);
   --primary-light: light-dark(#ebf4ff, #2a4365);
-  --text-color: light-dark(#4a5568, #e2e8f0);
+  --text-color: light-dark(
+    oklch(35% 0.034 261), 
+    oklch(95% 0.033 255)
+  );
+  --text-muted-color: light-dark(
+    oklch(50% 0.044 261), 
+    oklch(80% 0.043 255)
+  );
   --border-color: light-dark(#e2e8f0, #4a5568);
   --bg-color: light-dark(#f7fafc, #1a202c);
   --card-bg: light-dark(#aad6ff, #2d3748);
@@ -62,8 +73,29 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
+h1 {
+  font-family: 'Josefin Slab', Georgia, serif;       
+  font-size: 3em;
+}
+h2 {
+  margin-top: 2rem;
+  /* rounded and friendly, subtle */
+  font-family: 'Nunito', Arial, sans-serif;
+  /* handwritten/script-ish feel */
+  /* font-family: 'Pacifico', cursive; */
+  text-decoration: underline;
+  background-color: var(--primary-light);
+  padding-inline: 0.5em;
+}
+h3 {
+  color: var(--text-muted-color);
+}
+h4 {
+  color: var(--text-color);
+}
+
 
 p {
   margin-top: 0;

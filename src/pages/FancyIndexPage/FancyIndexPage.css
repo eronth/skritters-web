@@ -2,189 +2,103 @@
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 4rem);
-}
-
-.fancy-index .game-title {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 2rem 0 1rem;
-  background-image: url('../../assets/title-bg.png');
-  background-size: cover;
-  background-position: center;
-}
-
-/* ── Content area (left + right) ──────────────────────────── */
-
-.fancy-index .content-area {
-  display: flex;
-  flex: 1;
-  min-height: 500px;
-}
-
-/* ── Left side: stacked nav column ───────────────────────── */
-
-.fancy-index .left-side {
-  width: 240px;
-  flex-shrink: 0;
-  padding: 2rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.fancy-index .left-side .navcluster {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin: 0;
-  width: 100%;
-}
-
-.fancy-index .left-side .navcluster div {
-  display: block;
-  padding: 0;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-}
-
-.fancy-index .left-side .navcluster div:hover {
-  background-color: color-mix(in srgb, var(--bg-color) 80%, var(--primary-color) 20%);
-  border-color: var(--primary-color);
-  transform: translateX(4px);
-}
-
-.fancy-index .left-side .navcluster a {
-  display: block;
-  width: auto;
-  padding: 0.75rem 1.25rem;
-  color: var(--text-color);
-  text-align: left;
-  font-size: 1.05rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.fancy-index .left-side .navcluster div:hover a {
-  color: var(--primary-color);
-}
-
-/* ── Right side: background image with left fade + card ──── */
-
-.fancy-index .right-side {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  background-image: url('../../assets/main-page-bg.png');
-  background-size: cover;
-  background-position: center right;
-  display: flex;
-  align-items: center;
-}
-
-/* Gradient overlay: bg-color on left, fades to transparent revealing image */
-.fancy-index .right-side::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    var(--bg-color) 0%,
-    color-mix(in srgb, var(--bg-color) 55%, transparent) 40%,
-    transparent 70%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Description card */
-.fancy-index .right-side p {
-  position: relative;
-  z-index: 2;
-  margin: 2rem;
-  padding: 1.25rem 1.75rem;
-  background: color-mix(in srgb, var(--card-bg) 72%, transparent);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  backdrop-filter: blur(6px);
-  max-width: 380px;
-  line-height: 1.75;
-}
-
-
-/* ── Content area (left + right) ──────────────────────────── */
-
-.fancy-index .content-area {
-  display: flex;
-  flex: 1;
-  min-height: 500px;
-}
-
-/* ── Left side: stacked nav column ───────────────────────── */
-
-.fancy-index .left-side {
-  width: 240px;
-  flex-shrink: 0;
-  padding: 2rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.fancy-index .left-side .navcluster {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin: 0;
-  width: 100%;
-}
-
-.fancy-index .left-side .navcluster div {
-  display: block;
-  padding: 0;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-}
-
-.fancy-index .left-side .navcluster div:hover {
-  background-color: color-mix(in srgb, var(--bg-color) 80%, var(--primary-color) 20%);
-  border-color: var(--primary-color);
-  transform: translateX(4px);
-}
-
-.fancy-index .left-side .navcluster a {
-  display: block;
-  width: auto;
-  padding: 0.75rem 1.25rem;
-  color: var(--text-color);
-  text-align: left;
-  font-size: 1.05rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.fancy-index .left-side .navcluster div:hover a {
-  color: var(--primary-color);
-}
-
-/* ── Right side: description card ───────────────────────── */
-
-.fancy-index .right-side {
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-
-/* Description card */
-.fancy-index .right-side p {
-  position: relative;
-  z-index: 2;
-  margin: 2rem;
-  padding: 1.25rem 1.75rem;
-  background: color-mix(in srgb, var(--card-bg) 72%, transparent);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  backdrop-filter: blur(6px);
-  max-width: 380px;
-  line-height: 1.75;
+  
+  /* ── Content area (left + right) ──────────────────────────── */
+  .content-area {
+    display: flex;
+    flex: 1;
+    min-height: 500px;
+    
+    /* ── Left side: stacked nav column ───────────────────────── */
+    .left-side {
+      width: 240px;
+      flex-shrink: 0;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    
+      .navcluster {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0;
+        width: 100%;
+    
+        div {
+          display: block;
+          padding: 0;
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    
+          &:hover {
+            background-color: color-mix(in srgb, var(--bg-color) 80%, var(--primary-color) 20%);
+            border-color: var(--primary-color);
+            transform: translateX(4px);
+          }
+    
+          a {
+            display: block;
+            width: auto;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-color);
+            text-align: left;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+          }
+          
+          &:hover a {
+            color: var(--primary-color);
+          }
+        }
+    
+      }
+      
+      
+      
+    }
+    
+    
+    /* ── Right side: background image with left fade + card ──── */
+    .right-side {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background-image: url('../../assets/main-page-bg.png');
+      background-size: cover;
+      background-position: center right;
+      display: flex;
+      align-items: center;
+    
+      /* Gradient overlay: bg-color on left, fades to transparent revealing image */
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          var(--bg-color) 0%,
+          color-mix(in srgb, var(--bg-color) 55%, transparent) 40%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
+    
+      /* Description card */
+      p {
+        position: relative;
+        z-index: 2;
+        margin: 2rem;
+        padding: 1.25rem 1.75rem;
+        background: color-mix(in srgb, var(--card-bg) 72%, transparent);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        backdrop-filter: blur(6px);
+        max-width: 380px;
+        line-height: 1.75;
+      }
+    }  
+  }
 }

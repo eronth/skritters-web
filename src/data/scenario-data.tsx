@@ -64,8 +64,8 @@ const captureTheFlag: Scenario = {
   extraRules: <>
     High Intensity: All attack actions get +1d6+1d4.
     <br />
-    Capture: A Skritter within 1” of an opponent’s flag may use an 
-    action to collect it. If a Skritter carrying an opponent’s
+    Capture: A Skritter within 1” of an opponent's flag may use an 
+    action to collect it. If a Skritter carrying an opponent's
      flag ends their movement within 1” of
       their own Pedestal, they gain 1 Victory Point. 
       Then they return the flag to their
@@ -73,7 +73,7 @@ const captureTheFlag: Scenario = {
        When the opponent places the Flag on the Pedestal, 
        they may move the Pedestal by 1” in any direction.
     <br />
-    Reclaim the Flag: While an opponent’s Skritter has your flag, your units get +1” to Movement.
+    Reclaim the Flag: While an opponent's Skritter has your flag, your units get +1” to Movement.
     <br />
     Back in Action: If a Skritter would be forced to retreat, it is instead fully healed then placed on the edge of the battlefield inside their deployment zone. Skritters do not need to worry about retreat in this Scenario.
   </>
@@ -158,7 +158,7 @@ const treeUponAHill: Scenario = {
   setup: <>Put a Hillside Tree in the center of the battlefield. This should be on a hilly piece of terrain.</>,
   deployment: basicDeployment,
   endConditions: <>At the end of the 4th round, the player with the least Victory Points rolls a dice. On a 3+, they choose if there is one more round or not. Otherwise the match ends after rounds.</>,
-  scoring: <>At the end of each round, players gain 1 Victory Point for each Skritter they have on the Tree’s hill, and an additional Victory Point for each Skritter they have climbed into the Tree.</>,
+  scoring: <>At the end of each round, players gain 1 Victory Point for each Skritter they have on the Tree's hill, and an additional Victory Point for each Skritter they have climbed into the Tree.</>,
   extraRules: <>
     A Skritter can use an action to shake the Hillside Tree. That Skritter rolls a Shake Brawl Check. Each Skritter currently in the tree (including friendly Skritters), make a Defense or Brawl check against the result of the Shake Check. If they roll less Successes than the Shake Check result, they fall from the tree to the ground below. A Skritter that falls this way does not take damage from either the check nor the fall.
     <br />
@@ -237,17 +237,17 @@ const leadership: Scenario = {
   setup: <>Each player secretly picks one of their Skritters to be their Leader. Mark this choice down in secret (e.g., on a face-down piece of paper).</>,
   deployment: <></>,
   endConditions: <>At the end of the 4th round, the match ends.</>,
-  scoring: <>At the end of the match, reveal your secretly chosen Leader. You gain 1 Victory Point for every Skritter your Leader caused to retreat, and you gain 2 Victory Points if your opponent’s Leader retreated.</>,
+  scoring: <>At the end of the match, reveal your secretly chosen Leader. You gain 1 Victory Point for every Skritter your Leader caused to retreat, and you gain 2 Victory Points if your opponent's Leader retreated.</>,
   extraRules: <></>,
 };
 
 const holdTheLine: Scenario = {
   name: 'Hold the Line', type: 'assault&guard',
   setup: <>
-  Mark a line 3” from the guarding player’s deployment zone (towards the middle of the battlefield). This is “The Line”. The guarding player may deploy two 2” long Walls (2” high) and two 2” long Cover (1” high?) along this line.</>,
+  Mark a line 3” from the guarding player's deployment zone (towards the middle of the battlefield). This is “The Line”. The guarding player may deploy two 2” long Walls (2” high) and two 2” long Cover (1” high?) along this line.</>,
   deployment: <></>,
   endConditions: <>
-  At the end of the 3rd round, the match ends. The assaulting player gains 1 Victory Point for each of their Skritters that is past The Line, while the guarding player gains 1 Victory Point for each of the assaulting player’s Skritters that is NOT past The Line. Skritters that retreated are not considered past The Line.</>,
+  At the end of the 3rd round, the match ends. The assaulting player gains 1 Victory Point for each of their Skritters that is past The Line, while the guarding player gains 1 Victory Point for each of the assaulting player's Skritters that is NOT past The Line. Skritters that retreated are not considered past The Line.</>,
   scoring: <></>,
   extraRules: <>
   Any time the assaulting player has a Skritter that is past The Line retreat, they must retreat towards the line in as direct of a path as possible, potentially passing back over the line. If a retreat made this way would put that Skritter into a Scuffle with another Skritter, they do so.
@@ -257,7 +257,7 @@ const holdTheLine: Scenario = {
 const ambush: Scenario = {
   name: 'Ambush', type: 'assault&guard',
   setup: <>
-    The guarding player’s deployment zone is a circle in the middle of the board that has a 3” radius. Place 3 Treasure tokens in the guarding player’s deployment zone. The assaulting player’s Deployment zone is a 1” thick band around all edges of the board.
+    The guarding player's deployment zone is a circle in the middle of the board that has a 3” radius. Place 3 Treasure tokens in the guarding player's deployment zone. The assaulting player's Deployment zone is a 1” thick band around all edges of the board.
   </>,
   deployment: <></>,
   endConditions: <>
@@ -278,7 +278,7 @@ const ambush: Scenario = {
 const supplySnatch: Scenario = {
   name: 'Supply Snatch', type: 'assault&guard',
   setup: <>
-    Half of the board is designated as the guarding player’s territory. The back half is their deployment zone and territory, while the front half is simply territory.
+    Half of the board is designated as the guarding player's territory. The back half is their deployment zone and territory, while the front half is simply territory.
     <br />
     The guarding player starts with 20 Supply tokens, divided into 4 piles of 5 tokens. The guarding player must deploy all piles on their territory, with at least 2” between piles. A maximum of 1 pile can be placed in their deployment zone, at least 1” from the edge of the battlefield, the rest must be outside the deployment zone. 
     <br />
@@ -292,11 +292,11 @@ const supplySnatch: Scenario = {
     Each player gains 1 Victory Point per every 2 Supply tokens they currently control. The assaulting player controls all Supply tokens carried by their Skritters and all Supply tokens in their Team Stockpile. The guarding player controls all other Supply tokens, including ones that were initially Snatched but then dropped for any reason.
   </>,
   extraRules: <>
-    If a Skritter is within 1” of a pile of Supply tokens, it may attempt a 2d6 Snatch check.That Skritter snatches a number of Supply tokens equal to the successes, take the tokens and put them on the Skritter’s sheet.
+    If a Skritter is within 1” of a pile of Supply tokens, it may attempt a 2d6 Snatch check.That Skritter snatches a number of Supply tokens equal to the successes, take the tokens and put them on the Skritter's sheet.
     <br />
     If a Skritter carrying Supply tokens is forced to retreat, it immediately drops those tokens in a new pile touching the base prior to being removed from the battlefield for retreating.
     <br />
-    If at any point a Skritter carrying Supply tokens is outside of the guarding player’s territory, the player controlling that Skritter can immediately take the tokens off that Skritter’s card and put them in the Team Stockpile (off of the battlefield). These tokens cannot be reclaimed in any way.
+    If at any point a Skritter carrying Supply tokens is outside of the guarding player's territory, the player controlling that Skritter can immediately take the tokens off that Skritter's card and put them in the Team Stockpile (off of the battlefield). These tokens cannot be reclaimed in any way.
   </>,
 };
 
@@ -323,7 +323,7 @@ const hideAndGoSeek: Scenario = {
     <br />
     At the start of each round, if the guarding player does not have a Skritter that is Hiding, they choose one to Hide. They must choose a Skritter that is not in their deployment zone, if they control no Skritters outside of their deployment zone, they may move a Skritter up to 1” to exit the deployment zone. If there are still no Skritters outside of the deployment zone, it is treated as though a Skritter was immediately revealed (thus awarding a Victory Point to the assaulting player). You cannot reveal a Cloaked model 
     <br />
-    The hiding Skritter will then Cloak 3, or if it is night Cloak 4. Immediately after Cloaking the hiding Skritter, the player makes a move action with that Skritter. The chosen Skritter’s Cloaks cannot enter the guarding player’s deployment zone for any reason. (Maybe all actions can be taken after another unit moves, one at a time. So it’s not move once then sit and hope).
+    The hiding Skritter will then Cloak 3, or if it is night Cloak 4. Immediately after Cloaking the hiding Skritter, the player makes a move action with that Skritter. The chosen Skritter's Cloaks cannot enter the guarding player's deployment zone for any reason. (Maybe all actions can be taken after another unit moves, one at a time. So it's not move once then sit and hope).
   </>,
 };
 

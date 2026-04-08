@@ -24,9 +24,9 @@ export default function ResourcesRules() {
     <p>
       Some abilities or effects cause you to gain resources.
       Any resources gained by a specific Skritter are placed
-      on that Skritter’s card (or wherever we designate Skritter
+      on that Skritter's card (or wherever we designate Skritter
       specific stuff). Otherwise, the resource is set aside near
-      your team’s info. Resources owned by a Skritter may only
+      your team's info. Resources owned by a Skritter may only
       be used by that Skritter to affect their own actions.
     </p>
     <p>
@@ -59,8 +59,8 @@ export default function ResourcesRules() {
       </li>
       <li>
         <Dazzle /> — A <Dazzle /> resource may be used at
-        the start of any Skritter’s activation. Until that
-        Skritter’s activation ends, the Skritter who used
+        the start of any Skritter's activation. Until that
+        Skritter's activation ends, the Skritter who used
         the <Dazzle /> resource cannot be targeted with <Attack plural />.
       </li>
       <li>

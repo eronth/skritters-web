@@ -13,7 +13,7 @@ export default function DefeatAndRetreat() {
         fails their recovery check, they must retire.
         However, a retired Skritter is not gone, for they
         still have much wisdom to share. Consult your
-        Skritter’s *retired* section to see what benefits
+        Skritter's *retired* section to see what benefits
         they still have to offer.
       </p>
     </>

@@ -35,7 +35,7 @@ export default function EquipmentCard({
   const rangeDisplay = () => {
     if (item.range) {
       const rangeText = Array.isArray(item.range)
-      ? `${item.range[0]} / ${item.range[1]}"`
+      ? `${item.range[0]}" / ${item.range[1]}"`
       : `${item.range}"`;
       return <><label className="stat-label">Range:</label>
         <div className="stat-value">{rangeText}</div>

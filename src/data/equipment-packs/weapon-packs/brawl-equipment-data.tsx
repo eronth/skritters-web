@@ -1,3 +1,4 @@
+import Bsp from "../../../common/Formatting/bsp";
 import Keyword from "../../../common/Keywords/Keyword";
 import Action from "../../../common/Keywords/rules/action/Action";
 import Attack from "../../../common/Keywords/rules/action/Attack";
@@ -157,7 +158,8 @@ const gunblade: Equipment = {
   bonus: { dice: [d1d6] },
   effect: (<>
     This weapon can be used for 
-    either a <BrawlAttack /> or <RangedAttack />.
+    either a<Bsp /><BrawlAttack /><Bsp />with range 1"
+    or <RangedAttack /><Bsp />with range 12".
   </>),
   tags: ['METALORPLANT']
 };

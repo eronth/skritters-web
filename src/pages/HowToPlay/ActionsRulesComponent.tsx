@@ -119,10 +119,18 @@ export default function ActionsRulesComponent() {
     {/* Brawl Attacks */}
     <h4>Brawl Specific Rules</h4>
     <p>
-      Brawl attacks can only be used in a Scuffle. You can attempt to Close the Gap immediately
-      before making a Brawl Attack as a free action. (unarmed attack: 0.5”, -4 SIZE, min d4)
+      Brawl attacks can only be used in a Scuffle.
     </p>
-
+    <p>
+      Every Skritter has access to a special Improvised Weapon
+      Brawl Attack. This attack is available even when all hands
+      are occupied. Imagine kicking, headbuts, or swinging wildly
+      with whatever is in your hands. The attack has a range of
+      0.5", grants <MinusSize x={4} />, grants a minimum dice
+      of d4 (even if penalties would reduce it to less than d4),
+      and does not count as one-handed or two-handed for the 
+      purposes of any benefits,
+    </p>
     {/* Ranged Attacks */}
     <h4>Ranged Specific Rules</h4>
     <p>

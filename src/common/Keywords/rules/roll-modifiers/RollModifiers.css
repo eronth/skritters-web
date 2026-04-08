@@ -1,0 +1,6 @@
+.plus-dice,
+.minus-dice {
+  svg {
+    margin-inline: 2px;
+  }
+}

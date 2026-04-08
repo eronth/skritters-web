@@ -106,6 +106,7 @@
   }
   .group-title {
     text-transform: capitalize;
+    background-color: inherit;
   }
   .group-count {
     font-size: 14px;

@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import "./GameTitle.css";
 
 export default function GameTitle({ isIndex }: { isIndex?: boolean }) {
   return (
-    <div className="game-title">
+    <Link to="/" className={`game-title${isIndex ? ' index-page' : ''}`}>
       Skritters!
-    </div>
+    </Link>
   );
 }

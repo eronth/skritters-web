@@ -40,6 +40,9 @@
     .skritter-title {
       font-size: 1.5rem;
       color: var(--primary-color);
+      background-color: inherit;
+      padding-inline: 0;
+      margin-inline: 0;
       margin-bottom: 0;
       display: flex;
       flex-direction: row;

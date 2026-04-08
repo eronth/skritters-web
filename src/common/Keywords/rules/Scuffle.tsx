@@ -1,10 +1,12 @@
 import Keyword from "../Keyword";
 
-
-export default function Scuffle() {
+type Props = {
+  plural?: boolean
+};
+export default function Scuffle({ plural }: Props) {
   return (
     <Keyword className='scuffle' bold>
-      Scuffle
+      Scuffle{plural ? "s" : ""}
     </Keyword>
   )
 }

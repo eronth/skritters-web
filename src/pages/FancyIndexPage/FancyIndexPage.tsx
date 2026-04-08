@@ -5,7 +5,7 @@ import './FancyIndexPage.css';
 export default function FancyIndexPage() {
   return (<div className='fancy-index'>
     <GameTitle isIndex={true} />
-    <div>
+    <div className='content-area'>
       <div className='left-side'>
         <NavCluster />
       </div>

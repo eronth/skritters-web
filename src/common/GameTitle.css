@@ -1,6 +1,8 @@
 .game-title {
+  display: block;
   font-size: 4.5rem;
   font-weight: 700;
   color: var(--primary-color);
   text-align: center;
+  text-decoration: none;
 }

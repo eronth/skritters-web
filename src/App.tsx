@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import FancyIndexPage from './pages/FancyIndexPage'
+import FancyIndexPage from './pages/FancyIndexPage/FancyIndexPage'
 import SkrittersListPage from './pages/Skritters/SkrittersListPage'
 import HowToPlayPage from './pages/HowToPlay/HowToPlayPage'
 import CampaignPage from './pages/Campaign/CampaignPage'

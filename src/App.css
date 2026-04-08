@@ -1,12 +1,14 @@
 :root {
+  color-scheme: light dark;
+
   /* Light theme variables */
-  --primary-color: #2b6cb0;
-  --primary-light: #ebf4ff;
-  --text-color: #4a5568;
-  --border-color: #e2e8f0;
-  --bg-color: #f7fafc;
-  --card-bg: #aad6ff;
-  --color-mixin: black;
+  --primary-color: light-dark(#2b6cb0, #579ac9);
+  --primary-light: light-dark(#ebf4ff, #2a4365);
+  --text-color: light-dark(#4a5568, #e2e8f0);
+  --border-color: light-dark(#e2e8f0, #4a5568);
+  --bg-color: light-dark(#f7fafc, #1a202c);
+  --card-bg: light-dark(#aad6ff, #2d3748);
+  --color-mixin: light-dark(black, white);
 
   --light-plant-clr: hsl(139, 73%, 87%);
   --dark-plant-clr: hsl(152, 42%, 23%);
@@ -35,19 +37,6 @@
   --light-gloomy-color: hsl(240, 100%, 80%);
   --dark-gloomy-color: hsl(218, 17%, 25%);
   
-}
-
-/* Dark theme variables */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary-color: #579ac9;
-    --primary-light: #2a4365;
-    --text-color: #e2e8f0;
-    --border-color: #4a5568;
-    --bg-color: #1a202c;
-    --card-bg: #2d3748;
-    --color-mixin: white;
-  }
 }
 
 html, body {

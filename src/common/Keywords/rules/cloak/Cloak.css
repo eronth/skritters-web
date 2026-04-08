@@ -1,0 +1,53 @@
+.cloak {
+  font-style: italic;
+  font-size: 0.88em;
+  border-radius: 8px;
+  padding: 0.05em 0.4em;
+  color: light-dark(
+    rgb(225 218 245),
+    rgb(40 35 55)
+  );
+
+
+  --radial-start-clr: light-dark(
+    rgb(30 20 50 / 0.85),
+    rgb(200 210 225 / 0.75)
+  );
+  --radial-end-clr: light-dark(
+    rgb(10 8 20 / 0.45),
+    rgb(220 228 238 / 0.35)
+  );
+  background: radial-gradient(
+    ellipse at center,
+    var(--radial-start-clr) 0%,
+    var(--radial-end-clr) 70%, transparent 100%
+  );
+  
+
+  --box-shadow-clr: light-dark(
+    rgb(60 30 90 / 0.45),
+    rgb(180 195 215 / 0.4)
+  );
+  --box-shadow-inset-clr: light-dark(
+    rgb(80 50 120 / 0.3),
+    rgb(200 215 230 / 0.35)
+  );
+  box-shadow:
+    0 0 6px 3px var(--box-shadow-clr),
+    inset 0 0 8px var(--box-shadow-inset-clr);
+
+  
+  --text-shadow-start-clr: light-dark(
+    rgb(160 130 220 / 0.7),
+    rgb(0 0 0 / 0.1)
+  );
+  --text-shadow-end-clr: light-dark(
+    rgb(100 70 160 / 0.4),
+    rgb(0 0 0 / 0.1)
+  );
+  text-shadow: 
+    0 0 10px var(--text-shadow-start-clr), 
+    0 0 20px var(--text-shadow-end-clr),
+    none;
+  backdrop-filter: blur(2px);
+}

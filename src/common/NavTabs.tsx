@@ -20,9 +20,9 @@ const NavTabs = ({selectedTab, isOpen, onClose}: Props) => {
   return (
     <nav className={`sidebar${isOpen ? ' sidebar-open' : ''}`}>
       <button className="sidebar-close" onClick={onClose} aria-label="Close navigation">✕</button>
-      <Link to="/about" className={getClassForTab('about')} onClick={onClose}>
+      {/* <Link to="/about" className={getClassForTab('about')} onClick={onClose}>
         <div>About</div>
-      </Link>
+      </Link> */}
       <Link to="/how-to-play" className={getClassForTab('how-to-play')} onClick={onClose}>
         <div>How to Play</div>
       </Link>

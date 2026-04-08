@@ -1,3 +1,4 @@
+import Bsp from "../../../common/Formatting/bsp";
 import Keyword from "../../../common/Keywords/Keyword";
 import Action from "../../../common/Keywords/rules/action/Action";
 import Attack from "../../../common/Keywords/rules/action/Attack";
@@ -130,10 +131,11 @@ const handcannon: Equipment = {
   range: 6,
   bonus: {},
   effect: (<>
-    Ignore your target's&#32;<Defense /> when making an <Attack /> with
-    this weapon. Must use an <Action /> to reload before it can 
-    be used again, and you cannot use this weapon twice
-    in the same activation.
+    Ignore your target's<Bsp /><Defense /><Bsp />when making 
+    an<Bsp /><Attack /><Bsp />with this weapon. Must use an
+    <Bsp /><Action /><Bsp />to reload before it can be used
+    again, and you cannot use this weapon twice in the
+    same activation.
   </>),
   tags: ['METAL']
 };

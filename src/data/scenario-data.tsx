@@ -1,3 +1,5 @@
+import Bsp from "../common/Formatting/bsp";
+import PlusSize from "../common/Keywords/rules/roll-modifiers/PlusSize";
 import Day from "../common/Keywords/times/Day";
 import Night from "../common/Keywords/times/Night";
 import Match from "../common/Match";
@@ -269,7 +271,18 @@ const ambush: Scenario = {
   extraRules: <>
     A Skritter can use an action to move a Treasure token that is within 1” of them. That Skritter can move up to half of their movement, then the player places the Treasure token touching the Skritter.
     <br />
-    If you try to move a Treasure token that is currently being touched by another Skritter with a Stealing action. To do so, make a Brawl check vs that Skritter’s Brawl or Defense check. If you have more successes than them, you steal the Treasure and move with it. Otherwise, the action fails, and that Skritter cannot attempt to move that Treasure token again this round. No damage is dealt when stealing a treasure token.
+    If you try to move a Treasure token that is currently being touched
+    by another Skritter with a Stealing action. To do so, make a
+    Brawl check vs that Skritter's Brawl or Defense check. If either
+    Skritter is larger than the other, the larger Skritter gets
+    <Bsp /><PlusSize x={1} /> to their check.
+    <br />
+    If you
+    have more successes than them, you steal the Treasure and move
+    with it. Otherwise, the action fails, and that Skritter
+    cannot attempt to move that Treasure token again this round.
+    <br />
+    No damage is dealt when stealing a treasure token.
     <br />
     If the assaulting player moves a Treasure token into their deployment zone, it becomes Secured and cannot be moved.
   </>,

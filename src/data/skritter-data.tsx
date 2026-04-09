@@ -23,7 +23,6 @@ import Success from "../common/Keywords/rules/roll-modifiers/Success";
 import Scuffle from "../common/Keywords/rules/Scuffle";
 import Burrow from "../common/Keywords/rules/terrain/Burrow";
 import Cover from "../common/Keywords/rules/terrain/Cover";
-import BrawlThreat from "../common/Keywords/rules/threat/BrawlThreat";
 import Autumn from "../common/Keywords/times/Autumn";
 import Night from "../common/Keywords/times/Night";
 import Spring from "../common/Keywords/times/Spring";
@@ -33,6 +32,7 @@ import Weapon from "../common/Keywords/rules/Weapon";
 import ItemTag from "../common/Tags/ItemTag";
 import { Dice, Equipment, PersonalEquipmentEntry, Skritter } from "../types/types"
 import Match from "../common/Match";
+import Bsp from "../common/Formatting/bsp";
 const d1d4: Dice = new Dice('1d4');
 const d1d6: Dice = new Dice('1d6');
 const d2d6: Dice = new Dice('2d6');
@@ -70,8 +70,8 @@ const acornCache: {name: string; effect: React.ReactNode} = {
 const tongueLash: {name: string; effect: React.ReactNode} = {
   name: "Tongue Lash",
   effect: <>
-    Your <BrawlThreat /> range is increased by 1".
-    (Or, your actual attack range is 1"?)
+    You can perform Intercept actions at +1" range. Additionally,
+    your Improvised Weapon attacks get +1" range.
   </>
 };
 const flitterAbout: {name: string; effect: React.ReactNode} = {
@@ -85,6 +85,13 @@ const echolocate: {name: string; effect: React.ReactNode} = {
     this attack are marked with a 
     <DiscoveredMarker />. Next <Attack /> by a creature with Echolocate against this creature can use 
     the <DiscoveredMarker /> for <PlusDice dice={d1d4} />.
+  </>
+};
+const leaping: {name: string; effect: React.ReactNode} = {
+  name: "Leaping",
+  effect: <>
+    While moving, Frog Wizard can ignore up to 1" of Difficult Terrain. Additionally, 
+    it gets <PlusDice dice={d1d6} /> to <Check type="Jump" plural />.
   </>
 };
 
@@ -336,13 +343,9 @@ const frogWizard: Skritter = {
     size: "Small",
   },
   abilities: [
-    {
-      name: "Leaping",
-      effect: <>
-        While moving, Frog Wizard can ignore up to 1" of Difficult Terrain. Additionally, 
-        it gets <PlusDice dice={d1d6} /> to <Check type="Jump" plural />.
-      </>
-    }
+    {...tongueLash},
+    {...leaping}
+
   ],
   retirement: [],
   tags: ['WATERFOND', 'HELPFUL'],
@@ -499,6 +502,7 @@ const swampToad: Skritter = {
     size: "Medium",
   },
   abilities: [
+    {...tongueLash},
     {
       name: "Croak of Cloak",
       effect: <>
@@ -795,6 +799,35 @@ const monkeyTailedSkink: Skritter = {
   tags: ['COLD-BLOODED'],
 };
 
+const poisonDarkFroggy: Skritter = {
+  name: 'Poison Dark Froggy',
+  description: 'A Poison Dark Frog',
+  stats: {
+    movement: 5,
+    ranged: { dice: [new Dice('1d4')] },
+    brawl: { dice: [new Dice('1d4')] },
+    weave: { dice: [new Dice('1d6')] },
+    defense: { dice: [new Dice('1d4')] },
+    health: 4,
+    size: "Small",
+  },
+  abilities: [
+    {
+      name: "Toxic Touch",
+      effect: <>
+        After this Skritter makes an attack (and resolves damage),
+        place a Poison Marker on the target. Skritters have<Bsp />
+        <MinusSize x={1} /><Bsp />to<Bsp /><Defense /><Bsp />per
+        Poison Marker on them. (maybe it should be attacks against them???)
+      </>
+    },
+    {...tongueLash},
+    {...leaping}
+  ],
+  retirement: [],
+  tags: ['WATERFOND', 'COLD-BLOODED'],
+};
+
 const skritters = {
   porcupine,
   armordilloKnight,
@@ -820,6 +853,7 @@ const skritters = {
   guardianTurtle,
   harvestMouse,
   monkeyTailedSkink,
+  poisonDarkFroggy
 };
 
 export default skritters;

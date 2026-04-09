@@ -7,9 +7,13 @@ import PlusDice from "./Keywords/rules/roll-modifiers/PlusDice";
 import PlusSize from "./Keywords/rules/roll-modifiers/PlusSize";
 
 const formatModifiers = (modifiers: Modifiers): ReactNode => {
-  if (!modifiers) return null;
+  if (!modifiers) { return null; }
 
-  if (modifiers?.nilout) return '-';
+  if (modifiers?.nilout) { return '-'; }
+
+  // if the modifiers object has no properties, return 0
+  if (Object.keys(modifiers).length === 0) { return '+0'; } 
+
 
   const diceMap = new Map<number, number>();
   let diceList = null;

@@ -12,14 +12,23 @@ export default function ActionsRulesComponent() {
   return (<>
     <h2>Actions and Maneuvers</h2>
     <p>
-      Each Skritter can perform three actions in a turn once they are activated.
+      Each Skritter can perform three actions in a turn
+      once they are activated. Take actions one at a time,
+      choosing your next action after the previous one
+      resolves. A Skritter can perform the same action
+      more than once within an activation, but some have
+      bonuses or penalties associated with this. Below 
+      you will find a number of actions available to all
+      Skritters, though some Skritters or equipment may
+      list special additional actions associated with 
+      that Skritter or item.
     </p>
     <h3>Movement Actions</h3>
     <p>
       Skritters have access to a few movement actions to
-      maneuver around the  battlefield. Each movement
+      maneuver around the  battlefield. Movement
       action gets -1” for each movement action previously
-      completed by the Skritter.
+      completed by the Skritter during this activation.
     </p>
     <h4>Basic Movement Rules</h4>
     <p>

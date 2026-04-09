@@ -1,13 +1,15 @@
-import Action from "../../common/Keywords/rules/action/Action";
-import Check from "../../common/Keywords/rules/check/Check";
-import PlusSize from "../../common/Keywords/rules/roll-modifiers/PlusSize";
-import ItemTag from "../../common/Tags/ItemTag";
-import '../../common/Tags/Tags.css';
+import Action from "../../../common/Keywords/rules/action/Action";
+import Check from "../../../common/Keywords/rules/check/Check";
+import PlusSize from "../../../common/Keywords/rules/roll-modifiers/PlusSize";
+import ItemTag from "../../../common/Tags/ItemTag";
+import '../../../common/Tags/Tags.css';
 
 export default function ItemTagRules() {
   return (<>
+    <h3>Tags for Items</h3>
     <p>
-      Many Item Tags do not have a direct effect, but might interact with other abilities or effects.
+      Many Item Tags do not have a direct effect,
+      but might interact with other abilities or effects.
     </p>
     <ul>
       <li>

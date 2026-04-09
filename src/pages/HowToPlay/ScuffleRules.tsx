@@ -121,6 +121,9 @@ export default function ScuffleRules() {
       </p>
       <h4>Pile-In <span className="heh">Special Free Action</span></h4>
       <p>
+        Oh, uh, probably also after "Close the Gap".
+      </p>
+      <p>
         If a Skritter in a<Bsp /><Scuffle /><Bsp />is Defeated
         or otherwise removed from the Mission, each Skritter in
         that<Bsp /><Scuffle /><Bsp />can Pile-In. Players take

@@ -4,7 +4,7 @@ import ActionsRulesComponent from "./ActionsRulesComponent";
 import DiceAndTestsComponent from "./DiceAndTestsComponent";
 import ResourcesRules from "./ResourcesRules";
 import Terrain from "./Terrain";
-import ItemTagRules from "./ItemTagRules";
+import TagRules from "./TagRules/TagRules";
 
 export default function HowToPlayPage() {
   
@@ -32,9 +32,6 @@ export default function HowToPlayPage() {
     <ActionsRulesComponent />
     <Terrain />
     <ResourcesRules />
-    <h2>Taggies and Keywordies!</h2>
-    // TODO: Keywords
-    // TODO: Skritter tags (new page?)
-    <ItemTagRules />
+    <TagRules />
   </Page>);
 }

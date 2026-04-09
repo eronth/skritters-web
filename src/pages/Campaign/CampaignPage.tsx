@@ -1,3 +1,4 @@
+import Bsp from "../../common/Formatting/bsp";
 import Keyword from "../../common/Keywords/Keyword";
 import Action from "../../common/Keywords/rules/action/Action";
 import Attack from "../../common/Keywords/rules/action/Attack";
@@ -118,11 +119,13 @@ export default function CampaignPage() {
       <li>
         <label className="bolded">Swelter:</label> During <Day /> <Match plural />, Skritters 
         spend one action on each of their activations or they <Keyword bold>Overheat</Keyword>.
-        When a Skritter <Keyword bold>Overheats</Keyword>, their opponent rolles a 1d6 <Check type="Overheat" /> against them.
+        When a Skritter <Keyword bold>Overheats</Keyword>, their opponent rolles a 1d6
+        <Bsp /><Check type="Overheat" /> against them.
         The target takes 1 damage for each success, and does not get to roll a <Defense /> to mitigate
-        this damage. The <Check type="Overheat" /> is 2d6 against <Keyword>WATERFOND</Keyword> Skritters.
+        this damage. The <Check type="Overheat" /> is 2d6 against <Tag tag="WATERFOND" /> Skritters.
         <br />
-        A skritter that moves through water terrain during their turn and/or a skritter that has equipment that has the <Keyword>WATER</Keyword> or <Keyword>ICE</Keyword> tag
+        A skritter that moves through water terrain during their turn and/or a skritter that has equipment
+        that has the <Tag tag="WATER" /> or <Tag tag="FROST" /> tag
         does not Overheat. Stowed equipment does not count for this (worn does).
       </li>
     </ul>
@@ -134,12 +137,12 @@ export default function CampaignPage() {
     </p>
     <ul>
       <li>
-        <label className="bold">Flammable:</label> <Attack plural /> with the <Keyword>FLAME</Keyword> tag
+        <label className="bold">Flammable:</label> <Attack plural /> with the <Tag tag="FLAME" /> tag
         get <PlusDice dice={d1d4} /> to their roll.
       </li>
       <li>
           <label className="bold">Dreadful Aura:</label> During <Night /> <Match plural />, <Action plural /> using items with 
-          the <Keyword>GLOOMY</Keyword> tag get <PlusDice dice={d1d8} /> to their roll.
+          the <Tag tag="GLOOMY" /> tag get <PlusDice dice={d1d8} /> to their roll.
       </li>
     </ul>
     <h3><Winter /></h3>
@@ -153,11 +156,18 @@ export default function CampaignPage() {
         resource or spend an <Action /> to keep warm. If they do not, they begin freezing at the end of their
         activation. When a Skritter freezes, their opponent rolls a 1d6 <Check type="Freeze" /> against them. 
         The target takes 1 damage for each success, and does not get to roll a <Defense /> to mitigate
-        this damage. The <Check type="Freeze" /> is 2d6 against <Keyword>COLD-BLOODED</Keyword> Skritters.
+        this damage. The <Check type="Freeze" /> is 2d6 against <Tag tag="COLD-BLOODED" /> Skritters.
         <br />
         During <Night /> <Match />, the dice for the <Check type="Freeze" plural/> are d8s instead of d6s.
       </li>
+      <li>
+        <label className="bold">Frozen:</label> All water terrain is now frozen over.
+        Something something slippery?
+      </li>
     </ul>
+
+
+    {/* Post-Mission */}
     <h2>Post-<Match /> Wrap-up</h2>
     <p>
       After each <Match />, take go through teh following steps to handle what happens after the <Match />.
@@ -194,5 +204,16 @@ export default function CampaignPage() {
         even if you had to retire a Skritter in the previous step.
       </li>
     </ol>
+
+    {/* <h2>Advanced Rules</h2>
+    <p>
+      Is Skritters just not complicated enough already?
+    </p>
+    <p>
+      Dawn, noon, dusk, twilight daytimes?
+    </p>
+    <p>
+      Possible weather effects (windy, rainy, snowy, etc)?
+    </p> */}
   </Page>);
 }

@@ -1,12 +1,18 @@
 import Keyword from "../../Keyword";
 import './Cloak.css'
 
-export default function Cloak({ x }: { x?: number }) {
+type Props = {
+  x?: number;
+} | {
+  placeholder: boolean;
+};
+
+export default function Cloak({ x, placeholder }: Props) {
   return (
     <Keyword
       className="cloak"
     >
-      {`Cloak ${ x ? ' '+x : ''}`}
+      {`Cloak ${ placeholder ? 'X' : (x ? ' '+x : '')}`}
     </Keyword>
   );
 }

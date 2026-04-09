@@ -1,4 +1,4 @@
-import Keyword from "../../../common/Keywords/Keyword";
+import Cloak from "../../../common/Keywords/rules/cloak/Cloak";
 import ItemTagRules from "./ItemTagRules";
 import SkritterTagRules from "./SkritterTagRules";
 
@@ -10,8 +10,8 @@ export default function TagRules() {
     <ItemTagRules />
     <h3>Keywords</h3>
     <p>
-      <Keyword>Cloak X</Keyword> — If
-      something tells your unit to Cloak X,
+      <b><Cloak /></b> — If
+      something tells your unit to <Cloak placeholder />,
       you do the following: Place X Cloak
       models/markers on the battlefield
       touching the unit's base. Make sure

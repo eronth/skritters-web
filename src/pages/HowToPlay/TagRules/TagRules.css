@@ -1,0 +1,13 @@
+.tag-rules-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4em 0.75em;
+  align-items: baseline;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-rules-grid .tag-rule-description {
+  padding-block: 0.2em;
+}

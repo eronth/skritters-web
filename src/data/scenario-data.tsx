@@ -316,27 +316,62 @@ const supplySnatch: Scenario = {
 const hideAndGoSeek: Scenario = {
   name: 'Hide and Go Seek', type: 'assault&guard',
   setup: <>
-    The assaulting player deploys two 4” tall Watchlight Towers on their side of the battlefield, at least 3” apart. The guarding player then deploys a single 4” Lookout Tower in their deployment zone if they choose. When deploying units, the guarding player deploys one (and only one) of their Skritters outside of their deployment zone, touching it.
+    The assaulting player deploys two 4”
+    tall Watchlight Towers on their side
+    of the battlefield, at least 3” apart.
+    The guarding player then deploys a
+    single 4” Lookout Tower in their
+    deployment zone if they choose.
+    When deploying units,
+    the guarding player deploys one
+    (and only one) of their Skritters
+    outside of their deployment zone, touching it.
   </>,
   deployment: <></>,
   endConditions: <>
     At the end of the 4th round, the guarding player may choose to roll a d6. On a 3+, the match lasts one more round. Otherwise the match ends.
   </>,
   scoring: <>
-    Any time the Hiding Skritter is revealed for any reason, the assaulting player gains 1 Victory Point. At the end of a round, if the Hiding player is still Cloaked, the guarding player gains 1 Victory Point.
+    Any time the Hiding Skritter is
+    revealed for any reason, the assaulting player gains 1 Victory Point. At the end of a round, if the Hiding player is still Cloaked, the guarding player gains 1 Victory Point.
   </>,
   extraRules: <>
-    A Skritter may use an action to move 1” and climb up or down the entire length of a Tower, regardless of their move stat. They can make the 1” move either before or after they climb.
+    A Skritter may use an action to move
+    1” and climb up or down the entire length of
+    a Tower, regardless of their move stat.
+    They can make the 1” move either before
+    or after they climb.
     <br />
-    The Watchlight Towers have 4 health and a Defense of 1d6. If it is destroyed, any Skritter inside the tower falls to the ground, then the Watchlight Tower is removed.
+    The Watchlight Towers have 4 health and a
+    Defense of 1d6. If it is destroyed, any Skritter
+    inside the tower falls to the ground, then the Watchlight Tower is removed.
     <br />
     A Skritter inside a Watchlight Tower can use an action to target any Cloak token they can see. This Cloak token is then either revealed or dismissed as normal.
     <br />
     The Lookout Tower cannot be attacked. A Skritter making a Ranged or Weave attack from the Lookout tower does not consider height when measuring distance.
     <br />
-    At the start of each round, if the guarding player does not have a Skritter that is Hiding, they choose one to Hide. They must choose a Skritter that is not in their deployment zone, if they control no Skritters outside of their deployment zone, they may move a Skritter up to 1” to exit the deployment zone. If there are still no Skritters outside of the deployment zone, it is treated as though a Skritter was immediately revealed (thus awarding a Victory Point to the assaulting player). You cannot reveal a Cloaked model 
+    At the start of each round, if the guarding player
+    does not have a Skritter that is Hiding, they
+    choose one to Hide. They must choose a Skritter
+    that is not in their deployment zone, if they
+    control no Skritters outside of their deployment
+    zone, they may move a Skritter up to 1” to exit
+    the deployment zone. If there are still no Skritters
+    outside of the deployment zone, it is treated as
+    though a Skritter was immediately revealed
+    (thus awarding a Victory Point to the assaulting
+    player).
     <br />
-    The hiding Skritter will then Cloak 3, or if it is night Cloak 4. Immediately after Cloaking the hiding Skritter, the player makes a move action with that Skritter. The chosen Skritter's Cloaks cannot enter the guarding player's deployment zone for any reason. (Maybe all actions can be taken after another unit moves, one at a time. So it's not move once then sit and hope).
+    The hiding Skritter will then Cloak 2, or if it
+    is night Cloak 3. If the hiding Skritter is Small,
+    add +1 to the Cloak value. Immediately after
+    Cloaking the hiding Skritter, the player makes a
+    move action with that Skritter. The Hiding Skritter's
+    Cloaks cannot enter the guarding player's
+    deployment zone for any reason. (Maybe all
+    actions can be taken after another unit moves,
+    one at a time. So it's not move once then sit
+    and hope).
   </>,
 };
 

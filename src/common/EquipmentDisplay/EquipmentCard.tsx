@@ -73,12 +73,12 @@ export default function EquipmentCard({
 
   const requirementsDisplay = () => {
     if (item.requires) {
-      return <>
+      return <div className="requirements">
         <label className="stat-label">Requires: </label>
         <div className="equip-slot-stat">
           {item.requires}
         </div>
-      </>;
+      </div>;
     } else {
       return null;
     }

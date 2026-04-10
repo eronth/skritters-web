@@ -99,6 +99,7 @@ type Equipment = {
   slot: EquipmentSlotType;
   range?: number | [number, number];
   bonus?: Modifiers;
+  requires?: ReactNode;
   effect: ReactNode;
   tags?: ItemKeyword[];
 };

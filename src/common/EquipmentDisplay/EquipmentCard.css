@@ -67,6 +67,11 @@
         text-align: center;
       }
     }
+
+    .requirements {
+      /* take up 2 grid columns */
+      grid-column: span 2;
+    }
   
     .average-bonus {
       font-size: 12px;

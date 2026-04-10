@@ -9,42 +9,47 @@ export default function ScenariosPage() {
     joinOf: 6
   };
 
-  const rollableTable = <>
-    {scenarios.map((scenario, index) => {
-      if (indexUnify.joinOf == index) { return null; }
+  const rollableTable = <div className="roll-table">
+    <div className="roll-table-header">
+      Roll a 1d12 to determine which mission to play.
+    </div>
+    <div className="roll-table-body">
+      {scenarios.map((scenario, index) => {
+        if (indexUnify.joinOf == index) { return null; }
 
-      let nameLink = (
-        <a href={'#scenario-' + index}>
-          {scenario.name}    
-          </a>
-      );
-      if (indexUnify.joinTo == index) {
-        const joinedNameLink = (
-          <a href={'#scenario-' + indexUnify.joinOf}>
-            {scenarios[indexUnify.joinOf].name}
-          </a>
+        let nameLink = (
+          <a href={'#scenario-' + index}>
+            {scenario.name}    
+            </a>
         );
-        nameLink = <>{nameLink} / {joinedNameLink}</>
-      }
+        if (indexUnify.joinTo == index) {
+          const joinedNameLink = (
+            <a href={'#scenario-' + indexUnify.joinOf}>
+              {scenarios[indexUnify.joinOf].name}
+            </a>
+          );
+          nameLink = <>{nameLink} / {joinedNameLink}</>
+        }
 
-      const tableCount = (
-        (index > indexUnify.joinTo)
-        ? index-1
-        : index
-      );
+        const tableCount = (
+          (index > indexUnify.joinTo)
+          ? index-1
+          : index
+        );
 
-      return (
-        <div key={index} className="roll-table-row">
-          <div className="number">
-            {tableCount+1}
+        return (
+          <div key={index} className="roll-table-row">
+            <div className="number">
+              {tableCount+1}
+            </div>
+            <div>
+              —<Bsp />{nameLink}
+            </div>
           </div>
-          <div>
-            —<Bsp />{nameLink}
-          </div>
-        </div>
-      )
-    })}
-  </>;
+        )
+      })}
+    </div>
+  </div>;
 
   return (<Page tab="scenarios">
     <p>
@@ -64,9 +69,9 @@ export default function ScenariosPage() {
     <div>
       // TODO: DEPLOYMENT ZONES
     </div>
-    <div className="roll-table">
-      {rollableTable}
-    </div>
+    
+    {rollableTable}
+
     {scenarios.map((scenario, index) => (
       <div key={index} className="scenario">
         <h1 id={'scenario-' + index}>{scenario.name}</h1>

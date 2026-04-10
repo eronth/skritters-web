@@ -6,16 +6,16 @@
   padding-inline: 0.2em;
   font-weight: 500;
 
-  --light-tag-color: white;
-  --dark-tag-color: black;
-  background-color: var(--light-tag-color);
-  color: var(--dark-tag-color);
-}
-@media (prefers-color-scheme: dark) {
-  .tag {
-    background-color: var(--dark-tag-color);
-    color: var(--light-tag-color);
-  }
+  --lite-tag-color: oklch(95% 0.067 230);
+  --dark-tag-color: oklch(43% 0.067 230);
+  background-color: light-dark(
+    var(--lite-tag-color),
+    var(--dark-tag-color)
+  );
+  color: light-dark(
+    var(--dark-tag-color),
+    var(--lite-tag-color)
+  );
 }
 
 .tags-container {

@@ -78,14 +78,22 @@ export default function ScuffleRules() {
       </p>
       <h4>Intercept <span className="heh">Special Free Action</span></h4>
       <p>
-        When a Skritter moves within Scuffle Range of
-        one of your Skritters, you may have your Skritter
-        intercept. To intercept, move your Skritter towards
-        the opponent's Skritter until you are touching
+        When an enemy Skritter moves within Scuffle Range of
+        one of your Skritters during their movement
+        (even if they do not end there), you may have your
+        Skritter intercept.
+      </p>
+      <p>
+        To intercept, pause the enemy Skritter's movement
+        when they enter your Scuffle Range. Move your Skritter
+        towards the opponent's Skritter until you are touching
         that Skritter (you cannot move further than your
         Brawl Threat range). The opponent's Skritter loses
         the rest of their movement and enters a Scuffle with
-        you. The Skritter you
+        you.
+      </p>
+      <p>
+        The Skritter you
         intercepted gets -SIZE to Brawl attacks against
         you for each inch you moved, rounded to the nearest
         inch. This penalty lasts until the end of the

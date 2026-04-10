@@ -1,19 +1,26 @@
+import Bsp from "../../common/Formatting/bsp";
 import Action from "../../common/Keywords/rules/action/Action";
 import BrawlAction from "../../common/Keywords/rules/action/BrawlAction";
+import WeaveAction from "../../common/Keywords/rules/action/WeaveAction";
 import Defense from "../../common/Keywords/rules/Defense";
 import Adaptive from "../../common/Keywords/rules/resources/Adaptive";
 import Ready from "../../common/Keywords/rules/resources/Ready";
 import Rush from "../../common/Keywords/rules/resources/Rush";
+import PlusDice from "../../common/Keywords/rules/roll-modifiers/PlusDice";
 import PlusSize from "../../common/Keywords/rules/roll-modifiers/PlusSize";
 import Night from "../../common/Keywords/times/Night";
 import Match from "../../common/Match";
-import { Equipment } from "../../types/types";
+import { Dice, Equipment } from "../../types/types";
 import { extraWeapons, grenadeContainer } from "./common-effect-data";
+import { EquipmentFragment } from "./types";
 
+const base: EquipmentFragment = { type: 'garb', slot: 'back' };
+
+const d1d4: Dice = { count: 1, sides: 4 };
 
 const explorersGear: Equipment = {
+  ...base,
   name: "Explorer's Gear",
-  type: "garb", slot: "back",
   effect: (<>
     At the start of the <Match />, choose one of the following:
     <ul>
@@ -24,8 +31,8 @@ const explorersGear: Equipment = {
 };
 
 const comRadio: Equipment = {
+  ...base,
   name: "Com Radio",
-  type: "garb", slot: "back",
   effect: (<>
     When you activate this Skritter, you may choose another Skritter 
     on your team not within 12" who has not activated yet to team up.
@@ -41,8 +48,8 @@ const comRadio: Equipment = {
 };
 
 const nightprowlCape: Equipment = {
+  ...base,
   name: "Nightprowl Cape",
-  type: "garb", slot: "back",
   effect: (<>
     <PlusSize x={2} /> to <Defense /> at <Night />.
   </>),
@@ -50,30 +57,30 @@ const nightprowlCape: Equipment = {
 };
 
 const survivalPack: Equipment = {
+  ...base,
   name: "Survival Pack",
-  type: "garb", slot: "back",
   effect: (<>
     At the start of the <Match />, gain an <Adaptive /> resource.
   </>)
 };
 
 const capeOfHeroism: Equipment = {
+  ...base,
   name: "Cape of Heroism",
-  type: "garb", slot: "back",
   effect: (<>
     <PlusSize x={1} /> to <BrawlAction plural />.
   </>)
 };
 
 const weaponsPack: Equipment = {
+  ...base,
   name: "Weapons Pack",
-  type: "garb", slot: "back",
   effect: extraWeapons
 };
 
 const gliderLeaf: Equipment = {
+  ...base,
   name: "Glider Leaf",
-  type: "garb", slot: "back",
   effect: (<>
     Small Skritter only. Can be deployed to gently 
     fall from height, gaining 2" movement. Once per combat.
@@ -82,27 +89,45 @@ const gliderLeaf: Equipment = {
 };
 
 const alchemersKit: Equipment = {
+  ...base,
   name: "Alchemist's Kit",
-  type: "garb", slot: "back",
   effect: (<>
     (make potions - Drew's Bitter Jitter Brew, Red Gull's Wings)
   </>)
 };
 
 const iconOfDetermination: Equipment = {
+  ...base,
   name: "Icon of Determination",
-  type: "garb", slot: "back",
   effect: (<>
-    If this Skritter would be forced to retreat, they do not retreat until after 
-    their next turn. If the <Match /> ends before the end of their next turn, they
-    are not treated as having retreated.
+    If this Skritter would be forced to retreat,
+    they do not retreat until after their next
+    turn. If the <Match /> ends before the end
+    of their next turn, they are not treated as
+    having retreated.
   </>)
 };
 
 const grenadeSatchel: Equipment = {
+  ...base,
   name: "Grenade Satchel",
-  type: "garb", slot: "back",
   effect: grenadeContainer
+};
+
+const deployableMiniCauldron: Equipment = {
+  ...base,
+  name: "Deployable Mini Cauldron",
+  effect: (<>
+    While deployed, a Skritter within 1" gets
+    +1" range and<Bsp /><PlusDice dice={d1d4} />
+    <Bsp />to <WeaveAction plural /> for each
+    Skritter within 1" that is currently wielding
+    a Weave Item (including themselves).
+    <br /><br />
+    During <Night />, these <WeaveAction plural />
+    <Bsp />get an additional +1" range per Skritter.
+  </>),
+  tags: ['DEPLOYABLE']
 };
 
 const equipment = {
@@ -116,6 +141,7 @@ const equipment = {
   alchemersKit,
   iconOfDetermination,
   grenadeSatchel,
+  deployableMiniCauldron,
 };
 
 export default equipment;

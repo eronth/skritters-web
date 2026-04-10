@@ -37,9 +37,10 @@ export default function EquipmentCard({
       const rangeText = Array.isArray(item.range)
       ? `${item.range[0]}" / ${item.range[1]}"`
       : `${item.range}"`;
-      return <><label className="stat-label">Range:</label>
+      return <div className="range">
+        <label className="stat-label">Range:</label>
         <div className="stat-value">{rangeText}</div>
-      </>
+      </div>
     } else {
       return null;
     }
@@ -65,6 +66,19 @@ export default function EquipmentCard({
           </div>
         )}
       </>
+    } else {
+      return null;
+    }
+  }
+
+  const requirementsDisplay = () => {
+    if (item.requires) {
+      return <>
+        <label className="stat-label">Requires: </label>
+        <div className="equip-slot-stat">
+          {item.requires}
+        </div>
+      </>;
     } else {
       return null;
     }
@@ -113,8 +127,9 @@ export default function EquipmentCard({
             }
         </div>
       </div>
-      <div className="range">{rangeDisplay()}</div>
-      <div>{bonusDisplay()}</div>
+      {rangeDisplay()}
+      {bonusDisplay()}
+      {requirementsDisplay()}
     </div>
     
     <div className="effect-section">

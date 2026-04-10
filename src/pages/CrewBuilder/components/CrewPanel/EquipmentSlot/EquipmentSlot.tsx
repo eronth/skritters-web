@@ -1,5 +1,5 @@
 import { useDraggable, useDroppable } from '@dnd-kit/core';
-import EquipmentCard from '../../../../Equipment/EquipmentCard';
+import EquipmentCard from '../../../../../common/EquipmentDisplay/EquipmentCard';
 import { DropEquipSlotData, EquipmentSlotData } from '../../crewBuilderTypes';
 import './EquipmentSlot.css';
 

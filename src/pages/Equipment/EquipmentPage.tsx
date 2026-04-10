@@ -2,17 +2,13 @@
 import { useMemo, useState } from 'react';
 import Page from '../Page';
 import SearchAndFilter from '../../common/SearchAndFilter/SearchAndFilter';
-import EquipmentCard from './EquipmentCard';
+import EquipmentCard from '../../common/EquipmentDisplay/EquipmentCard';
 import { Equipment, EQUIPMENT_SLOTS, EQUIPMENT_TYPES, EquipmentSlotType, EquipmentType, Filter } from '../../types/types';
 import equipment from '../../data/equipment-data';
 import { ITEM_KEYWORDS, ItemKeyword } from '../../types/keywords';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBullseye, faHandBackFist, faWandSparkles } from '@fortawesome/free-solid-svg-icons';
 import './EquipmentPage.css';
-
-
-
-
 
 // Main Application Component
 export default function EquipmentPage() {

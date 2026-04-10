@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useDraggable, useDroppable } from '@dnd-kit/core';
-import EquipmentCard from '../../../../Equipment/EquipmentCard';
+import EquipmentCard from '../../../../../common/EquipmentDisplay/EquipmentCard';
 import SearchAndFilter from '../../../../../common/SearchAndFilter/SearchAndFilter';
 import {
   Equipment,

@@ -2,7 +2,7 @@ import Match from "../../common/Match";
 
 export const extraWeapons = <>
   Gain an extra set of weapons you can swap between. 
-  This item is not limited to 1 per team.
+  This item is not limited to 1 per team. (yes it is)
 </>;
 
 export const grenadeContainer = <>

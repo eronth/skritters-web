@@ -182,7 +182,7 @@ const pacifyingCenser: Equipment = {
   effect: (<>
     If you deal damage to a Skritter that is in a Scuffle, that Skritter 
     and all Skritters in the Scuffle with them gain 1 <Keyword>Pacifism</Keyword> Token.
-    <br />
+    <br /><br />
     Peace <Action />: Target a Skritter with a Weave check. 
     All Skritters in a Scuffle gets pacifism tokens based on number of <Success plural />.
     <ul>
@@ -190,7 +190,6 @@ const pacifyingCenser: Equipment = {
       <li>2 - 4 <Success plural />: 2 <Keyword>Pacifism</Keyword> tokens.</li>
       <li>5+ <Success plural />: 3 <Keyword>Pacifism</Keyword> tokens.</li>
     </ul>
-    <br />
     <Keyword>Pacifism</Keyword> Token: A Skritter 
     with a <Keyword>Pacifism</Keyword> token gets <MinusSize x={1} /> 
     per Pacifism token to all <Attack plural />. At the end of their 

@@ -1,3 +1,4 @@
+import Bsp from "../../common/Formatting/bsp";
 import Action from "../../common/Keywords/rules/action/Action";
 import Attack from "../../common/Keywords/rules/action/Attack";
 import WeaveAction from "../../common/Keywords/rules/action/WeaveAction";
@@ -8,31 +9,71 @@ import MinusSize from "../../common/Keywords/rules/roll-modifiers/MinusSize";
 import PlusDice from "../../common/Keywords/rules/roll-modifiers/PlusDice";
 import PlusSize from "../../common/Keywords/rules/roll-modifiers/PlusSize";
 import Night from "../../common/Keywords/times/Night";
+import Spring from "../../common/Keywords/times/Spring";
+import Summer from "../../common/Keywords/times/Summer";
+import Winter from "../../common/Keywords/times/Winter";
 import Match from "../../common/Match";
+import Tag from "../../common/Tags/Tag";
 import { Dice, Equipment } from "../../types/types";
 import { extraWeapons, grenadeContainer } from "./common-effect-data";
+import { EquipmentFragment } from "./types";
+
+const base: EquipmentFragment = { type: 'garb', slot: 'body' };
 
 const d1d6 = new Dice('1d6');
 
 const raincoat: Equipment = {
+  ...base,
   name: 'Raincoat',
-  type: 'garb', slot: 'body',
   effect: (<>
-    (reduce the effects of spring, but also buff WATERFOND creatures because it's cute as hell)
+    (reduce the effects of <Spring />, but also buff
+    <Bsp /><Tag tag='WATERFOND' /><Bsp />
+    Skritters because it's cute as hell)
+  </>)
+};
+
+const rainingcoat: Equipment = {
+  ...base,
+  name: 'Rainingcoat',
+  requires: <>
+    <Tag tag={'WATERFOND'} />
+  </>,
+  effect: (<>
+    Same as Raincoat, but only<Bsp /><Tag tag='WATERFOND' /><Bsp />
+    Skritters can
+    have it. You can have both a Raincoat and Rainingcoat on the same
+    team.
   </>)
 };
 
 const roastytoastCoat: Equipment = {
+  ...base,
   name: 'Roastytoast Coat',
-  type: 'garb', slot: 'body',
   effect: (<>
-    (reduce the effects of winter, but bigger)
+    (reduce the effects of <Winter />, but bigger)
+  </>)
+};
+
+const breezyGarment: Equipment = {
+  ...base,
+  name: 'Breezy Garment',
+  effect: (<>
+    (reduce the effects of <Summer />, but bigger)
+  </>)
+};
+
+const ruggedCoat: Equipment = {
+  ...base,
+  name: 'Rugged Coat',
+  effect: (<>
+    A Skritter wearing this has +2
+    max Health.
   </>)
 };
 
 const oakenbarkAarmor: Equipment = {
+  ...base,
   name: 'Oakenbark Armor',
-  type: 'garb', slot: 'body',
   effect: (<>
     <PlusDice dice={d1d6} /> and <PlusSize x={1} /> to <Defense />.
   </>),
@@ -40,8 +81,8 @@ const oakenbarkAarmor: Equipment = {
 };
 
 const paperbarkArmor: Equipment = {
+  ...base,
   name: 'Paperbark Armor',
-  type: 'garb', slot: 'body',
   effect: (<>
     <PlusSize x={1} /> to <Defense />.
   </>),
@@ -49,16 +90,16 @@ const paperbarkArmor: Equipment = {
 };
 
 const shimmergleamRobe: Equipment = {
+  ...base,
   name: 'Shimmergleam Robe',
-  type: 'garb', slot: 'body',
   effect: (<>
     Start the <Match /> with a <Dazzle /> resource.
   </>)
 };
 
 const shadowsilkCloak: Equipment = {
+  ...base,
   name: 'Shadowsilk Cloak',
-  type: 'garb', slot: 'body',
   effect: (<>
     Once per game, if it's <Night />, <Cloak x={3} /> as
     an <Action />. If you reveal with a Thornwood Dagger or Throwing Blades <Attack />,
@@ -68,8 +109,8 @@ const shadowsilkCloak: Equipment = {
 };
 
 const petalweaveRobes: Equipment = {
+  ...base,
   name: 'Petalweave Robes',
-  type: 'garb', slot: 'body',
   effect: (<>
     <WeaveAction plural /> that target you get <MinusSize x={1} />.
   </>),
@@ -77,22 +118,22 @@ const petalweaveRobes: Equipment = {
 };
 
 const weaponsHolster: Equipment = {
+  ...base,
   name: 'Weapons Holster',
-  type: 'garb', slot: 'body',
   effect: extraWeapons
 };
 
 const travelersPocketGuide: Equipment = {
+  ...base,
   name: 'Traveler\'s Pocket Guide',
-  type: 'garb', slot: 'body',
   effect: (<>
     For one turn ignore difficult terrain and no penalty for double move.
   </>)
 };
 
 const ninjaGi: Equipment = {
+  ...base,
   name: 'Ninja Gi',
-  type: 'garb', slot: 'body',
   effect: (<>
     Gain +1" to movements during <Night />, 
     and <PlusSize x={1} /> to <Defense /> at <Night />.
@@ -100,13 +141,14 @@ const ninjaGi: Equipment = {
 };
 
 const grenadePouch: Equipment = {
+  ...base,
   name: 'Grenade Pouch',
-  type: 'garb', slot: 'body',
   effect: grenadeContainer,
 };
 
 const equipment = {
   raincoat,
+  rainingcoat,
   roastytoastCoat,
   oakenbarkAarmor,
   paperbarkArmor,
@@ -117,6 +159,8 @@ const equipment = {
   travelersPocketGuide,
   grenadePouch,
   ninjaGi,
+  ruggedCoat,
+  breezyGarment
 };
 
 export default equipment;

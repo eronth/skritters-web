@@ -11,6 +11,7 @@ import MinusSize from "../../../common/Keywords/rules/roll-modifiers/MinusSize";
 import PlusDice from "../../../common/Keywords/rules/roll-modifiers/PlusDice";
 import PlusSize from "../../../common/Keywords/rules/roll-modifiers/PlusSize";
 import Success from "../../../common/Keywords/rules/roll-modifiers/Success";
+import Scuffle from "../../../common/Keywords/rules/Scuffle";
 import RangedThreat from "../../../common/Keywords/rules/threat/RangedThreat";
 import Summer from "../../../common/Keywords/times/Summer";
 import Winter from "../../../common/Keywords/times/Winter";
@@ -55,8 +56,8 @@ const crystalPistol: Equipment = {
   },
   effect: (<>
     When you hit with an attack using this weapon, you can spend 3
-    of the successes to gain a <Dazzle /> resource. You do not 
-    add those successes to your number of hits if you do this.
+    of the <Success plural /> to gain a <Dazzle /> resource. (You do not 
+    add those successes to your number of hits if you do this.)
   </>),
   tags: ['GEM']
 };
@@ -233,7 +234,7 @@ const bigBlasta: Equipment = {
   effect: (<>
     When you <Attack /> with this weapon, 
     you are knocked back 3" directly away from your target. You 
-    are also hit with half of the <Success plural />
+    are also hit with half of the <Success plural /><Bsp />
     (rounded up) for this attack (you may roll your <Defense /> to
     reduce the damage as normal).
   </>),
@@ -249,7 +250,10 @@ const crossbow: Equipment = {
     dice: [{...d1d4}]
   },
   effect: (<>
-    Can be braced for an additional 6" range.
+    <Action type='Brace' />: If you aren't in a <Scuffle />, 
+    brace the weapon to gain an additional 6" range with 
+    it. It stops being braced if you move or enter a<Bsp />
+    <Scuffle />.
   </>),
   tags: ['PLANT']
 };

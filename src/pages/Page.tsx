@@ -17,7 +17,7 @@ export default function Page({ tab, className, children }: Props) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className={`page ${className || ""}`}>
+    <div className={`page ${tab} ${className || ""}`}>
       <button
         className="sidebar-toggle"
         onClick={() => setSidebarOpen(o => !o)}

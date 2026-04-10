@@ -33,9 +33,11 @@ export default function CampaignPage() {
     <h1>Campaign Rules</h1>
     <p>
       In Skritters, the reccommended way to play is in a campaign. 
-      A campaign is best run with a group of players all playing through a campaign together.
-      Each player will assemble their own squad of Skritters, and play through a series of <Match plural /> 
-      against each other. The suggested campaign length is 8 <Match plural /> in the following order:
+      A campaign is best run with a group of players all playing
+      through a campaign together. Each player will assemble their
+      own squad of Skritters, and play through a series of <Match plural />
+      <Bsp />against each other. The suggested campaign length is
+      8 <Match plural /> in the following order:
     </p>
     <ol>
       <li><Spring />; <Day /></li>
@@ -49,8 +51,10 @@ export default function CampaignPage() {
     </ol>
     <p>
       This cycle takes you over the course of a year, with each season having its own
-      unique rule adjustements and challenges. More advanced players can choose to play
-      longer or shorter campaigns, or even create their own custom campaign rules.
+      unique rule adjustements and challenges. Each time you are set to play a <Match />,
+      determine your scenario as normal, then apply any modifiers from the current
+      season and time of day. More advanced players can choose to play longer or
+      shorter campaigns, or even create their own custom campaign rules.
     </p>
     <h2>Day and Night</h2>
     <h3><Day /></h3>

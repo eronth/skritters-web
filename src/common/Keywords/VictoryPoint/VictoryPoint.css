@@ -1,0 +1,8 @@
+.keyword {
+  &.victory-point {
+    color: red;
+    svg {
+      padding-right: 1px;
+    }
+  }
+}

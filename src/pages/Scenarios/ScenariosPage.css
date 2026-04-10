@@ -42,13 +42,6 @@
           text-align: right;
           padding-inline: .2em;
         }
-        a {
-          --link-color: light-dark(
-            rgb(16, 49, 51),
-            rgb(145, 201, 238)
-          );
-          color: var(--link-color);
-        }
       }
     }
   }
@@ -58,5 +51,33 @@
     padding: 0.5em 1em;
     border-radius: 8px;
     margin-top: 2rem;
+
+    .inline-data {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1em;
+      margin: 0;
+      padding: 0;
+    }
+    h2 {
+      padding-top: 0;
+      margin-top: 0;
+    }
+    h3 {
+      padding-top: .25em;
+    }
+  }
+}
+
+.scenarios {
+  .roll-table,
+  .scenario {
+    a {
+      --link-color: light-dark(
+        rgb(16, 49, 51),
+        rgb(145, 201, 238)
+      );
+      color: var(--link-color);
+    }
   }
 }

@@ -1,11 +1,24 @@
 import Bsp from "../common/Formatting/bsp";
+import Action from "../common/Keywords/rules/action/Action";
+import Attack from "../common/Keywords/rules/action/Attack";
+import Adaptive from "../common/Keywords/rules/resources/Adaptive";
+import Dazzle from "../common/Keywords/rules/resources/Dazzle";
+import Hardy from "../common/Keywords/rules/resources/Hardy";
+import Ready from "../common/Keywords/rules/resources/Ready";
+import Rush from "../common/Keywords/rules/resources/Rush";
+import Vigor from "../common/Keywords/rules/resources/Vigor";
+import Whimsy from "../common/Keywords/rules/resources/Whimsy";
+import PlusDice from "../common/Keywords/rules/roll-modifiers/PlusDice";
 import PlusSize from "../common/Keywords/rules/roll-modifiers/PlusSize";
 import Day from "../common/Keywords/times/Day";
 import Night from "../common/Keywords/times/Night";
+import VictoryPoint from "../common/Keywords/VictoryPoint/VictoryPoint";
 import Match from "../common/Match";
 import SkritterCard from "../common/SkritterDisplay/SkritterCard";
 import { Dice, Scenario, Skritter } from "../types/types";
 
+const d1d4 = new Dice('1d4');
+const d1d6 = new Dice('1d6');
 const d2d6 = new Dice('2d6');
 const d1d8 = new Dice('1d8');
 
@@ -51,33 +64,59 @@ const basicDeployment = <>basicDeployment</>;
 const rolledDeployment = <>
   For this Scenario, randomly select one of the 
   generic deployment styles.
+  <VictoryPoint /> <VictoryPoint x={3} />
 </>;
 
 const captureTheFlag: Scenario = {
   name: 'Capture the Flag', type: 'neutral',
   setup: <>
-    Each player places a Pedestal
-    model in their deployment zone, at least 3” from any battlefield edge. 
-    Each player then places their Flag token on top of their Pedestal.
+    Each player places a Pedestal model in their
+    deployment zone, at least 3” from any battlefield
+    edge. Each player then places their Flag token on
+    top of their Pedestal.
   </>,
   deployment: rolledDeployment,
-  scoring: <>Capture flags to score victory points. See extra rules for more details.</>,
+  scoring: <>
+    Grab the opponent's flag and bring it back to your
+    Pedestal for 1 Victory Point each time.
+  </>,
   endConditions: <>At the end of the 5th round, the <Match /> ends.</>,
   extraRules: <>
-    High Intensity: All attack actions get +1d6+1d4.
-    <br />
-    Capture: A Skritter within 1” of an opponent's flag may use an 
-    action to collect it. If a Skritter carrying an opponent's
-     flag ends their movement within 1” of
-      their own Pedestal, they gain 1 Victory Point. 
-      Then they return the flag to their
-       opponent, who places it back on the Pedestal. 
-       When the opponent places the Flag on the Pedestal, 
-       they may move the Pedestal by 1” in any direction.
-    <br />
-    Reclaim the Flag: While an opponent's Skritter has your flag, your units get +1” to Movement.
-    <br />
-    Back in Action: If a Skritter would be forced to retreat, it is instead fully healed then placed on the edge of the battlefield inside their deployment zone. Skritters do not need to worry about retreat in this Scenario.
+    <b>High Intensity</b>: All <Attack plural/>
+    <Bsp />get <PlusDice dice={d1d6} /><PlusDice dice={d1d4} />.
+    <br /><br />
+    <Action type='Grab Flag' />: A Skritter within 1” of
+    an opponent's flag may use an action to Grab it.
+    Place it on that Skritter's rule card.
+    Flags grabbed this way must be on the Pedestal
+    or ground — you <i>cannot</i> grab a flag from
+    another Skritter this way.
+    <br /><br />
+    <Action type='Pass!' />: A Skritter can use an action to pass
+    the flag to another Skritter. This cannot be used to pass the
+    flag to any active Skritter.
+    <br /><br />
+    <b>Capture</b>: If a Skritter carrying an opponent's
+    flag ends their movement within 1” of
+    their <b>own</b> Pedestal, they gain 1 Victory Point. 
+    Then they return the flag to their
+    opponent, who places it back on the Pedestal. 
+    When the opponent places the Flag on the Pedestal, 
+    they may move the Pedestal by 2” in any direction.
+    <br /><br />
+    <b>Protect the Flag!</b>: While an opponent's
+    Skritter has your flag, your units get +2” to Movement.
+    <br /><br />
+    <b>Back in Action</b>: If a Skritter would be forced to retreat,
+    it is instead fully healed then placed on the edge of
+    the battlefield inside their deployment zone at the start
+    of the next round. Skritters do not need to worry about
+    Defeat and Retreat in this Scenario.
+    <br /><br />
+    <b>Dropped Flag</b>: If a Skritter carrying a flag is 
+    is defeated, the flag is placed where the Skritter was
+    standing when they were defeated. The flag cannot be
+    grabbed or moved by the owner.
   </>
 };
 
@@ -172,25 +211,49 @@ const bewareOfDogs: Scenario = {
   name: 'Beware of Dogs', type: 'neutral',
   setup: <>
     This is a <Day /> <Match />.
-    If you select this <Match /> during a <Night />, play
-    Midnight Prowl instead.
-    <br />
-    Place a Dog House in the center of the battlefield. Each player gets one Hound they control, and places it within 1” of the Dog House. Make sure to clearly designate each Hound so you remember which is controlled by which player. 
-    <br />
-    Next, each player places 3 Trinket tokens around the battlefield within 8” of the Dog House.
+    If you select this <Match /> during a <Night />,
+    play <a href={'#scenario-midnight-prowl'}>
+      Midnight Prowl
+    </a> instead.
+    <br /><br />
+    Place a Dog House in the center of the battlefield.
+    Each player gets one Hound they control, and places
+    it within 1” of the Dog House. Make sure to clearly
+    designate each Hound so you remember which is
+    controlled by which player. 
+    <br /><br />
+    Next, each player places 3 Trinket tokens around the
+    battlefield within 8” of the Dog House.
   </>,
   deployment: rolledDeployment,
   endConditions: <>The match ends after 4 rounds.</>,
-  scoring: <></>,
+  scoring: <>
+    Whenever a Skritter picks up a Trinket, the controlling
+    player gets 1 Victory Point. The controlling player
+    gets an additional Victory Point if the opponent-controlled
+    Hound is within 2” of the Trinket or Skritter.
+  </>,
   extraRules: <>
-  Whenever a Skritter picks up a Trinket, the controlling player gets 1 Victory Point. The controlling player gets an additional Victory Point if the opponent-controlled Hound is within 2” of the Trinket or Skritter.
   <h3>The Trinkets</h3>
-  A Skritter can use an action to pick up a Trinket within 1”. When they do, they gain one Focus, Vigorous, Whimsical, or Hardy resource. If the opponent-controlled Hound is within a certain distance of the Trinket or Skritter, they can choose to gain one of the following resources:
-  Within 2” -  May choose a Ready, Rush, or Dazzling resource instead.
-  Within 1” - May choose a Dazzling or Adaptive resource instead.
+  <p>
+    A Skritter can use an action to pick up a Trinket within 1”.
+    When they do, they gain one Focus, <Vigor />, <Whimsy />, or
+    <Bsp /><Hardy /> resource. If the opponent-controlled Hound
+    is within a certain distance of the Trinket or Skritter,
+    they can choose to gain one of the following resources:
 
-  After picking up a Trinket, hand it to your opponent. They immediately place it anywhere on the battlefield that is at least 4” from any Skritter or Trinket (it does not need to be 4” from any Hounds). If no such location exists, or the opponent does not wish to use any of the valid locations, the Trinket may be placed within 1” of the Dog House.
-
+    <br />Within 2” -  May choose a <Ready /> or <Rush /> resource instead.
+    <br />Within 1” - May choose a <Dazzle /> or <Adaptive /> resource instead.
+    <br /><br />
+    After picking up a Trinket (and gaining your Victory Points),
+    hand it to your opponent. They immediately place it anywhere
+    on the battlefield that is at least 4” from any Skritter
+    or Trinket (it does not need to be 4” from any Hounds).
+    If no such location exists, or the opponent does not wish
+    to use any of the valid locations, the Trinket may be
+    placed within 1” of the Dog House.
+  </p>
+  
   <h3>The Hounds</h3>
   Each player controls one of the Hounds. Instead of having their own activation, a Hound has 3 actions that can be used after another model finishes its activation. You may use one action this way at a time. The Hound you control is not considered an ally, and therefore cannot be given any bonuses or benefits (such as resources) from your team.
 
@@ -205,9 +268,11 @@ const midnightProwl: Scenario = {
   name: 'Midnight Prowl', type: 'neutral',
   setup: <>
     This is a <Night /> <Match />.
-    If you select this <Match /> during a <Day />, play
-    Beware of Dogs instead.
-    <br />
+    If you select this <Match /> during a <Day />,
+    play <a href={'#scenario-beware-of-dogs'}>
+      Beware of Dogs
+    </a> instead.
+    <br /><br />
     Each player places two Prowl tokens in the middle of the field. One is a Hunter token and the other is a Shadow token.
   </>,
   deployment: basicDeployment,

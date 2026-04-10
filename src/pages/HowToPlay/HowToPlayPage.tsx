@@ -2,7 +2,7 @@ import Page from "../Page";
 import Match from "../../common/Match";
 import ActionsRulesComponent from "./ActionsRulesComponent";
 import DiceAndTestsComponent from "./DiceAndTestsComponent";
-import ResourcesRules from "./ResourcesRules";
+import ResourcesRules from "./RecoureRules/ResourcesRules";
 import Terrain from "./Terrain";
 import TagRules from "./TagRules/TagRules";
 

@@ -3,7 +3,9 @@ import './Cloak.css'
 
 type Props = {
   x?: number;
+  placeholder?: never;
 } | {
+  x?: never;
   placeholder: boolean;
 };
 

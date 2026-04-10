@@ -29,7 +29,6 @@ export default function ItemTagRules() {
         <ItemTag tag='ZAP' /> 
       </span>
       <span className="tag-rule-description">
-
         — Items with this keyword
         get <PlusSize x={1} /> to <Check plural /> involving them for each
         <ItemTag tag='METAL' /> item that the target has.
@@ -38,7 +37,6 @@ export default function ItemTagRules() {
         <ItemTag tag='DEPLOYABLE' />
       </span>
       <span className="tag-rule-description">
-
         — Items with this keyword start
         packed in a Skritter's supplies and cannot be used.
         <br />

@@ -1,20 +1,29 @@
 .keyword {
   &.victory-point {
-    background: linear-gradient(
-      to right,
-      #ffb3ba,
-      #ffdfba,
-      #ffffba,
-      #baffc9,
-      #bae1ff,
-      #d4baff
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    .count {
+      font-weight: 600;
+    }
+    .victory-text {
+      font-weight: 500;
+      background: linear-gradient(
+        to right,
+        #ffb3ba,
+        #ffdfba,
+        #ffffba,
+        #baffc9,
+        #bae1ff,
+        #d4baff
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     svg {
       padding-right: 1px;
       font-size: .9em;
+      path {
+        fill: url(#vp-rainbow-gradient);
+      }
     }
   }
 }

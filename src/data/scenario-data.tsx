@@ -64,7 +64,6 @@ const basicDeployment = <>basicDeployment</>;
 const rolledDeployment = <>
   For this Scenario, randomly select one of the 
   generic deployment styles.
-  <VictoryPoint /> <VictoryPoint x={3} />
 </>;
 
 const captureTheFlag: Scenario = {
@@ -125,7 +124,7 @@ const threeLeggedRace: Scenario = {
   setup: <>
     Place 4 Checkpoint tokens in the corners of the map, 
     labelled 1-4. Put the “Active” marker on the token labelled 1.
-    <br />
+    <br /><br />
     Each player groups all of their Skritters together in pairs of 2. 
   </>,
   deployment: <>

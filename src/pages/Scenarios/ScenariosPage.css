@@ -51,6 +51,13 @@
     padding: 0.5em 1em;
     border-radius: 8px;
     margin-top: 2rem;
+    
+    .category {
+      font-size: .5em;
+      margin-inline: 2rem;
+      font-style: italic;
+      color: grey;
+    }
 
     .inline-data {
       display: grid;

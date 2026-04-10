@@ -1,15 +1,20 @@
 import Bsp from "../common/Formatting/bsp";
 import Action from "../common/Keywords/rules/action/Action";
 import Attack from "../common/Keywords/rules/action/Attack";
+import Check from "../common/Keywords/rules/check/Check";
+import Cloak from "../common/Keywords/rules/cloak/Cloak";
 import Adaptive from "../common/Keywords/rules/resources/Adaptive";
 import Dazzle from "../common/Keywords/rules/resources/Dazzle";
+import Focus from "../common/Keywords/rules/resources/Focus";
 import Hardy from "../common/Keywords/rules/resources/Hardy";
 import Ready from "../common/Keywords/rules/resources/Ready";
 import Rush from "../common/Keywords/rules/resources/Rush";
 import Vigor from "../common/Keywords/rules/resources/Vigor";
 import Whimsy from "../common/Keywords/rules/resources/Whimsy";
+import MinusSize from "../common/Keywords/rules/roll-modifiers/MinusSize";
 import PlusDice from "../common/Keywords/rules/roll-modifiers/PlusDice";
 import PlusSize from "../common/Keywords/rules/roll-modifiers/PlusSize";
+import Success from "../common/Keywords/rules/roll-modifiers/Success";
 import Day from "../common/Keywords/times/Day";
 import Night from "../common/Keywords/times/Night";
 import VictoryPoint from "../common/Keywords/VictoryPoint/VictoryPoint";
@@ -123,9 +128,9 @@ const threeLeggedRace: Scenario = {
   name: '3-Legged Race', type: 'neutral',
   setup: <>
     Place 4 Checkpoint tokens in the corners of the map, 
-    labelled 1-4. Put the “Active” marker on the token labelled 1.
+    labelled 1 through 4. Put the “Active” marker on the token labelled 1.
     <br /><br />
-    Each player groups all of their Skritters together in pairs of 2. 
+    Each player groups all of their Skritters together in pairs of 2.
   </>,
   deployment: <>
     Paired Skritters are deployed with their bases touching, 
@@ -143,13 +148,19 @@ const threeLeggedRace: Scenario = {
     active Checkpoint, that player gains <VictoryPoint x={1} />. 
     The Checkpoint becomes inactive and the next one becomes 
     active (if 4 was active, then 1 is next, otherwise it is 
-    numerical order). 
+    numerical order).
+    <br /><br />
     A Skritter pair cannot collect the same Checkpoint twice in a row.
   </>,
   extraRules: <>
-    When one Skritter is activated, their paired partner is also activated at the same time. If you want to move your paired Skritters, you need to spend actions from BOTH Skritters. Skritters cannot move further than the slowest of the two, and if Skritters move beyond half of the movement of the Fastest, they must roll a SuCheck(1d6). 
-    On a failure, they stumble and stop moving, ending the action.
-    <br />
+    When one Skritter is activated, their paired partner is also
+    activated at the same time. If you want to move your paired
+    Skritters, you need to spend actions from BOTH Skritters.
+    Skritters cannot move further than the slowest of the two,
+    and if Skritters move beyond half of the movement of the Fastest,
+    they must roll a SuCheck(1d6). On a failure, they stumble and 
+    stop moving, ending the action.
+    <br /><br />
     If a Skritter would be forced to retreat, they do not retreat unless 
     their partner would also forced to retreat.
   </>,
@@ -158,38 +169,75 @@ const threeLeggedRace: Scenario = {
 const raidTheSupplyHouse: Scenario = {
   name: 'Raid the Supply House', type: 'neutral',
   setup: <>
-    Designate four buildings (approx 3”x3”) total as Supply Houses. Each player takes turn choosing houses that are not inside their own deployment zone.
-    <br />
+    Each player takes turn choosing buildings
+    (approx 3”x3” each) that are not inside their
+    own deployment zone to serve as a Supply House.
+    Do this until there are 4 total Supply Houses
+    on the battlefield.
+    <br /><br />
     Create a pile of 15 Supply tokens next to the play area.
   </>,
   deployment: rolledDeployment,
   endConditions: <>
-    If the number of Supply tokens reaches 0 during a round, the match ends at the end of that round.
-    <br />
+    If the number of Supply tokens reaches 0 during a round,
+    the match ends at the end of that round.
+    <br /><br />
     At the end of the 5th round, the match ends.
-    <br />
-    Whichever player has the most Supply tokens at the end of the match gains <VictoryPoint x={1} />.
   </>,
-  scoring: <></>,
+  scoring: <>
+    Successfully Raid a house to gain <VictoryPoint x={1} />.
+    <br/><br/>
+    Whichever player has the most Supply tokens
+    at the end of the match gains an additional
+    <Bsp /><VictoryPoint x={1} />.
+  </>,
   extraRules: <>
-    Raid: If inside a Supply House, you may use an action to Raid it. Roll a 1d6+1d4 Raid Check, with -1SIZE for each opponent in the same building. You gain one resource per success. Choose between Focus, Vigorous, Whimsical, and Hardy resources, up to one of each. If you had 3 successes, you may instead take one Ready resource. Reduce the number of Supply Tokens by the number of successes you rolled, regardless of how many (or which kinds) of resources you claimed.
+    <Action type='Raid' />: If inside a Supply House, you may use an action
+    to Raid it. Roll a 1d6+1d4 <Check type='Raid' />, with
+    <Bsp /><MinusSize x={1} /> for each enemy Skritter in the
+    same building. You gain one resource per <Success />.
     <br />
-    If you gained at least 1 Supply token this way, this way, you gain <VictoryPoint x={1} />, and neither you nor your opponent may attempt to Raid the same Supply House again this round.
-    <br />
-    If a single Supply House has been successfully Raided 3 times, mark it as “Exhausted”, and it cannot be Raided any more by any players.
+    Choose between <Focus />, <Vigor />, <Whimsy />, and
+    <Bsp /><Hardy /> resources, up to one of each. If you
+    had <Success x={3} />, you may instead take one<Bsp />
+    <Ready /> resource. Reduce the number of Supply Tokens
+    by the number of <Success plural /> you rolled, regardless
+    of how many (or which kinds) of resources you claimed.
+    <br /><br />
+    If you gained at least 1 Supply token this way, this way,
+    you gain <VictoryPoint x={1} />, and neither you nor your
+    opponent may attempt to Raid the same Supply House again
+    this round.
+    <br /><br />
+    If a single Supply House has been successfully Raided 3
+    times, mark it as “Exhausted”, and it cannot be Raided
+    any more by any players.
   </>,
 };
 
 const wellWellWell: Scenario = {
   name: 'The Well, the Well, and the Well', type: 'neutral',
-  setup: <>Place an objective marker (approx 1” to 2” diameter) in the center of the map, this represents the Great Well. Then, each player places an objective marker exactly 2” away from the Great Well marker. Each of these represents a lesser Well.</>,
+  setup: <>
+    Place a Great Well marker (approx 1” to 2” diameter)
+    in the center of the map. Then, each player places a
+    Lesser Well objective marker exactly 2” away from the
+    Great Well marker.
+  </>,
   deployment: rolledDeployment,
   endConditions: <>At the end of the 4th round, the match ends.</>,
-  scoring: <></>,
+  scoring: <>
+    At the end of the round, you collect all of your “claimed”
+    tokens and gain <VictoryPoint x={1} /> for each. The wells
+    are no longer claimed. Additionally, if a player has at
+    least one Skritter touching the Great Well while their
+    opponent has none, that player gains 1 additional <VictoryPoint x={1} />.
+  </>,
   extraRules: <>
-    Any Well can be claimed with an action by a Skritter that is touching it while no enemy Skritters are touching it. When a well is claimed, put a “claimed” token representing that player on it. Wells that are claimed cannot be claimed again.
-    <br />
-    At the end of the round, you collect all of your “claimed” tokens and gain <VictoryPoint x={1} /> for each. The wells are no longer claimed. Additionally, if a player has at least one Skritter touching the Great Well while their opponent has none, that player gains 1 additional <VictoryPoint x={1} />.
+    Any Well can be claimed with an action by a Skritter
+    that is touching it while no enemy Skritters are
+    touching it. When a well is claimed, put a “claimed”
+    token representing that player on it. Wells that are
+    claimed cannot be claimed again.
   </>,
 };
 
@@ -355,25 +403,52 @@ const ambush: Scenario = {
 const supplySnatch: Scenario = {
   name: 'Supply Snatch', type: 'assault&guard',
   setup: <>
-    Half of the board is designated as the guarding player's territory. The back half is their deployment zone and territory, while the front half is simply territory.
-    <br />
-    The guarding player starts with 20 Supply tokens, divided into 4 piles of 5 tokens. The guarding player must deploy all piles on their territory, with at least 2” between piles. A maximum of 1 pile can be placed in their deployment zone, at least 1” from the edge of the battlefield, the rest must be outside the deployment zone. 
-    <br />
-    The guarding player may then place one 2” long piece of cover per pile. I recommend placing one near each pile, but this is not required.
+    Half of the board is designated as the guarding player's
+    territory. The back half is their deployment zone and territory.
+    The front half is territory, but not deployment zone.
+    <br /><br />
+    The guarding player starts with 20 Supply tokens, divided into 4
+    piles of 5 tokens. The guarding player must deploy all piles on
+    their territory, with at least 2” between piles. A maximum of 1
+    pile can be placed in their deployment zone, at least 1” from the
+    edge of the battlefield, the rest must be outside the deployment zone. 
+    <br /><br />
+    The guarding player may then place one 2” long piece of cover per pile.
+    I recommend placing one near each pile, but this is not required.
     </>,
-  deployment: <></>,
+  deployment: <>{basicDeployment}</>,
   endConditions: <>
-    At the end of the 4th round, the assaulting player can choose to roll a 1d6. On a 3+, the match lasts one more round. Otherwise the match ends.
+    At the end of the 4th round, the assaulting player can choose to
+    roll a 1d6. On a 3+, the match lasts one more round. Otherwise
+    the match ends.
   </>,
   scoring: <>
-    Each player gains <VictoryPoint x={1} /> per every 2 Supply tokens they currently control. The assaulting player controls all Supply tokens carried by their Skritters and all Supply tokens in their Team Stockpile. The guarding player controls all other Supply tokens, including ones that were initially Snatched but then dropped for any reason.
+    At the end of the <Match />, each player gains <VictoryPoint x={1} />
+    <Bsp />per every 2 Supply tokens they currently control.
+    <br /><br />
+    The assaulting
+    player controls all Supply tokens carried by their Skritters and all
+    Supply tokens in their Team Stockpile.
+    <br /><br />
+    The guarding player controls
+    all other Supply tokens, including ones that were initially Snatched
+    but then dropped for any reason.
   </>,
   extraRules: <>
-    If a Skritter is within 1” of a pile of Supply tokens, it may attempt a 2d6 Snatch check.That Skritter snatches a number of Supply tokens equal to the successes, take the tokens and put them on the Skritter's sheet.
-    <br />
-    If a Skritter carrying Supply tokens is forced to retreat, it immediately drops those tokens in a new pile touching the base prior to being removed from the battlefield for retreating.
-    <br />
-    If at any point a Skritter carrying Supply tokens is outside of the guarding player's territory, the player controlling that Skritter can immediately take the tokens off that Skritter's card and put them in the Team Stockpile (off of the battlefield). These tokens cannot be reclaimed in any way.
+    If a Skritter is within 1” of a pile of Supply tokens, it may attempt
+    a 2d6 Snatch check. That Skritter snatches a number of Supply tokens
+    equal to the <Success plural />, take the tokens and put them on the
+    Skritter's sheet.
+    <br /><br />
+    If a Skritter carrying Supply tokens is forced to retreat, it immediately
+    drops those tokens in a new pile touching the base prior to being removed
+    from the battlefield for retreating.
+    <br /><br />
+    If at any point a Skritter carrying Supply tokens is outside of the
+    guarding player's territory, the player controlling that Skritter can
+    immediately take the tokens off that Skritter's card and put them in the
+    Team Stockpile (off of the battlefield). These tokens cannot be reclaimed
+    in any way.
   </>,
 };
 
@@ -383,37 +458,35 @@ const hideAndGoSeek: Scenario = {
     The assaulting player deploys two 4”
     tall Watchlight Towers on their side
     of the battlefield, at least 3” apart.
+    <br /><br />
     The guarding player then deploys a
-    single 4” Lookout Tower in their
+    single 4” tall Lookout Tower in their
     deployment zone if they choose.
+  </>,
+  deployment: <>
     When deploying units,
     the guarding player deploys one
     (and only one) of their Skritters
-    outside of their deployment zone, touching it.
+    outside of their deployment zone,
+    touching it. This will be the first
+    hiding Skritter when the <Match />
+    <Bsp />begins.
   </>,
-  deployment: <></>,
   endConditions: <>
-    At the end of the 4th round, the guarding player may choose to roll a d6. On a 3+, the match lasts one more round. Otherwise the match ends.
+    At the end of the 4th round, the guarding player
+    may choose to roll a d6. On a 3+, the match lasts
+    one more round. Otherwise the match ends.
   </>,
   scoring: <>
     Any time the Hiding Skritter is
-    revealed for any reason, the assaulting player gains <VictoryPoint x={1} />. At the end of a round, if the Hiding player is still Cloaked, the guarding player gains <VictoryPoint x={1} />.
+    revealed for any reason, the assaulting
+    player gains <VictoryPoint x={1} />. At
+    the end of a round, if the Hiding player
+    is still <Cloak ed/>, the guarding player
+    gains <VictoryPoint x={1} />.
   </>,
   extraRules: <>
-    A Skritter may use an action to move
-    1” and climb up or down the entire length of
-    a Tower, regardless of their move stat.
-    They can make the 1” move either before
-    or after they climb.
-    <br />
-    The Watchlight Towers have 4 health and a
-    Defense of 1d6. If it is destroyed, any Skritter
-    inside the tower falls to the ground, then the Watchlight Tower is removed.
-    <br />
-    A Skritter inside a Watchlight Tower can use an action to target any Cloak token they can see. This Cloak token is then either revealed or dismissed as normal.
-    <br />
-    The Lookout Tower cannot be attacked. A Skritter making a Ranged or Weave attack from the Lookout tower does not consider height when measuring distance.
-    <br />
+    <h3>Hiding</h3>
     At the start of each round, if the guarding player
     does not have a Skritter that is Hiding, they
     choose one to Hide. They must choose a Skritter
@@ -425,17 +498,39 @@ const hideAndGoSeek: Scenario = {
     though a Skritter was immediately revealed (thus 
     awarding a <VictoryPoint x={1} /> to the assaulting
     player).
-    <br />
-    The hiding Skritter will then Cloak 2, or if it
-    is night Cloak 3. If the hiding Skritter is Small,
-    add +1 to the Cloak value. Immediately after
-    Cloaking the hiding Skritter, the player makes a
-    move action with that Skritter. The Hiding Skritter's
+    <br /><br />
+    The hiding Skritter will then <Cloak x={2} />, or
+    if it is <Night /> they <Cloak x={3} />. If the
+    hiding Skritter is Small, add +1 to the Cloak
+    value. Immediately after Cloaking the hiding
+    Skritter, the player makes a move action with
+    that Skritter. The Hiding Skritter's
     Cloaks cannot enter the guarding player's
-    deployment zone for any reason. (Maybe all
-    actions can be taken after another unit moves,
-    one at a time. So it's not move once then sit
-    and hope).
+    deployment zone for any reason.
+    <br /><br />
+    The hiding Skritter does take normal turns. Instead,
+    immediately before or after the activation of each of
+    the guarding player's Skritters, that player may have
+    their Hiding Skritter take one action.
+    <h3>Towers</h3>
+    A Skritter may use an action to move
+    1” and climb up or down the entire length of
+    a Tower, regardless of their move stat.
+    They can make the 1” move either before
+    or after they climb.
+    <br /><br />
+    A Skritter inside a Watchlight Tower can use
+    an action to target any Cloak token they can
+    see. This Cloak token is then either revealed
+    or dismissed as normal.
+    The Watchlight Towers have 4 health and a
+    Defense of 1d6. If it is destroyed, any Skritter
+    inside the tower falls to the ground, then the
+    Watchlight Tower is removed.
+    <br /><br />
+    The Lookout Tower cannot be attacked. A Skritter
+    making a Ranged or Weave attack from the Lookout
+    tower does not consider height when measuring distance.
   </>,
 };
 

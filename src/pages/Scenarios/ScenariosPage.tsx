@@ -3,6 +3,7 @@ import Page from "../Page";
 import scenarios from "../../data/scenario-data";
 import Match from "../../common/Match";
 import VictoryPoint from "../../common/Keywords/VictoryPoint/VictoryPoint";
+import { ScenarioCategory } from "../../types/types";
 import './ScenariosPage.css';
 
 export default function ScenariosPage() {
@@ -13,6 +14,20 @@ export default function ScenariosPage() {
 
   const nameToId = (name: string) => 
     name.replaceAll(' ', '-').toLowerCase();
+
+  const categoryToText = (type: ScenarioCategory) => {
+    switch (type) {
+      case 'neutral':
+        return '';
+      case 'assault&guard':
+        return 'Guard & Assault';
+      case 'faceoff':
+        return 'Face-Off';
+      default:
+        return 'Unknown';
+    }
+  };
+
 
   const rollableTable = <div className="roll-table">
     <div className="roll-table-header">
@@ -69,8 +84,14 @@ export default function ScenariosPage() {
       your <VictoryPoint plural />.
     </p>
     <p>
-      Scenarios
-      are broken into sections for easier understanding.
+      Some scenarios require an "assaulting" player and
+      a "guarding" player. In these cases, you can randomly
+      decide which player will take on which role. Alternatively,
+      if both players agree, you can decide which roles make
+      more narrative sense.
+    </p>
+    <p>
+      Scenarios are broken into sections for easier understanding.
     </p>
     <div>
       <div>
@@ -124,7 +145,10 @@ export default function ScenariosPage() {
 
     {scenarios.map((scenario, index) => (
       <div key={index} className="scenario">
-        <h1 id={'scenario-' + nameToId(scenario.name)}>{scenario.name}</h1>
+        <h1 id={'scenario-' + nameToId(scenario.name)}>
+          {scenario.name}
+          <span className="category">({categoryToText(scenario.type)})</span>
+        </h1>
 
         <div className="inline-data">
           <h2>Setup</h2>

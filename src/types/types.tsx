@@ -112,9 +112,10 @@ type Filter = {
   setSelectedOptions: React.Dispatch<React.SetStateAction<any[]>>;
 };
 
+export type ScenarioCategory = 'neutral' | 'assault&guard' | 'faceoff';
 type Scenario = {
   name: string;
-  type: 'neutral' | 'assault&guard' | 'faceoff';
+  type: ScenarioCategory;
   setup: ReactNode;
   deployment: ReactNode;
   endConditions: ReactNode;

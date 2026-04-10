@@ -12,6 +12,8 @@ import { Dice } from "../../types/types";
 import { Equipment } from "../../types/types";
 import Action from "../../common/Keywords/rules/action/Action";
 import Check from "../../common/Keywords/rules/check/Check";
+import Bsp from "../../common/Formatting/bsp";
+import Scuffle from "../../common/Keywords/rules/Scuffle";
 
 const d1d4: Dice = { count: 1, sides: 4 };
 const d1d6: Dice = { count: 1, sides: 4 };
@@ -97,10 +99,29 @@ const deployableWallShield: Equipment = {
   name: "Deployable Wall Shield",
   type: "garb", slot: "two-handed",
   effect: (<>
-    If currently weilded, 
-    get <PlusDice dice={d1d8} /> + <PlusDice dice={d1d6} /> to <Defense /> <Check plural />.
-    Can be deployed to act as a 1.5" section of cover. If you do deploy it while weilding it, 
-    you may automatically equip another weapon set if you have one.
+    If currently weilded, get<Bsp />
+    <PlusDice dice={d1d8} /> + <PlusDice dice={d1d6} />
+    <Bsp />to <Defense /> <Check plural />.
+    <br /><br />
+    Can be deployed to act as a 1.5" section of
+    cover. If you do deploy it while weilding it, 
+    you may automatically equip another weapon set
+    if you have one.
+  </>),
+  tags: ['DEPLOYABLE', 'METAL']
+};
+
+const scuffleScoufle: Equipment = {
+  name: 'Scouffle Scoufflé',
+  type: 'garb', slot: 'one-handed',
+  requires: <>
+    In a<Bsp /><Scuffle />
+  </>,
+  effect: (<>
+    You may spend an action to
+    eat a bit of Scouffle Scoufflé. You gain<Bsp /><PlusSize x={1} />
+    <Bsp />to<Bsp /><Defense /><Bsp />and<Bsp />Attack<Bsp />Tests
+    against targets in your<Bsp /><Scuffle />.
   </>),
 };
 
@@ -114,6 +135,7 @@ const equipment = {
   ponderinOrb,
   dewdrop,
   deployableWallShield,
+  scuffleScoufle
 };
 
 export default equipment;

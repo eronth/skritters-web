@@ -1,7 +1,9 @@
 import Bsp from "../common/Formatting/bsp";
 import Action from "../common/Keywords/rules/action/Action";
 import Attack from "../common/Keywords/rules/action/Attack";
+import BrawlCheck from "../common/Keywords/rules/check/BrawlCheck";
 import Check from "../common/Keywords/rules/check/Check";
+import DefenseCheck from "../common/Keywords/rules/check/DefenseCheck";
 import Cloak from "../common/Keywords/rules/cloak/Cloak";
 import Adaptive from "../common/Keywords/rules/resources/Adaptive";
 import Dazzle from "../common/Keywords/rules/resources/Dazzle";
@@ -23,6 +25,7 @@ import SkritterCard from "../common/SkritterDisplay/SkritterCard";
 import { Dice, Scenario, Skritter } from "../types/types";
 
 const d1d4 = new Dice('1d4');
+const d2d4 = new Dice('2d4');
 const d1d6 = new Dice('1d6');
 const d2d6 = new Dice('2d6');
 const d1d8 = new Dice('1d8');
@@ -243,14 +246,41 @@ const wellWellWell: Scenario = {
 
 const treeUponAHill: Scenario = {
   name: 'Tree Upon a Hill', type: 'neutral',
-  setup: <>Put a Hillside Tree in the center of the battlefield. This should be on a hilly piece of terrain.</>,
+  setup: <>
+    Put a Hillside Tree in the center of the battlefield.
+    This should be on a hilly piece of terrain, preferrably
+    with a tree on it.
+  </>,
   deployment: basicDeployment,
-  endConditions: <>At the end of the 4th round, the player with the least <VictoryPoint plural /> rolls a dice. On a 3+, they choose if there is one more round or not. Otherwise the match ends after rounds.</>,
-  scoring: <>At the end of each round, players gain <VictoryPoint x={1} /> for each Skritter they have on the Tree's hill, and an additional <VictoryPoint x={1} /> for each Skritter they have climbed into the Tree.</>,
+  endConditions: <>
+    At the end of the 4th round, the player with
+    the least <VictoryPoint plural /> may roll a
+    dice. On a 3+ there is one more round. Otherwise, the match ends.
+  </>,
+  scoring: <>
+    At the end of each round, players gain <VictoryPoint x={1} /> for
+    each Skritter they have on the Tree's hill, and an additional 
+    <Bsp /><VictoryPoint x={1} /> for each Skritter they have climbed
+    into the Tree.
+  </>,
   extraRules: <>
-    A Skritter can use an action to shake the Hillside Tree. That Skritter rolls a Shake Brawl Check. Each Skritter currently in the tree (including friendly Skritters), make a Defense or Brawl check against the result of the Shake Check. If they roll less Successes than the Shake Check result, they fall from the tree to the ground below. A Skritter that falls this way does not take damage from either the check nor the fall.
-    <br />
-    A Skritter in the tree can use an action to Hold Tight. A Skritter that is Holding Tight gains a +2d4 to any Shake Check. After each Shake Check reduces the Hold Tight bonus by 1 Dice. A Skritter can use a Hold Tight action to reset the bonus.
+    <Action type='Shake Shake' />: A Skritter can use an
+    action to shake the Hillside Tree. That Skritter rolls
+    a Shake <BrawlCheck />. Each Skritter currently in the
+    tree (including friendly Skritters),
+    make a <BrawlCheck /> or <DefenseCheck /> against the result of
+    the Shake Check. If they roll less <Success plural /> than
+    the
+    Shake Check result, they fall from the tree to the
+    ground below. A Skritter that falls this way does not
+    take damage from either the check nor the fall.
+    <br /><br />
+    <Action type='Hold Tight' />: A Skritter in the tree
+    can use an action to Hold Tight. A Skritter that is
+    Holding Tight gains a <PlusDice dice={d2d4} /> against
+    any Shake Check. After each Shake Check reduces the 
+    Hold Tight bonus by 1 Dice. A Skritter can use a Hold
+    Tight action to reset the bonus.
   </>,
 };
 
@@ -320,7 +350,9 @@ const midnightProwl: Scenario = {
       Beware of Dogs
     </a> instead.
     <br /><br />
-    Each player places two Prowl tokens in the middle of the field. One is a Hunter token and the other is a Shadow token.
+    Each player places two Prowl tokens in the middle
+    of the field. One is a Hunter token and the other
+    is a Shadow token.
   </>,
   deployment: basicDeployment,
   endConditions: <>idk</>,
@@ -331,72 +363,147 @@ const midnightProwl: Scenario = {
 const crossingPaths: Scenario = {
   name: 'Crossing Paths', type: 'neutral',
   setup: <>
-  Place one Focus, Vigorous, Whimsical, or Hardy resource on each of your Skritters. Also place a Ready resource and a Basic resource on each Skritter. Basic resources cannot be used to modify dice rolls.
-</>,
-  deployment: <>Player deployment zones are not across from each-other as normal. Instead, they are two edges forming a right angle on the board (e.g., and L shape) with one edge per player. Designate the edge across from your deployment zone as your destination.</>,
+    Place one <Focus />, <Vigor />, <Whimsy />, or
+    <Bsp /><Hardy /> resource on each of your 
+    Skritters. Also place a <Ready /> resource
+    and a Basic resource on each Skritter. Basic
+    resources cannot be used to modify dice rolls.
+  </>,
+  deployment: <>
+    Player deployment zones are not across from
+    each-other as normal. Instead, they are two
+    edges forming a right angle on the board 
+    (e.g. an L shape) with one edge per player.
+    Designate the edge across from your deployment
+    zone as your Destination.
+  </>,
   endConditions: <>
     At the end of the 4th round, the match ends.
   </>,
-  scoring: <>Each time one of your Skritters enters your destination for the first time, you gain <VictoryPoint x={1} />.</>,
+  scoring: <>
+    Each time one of your Skritters enters your
+    Destination for the first time, you gain <VictoryPoint x={1} />.
+  </>,
   extraRules: <>
-  While your Skritter is in your destination during your activation, you may choose to have it immediately stash any resources they carry as Stored resources.
-
-When a Skritter retreats, they drop all resources they are currently carrying at their location in a pile. A pile can be picked up by a Skritter by using an action.
-
+    While your Skritter is in your Destination
+    during their activation, they may stash
+    any resources they carry as Stored resources.
+    <br /><br />
+    When a Skritter retreats, they drop all resources
+    they are currently carrying at their location in a
+    pile. A pile can be picked up by a Skritter by using
+    an <Action />.
   </>,
 };
 
 const leadership: Scenario = {
   name: 'Leadership', type: 'neutral',
-  setup: <>Each player secretly picks one of their Skritters to be their Leader. Mark this choice down in secret (e.g., on a face-down piece of paper).</>,
-  deployment: <></>,
+  setup: <>
+    Each player secretly picks one of their Skritters
+    to be their Leader. Mark this choice down in secret
+    (e.g., on a face-down piece of paper).
+  </>,
+  deployment: <>{basicDeployment}</>,
   endConditions: <>At the end of the 4th round, the match ends.</>,
-  scoring: <>At the end of the match, reveal your secretly chosen Leader. You gain <VictoryPoint x={1} /> for every Skritter your Leader caused to retreat, and you gain <VictoryPoint x={2} /> if your opponent's Leader retreated.</>,
-  extraRules: <></>,
+  scoring: <>
+    At the end of the match, reveal your secretly chosen
+    Leader. You gain <VictoryPoint x={1} /> for every Skritter your
+    Leader caused to retreat, and you gain <VictoryPoint x={2} /> if
+    your opponent's Leader retreated.
+  </>,
+  extraRules: <>
+    Maybe something about revealing a leader in a "dramatic reveal"??
+  </>,
 };
 
 const holdTheLine: Scenario = {
   name: 'Hold the Line', type: 'assault&guard',
   setup: <>
-  Mark a line 3” from the guarding player's deployment zone (towards the middle of the battlefield). This is “The Line”. The guarding player may deploy two 2” long Walls (2” high) and two 2” long Cover (1” high?) along this line.</>,
-  deployment: <></>,
+    Mark a line 3” from the guarding player's deployment
+    zone (towards the middle of the battlefield). 
+    This is “The Line”. 
+    <br /><br />
+    The guarding player may deploy two 2” long Walls
+    (2” high) and two 2” long Cover (1” high?) along this line.
+  </>,
+  scoring: <>
+    The assaulting player gains <VictoryPoint x={1} /> for
+    each of their Skritters that is past The Line, while
+    the guarding player gains <VictoryPoint x={1} /> for
+    each of the assaulting player's Skritters that is NOT
+    past The Line. Skritters that retreated are not 
+    considered past The Line.
+  </>,
+  deployment: <>
+    {basicDeployment}. The guarding player's deployment zone
+    is 2" bigger towards The Line.
+  </>,
   endConditions: <>
-  At the end of the 3rd round, the match ends. The assaulting player gains <VictoryPoint x={1} /> for each of their Skritters that is past The Line, while the guarding player gains <VictoryPoint x={1} /> for each of the assaulting player's Skritters that is NOT past The Line. Skritters that retreated are not considered past The Line.</>,
-  scoring: <></>,
+    At the end of the 3rd round, the match ends.</>,
   extraRules: <>
-  Any time the assaulting player has a Skritter that is past The Line retreat, they must retreat towards the line in as direct of a path as possible, potentially passing back over the line. If a retreat made this way would put that Skritter into a Scuffle with another Skritter, they do so.
+    Any time the assaulting player has a Skritter that would
+    retreat, if that Skritter is past The Line, they instead
+    move in a straight line towards The Line in as direct of
+    a path as possible, attempting to pass back over The Line.
+    They then recover half of their health.
+    <br /><br />
+    Otherwise, a Skritter retreats normally.
   </>,
 };
 
 const ambush: Scenario = {
   name: 'Ambush', type: 'assault&guard',
   setup: <>
-    The guarding player's deployment zone is a circle in the middle of the board that has a 3” radius. Place 3 Treasure tokens in the guarding player's deployment zone. The assaulting player's Deployment zone is a 1” thick band around all edges of the board.
+    The guarding player's deployment zone is a circle in
+    the middle of the board that has a 3” radius. Place
+    3 Treasure tokens in the guarding player's deployment
+    zone.
+    <br /><br />
+    The assaulting player's Deployment zone is a 1”
+    thick band around all edges of the board.
   </>,
-  deployment: <></>,
+  deployment: <>
+    The guarding player's deployment zone is a circle in
+    the middle of the board that has a 3” radius.
+  </>,
   endConditions: <>
-    At the end of the 4th round, either player can request a dice is rolled. On a 3+, the match lasts one more round, otherwise the match ends.*
+    At the end of the 4th round, either player can request
+    a dice is rolled. On a 3+, the match lasts one more round,
+    otherwise the match ends.
   </>,
   scoring: <>
-    After the match ends, the assaulting player gains <VictoryPoint x={1} /> for each Treasure token they have at least one Skritter within 1” of, and <VictoryPoint x={2} /> for each Treasure token they Secured. The guarding player gains <VictoryPoint x={1} /> for each Treasure token they have at least one Skritter within 1” of, and <VictoryPoint x={2} /> for each Treasure token that is in their deployment zone.
+    After the match ends, the assaulting player gains<Bsp />
+    <VictoryPoint x={1} /> for each Treasure token they have
+    at least one Skritter within 1” of, and <VictoryPoint x={2} />
+    <Bsp />for each Treasure token they Secured.
+    <br /><br />
+    The guarding player gains <VictoryPoint x={1} /> for each
+    Treasure token they have at least one Skritter within 1” of,
+    and <VictoryPoint x={2} /> for each Treasure token that is
+    in their deployment zone.
   </>,
   extraRules: <>
-    A Skritter can use an action to move a Treasure token that is within 1” of them. That Skritter can move up to half of their movement, then the player places the Treasure token touching the Skritter.
-    <br />
+    <Action type="Haul Treasure" />: A Skritter can use an action
+    to move a Treasure token that is within 1” of them. Pick up
+    the Treasure token. Then, that Skritter can move up to half
+    of their movement. Once the Skritter has finished moving,
+    the player places the Treasure token touching the Skritter.
+    <br /><br />
     If you try to move a Treasure token that is currently being touched
-    by another Skritter with a Stealing action. To do so, make a
-    Brawl check vs that Skritter's Brawl or Defense check. If either
-    Skritter is larger than the other, the larger Skritter gets
+    by another Skritter, you must first "steal" it from them. To do so,
+    make a <BrawlCheck /> that Skritter's <BrawlCheck /> or <DefenseCheck />.
+    If either Skritter is larger than the other, the larger Skritter gets
     <Bsp /><PlusSize x={1} /> to their check.
-    <br />
+    <br /><br />
     If you
     have more successes than them, you steal the Treasure and move
     with it. Otherwise, the action fails, and that Skritter
     cannot attempt to move that Treasure token again this round.
-    <br />
-    No damage is dealt when stealing a treasure token.
-    <br />
-    If the assaulting player moves a Treasure token into their deployment zone, it becomes Secured and cannot be moved.
+    <br /><br />
+    <b>Secure Treasure</b>: If the assaulting player moves a 
+    Treasure token into their deployment zone, it becomes
+    Secured and cannot be moved. Place it in a pile near the battlefield
+    for scoring at the end of the game.
   </>,
 };
 

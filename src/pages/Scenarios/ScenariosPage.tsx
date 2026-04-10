@@ -11,7 +11,7 @@ export default function ScenariosPage() {
 
   const rollableTable = <div className="roll-table">
     <div className="roll-table-header">
-      Roll a 1d12 to determine which mission to play.
+      Roll a 1d12 to determine which mission to play
     </div>
     <div className="roll-table-body">
       {scenarios.map((scenario, index) => {
@@ -20,7 +20,7 @@ export default function ScenariosPage() {
         let nameLink = (
           <a href={'#scenario-' + index}>
             {scenario.name}    
-            </a>
+          </a>
         );
         if (indexUnify.joinTo == index) {
           const joinedNameLink = (

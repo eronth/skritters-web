@@ -1,13 +1,9 @@
 .scenarios {
   .roll-table {
-    /* center the component left-right */
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1000px;
-    
+    max-width: min(1000px, calc(100% - .5em));
+    margin-inline: auto;
+
     border: 1px solid var(--border-color);
-    margin-inline: .25em;
-    margin-bottom: 1rem;
 
     .roll-table-header {
       font-size: 1em;
@@ -16,14 +12,14 @@
       padding-inline: 1em;
       padding-top: 1px;
       padding-bottom: 1px;
-      /*takes all columns*/
+      text-align: center;
     }
 
     .roll-table-body {
       columns: 1;
       gap: 0;
 
-      @media (min-width: 600px) {
+      @media (min-width: 700px) {
         columns: 2;
       }
 
@@ -46,22 +42,21 @@
           text-align: right;
           padding-inline: .2em;
         }
+        a {
+          --link-color: light-dark(
+            rgb(16, 49, 51),
+            rgb(145, 201, 238)
+          );
+          color: var(--link-color);
+        }
       }
     }
   }
 
-
-
   .scenario {
     background-color: color-mix(in srgb, var(--bg-color) 50%, var(--color-mixin) 10%);
     padding: 0.5em 1em;
-  }
-
-  a {
-    --link-color: light-dark(
-      rgb(16, 49, 51),
-      rgb(145, 201, 238)
-    );
-    color: var(--link-color);
+    border-radius: 8px;
+    margin-top: 2rem;
   }
 }

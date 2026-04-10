@@ -7,6 +7,7 @@ import Terrain from "./Terrain";
 import TagRules from "./TagRules/TagRules";
 import { Link } from "react-router";
 import Bsp from "../../common/Formatting/bsp";
+import VictoryPoint from "../../common/Keywords/VictoryPoint/VictoryPoint";
 
 export default function HowToPlayPage() {
   
@@ -23,7 +24,7 @@ export default function HowToPlayPage() {
     focuses on small-scale battles between a few units or characters. Players will each
     assemble a squad of Skritters, each with their own unique abilities and stats, and face off against
     each other in a battle to see who can outmaneuver and outsmart their opponent to claim
-    the most Victory Points in a <Match />.
+    the most <VictoryPoint plural /> in a <Match />.
 
     The game of Skritters favors a campaign-style play, where players will play
     several <Match plural /> over the course of a campaign, building their squad

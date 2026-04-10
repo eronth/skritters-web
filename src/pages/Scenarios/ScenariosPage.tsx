@@ -2,6 +2,7 @@ import Bsp from "../../common/Formatting/bsp";
 import Page from "../Page";
 import scenarios from "../../data/scenario-data";
 import Match from "../../common/Match";
+import VictoryPoint from "../../common/Keywords/VictoryPoint/VictoryPoint";
 import './ScenariosPage.css';
 
 export default function ScenariosPage() {
@@ -58,14 +59,17 @@ export default function ScenariosPage() {
 
   return (<Page tab="scenarios">
     <p>
-      Below is the list of possible scenarios you can
-      play in a game of Skritters. You can select a
-      scenario by rolling a dice, or by choosing one
-      that interests you.
+      A scenario outlines a set of rules and objectives
+      when playing a <Match /> of Skritters. The ultimate
+      goal of any scenario is to score more<Bsp />
+      <VictoryPoint plural /> than your opponent.
+      Each scenario provides a unique set of challenges
+      and objectives for players to navigate, along with
+      detailing the scenario-specific way to score
+      your <VictoryPoint plural />.
     </p>
     <p>
-      Each scenario provides a unique set of challenges
-      and objectives for players to navigate. Scenarios
+      Scenarios
       are broken into sections for easier understanding.
     </p>
     <div>
@@ -91,11 +95,12 @@ export default function ScenariosPage() {
         do any final scoring.
       </div>
       <div>
-        Scoring — This outlines how a team earns Victory Points
-        through the <Match />. Sometimes Victory Points are
-        tallied only at the end of a <Match />, other times you
-        will keep a running tally throughout the duration of
-        the <Match />.
+        Scoring — This outlines how a team earns<Bsp />
+        <VictoryPoint plural /> through the <Match />.
+        Sometimes <VictoryPoint plural /> are tallied 
+        only at the end of a <Match />, other times you
+        will keep a running tally throughout the duration
+        of the <Match />.
       </div>
       <div>
         Additional Rules — This section contains any other 
@@ -108,7 +113,13 @@ export default function ScenariosPage() {
     <div>
       // TODO: DEPLOYMENT ZONES
     </div>
-    
+
+    <p>
+      Below is the list of possible scenarios you can
+      play in a game of Skritters. You can select a
+      scenario by rolling a dice, or by choosing one
+      that interests you.
+    </p>
     {rollableTable}
 
     {scenarios.map((scenario, index) => (

@@ -77,7 +77,7 @@ const captureTheFlag: Scenario = {
   deployment: rolledDeployment,
   scoring: <>
     Grab the opponent's flag and bring it back to your
-    Pedestal for 1 Victory Point each time.
+    Pedestal for <VictoryPoint x={1} /> each time.
   </>,
   endConditions: <>At the end of the 5th round, the <Match /> ends.</>,
   extraRules: <>
@@ -97,7 +97,7 @@ const captureTheFlag: Scenario = {
     <br /><br />
     <b>Capture</b>: If a Skritter carrying an opponent's
     flag ends their movement within 1” of
-    their <b>own</b> Pedestal, they gain 1 Victory Point. 
+    their <b>own</b> Pedestal, they gain <VictoryPoint x={1} />. 
     Then they return the flag to their
     opponent, who places it back on the Pedestal. 
     When the opponent places the Flag on the Pedestal, 
@@ -135,12 +135,12 @@ const threeLeggedRace: Scenario = {
     of them is within 2” of the Checkpoint token labelled 4.
   </>,
   endConditions: <>
-    The <Match /> ends when one player has 4 Victory Points, or
+    The <Match /> ends when one player has <VictoryPoint x={4} />, or
     at the end of the 5th round.
   </>,
   scoring: <>
     When a Skritter ends their their movement within 1” of the
-    active Checkpoint, that player gains 1 Victory point. 
+    active Checkpoint, that player gains <VictoryPoint x={1} />. 
     The Checkpoint becomes inactive and the next one becomes 
     active (if 4 was active, then 1 is next, otherwise it is 
     numerical order). 
@@ -168,13 +168,13 @@ const raidTheSupplyHouse: Scenario = {
     <br />
     At the end of the 5th round, the match ends.
     <br />
-    Whichever player has the most Supply tokens at the end of the match gains 1 victory point.
+    Whichever player has the most Supply tokens at the end of the match gains <VictoryPoint x={1} />.
   </>,
   scoring: <></>,
   extraRules: <>
     Raid: If inside a Supply House, you may use an action to Raid it. Roll a 1d6+1d4 Raid Check, with -1SIZE for each opponent in the same building. You gain one resource per success. Choose between Focus, Vigorous, Whimsical, and Hardy resources, up to one of each. If you had 3 successes, you may instead take one Ready resource. Reduce the number of Supply Tokens by the number of successes you rolled, regardless of how many (or which kinds) of resources you claimed.
     <br />
-    If you gained at least 1 Supply token this way, this way, you gain 1 victory point, and neither you nor your opponent may attempt to Raid the same Supply House again this round.
+    If you gained at least 1 Supply token this way, this way, you gain <VictoryPoint x={1} />, and neither you nor your opponent may attempt to Raid the same Supply House again this round.
     <br />
     If a single Supply House has been successfully Raided 3 times, mark it as “Exhausted”, and it cannot be Raided any more by any players.
   </>,
@@ -189,7 +189,7 @@ const wellWellWell: Scenario = {
   extraRules: <>
     Any Well can be claimed with an action by a Skritter that is touching it while no enemy Skritters are touching it. When a well is claimed, put a “claimed” token representing that player on it. Wells that are claimed cannot be claimed again.
     <br />
-    At the end of the round, you collect all of your “claimed” tokens and gain 1 Victory Point for each. The wells are no longer claimed. Additionally, if a player has at least one Skritter touching the Great Well while their opponent has none, that player gains 1 additional Victory Point.
+    At the end of the round, you collect all of your “claimed” tokens and gain <VictoryPoint x={1} /> for each. The wells are no longer claimed. Additionally, if a player has at least one Skritter touching the Great Well while their opponent has none, that player gains 1 additional <VictoryPoint x={1} />.
   </>,
 };
 
@@ -197,8 +197,8 @@ const treeUponAHill: Scenario = {
   name: 'Tree Upon a Hill', type: 'neutral',
   setup: <>Put a Hillside Tree in the center of the battlefield. This should be on a hilly piece of terrain.</>,
   deployment: basicDeployment,
-  endConditions: <>At the end of the 4th round, the player with the least Victory Points rolls a dice. On a 3+, they choose if there is one more round or not. Otherwise the match ends after rounds.</>,
-  scoring: <>At the end of each round, players gain 1 Victory Point for each Skritter they have on the Tree's hill, and an additional Victory Point for each Skritter they have climbed into the Tree.</>,
+  endConditions: <>At the end of the 4th round, the player with the least <VictoryPoint plural /> rolls a dice. On a 3+, they choose if there is one more round or not. Otherwise the match ends after rounds.</>,
+  scoring: <>At the end of each round, players gain <VictoryPoint x={1} /> for each Skritter they have on the Tree's hill, and an additional <VictoryPoint x={1} /> for each Skritter they have climbed into the Tree.</>,
   extraRules: <>
     A Skritter can use an action to shake the Hillside Tree. That Skritter rolls a Shake Brawl Check. Each Skritter currently in the tree (including friendly Skritters), make a Defense or Brawl check against the result of the Shake Check. If they roll less Successes than the Shake Check result, they fall from the tree to the ground below. A Skritter that falls this way does not take damage from either the check nor the fall.
     <br />
@@ -228,8 +228,8 @@ const bewareOfDogs: Scenario = {
   endConditions: <>The match ends after 4 rounds.</>,
   scoring: <>
     Whenever a Skritter picks up a Trinket, the controlling
-    player gets 1 Victory Point. The controlling player
-    gets an additional Victory Point if the opponent-controlled
+    player gets <VictoryPoint x={1} />. The controlling player
+    gets an additional <VictoryPoint x={1} /> if the opponent-controlled
     Hound is within 2” of the Trinket or Skritter.
   </>,
   extraRules: <>
@@ -244,7 +244,7 @@ const bewareOfDogs: Scenario = {
     <br />Within 2” -  May choose a <Ready /> or <Rush /> resource instead.
     <br />Within 1” - May choose a <Dazzle /> or <Adaptive /> resource instead.
     <br /><br />
-    After picking up a Trinket (and gaining your Victory Points),
+    After picking up a Trinket (and gaining your <VictoryPoint plural />),
     hand it to your opponent. They immediately place it anywhere
     on the battlefield that is at least 4” from any Skritter
     or Trinket (it does not need to be 4” from any Hounds).
@@ -289,7 +289,7 @@ const crossingPaths: Scenario = {
   endConditions: <>
     At the end of the 4th round, the match ends.
   </>,
-  scoring: <>Each time one of your Skritters enters your destination for the first time, you gain 1 Victory Point.</>,
+  scoring: <>Each time one of your Skritters enters your destination for the first time, you gain <VictoryPoint x={1} />.</>,
   extraRules: <>
   While your Skritter is in your destination during your activation, you may choose to have it immediately stash any resources they carry as Stored resources.
 
@@ -303,7 +303,7 @@ const leadership: Scenario = {
   setup: <>Each player secretly picks one of their Skritters to be their Leader. Mark this choice down in secret (e.g., on a face-down piece of paper).</>,
   deployment: <></>,
   endConditions: <>At the end of the 4th round, the match ends.</>,
-  scoring: <>At the end of the match, reveal your secretly chosen Leader. You gain 1 Victory Point for every Skritter your Leader caused to retreat, and you gain 2 Victory Points if your opponent's Leader retreated.</>,
+  scoring: <>At the end of the match, reveal your secretly chosen Leader. You gain <VictoryPoint x={1} /> for every Skritter your Leader caused to retreat, and you gain <VictoryPoint x={2} /> if your opponent's Leader retreated.</>,
   extraRules: <></>,
 };
 
@@ -313,7 +313,7 @@ const holdTheLine: Scenario = {
   Mark a line 3” from the guarding player's deployment zone (towards the middle of the battlefield). This is “The Line”. The guarding player may deploy two 2” long Walls (2” high) and two 2” long Cover (1” high?) along this line.</>,
   deployment: <></>,
   endConditions: <>
-  At the end of the 3rd round, the match ends. The assaulting player gains 1 Victory Point for each of their Skritters that is past The Line, while the guarding player gains 1 Victory Point for each of the assaulting player's Skritters that is NOT past The Line. Skritters that retreated are not considered past The Line.</>,
+  At the end of the 3rd round, the match ends. The assaulting player gains <VictoryPoint x={1} /> for each of their Skritters that is past The Line, while the guarding player gains <VictoryPoint x={1} /> for each of the assaulting player's Skritters that is NOT past The Line. Skritters that retreated are not considered past The Line.</>,
   scoring: <></>,
   extraRules: <>
   Any time the assaulting player has a Skritter that is past The Line retreat, they must retreat towards the line in as direct of a path as possible, potentially passing back over the line. If a retreat made this way would put that Skritter into a Scuffle with another Skritter, they do so.
@@ -330,7 +330,7 @@ const ambush: Scenario = {
     At the end of the 4th round, either player can request a dice is rolled. On a 3+, the match lasts one more round, otherwise the match ends.*
   </>,
   scoring: <>
-    After the match ends, the assaulting player gains 1 Victory Point for each Treasure token they have at least one Skritter within 1” of, and 2 Victory Points for each Treasure token they Secured. The guarding player gains 1 Victory Point for each Treasure token they have at least one Skritter within 1” of, and 2 Victory Points for each Treasure token that is in their deployment zone.
+    After the match ends, the assaulting player gains <VictoryPoint x={1} /> for each Treasure token they have at least one Skritter within 1” of, and <VictoryPoint x={2} /> for each Treasure token they Secured. The guarding player gains <VictoryPoint x={1} /> for each Treasure token they have at least one Skritter within 1” of, and <VictoryPoint x={2} /> for each Treasure token that is in their deployment zone.
   </>,
   extraRules: <>
     A Skritter can use an action to move a Treasure token that is within 1” of them. That Skritter can move up to half of their movement, then the player places the Treasure token touching the Skritter.
@@ -366,7 +366,7 @@ const supplySnatch: Scenario = {
     At the end of the 4th round, the assaulting player can choose to roll a 1d6. On a 3+, the match lasts one more round. Otherwise the match ends.
   </>,
   scoring: <>
-    Each player gains 1 Victory Point per every 2 Supply tokens they currently control. The assaulting player controls all Supply tokens carried by their Skritters and all Supply tokens in their Team Stockpile. The guarding player controls all other Supply tokens, including ones that were initially Snatched but then dropped for any reason.
+    Each player gains <VictoryPoint x={1} /> per every 2 Supply tokens they currently control. The assaulting player controls all Supply tokens carried by their Skritters and all Supply tokens in their Team Stockpile. The guarding player controls all other Supply tokens, including ones that were initially Snatched but then dropped for any reason.
   </>,
   extraRules: <>
     If a Skritter is within 1” of a pile of Supply tokens, it may attempt a 2d6 Snatch check.That Skritter snatches a number of Supply tokens equal to the successes, take the tokens and put them on the Skritter's sheet.
@@ -397,7 +397,7 @@ const hideAndGoSeek: Scenario = {
   </>,
   scoring: <>
     Any time the Hiding Skritter is
-    revealed for any reason, the assaulting player gains 1 Victory Point. At the end of a round, if the Hiding player is still Cloaked, the guarding player gains 1 Victory Point.
+    revealed for any reason, the assaulting player gains <VictoryPoint x={1} />. At the end of a round, if the Hiding player is still Cloaked, the guarding player gains <VictoryPoint x={1} />.
   </>,
   extraRules: <>
     A Skritter may use an action to move
@@ -422,8 +422,8 @@ const hideAndGoSeek: Scenario = {
     zone, they may move a Skritter up to 1” to exit
     the deployment zone. If there are still no Skritters
     outside of the deployment zone, it is treated as
-    though a Skritter was immediately revealed
-    (thus awarding a Victory Point to the assaulting
+    though a Skritter was immediately revealed (thus 
+    awarding a <VictoryPoint x={1} /> to the assaulting
     player).
     <br />
     The hiding Skritter will then Cloak 2, or if it

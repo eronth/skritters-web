@@ -7,6 +7,9 @@ import Scuffle from '../../common/Keywords/rules/Scuffle';
 import Bsp from '../../common/Formatting/bsp';
 import PlusSize from '../../common/Keywords/rules/roll-modifiers/PlusSize';
 import './ActionRulesComponent.css';
+import Attack from '../../common/Keywords/rules/action/Attack';
+import Defense from '../../common/Keywords/rules/Defense';
+import Check from '../../common/Keywords/rules/check/Check';
 
 export default function ActionsRulesComponent() {
   return (<>
@@ -47,23 +50,59 @@ export default function ActionsRulesComponent() {
       though some may leave very little room for success. Plot
       the entire route you intend to make before rolling any
       checks that are called for. If checks do not result in
-      a success, or result in less successes than required,
+      a <Success />, or result in less <Success plural /> than required,
       perform your movement until the point of failure, then 
-      resolve. If you have multiple Climb modifiers in a single
+      resolve.
+    </p>
+    <p>
+      If you have multiple Climb modifiers in a single
       move, you only roll a singular Climb check and distribute
-      the successes as needed. The same is true for other modifiers.
-      <br /><br />
+      the <Success plural /> as needed. The same is true for other modifiers.
+    </p>
+    <p>
       <i>Climbing</i> — Roll a SuCheck(3d6) climb check. You may
-      climb 1” per success. If you are climbing a difficult
+      climb 1” per <Success />. If you don't make it all the way
+      to the top in one go, roll a Holdon SuCheck(1d6) - If you don't
+      get at least <Success x={1} />, you fall from where you had
+      climbed.
+      <br />
+      If you are climbing a difficult
       surface, you must successfully climb all the way to the
-      top in one check or you slide back down to the bottom.
+      top in one check or you fall back down to the bottom
+      with no <Check type='Holdon' />.
       <br /><br />
-      <i>Jump Gap</i> — ??? – Same as climb but 2d6, decided during gameplay. 
+      <i>Jump Gap</i> — ??? - Same as climb but 2d6, decided during gameplay. 
       <br /><br />
-      <i>Glide</i> —
+      <i>Fall</i> — If you choose to fall, or fail a Climb/Jump Gap attempt,
+      you are moved straight down from higher terrain to lower terrain or the
+      ground. When you hit the ground, you are hit by a <Attack type='Falling' /><Bsp />
+      that has a number of <Success plural /> equal to twice the distance you
+      fell, roll your <Defense /> against the attack, taking damage as normal.
+      <br />Falling does not use your normal movement inches.
       <br /><br />
-      <i>Fly</i> —
+      If you pass within 1" of a ledge while falling, you can 
+      attempt a 1d4 SuCheck to grab the ledge. On a <Success />, you catch the
+      ledge and pull yourself up. Determine the <Attack type='Falling' /> based
+      on the reduced distance fallen.
+
       <br /><br />
+      <i>Glide</i> — If you have the ability to glide, you can safely fall
+      without risk of damage. When you would fall, if you have an action
+      you can spend or
+      are already moving, you can choose to glide with your movement. When
+      you glide, you move 1" away from where you started falling for each 1"
+      you fall down. Gliding must be done in a (relatively) straight line
+      diagonally downward.
+      <br /><br />
+      Each 1" you glide counts against your movement. If you run out of
+      movement before reaching the ground, you must spend another action
+      to continue gliding (if available), or you begin falling from where
+      your glide ended.
+
+      <br /><br />
+      <i>Fly</i> — If you can fly, you can measure up and over terrain
+      without making climb or jump checks. You must end each movement on
+      a solid surface.
     </p>
     <h4>March Action</h4>
     <p>

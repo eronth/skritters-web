@@ -20,11 +20,11 @@ export default function ScenariosPage() {
       case 'neutral':
         return '';
       case 'assault&guard':
-        return 'Guard & Assault';
+        return '(Guard & Assault)';
       case 'faceoff':
-        return 'Face-Off';
+        return '(Face-Off)';
       default:
-        return 'Unknown';
+        return '(Unknown)';
     }
   };
 
@@ -147,7 +147,7 @@ export default function ScenariosPage() {
       <div key={index} className="scenario">
         <h1 id={'scenario-' + nameToId(scenario.name)}>
           {scenario.name}
-          <span className="category">({categoryToText(scenario.type)})</span>
+          <span className="category">{categoryToText(scenario.type)}</span>
         </h1>
 
         <div className="inline-data">

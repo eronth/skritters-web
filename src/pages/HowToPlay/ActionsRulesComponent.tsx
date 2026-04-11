@@ -6,11 +6,11 @@ import ScuffleRules from './ScuffleRules';
 import Scuffle from '../../common/Keywords/rules/Scuffle';
 import Bsp from '../../common/Formatting/bsp';
 import PlusSize from '../../common/Keywords/rules/roll-modifiers/PlusSize';
-import './ActionRulesComponent.css';
 import Attack from '../../common/Keywords/rules/action/Attack';
 import Defense from '../../common/Keywords/rules/Defense';
 import Check from '../../common/Keywords/rules/check/Check';
 import { Dice } from '../../types/types';
+import './ActionRulesComponent.css';
 
 export default function ActionsRulesComponent() {
   return (<>
@@ -31,7 +31,7 @@ export default function ActionsRulesComponent() {
     <p>
       Skritters have access to a few movement actions to
       maneuver around the  battlefield. Movement
-      action gets -1” for each movement action previously
+      action gets -1" for each movement action previously
       completed by the Skritter during this activation.
     </p>
     <h4>Basic Movement Rules</h4>
@@ -60,51 +60,69 @@ export default function ActionsRulesComponent() {
       move, you only roll a singular Climb check and distribute
       the <Success plural /> as needed. The same is true for other modifiers.
     </p>
-    <p>
-      <i>Climbing</i> — Roll a <Check dice={new Dice('3d6')} type='Climb' /> climb check. You may
-      climb 1” per <Success />. If you don't make it all the way
-      to the top in one go, roll a <Check dice={new Dice('1d6')} type='Holding' /> - If you don't
-      get at least <Success x={1} />, you fall from where you had
-      climbed.
-      <br />
-      If you are climbing a difficult
-      surface, you must successfully climb all the way to the
-      top in one check or you fall back down to the bottom
-      with no <Check type='Holding' /> required.
-      <br /><br />
-      <i>Jump Gap</i> — ??? - Same as climb but 2d6, decided during gameplay. 
-      <br /><br />
-      <i>Fall</i> — If you choose to fall, or fail a Climb/Jump Gap attempt,
-      you are moved straight down from higher terrain to lower terrain or the
-      ground. When you hit the ground, you are hit by a <Attack type='Falling' /><Bsp />
-      that has a number of <Success plural /> equal to twice the distance you
-      fell, roll your <Defense /> against the attack, taking damage as normal.
-      <br />Falling does not use your normal movement inches.
-      <br /><br />
-      If you pass within 1" of a ledge while falling, you can 
-      attempt a <Check dice={new Dice('1d4')} type='Grab' /> to grab the ledge.
-      On a <Success />, you catch the ledge and pull yourself up. Determine the
-      <Bsp /><Attack type='Falling' /> based on the reduced distance fallen.
-
-      <br /><br />
-      <i>Glide</i> — If you have the ability to glide, you can safely fall
-      without risk of damage. When you would fall, if you have an action
-      you can spend or
-      are already moving, you can choose to glide with your movement. When
-      you glide, you move 1" away from where you started falling for each 1"
-      you fall down. Gliding must be done in a (relatively) straight line
-      diagonally downward.
-      <br /><br />
-      Each 1" you glide counts against your movement. If you run out of
-      movement before reaching the ground, you must spend another action
-      to continue gliding (if available), or you begin falling from where
-      your glide ended.
-
-      <br /><br />
-      <i>Fly</i> — If you can fly, you can measure up and over terrain
-      without making climb or jump checks. You must end each movement on
-      a solid surface.
-    </p>
+    <table className='movement-modifiers-table'>
+      <thead>
+        <tr>
+          <th>Modifier</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Climbing</td>
+          <td>
+            Roll a <Check dice={new Dice('3d6')} type='Climb' /> climb check. You may climb 1" per <Success />.
+            If you don't make it all the way to the top in one go, roll
+            a <Check dice={new Dice('1d6')} type='Holding' /> — if you don't get at least <Success x={1} />, you fall
+            from where you had climbed.
+            <br /><br />
+            If you are climbing a difficult surface, you must successfully climb all the way to the
+            top in one check or you fall back down to the bottom with no <Check type='Holding' /> required.
+          </td>
+        </tr>
+        <tr>
+          <td>Jump Gap</td>
+          <td>
+            Same as Climbing but uses a <Check dice={new Dice('2d6')} type='Jump' /> check.
+          </td>
+        </tr>
+        <tr>
+          <td>Fall</td>
+          <td>
+            If you choose to fall, or fail a Climb/Jump Gap attempt, you are moved straight down
+            from higher terrain to lower terrain or the ground. When you hit the ground, you are
+            hit by an <Attack type='Falling' /> that has a number of <Success plural /> equal to
+            twice the distance you fell — roll your <Defense /> against the attack, taking damage as normal.
+            Falling does not use your normal movement inches.
+            <br /><br />
+            If you pass within 1" of a ledge while falling, you can attempt
+            a <Check dice={new Dice('1d4')} type='Grab' /> to grab the ledge. On a <Success />, you
+            catch the ledge and pull yourself up. Determine
+            the <Attack type='Falling' /> based on the reduced distance fallen.
+          </td>
+        </tr>
+        <tr>
+          <td>Glide</td>
+          <td>
+            If you have the ability to glide, you can safely fall without risk of damage.
+            When you would fall, if you have an action you can spend or are already moving,
+            you can choose to glide. When you glide, you move 1" horizontally for each 1" you
+            fall. Gliding must be done in a (relatively) straight line diagonally downward.
+            <br /><br />
+            Each 1" you glide counts against your movement. If you run out of movement before
+            reaching the ground, you must spend another action to continue gliding (if available),
+            or you begin falling from where your glide ended.
+          </td>
+        </tr>
+        <tr>
+          <td>Fly</td>
+          <td>
+            If you can fly, you can measure up and over terrain without making climb or jump checks.
+            You must end each movement on a solid surface.
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <h4>March Action</h4>
     <p>
       Use a measurement string. Move your units inches.
@@ -196,11 +214,11 @@ export default function ActionsRulesComponent() {
     </p>
     <p>
       In other words, a Ranged attack with a weapon that
-      has a range stat of 6” would get
+      has a range stat of 6" would get
     </p>
     <ul>
-      <li><Bsp /><MinusDice x={1} /><Bsp />and<Bsp /><MinusSize x={1} /><Bsp />against targets at a range of 7"&nbsp;to&nbsp;12”</li>
-      <li><Bsp /><MinusDice x={2} /><Bsp />and<Bsp /><MinusSize x={2} /><Bsp />against targets at a range of 13"&nbsp;to&nbsp;18”</li>
+      <li><Bsp /><MinusDice x={1} /><Bsp />and<Bsp /><MinusSize x={1} /><Bsp />against targets at a range of 7"&nbsp;to&nbsp;12"</li>
+      <li><Bsp /><MinusDice x={2} /><Bsp />and<Bsp /><MinusSize x={2} /><Bsp />against targets at a range of 13"&nbsp;to&nbsp;18"</li>
       <li>and so on</li>
     </ul>
     <p>
@@ -224,7 +242,7 @@ export default function ActionsRulesComponent() {
     <p>
       If a unit can only see half or less of another unit when
       making an attack, the targeted unit is considered to have cover.
-      Cover grants -1 SIZE to the attack, and +1 SIZE to the unit's defence check.
+      Cover grants <MinusSize x={1} /> to the attack, and <PlusSize x={1} /> to the unit's defence check.
     </p>
     <ScuffleRules />
     <DefeatAndRetreat />

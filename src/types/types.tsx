@@ -47,6 +47,11 @@ export class Dice {
       this.sides = sides!;
     }
   }
+
+  // override to string
+  toString() {
+    return `${this.count}d${this.sides}`;
+  }
 }
 
 type Modifiers = {

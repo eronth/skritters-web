@@ -10,6 +10,7 @@ import './ActionRulesComponent.css';
 import Attack from '../../common/Keywords/rules/action/Attack';
 import Defense from '../../common/Keywords/rules/Defense';
 import Check from '../../common/Keywords/rules/check/Check';
+import { Dice } from '../../types/types';
 
 export default function ActionsRulesComponent() {
   return (<>
@@ -60,16 +61,16 @@ export default function ActionsRulesComponent() {
       the <Success plural /> as needed. The same is true for other modifiers.
     </p>
     <p>
-      <i>Climbing</i> — Roll a SuCheck(3d6) climb check. You may
+      <i>Climbing</i> — Roll a <Check dice={new Dice('3d6')} type='Climb' /> climb check. You may
       climb 1” per <Success />. If you don't make it all the way
-      to the top in one go, roll a Holdon SuCheck(1d6) - If you don't
+      to the top in one go, roll a <Check dice={new Dice('1d6')} type='Holding' /> - If you don't
       get at least <Success x={1} />, you fall from where you had
       climbed.
       <br />
       If you are climbing a difficult
       surface, you must successfully climb all the way to the
       top in one check or you fall back down to the bottom
-      with no <Check type='Holdon' />.
+      with no <Check type='Holding' /> required.
       <br /><br />
       <i>Jump Gap</i> — ??? - Same as climb but 2d6, decided during gameplay. 
       <br /><br />
@@ -81,9 +82,9 @@ export default function ActionsRulesComponent() {
       <br />Falling does not use your normal movement inches.
       <br /><br />
       If you pass within 1" of a ledge while falling, you can 
-      attempt a 1d4 SuCheck to grab the ledge. On a <Success />, you catch the
-      ledge and pull yourself up. Determine the <Attack type='Falling' /> based
-      on the reduced distance fallen.
+      attempt a <Check dice={new Dice('1d4')} type='Grab' /> to grab the ledge.
+      On a <Success />, you catch the ledge and pull yourself up. Determine the
+      <Bsp /><Attack type='Falling' /> based on the reduced distance fallen.
 
       <br /><br />
       <i>Glide</i> — If you have the ability to glide, you can safely fall
@@ -110,17 +111,21 @@ export default function ActionsRulesComponent() {
     </p>
     <h4>Scamper Action</h4>
     <p>
-      1/round If you haven't attacked: Move your units inches SuCheck(+d4).
+      1/round If you haven't attacked: Move your units inches
+      <Check dice={new Dice('1d4')} type='Scamper' />.
       You can add up to up to <PlusSize x={3} /> to this check.
       If you do, your next attack this mission gains <MinusSize noVal />
       <Bsp />by the same amount + 1.
+      <br /><br />
+      You cannot attack in the same round you did this.
     </p>
     <h4>Charge Action!</h4>
     <p>
-      Make a SuCheck(2d6) and move your movement + successes in a straight
-      line. Choose an enemy Skritter as a target, then make a 2d6 Charge
-      Check. You may move your full movement stat, plus any successes from
-      your Charge, in a straight line towards the target. You cannot make
+      Choose an enemy Skritter as a target, then make a
+      <Bsp /><Check dice={new Dice('2d6')} type='Charge' />.
+      You may move your full movement stat, plus all <Success plural />
+      from your Charge, in a straight line towards the target. 
+      You cannot make
       a partial movement with this action.
     </p>
     <p>
@@ -130,7 +135,9 @@ export default function ActionsRulesComponent() {
     </p>
     <h3>Swapping Weapons Action</h3>
     <p>
-      Swap out your currently wielded weapons and/or equipment for other weapons or equipment the character has with them. This is only used to swap what weapons are being wielded (and cannot affect armors or other garb).
+      Swap out your currently wielded weapons and/or equipment for
+      other weapons or equipment the character has with them. This is only
+      used to swap what weapons are being wielded (and cannot affect armors or other garb).
     </p>
     <h3>Attack Action</h3>
     <p>

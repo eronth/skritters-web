@@ -161,7 +161,7 @@ const threeLeggedRace: Scenario = {
     Skritters, you need to spend actions from BOTH Skritters.
     Skritters cannot move further than the slowest of the two,
     and if Skritters move beyond half of the movement of the Fastest,
-    they must roll a SuCheck(1d6). On a failure, they stumble and 
+    they must roll a <Check dice={new Dice('1d6')} />. On a failure, they stumble and 
     stop moving, ending the action.
     <br /><br />
     If a Skritter would be forced to retreat, they do not retreat unless 

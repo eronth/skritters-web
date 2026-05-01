@@ -6,6 +6,11 @@
   color-scheme: light dark;
   /* color-scheme: light; */
 
+  --link-color:          light-dark(oklch(45% 0.13 253), oklch(75% 0.15 253));
+  --link-visited-color:  light-dark(oklch(50% 0.16 279), oklch(62% 0.16 279));
+  --link-hover-color:         oklch(from var(--link-color)         calc(l*1.1) c h);
+  --link-hover-visited-color: oklch(from var(--link-visited-color) calc(l*1.1) c h);
+
   /* Light theme variables */
   --primary-color: light-dark(#2b6cb0, #579ac9);
   --primary-light: light-dark(#ebf4ff, #2a4365);
@@ -22,32 +27,32 @@
   --card-bg: light-dark(#aad6ff, #2d3748);
   --color-mixin: light-dark(black, white);
 
-  --light-plant-clr: hsl(139, 73%, 87%);
-  --dark-plant-clr: hsl(152, 42%, 23%);
+  --light-plant-clr: hsl(139 73% 87%);
+  --dark-plant-clr: hsl(152 42% 23%);
 
-  --light-metal-clr: hsl(202, 81%, 86%);
-  --dark-metal-clr: hsl(213, 49%, 34%);
+  --light-metal-clr: hsl(202 81% 86%);
+  --dark-metal-clr: hsl(213 49% 34%);
   
-  --light-gem-clr: hsl(38, 93%, 77%);
-  --dark-gem-clr: hsl(30, 76%, 26%);
+  --light-gem-clr: hsl(38 93% 77%);
+  --dark-gem-clr: hsl(30 76% 26%);
   
-  --light-flame-clr: hsl(343, 95%, 92%);
-  --dark-flame-clr: hsl(0, 56%, 39%);
+  --light-flame-clr: hsl(343 95% 92%);
+  --dark-flame-clr: hsl(0 56% 39%);
   
-  --light-poison-clr: hsl(58, 97%, 87%);
-  --dark-poison-clr: hsl(58, 97%, 27%);
+  --light-poison-clr: hsl(58 97% 87%);
+  --dark-poison-clr: hsl(58 97% 27%);
   
-  --light-water-color: hsl(195, 85%, 86%);
-  --dark-water-color: hsl(200, 75%, 25%);
+  --light-water-color: hsl(195 85% 86%);
+  --dark-water-color: hsl(200 75% 25%);
   
-  --light-zap-color: hsl(50, 100%, 80%);
-  --dark-zap-color: hsl(230, 80%, 40%);
+  --light-zap-color: hsl(50 100% 80%);
+  --dark-zap-color: hsl(230 80% 40%);
   
-  --light-frost-color: hsl(200, 90%, 90%);
-  --dark-frost-color: hsl(215, 70%, 20%);
+  --light-frost-color: hsl(200 90% 90%);
+  --dark-frost-color: hsl(215 70% 20%);
   
-  --light-gloomy-color: hsl(240, 100%, 80%);
-  --dark-gloomy-color: hsl(218, 17%, 25%);
+  --light-gloomy-color: hsl(240 100% 80%);
+  --dark-gloomy-color: hsl(218 17% 25%);
   
 }
 
@@ -127,6 +132,23 @@ p {
   width: 100%; /* Ensure page takes full width */
 /*} */
 
+a {
+  color: var(--link-color);
+  text-decoration: none;
+
+  &:visited {
+    color: var(--link-visited-color);
+  }
+  &:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+  &:visited:hover {
+    color: var(--link-hover-visited-color);
+    text-decoration: underline;
+  }
+}
+
 .page-content {
   /*
     I don't fully understand why, but some styling is clashing and getting a nice centered item is a bit clunky.
@@ -143,7 +165,7 @@ p {
   /* margin-inline: 2rem; */
   width: 100%;
   padding: 1rem;
-  max-width: 1200px;
+  max-width: 1250px;
   min-height: 100vh;
   background-color: color-mix( in srgb, var(--card-bg), var(--bg-color));
 }

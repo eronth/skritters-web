@@ -34,8 +34,9 @@ export default function HowToPlayPage() {
     <p>
       Below are the rules you'll need to know to actually play the game of Skritters.
       Once you know these rules, check the <Link to='/scenarios'>Scenarios</Link>
-      <Bsp />and <Link to="/campaign">Campaign</Link> sections for more information
-      on how to set up and play a <Match />.
+      <Bsp /> section for more information on how to set up and play a <Match />,
+      and the <Link to="/campaign">Campaign</Link> section for more information 
+      a narrative series of <Match plural />.
     </p>
     <DiceAndTestsComponent />
     <ActionsRulesComponent />

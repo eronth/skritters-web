@@ -1,4 +1,5 @@
 import Bsp from "../../common/Formatting/bsp";
+import MinusSize from "../../common/Keywords/rules/roll-modifiers/MinusSize";
 import Scuffle from "../../common/Keywords/rules/Scuffle";
 
 
@@ -94,7 +95,7 @@ export default function ScuffleRules() {
       </p>
       <p>
         The Skritter you
-        intercepted gets -SIZE to Brawl attacks against
+        intercepted gets <MinusSize x={1} /> to Brawl attacks against
         you for each inch you moved, rounded to the nearest
         inch. This penalty lasts until the end of the
         intercepted Skritter's turn, or until they exit

@@ -206,11 +206,15 @@ export default function ActionsRulesComponent() {
     </p>
     {/* Ranged Attacks */}
     <h4>Ranged Specific Rules</h4>
+    <h5>Effective Range</h5>
     <p>
-      Ranged attacks have an effective range. Attacking
+      Ranged attacks have an Effective Range, listed on the weapon's stats
+      under "Range".
+      You may choose to attack at a range further than the effective range,
+      but this comes penalties. Attacks
       beyond that range confers<Bsp /><MinusDice x={1} />
       <Bsp />and<Bsp /><MinusSize x={1} /><Bsp />for every
-      range increment beyond the effective range.
+      range increment beyond the effective range of the attack.
     </p>
     <p>
       In other words, a Ranged attack with a weapon that
@@ -221,19 +225,27 @@ export default function ActionsRulesComponent() {
       <li><Bsp /><MinusDice x={2} /><Bsp />and<Bsp /><MinusSize x={2} /><Bsp />against targets at a range of 13"&nbsp;to&nbsp;18"</li>
       <li>and so on</li>
     </ul>
+    <h5>Scuffle and Ranged Attacks</h5>
     <p>
       Ranged attacks can not be used by Skritters who are in a<Bsp /><Scuffle />
       <Bsp />against a target within the same<Bsp /><Scuffle />. Ranged attacks
       can be used against targets outside of the Scuffle, but they get
       <Bsp /><MinusDice x={1} /><Bsp />and<Bsp /><MinusSize x={1} /><Bsp />.
+      (This penalty is in addition to any penalties for attacking beyond
+      the effective range of the attack.)
     </p>
 
     {/* Weave Attacks */}
     <h4>Weave Specific Rules</h4>
+    <h5>Max Range</h5>
     <p>
-      Weave attacks cannot be used beyond their max range. However, they often have additional and 
-      unusual effects on hits, sometimes replacing damage with some other effect.
+      Weave attacks have a Max Range, listed on the weapon's stats under
+      "Range". Weave attacks or actions cannot be used to target Skritters
+      beyond their max range. However, they often have additional and unusual
+      effects on Success, sometimes replacing hits or damage with some other
+      effect.
     </p>
+    <h5>Scuffle and Weave Attacks</h5>
     <p>
       Weave attacks get<Bsp /><MinusDice x={1} /><Bsp />when used in a <Scuffle />.
     </p>

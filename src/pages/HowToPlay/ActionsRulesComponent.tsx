@@ -13,7 +13,7 @@ import { Dice } from '../../types/types';
 import './ActionRulesComponent.css';
 
 export default function ActionsRulesComponent() {
-  return (<>
+  return (<div className='actions-rules'>
     <h2>Actions and Maneuvers</h2>
     <p>
       Each Skritter can perform three actions in a turn
@@ -216,7 +216,7 @@ export default function ActionsRulesComponent() {
       <Bsp />and<Bsp /><MinusSize x={1} /><Bsp />for every
       range increment beyond the effective range of the attack.
     </p>
-    <p>
+    <p className="pre-list">
       In other words, a Ranged attack with a weapon that
       has a range stat of 6" would get
     </p>
@@ -258,5 +258,5 @@ export default function ActionsRulesComponent() {
     </p>
     <ScuffleRules />
     <DefeatAndRetreat />
-  </>);
+  </div>);
 }

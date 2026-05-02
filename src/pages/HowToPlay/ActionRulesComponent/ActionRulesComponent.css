@@ -7,7 +7,7 @@
   
     tr{
       &:last-child td {
-        border-bottom: none;
+        border-width: 3px;
       }
     
       &:nth-child(even) td {

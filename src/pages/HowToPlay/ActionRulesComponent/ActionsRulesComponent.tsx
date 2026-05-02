@@ -1,15 +1,15 @@
-import DefeatAndRetreat from './DefeatAndRetreat';
-import Success from '../../common/Keywords/rules/roll-modifiers/Success';
-import MinusDice from '../../common/Keywords/rules/roll-modifiers/MinusDice';
-import MinusSize from '../../common/Keywords/rules/roll-modifiers/MinusSize';
-import ScuffleRules from './ScuffleRules';
-import Scuffle from '../../common/Keywords/rules/Scuffle';
-import Bsp from '../../common/Formatting/bsp';
-import PlusSize from '../../common/Keywords/rules/roll-modifiers/PlusSize';
-import Attack from '../../common/Keywords/rules/action/Attack';
-import Defense from '../../common/Keywords/rules/Defense';
-import Check from '../../common/Keywords/rules/check/Check';
-import { Dice } from '../../types/types';
+import DefeatAndRetreat from '../DefeatAndRetreat';
+import Success from '../../../common/Keywords/rules/roll-modifiers/Success';
+import MinusDice from '../../../common/Keywords/rules/roll-modifiers/MinusDice';
+import MinusSize from '../../../common/Keywords/rules/roll-modifiers/MinusSize';
+import ScuffleRules from '../ScuffleRules';
+import Scuffle from '../../../common/Keywords/rules/Scuffle';
+import Bsp from '../../../common/Formatting/bsp';
+import PlusSize from '../../../common/Keywords/rules/roll-modifiers/PlusSize';
+import Attack from '../../../common/Keywords/rules/action/Attack';
+import Defense from '../../../common/Keywords/rules/Defense';
+import Check from '../../../common/Keywords/rules/check/Check';
+import { Dice } from '../../../types/types';
 import './ActionRulesComponent.css';
 
 export default function ActionsRulesComponent() {

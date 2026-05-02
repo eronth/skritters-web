@@ -1,6 +1,8 @@
 import Page from "../Page";
 import Match from "../../common/Match";
-import ActionsRulesComponent from "./ActionsRulesComponent";
+import CreateYourCrew from "./CreateYourCrew";
+import ActionsRulesComponent from "./ActionRulesComponent/ActionsRulesComponent";
+import Turns from "./Turns";
 import DiceAndTestsComponent from "./DiceAndTestsComponent";
 import ResourcesRules from "./RecoureRules/ResourcesRules";
 import Terrain from "./Terrain";
@@ -38,7 +40,9 @@ export default function HowToPlayPage() {
       and the <Link to="/campaign">Campaign</Link> section for more information 
       a narrative series of <Match plural />.
     </p>
+    <CreateYourCrew />
     <DiceAndTestsComponent />
+    <Turns />
     <ActionsRulesComponent />
     <Terrain />
     <ResourcesRules />

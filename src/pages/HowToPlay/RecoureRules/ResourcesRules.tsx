@@ -1,4 +1,6 @@
+import Bsp from "../../../common/Formatting/bsp";
 import Attack from "../../../common/Keywords/rules/action/Attack";
+import WeaveAttack from "../../../common/Keywords/rules/action/WeaveAttack";
 import BrawlCheck from "../../../common/Keywords/rules/check/BrawlCheck";
 import Check from "../../../common/Keywords/rules/check/Check";
 import RangedCheck from "../../../common/Keywords/rules/check/RangedCheck";
@@ -36,11 +38,16 @@ export default function ResourcesRules() {
     </p>
     <div className="resources-grid">
       <span><Focus /></span>
-      <span>— Gain <PlusSize x={1} /> to a <RangedCheck plural />.</span>
+      <span>— Gain <PlusSize x={1} /> or +3" to effective range to a <RangedCheck />.</span>
       <span><Vigor /></span>
-      <span>— Gain <PlusSize x={1} /> to a <BrawlCheck plural />.</span>
+      <span>— Gain <PlusSize x={1} /> to a <BrawlCheck /> or you can, like,
+        idk move right before you attack even though you already can..</span>
       <span><Whimsy /></span>
-      <span>— Gain <PlusSize x={1} /> to a <WeaveCheck />.</span>
+      <span>— Gain <PlusSize x={1} /> to a <WeaveCheck /> or treat your
+        <Bsp /><WeaveAttack /> as though it has an effective range instead
+        of a max range. Use the rules in Ranged Attacks for range increment
+        penalties.
+      </span>
       <span><Hardy /></span>
       <span>— Grant <PlusDice dice={new Dice("1d6")} /> to <Defense />.</span>
       <span><Ready /></span>

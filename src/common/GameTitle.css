@@ -1,18 +1,8 @@
 .game-title {
-  display: block;
-
-  background-image: url('../assets/title-bg.png');
-  background-size: cover;
-  background-position: center;
-
-  padding: 2rem 0 1rem;
-  width: 100%;
-
   font-family: 'Abril Fatface', Georgia, serif;
   color: #f2e4c0;
   font-size: 4.5rem;
   font-weight: 400;
-  text-align: center;
   text-decoration: none;
   letter-spacing: 0.03em;
   text-shadow:
@@ -20,6 +10,16 @@
     -2px  2px 0 #1a0c00,
     2px -2px 0 #1a0c00,
     -2px -2px 0 #1a0c00,
-    0 5px 14px rgba(0, 0, 0, 0.75),
-    0 0 35px rgba(220, 155, 40, 0.35);
+    0 5px 14px rgb(0 0 0 / 75%),
+    0 0 35px rgb(220 155 40 / 35%);
+
+  &.index-page {
+    display: block;
+    background-image: url('../assets/title-bg.png');
+    background-size: cover;
+    background-position: center;
+    padding: 2rem 0 1rem;
+    width: 100%;
+    text-align: center;
+  }
 }

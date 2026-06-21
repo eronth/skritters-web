@@ -1,0 +1,6 @@
+header {
+  background-image: url('../assets/title-bg.png');
+  background-size: cover;
+  background-position: center;
+  padding: 2rem 0 1rem;
+}

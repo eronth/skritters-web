@@ -7,11 +7,9 @@ type Props = {
   crewSlotId: string;
   slot: EquipmentSlotData;
   onRemove: () => void;
-  isWeaponSlot?: boolean;
-  isSpanning?: boolean;
 };
 
-export default function EquipmentSlot({ crewSlotId, slot, onRemove, isWeaponSlot, isSpanning }: Props) {
+export default function EquipmentSlot({ crewSlotId, slot, onRemove }: Props) {
   const dropData: DropEquipSlotData = {
     type: 'equip-slot',
     crewSlotId,
@@ -43,8 +41,6 @@ export default function EquipmentSlot({ crewSlotId, slot, onRemove, isWeaponSlot
         slot.equipment ? 'equip-slot--filled' : 'equip-slot--empty',
         isOver ? 'equip-slot--over' : '',
         isDragging ? 'equip-slot--dragging' : '',
-        isWeaponSlot ? 'equip-slot--weapon' : '',
-        isSpanning ? 'equip-slot--spanning' : '',
       ].filter(Boolean).join(' ')}
     >
       {slot.equipment ? (
@@ -59,9 +55,7 @@ export default function EquipmentSlot({ crewSlotId, slot, onRemove, isWeaponSlot
           }}
         />
       ) : (
-        <div className="equip-slot-empty-label">
-          {isWeaponSlot ? 'Held Equipment Only' : 'Drop equipment here'}
-        </div>
+        <div className="equip-slot-empty-label">Drop equipment here</div>
       )}
     </div>
   );

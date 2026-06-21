@@ -102,41 +102,6 @@ export function useDragHandlers({
           if (alreadyUsed) return;
         }
 
-        const targetCrewSlot = crewSlots.find(s => s.id === targetCrewSlotId);
-        const targetEquipSlotIndex = targetCrewSlot?.equipmentSlots.findIndex(
-          es => es.id === targetEquipSlotId
-        ) ?? -1;
-
-        const WEAPON_SLOT_TYPES = new Set(['one-handed', 'two-handed', 'onetwo-handed']);
-        const TWO_HANDED_SLOT_TYPES = new Set(['two-handed', 'onetwo-handed']);
-        const UNIQUE_GARB_SLOTS = new Set(['face', 'head', 'body', 'back', 'special']);
-
-        const totalEquipSlots = targetCrewSlot?.equipmentSlots.length ?? 0;
-        const isWeaponPair = Math.floor(targetEquipSlotIndex / 2) === 0;
-        const pairMateIndex = targetEquipSlotIndex % 2 === 0
-          ? targetEquipSlotIndex + 1
-          : targetEquipSlotIndex - 1;
-        const hasPairMate = pairMateIndex >= 0 && pairMateIndex < totalEquipSlots;
-        const pairMate = hasPairMate ? targetCrewSlot?.equipmentSlots[pairMateIndex] : undefined;
-        const isTwoHandedDrag = TWO_HANDED_SLOT_TYPES.has(drag.equipment.slot);
-
-        if (isWeaponPair && !WEAPON_SLOT_TYPES.has(drag.equipment.slot)) return;
-        if (isTwoHandedDrag && !hasPairMate) return;
-        if (TWO_HANDED_SLOT_TYPES.has(pairMate?.equipment?.slot ?? '')) return;
-
-        if (!isWeaponPair && UNIQUE_GARB_SLOTS.has(drag.equipment.slot)) {
-          const excludedSlotId =
-            drag.fromCrewSlotId === targetCrewSlotId ? drag.fromEquipSlotId : undefined;
-          const alreadyHasType = targetCrewSlot?.equipmentSlots.some(
-            (es, idx) =>
-              Math.floor(idx / 2) !== 0 &&
-              es.id !== targetEquipSlotId &&
-              es.id !== excludedSlotId &&
-              es.equipment?.slot === drag.equipment.slot
-          );
-          if (alreadyHasType) return;
-        }
-
         setCrewSlots(prev => {
           const targetCrewSlot = prev.find(s => s.id === targetCrewSlotId);
           const targetEquipSlot = targetCrewSlot?.equipmentSlots.find(
@@ -149,25 +114,18 @@ export function useDragHandlers({
             if (crewSlot.id === targetCrewSlotId) {
               updated = {
                 ...updated,
-                equipmentSlots: updated.equipmentSlots.map((es, idx) => {
+                equipmentSlots: updated.equipmentSlots.map(es => {
                   if (es.id === targetEquipSlotId) {
                     return { ...es, equipment: drag.equipment, equipmentKey: drag.key };
-                  }
-                  if (isTwoHandedDrag && pairMate && es.id === pairMate.id) {
-                    return { ...es, equipment: null, equipmentKey: null };
                   }
                   if (
                     drag.fromEquipSlotId &&
                     es.id === drag.fromEquipSlotId &&
                     drag.fromCrewSlotId === targetCrewSlotId
                   ) {
-                    const swappedItem = targetEquipSlot?.equipment ?? null;
-                    if (Math.floor(idx / 2) === 0 && swappedItem && !WEAPON_SLOT_TYPES.has(swappedItem.slot)) {
-                      return { ...es, equipment: null, equipmentKey: null };
-                    }
                     return {
                       ...es,
-                      equipment: swappedItem,
+                      equipment: targetEquipSlot?.equipment ?? null,
                       equipmentKey: targetEquipSlot?.equipmentKey ?? null,
                     };
                   }
@@ -183,15 +141,11 @@ export function useDragHandlers({
             ) {
               updated = {
                 ...updated,
-                equipmentSlots: updated.equipmentSlots.map((es, idx) => {
+                equipmentSlots: updated.equipmentSlots.map(es => {
                   if (es.id === drag.fromEquipSlotId) {
-                    const swappedItem = targetEquipSlot?.equipment ?? null;
-                    if (Math.floor(idx / 2) === 0 && swappedItem && !WEAPON_SLOT_TYPES.has(swappedItem.slot)) {
-                      return { ...es, equipment: null, equipmentKey: null };
-                    }
                     return {
                       ...es,
-                      equipment: swappedItem,
+                      equipment: targetEquipSlot?.equipment ?? null,
                       equipmentKey: targetEquipSlot?.equipmentKey ?? null,
                     };
                   }

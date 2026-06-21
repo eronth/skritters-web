@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDraggable, useDroppable } from '@dnd-kit/core';
 import SkritterCard from '../../../../../common/SkritterDisplay/SkritterCard';
 import EquipmentSlot from '../EquipmentSlot/EquipmentSlot';
@@ -6,9 +7,6 @@ import type { PersonalEquipmentEntry } from '../../../../../types/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import './CrewSlot.css';
-import React from 'react';
-
-const TWO_HANDED_SLOT_TYPES = new Set(['two-handed', 'onetwo-handed']);
 
 function PersonalEquipChip({
   entry,
@@ -218,41 +216,14 @@ export default function CrewSlot({
 
             {/* Equipment slots list */}
             <div className="equip-slots-list">
-              {(() => {
-                const eslots = slot.equipmentSlots;
-                const pairs: [typeof eslots[0], typeof eslots[0] | null][] = [];
-                for (let i = 0; i < eslots.length; i += 2) {
-                  pairs.push([eslots[i], eslots[i + 1] ?? null]);
-                }
-                return pairs.map((pair, pairIndex) => {
-                  const [slotA, slotB] = pair;
-                  const isWeaponPair = pairIndex === 0;
-                  const slotASpanning = TWO_HANDED_SLOT_TYPES.has(slotA.equipment?.slot ?? '');
-                  const slotBSpanning = !!slotB && TWO_HANDED_SLOT_TYPES.has(slotB.equipment?.slot ?? '');
-                  return (
-                    <div key={slotA.id} className="equip-slot-pair">
-                      {!slotBSpanning && (
-                        <EquipmentSlot
-                          crewSlotId={slot.id}
-                          slot={slotA}
-                          onRemove={() => onRemoveEquipment(slotA.id)}
-                          isWeaponSlot={isWeaponPair}
-                          isSpanning={slotASpanning}
-                        />
-                      )}
-                      {slotB && !slotASpanning && (
-                        <EquipmentSlot
-                          crewSlotId={slot.id}
-                          slot={slotB}
-                          onRemove={() => onRemoveEquipment(slotB.id)}
-                          isWeaponSlot={isWeaponPair}
-                          isSpanning={slotBSpanning}
-                        />
-                      )}
-                    </div>
-                  );
-                });
-              })()}
+              {slot.equipmentSlots.map(es => (
+                <EquipmentSlot
+                  key={es.id}
+                  crewSlotId={slot.id}
+                  slot={es}
+                  onRemove={() => onRemoveEquipment(es.id)}
+                />
+              ))}
             </div>
           </div>
         </div>

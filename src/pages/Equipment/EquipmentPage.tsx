@@ -18,17 +18,17 @@ export default function EquipmentPage() {
 
   const [searchTerm, setSearchTerm] = useState('');
 
-  const [sortBy, setSortBy] = useState<'name' | 'type' | 'range'>('name');
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+  // const [sortBy, setSortBy] = useState<'name' | 'type' | 'range'>('name');
+  // const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
   // Toggle sort direction or change sort field
-  const handleSort = (field: 'name' | 'type' | 'range') => {
-    if (sortBy === field) {
-      setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
-    } else {
-      setSortBy(field);
-      setSortDirection('asc');
-    }
-  };
+  // const handleSort = (field: 'name' | 'type' | 'range') => {
+  //   if (sortBy === field) {
+  //     setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
+  //   } else {
+  //     setSortBy(field);
+  //     setSortDirection('asc');
+  //   }
+  // };
 
   const [selectedTypes, setSelectedTypes] = useState<EquipmentType[]>([]);
   const allTypes: EquipmentType[] = Object.values(EQUIPMENT_TYPES);

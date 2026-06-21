@@ -9,11 +9,12 @@ import "./Page.css";
 
 type Props = {
   children?: React.ReactNode;
+  aside?: React.ReactNode;
   className?: string;
   tab: TabType;
 }
 
-export default function Page({ tab, className, children }: Props) {
+export default function Page({ tab, className, children, aside }: Props) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -30,8 +31,11 @@ export default function Page({ tab, className, children }: Props) {
         <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)} />
       )}
       <NavTabs selectedTab={tab} isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <div className="page-content">
-        {children}
+      <div className="page-body">
+        <div className="page-content">
+          {children}
+        </div>
+        {aside}
       </div>
     </div>
   );

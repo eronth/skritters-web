@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import FancyIndexPage from './pages/FancyIndexPage/FancyIndexPage'
 import SkrittersListPage from './pages/Skritters/SkrittersListPage'
 import HowToPlayPage from './pages/HowToPlay/HowToPlayPage'
@@ -13,7 +13,7 @@ import 'rpg-awesome/css/rpg-awesome.min.css'
 export default function App() {
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<FancyIndexPage />} />
         <Route path="/about" element={<AboutPage />} /> {/* TODO add content */}
@@ -24,6 +24,6 @@ export default function App() {
         <Route path="/scenarios" element={<ScenariosPage />} /> {/* TODO add content */}
         <Route path="/crew-builder" element={<CrewBuilderPage />} /> {/* TODO add content */}
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }

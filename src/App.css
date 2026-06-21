@@ -58,7 +58,7 @@
 
 html, body {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -185,31 +185,23 @@ a {
   }
 }
 
-.page-content {
-  /*
-    I don't fully understand why, but some styling is clashing and getting a nice centered item is a bit clunky.
-    
-    We need the following:
-    margin: 0 auto;
-    width: 100%;
-
-    We cannot have the following:
-    margin-inline: 2rem;
-  */ 
-  margin: 0 auto;
+.page-body {
+  display: flex;
+  align-items: flex-start;
   margin-top: calc(2em + 2px);
-  /* margin-inline: 2rem; */
-  width: 100%;
+}
+
+.page-content {
+  flex: 1;
+  margin: 0 auto;
   padding: 1rem;
   max-width: 1250px;
   min-height: 100vh;
-  background-color: color-mix( in srgb, var(--card-bg), var(--bg-color));
+  background-color: color-mix(in srgb, var(--card-bg), var(--bg-color));
 }
+
 @media (max-width: 1300px) {
   .page-content {
-    /* Once the screen gets small enough, we know we'll be centered so we swap to a
-    layout with margin-inline and width auto */
     margin-inline: 2rem;
-    width: auto;
   }
 }

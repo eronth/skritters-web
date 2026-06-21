@@ -52,7 +52,7 @@ export default function CrewBuilderPage() {
   });
 
   return (
-    <Page tab="crew-builder" className={`crew-builder-page${sourcePanelOpen ? ' crew-builder-page--source-open' : ''}`}>
+    <Page tab="crew-builder" className={`crew-builder-page${sourcePanelOpen ? ' source-open' : ''}`}>
       <input
         ref={fileInputRef}
         type="file"

@@ -1,8 +1,9 @@
-/* ── Source Panel ───────────────────────────────────────────────────────── */
-
 .source-panel {
-  --source-panel-width: 420px;
+  --source-panel-width: 620px;
   --source-panel-toggle-width: 38px;
+  --ui-border: 1px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
+  --hover-bg: color-mix(in srgb, var(--text-color) 8%, transparent 92%);
+
   position: fixed;
   right: 0;
   top: 0;
@@ -12,7 +13,6 @@
   flex-direction: row;
   align-items: flex-start;
   overflow: hidden;
-
   width: var(--source-panel-toggle-width);
   background: var(--bg-color);
   border-left: 1px solid transparent;
@@ -23,15 +23,21 @@
     width: var(--source-panel-width);
     border-left-color: color-mix(in srgb, var(--text-color) 30%, transparent 70%);
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.12);
+
+    .source-panel-toggle {
+      border-left: none;
+      border-right: var(--ui-border);
+
+      .icon {
+        transform: rotate(180deg);
+      }
+    }
   }
 
-  --source-panel-toggle-border:
-  1px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
   .source-panel-toggle {
-
     flex-shrink: 0;
     background: var(--bg-color);
-    border: var(--source-panel-toggle-border);
+    border: var(--ui-border);
     border-right: none;
     border-radius: 4px 0 0 4px;
     cursor: pointer;
@@ -40,26 +46,17 @@
     padding: 8px 10px;
     margin-top: 48px;
     box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.1);
-    transition: background 0.15s, transform 0.3s ease-out;
-  
+    transition: background 0.15s;
+
     &:hover {
-      background: color-mix(in srgb, var(--text-color) 8%, transparent 92%);
+      background: var(--hover-bg);
     }
 
     .icon {
-      transition: transform .5s ease-out;
+      transition: transform 0.5s ease-out;
     }
   }
 
-  &.source-panel--open .source-panel-toggle {
-    border-left: 0;
-    border-right: var(--source-panel-toggle-border);
-    
-    .icon {
-      transform: rotate(180deg);
-    }
-  }
-  
   .source-panel-content {
     flex: 1;
     height: 100%;
@@ -67,17 +64,16 @@
     flex-direction: column;
     overflow: hidden;
     padding: 8px 8px 8px 4px;
-  
+
     .source-tabs {
       display: flex;
       gap: 4px;
-      margin-bottom: 0;
       flex-shrink: 0;
-      
+
       .source-tab {
         flex: 1;
         padding: 6px 12px;
-        border: 1px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
+        border: var(--ui-border);
         border-bottom: none;
         border-radius: 4px 4px 0 0;
         background: none;
@@ -85,11 +81,11 @@
         font-size: 0.9rem;
         color: var(--text-color);
         transition: background 0.15s;
-      
+
         &:hover {
-          background: color-mix(in srgb, var(--text-color) 8%, transparent 92%);
+          background: var(--hover-bg);
         }
-      
+
         &.source-tab--active {
           background: var(--primary-color);
           color: white;
@@ -97,43 +93,50 @@
         }
       }
     }
-  }
-}
 
-/* ── Source Lists ───────────────────────────────────────────────────────── */
-.source-panel-body {
-  flex: 1;
-  overflow-y: auto;
-  border: 1px solid color-mix(in srgb, var(--text-color) 40%, transparent 60%);
-  border-radius: 0 0 4px 4px;
-}
-.source-list {
-  padding: 8px;
-  min-height: 100px;
+    .source-panel-body {
+      flex: 1;
+      overflow-y: auto;
+      border: var(--ui-border);
+      border-radius: 0 0 4px 4px;
 
-  .source-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 8px;
-    
-    .source-item {
-      cursor: grab;
-      border-radius: 4px;
-      transition: opacity 0.15s;
-    
-      &:active {
-        cursor: grabbing;
-      }
-    
-      &.source-item--disabled {
-        opacity: 0.3;
-        cursor: not-allowed;
-        pointer-events: none;
-      }
-      
-      &.source-item--dragging {
-        opacity: 0.3;
+      .source-list {
+        padding: 8px;
+        min-height: 100px;
+
+        .source-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-top: 8px;
+
+          .source-item {
+            cursor: grab;
+            border-radius: 4px;
+            transition: opacity 0.15s;
+
+            &:active {
+              cursor: grabbing;
+            }
+
+            &.source-item--disabled {
+              opacity: 0.3;
+              cursor: not-allowed;
+              pointer-events: none;
+            }
+
+            &.source-item--dragging {
+              opacity: 0.3;
+            }
+          }
+
+          .no-results {
+            text-align: center;
+            font-style: italic;
+            opacity: 0.55;
+            padding: 16px;
+          }
+        }
       }
     }
   }

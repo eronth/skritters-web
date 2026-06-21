@@ -34,10 +34,10 @@
 
     .equipment-name {
       font-weight: bold;
-      font-size: 18px;
+      font-size: 1.1rem;
       display: flex;
       flex-direction: row;
-    } 
+    }
   }
 
   .stats-grid {
@@ -45,7 +45,7 @@
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
     gap: 8px;
-    font-size: 14px;
+    font-size: 0.875rem;
   
     .stat-label {
       font-weight: 600;
@@ -82,8 +82,8 @@
 
   .effect-section {
     margin-top: 8px;
-    font-size: 14px;
-    border-top: 1px solid #edf2f7;
+    font-size: 0.875rem;
+    border-top: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent 80%);
     padding-top: 8px;
     
     .effect-label {

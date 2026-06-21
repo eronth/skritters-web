@@ -1,70 +1,21 @@
-/* ── Layout ─────────────────────────────────────────────────────────────── */
-
 .crew-builder-page {
   transition: padding-right 0.3s ease-out;
   padding-right: var(--source-panel-toggle-width, 38px);
-}
 
-.crew-builder-page--source-open {
-  padding-right: var(--source-panel-width, 420px);
-}
-
-.crew-builder-layout {
-  padding-bottom: 40px;
-}
-
-.crew-builder-left {
-  min-width: 0;
-}
-
-
-/* Controls row shared by crew slot and equip slot */
-.crew-slot-controls,
-.equip-slot-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2px 6px;
-}
-
-.drag-handle {
-  cursor: grab;
-  font-size: 1.2rem;
-  opacity: 0.4;
-  user-select: none;
-  padding: 2px 6px;
-  border-radius: 4px;
-  transition: opacity 0.15s;
-
-  &:hover {
-    opacity: 0.85;
+  &.source-open {
+    padding-right: var(--source-panel-width, 620px);
   }
 
-  &:active {
-    cursor: grabbing;
+  .crew-builder-layout {
+    padding-bottom: 40px;
+
+    .crew-builder-left {
+      min-width: 0;
+    }
   }
 }
 
-.remove-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  color: var(--text-color);
-  opacity: 0.45;
-  padding: 2px 6px;
-  border-radius: 4px;
-  line-height: 1;
-  transition: opacity 0.15s, color 0.15s;
-
-  &:hover {
-    opacity: 1;
-    color: #e55;
-  }
-}
-
-/* ── Drag Overlay ───────────────────────────────────────────────────────── */
-
+/* Rendered via DragOverlay portal — lives outside .crew-builder-page in the DOM */
 .drag-overlay-card {
   padding: 8px 16px;
   background: var(--card-bg);
@@ -76,14 +27,3 @@
   pointer-events: none;
   white-space: nowrap;
 }
-
-/* ── Misc ───────────────────────────────────────────────────────────────── */
-
-.no-results {
-  text-align: center;
-  font-style: italic;
-  opacity: 0.55;
-  padding: 16px;
-}
-
-
